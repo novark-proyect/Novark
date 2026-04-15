@@ -1,394 +1,407 @@
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Excessive Piracy | Vault v28</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --cyan: #00f2ff; --dark: #050505; }
-        
-        body { 
-            background-color: var(--dark); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: high-quality;
-        }
-        
-        .font-brand { font-family: 'Rajdhani', sans-serif; }
+```𝒉𝒕𝒎𝒍
+<!𝑫𝑶𝑪𝑻𝒀𝑷𝑬 𝒉𝒕𝒎𝒍>
+<𝒉𝒕𝒎𝒍 𝒍𝒂𝒏𝒈="𝒆𝒔">
+<𝒉𝒆𝒂𝒅>
+    <𝒎𝒆𝒕𝒂 𝒄𝒉𝒂𝒓𝒔𝒆𝒕="𝑼𝑻𝑭-𝟖">
+    <𝒎𝒆𝒕𝒂 𝒏𝒂𝒎𝒆="𝒗𝒊𝒆𝒘𝒑𝒐𝒓𝒕" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="𝒘𝒊𝒅𝒕𝒉=𝒅𝒆𝒗𝒊𝒄𝒆-𝒘𝒊𝒅𝒕𝒉, 𝒊𝒏𝒊𝒕𝒊𝒂𝒍-𝒔𝒄𝒂𝒍𝒆=𝟏.𝟎, 𝒎𝒂𝒙𝒊𝒎𝒖𝒎-𝒔𝒄𝒂𝒍𝒆=𝟏.𝟎, 𝒖𝒔𝒆𝒓-𝒔𝒄𝒂𝒍𝒂𝒃𝒍𝒆=𝒏𝒐">
+    
+    <!-- 𝑬𝑻𝑰𝑸𝑼𝑬𝑻𝑨𝑺 𝑫𝑬 𝑷𝑹𝑬𝑽𝑰𝑺𝑼𝑨𝑳𝑰𝒁𝑨𝑪𝑰𝑶́𝑵 (𝑶𝑷𝑬𝑵 𝑮𝑹𝑨𝑷𝑯) -->
+    <𝒎𝒆𝒕𝒂 𝒑𝒓𝒐𝒑𝒆𝒓𝒕𝒚="𝒐𝒈:𝒕𝒊𝒕𝒍𝒆" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="𝑬𝒙𝒄𝒆𝒔𝒔𝒊𝒗𝒆 𝑷𝒊𝒓𝒂𝒄𝒚 | 𝑽𝒂𝒖𝒍𝒕 𝒗𝟐𝟖">
+    <𝒎𝒆𝒕𝒂 𝒑𝒓𝒐𝒑𝒆𝒓𝒕𝒚="𝒐𝒈:𝒅𝒆𝒔𝒄𝒓𝒊𝒑𝒕𝒊𝒐𝒏" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="𝑫𝒆𝒔𝒄𝒂𝒓𝒈𝒂 𝒍𝒐𝒔 𝒎𝒆𝒋𝒐𝒓𝒆𝒔 𝒋𝒖𝒆𝒈𝒐𝒔 𝒑𝒐𝒓𝒕𝒂𝒅𝒐𝒔 𝒚 𝒆𝒙𝒄𝒍𝒖𝒔𝒊𝒗𝒐𝒔: 𝑷𝒐𝒑𝒑𝒚 𝑷𝒍𝒂𝒚𝒕𝒊𝒎𝒆, 𝑴𝒊𝒍𝒆𝒔 𝑴𝒐𝒓𝒂𝒍𝒆𝒔, 𝑫𝒆𝒔𝒄𝒆𝒏𝒅𝒆𝒓𝒔 𝒚 𝒎𝒂́𝒔.">
+    <𝒎𝒆𝒕𝒂 𝒑𝒓𝒐𝒑𝒆𝒓𝒕𝒚="𝒐𝒈:𝒊𝒎𝒂𝒈𝒆" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="𝒉𝒕𝒕𝒑𝒔://𝒊.𝒊𝒃𝒃.𝒄𝒐/𝒃𝒋𝒗𝒕𝒑𝟕𝑾𝒙/𝒗𝟏.𝒑𝒏𝒈">
+    <𝒎𝒆𝒕𝒂 𝒑𝒓𝒐𝒑𝒆𝒓𝒕𝒚="𝒐𝒈:𝒖𝒓𝒍" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="𝒉𝒕𝒕𝒑𝒔://𝒆𝒙𝒄𝒆𝒔𝒔𝒊𝒗𝒆-𝒑𝒊𝒓𝒂𝒄𝒚.𝒄𝒐𝒎">
+    <𝒎𝒆𝒕𝒂 𝒏𝒂𝒎𝒆="𝒕𝒉𝒆𝒎𝒆-𝒄𝒐𝒍𝒐𝒓" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="#𝟎𝟎𝒇𝟐𝒇𝒇">
+    <𝒎𝒆𝒕𝒂 𝒏𝒂𝒎𝒆="𝒕𝒘𝒊𝒕𝒕𝒆𝒓:𝒄𝒂𝒓𝒅" 𝒄𝒐𝒏𝒕𝒆𝒏𝒕="𝒔𝒖𝒎𝒎𝒂𝒓𝒚_𝒍𝒂𝒓𝒈𝒆_𝒊𝒎𝒂𝒈𝒆">
 
-        /* Selector de Idioma Ultra Colorido */
-        #language-overlay {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+    <𝒕𝒊𝒕𝒍𝒆>𝑬𝒙𝒄𝒆𝒔𝒔𝒊𝒗𝒆 𝑷𝒊𝒓𝒂𝒄𝒚 | 𝑽𝒂𝒖𝒍𝒕 𝒗𝟐𝟖</𝒕𝒊𝒕𝒍𝒆>
+    
+    <𝒔𝒄𝒓𝒊𝒑𝒕 𝒔𝒓𝒄="𝒉𝒕𝒕𝒑𝒔://𝒄𝒅𝒏.𝒕𝒂𝒊𝒍𝒘𝒊𝒏𝒅𝒄𝒔𝒔.𝒄𝒐𝒎"></𝒔𝒄𝒓𝒊𝒑𝒕>
+    <𝒍𝒊𝒏𝒌 𝒉𝒓𝒆𝒇="𝒉𝒕𝒕𝒑𝒔://𝒇𝒐𝒏𝒕𝒔.𝒈𝒐𝒐𝒈𝒍𝒆𝒂𝒑𝒊𝒔.𝒄𝒐𝒎/𝒄𝒔𝒔𝟐?𝒇𝒂𝒎𝒊𝒍𝒚=𝑹𝒂𝒋𝒅𝒉𝒂𝒏𝒊:𝒘𝒈𝒉𝒕@𝟕𝟎𝟎&𝒇𝒂𝒎𝒊𝒍𝒚=𝑰𝒏𝒕𝒆𝒓:𝒘𝒈𝒉𝒕@𝟒𝟎𝟎;𝟗𝟎𝟎&𝒅𝒊𝒔𝒑𝒍𝒂𝒚=𝒔𝒘𝒂𝒑" 𝒓𝒆𝒍="𝒔𝒕𝒚𝒍𝒆𝒔𝒉𝒆𝒆𝒕">
+    <𝒔𝒕𝒚𝒍𝒆>
+        :𝒓𝒐𝒐𝒕 { --𝒄𝒚𝒂𝒏: #𝟎𝟎𝒇𝟐𝒇𝒇; --𝒅𝒂𝒓𝒌: #𝟎𝟓𝟎𝟓𝟎𝟓; }
+        
+        𝒃𝒐𝒅𝒚 { 
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅-𝒄𝒐𝒍𝒐𝒓: 𝒗𝒂𝒓(--𝒅𝒂𝒓𝒌); 
+            𝒄𝒐𝒍𝒐𝒓: #𝒇𝒇𝒇; 
+            𝒇𝒐𝒏𝒕-𝒇𝒂𝒎𝒊𝒍𝒚: '𝑰𝒏𝒕𝒆𝒓', 𝒔𝒂𝒏𝒔-𝒔𝒆𝒓𝒊𝒇; 
+            𝒎𝒂𝒓𝒈𝒊𝒏: 𝟎; 
+            𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘-𝒙: 𝒉𝒊𝒅𝒅𝒆𝒏;
+            -𝒘𝒆𝒃𝒌𝒊𝒕-𝒕𝒂𝒑-𝒉𝒊𝒈𝒉𝒍𝒊𝒈𝒉𝒕-𝒄𝒐𝒍𝒐𝒓: 𝒕𝒓𝒂𝒏𝒔𝒑𝒂𝒓𝒆𝒏𝒕;
+            𝒊𝒎𝒂𝒈𝒆-𝒓𝒆𝒏𝒅𝒆𝒓𝒊𝒏𝒈: 𝒉𝒊𝒈𝒉-𝒒𝒖𝒂𝒍𝒊𝒕𝒚;
         }
         
-        .lang-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 70vh;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        @media (min-width: 640px) { .lang-grid { grid-template-columns: repeat(4, 1fr); } }
-        
-        .lang-btn {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px 10px;
-            border-radius: 22px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+        .𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 { 𝒇𝒐𝒏𝒕-𝒇𝒂𝒎𝒊𝒍𝒚: '𝑹𝒂𝒋𝒅𝒉𝒂𝒏𝒊', 𝒔𝒂𝒏𝒔-𝒔𝒆𝒓𝒊𝒇; }
+
+        /* 𝑷𝒂𝒏𝒕𝒂𝒍𝒍𝒂 𝒅𝒆 𝑺𝒆𝒍𝒆𝒄𝒄𝒊𝒐́𝒏 𝒅𝒆 𝑰𝒅𝒊𝒐𝒎𝒂 */
+        #𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆-𝒐𝒗𝒆𝒓𝒍𝒂𝒚 {
+            𝒑𝒐𝒔𝒊𝒕𝒊𝒐𝒏: 𝒇𝒊𝒙𝒆𝒅;
+            𝒊𝒏𝒔𝒆𝒕: 𝟎;
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒓𝒂𝒅𝒊𝒂𝒍-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝒄𝒊𝒓𝒄𝒍𝒆 𝒂𝒕 𝒄𝒆𝒏𝒕𝒆𝒓, #𝟏𝟏𝟏 𝟎%, #𝟎𝟎𝟎 𝟏𝟎𝟎%);
+            𝒛-𝒊𝒏𝒅𝒆𝒙: 𝟏𝟎𝟎𝟎𝟎;
+            𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒇𝒍𝒆𝒙;
+            𝒇𝒍𝒆𝒙-𝒅𝒊𝒓𝒆𝒄𝒕𝒊𝒐𝒏: 𝒄𝒐𝒍𝒖𝒎𝒏;
+            𝒂𝒍𝒊𝒈𝒏-𝒊𝒕𝒆𝒎𝒔: 𝒄𝒆𝒏𝒕𝒆𝒓;
+            𝒋𝒖𝒔𝒕𝒊𝒇𝒚-𝒄𝒐𝒏𝒕𝒆𝒏𝒕: 𝒄𝒆𝒏𝒕𝒆𝒓;
+            𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟐𝟎𝒑𝒙;
         }
         
-        .lang-btn:hover {
-            transform: translateY(-5px);
-            border-color: var(--cyan);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+        .𝒍𝒂𝒏𝒈-𝒈𝒓𝒊𝒅 {
+            𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒈𝒓𝒊𝒅;
+            𝒈𝒓𝒊𝒅-𝒕𝒆𝒎𝒑𝒍𝒂𝒕𝒆-𝒄𝒐𝒍𝒖𝒎𝒏𝒔: 𝒓𝒆𝒑𝒆𝒂𝒕(𝟐, 𝟏𝒇𝒓);
+            𝒈𝒂𝒑: 𝟏𝟓𝒑𝒙;
+            𝒎𝒂𝒙-𝒘𝒊𝒅𝒕𝒉: 𝟕𝟎𝟎𝒑𝒙;
+            𝒘𝒊𝒅𝒕𝒉: 𝟏𝟎𝟎%;
+            𝒎𝒂𝒙-𝒉𝒆𝒊𝒈𝒉𝒕: 𝟕𝟎𝒗𝒉;
+            𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘-𝒚: 𝒂𝒖𝒕𝒐;
+            𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟐𝟎𝒑𝒙;
         }
-
-        .lang-btn.active-es { background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); color: black; }
-        .lang-btn.active-en { background: linear-gradient(135deg, #00247d 0%, #cf142b 100%); color: white; }
-        .lang-btn.active-pt { background: linear-gradient(135deg, #009c3b 0%, #ffdf00 100%); color: black; }
-        .lang-btn.active-ru { background: linear-gradient(135deg, #0039a6 0%, #d52b1e 100%); color: white; }
-        .lang-btn.active-fr { background: linear-gradient(135deg, #002395 0%, #ed2939 100%); color: white; }
-        .lang-btn.active-de { background: linear-gradient(135deg, #ffce00 0%, #dd0000 100%); color: black; }
-        .lang-btn.active-it { background: linear-gradient(135deg, #009246 0%, #ce2b37 100%); color: white; }
-        .lang-btn.active-jp { background: linear-gradient(135deg, #ffffff 0%, #bc002d 100%); color: black; }
-        .lang-btn.active-cn { background: linear-gradient(135deg, #ee1c25 0%, #ffff00 100%); color: black; }
-        .lang-btn.active-sa { background: linear-gradient(135deg, #006c35 0%, #ffffff 100%); color: white; }
-
-        @keyframes fadeInUp { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        .anim-fade-up { animation: fadeInUp 0.4s ease-out forwards; }
-
-        .game-card {
-            background: #111;
-            border-radius: 24px;
-            height: 380px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            cursor: pointer;
-        }
-        .char-img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            opacity: 0.6; transition: 0.5s; 
-        }
-
-        #mobile-menu {
-            position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100%;
-            background: #050505; z-index: 100; transition: 0.4s;
-            border-left: 1px solid var(--cyan); padding: 40px 30px;
-        }
-        #mobile-menu.open { right: 0; }
-
-        .view-section { display: none; padding-bottom: 120px; }
-        .view-section.active { display: block; }
-
-        .btn-action {
-            background: var(--cyan); color: black; padding: 18px; border-radius: 14px;
-            font-weight: 900; text-transform: uppercase; width: 100%; text-align: center;
-            display: block; border: none; font-size: 13px; letter-spacing: 1px; cursor: pointer;
-        }
-
-        .version-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
+        @𝒎𝒆𝒅𝒊𝒂 (𝒎𝒊𝒏-𝒘𝒊𝒅𝒕𝒉: 𝟔𝟒𝟎𝒑𝒙) { .𝒍𝒂𝒏𝒈-𝒈𝒓𝒊𝒅 { 𝒈𝒓𝒊𝒅-𝒕𝒆𝒎𝒑𝒍𝒂𝒕𝒆-𝒄𝒐𝒍𝒖𝒎𝒏𝒔: 𝒓𝒆𝒑𝒆𝒂𝒕(𝟒, 𝟏𝒇𝒓); } }
+        
+        .𝒍𝒂𝒏𝒈-𝒃𝒕𝒏 {
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒓𝒈𝒃𝒂(𝟐𝟓𝟓,𝟐𝟓𝟓,𝟐𝟓𝟓,𝟎.𝟎𝟑);
+            𝒃𝒐𝒓𝒅𝒆𝒓: 𝟏𝒑𝒙 𝒔𝒐𝒍𝒊𝒅 𝒓𝒈𝒃𝒂(𝟐𝟓𝟓,𝟐𝟓𝟓,𝟐𝟓𝟓,𝟎.𝟏);
+            𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟐𝟓𝒑𝒙 𝟏𝟎𝒑𝒙;
+            𝒃𝒐𝒓𝒅𝒆𝒓-𝒓𝒂𝒅𝒊𝒖𝒔: 𝟐𝟐𝒑𝒙;
+            𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒇𝒍𝒆𝒙;
+            𝒇𝒍𝒆𝒙-𝒅𝒊𝒓𝒆𝒄𝒕𝒊𝒐𝒏: 𝒄𝒐𝒍𝒖𝒎𝒏;
+            𝒂𝒍𝒊𝒈𝒏-𝒊𝒕𝒆𝒎𝒔: 𝒄𝒆𝒏𝒕𝒆𝒓;
+            𝒈𝒂𝒑: 𝟏𝟎𝒑𝒙;
+            𝒕𝒓𝒂𝒏𝒔𝒊𝒕𝒊𝒐𝒏: 𝒂𝒍𝒍 𝟎.𝟑𝒔 𝒄𝒖𝒃𝒊𝒄-𝒃𝒆𝒛𝒊𝒆𝒓(𝟎.𝟏𝟕𝟓, 𝟎.𝟖𝟖𝟓, 𝟎.𝟑𝟐, 𝟏.𝟐𝟕𝟓);
+            𝒄𝒖𝒓𝒔𝒐𝒓: 𝒑𝒐𝒊𝒏𝒕𝒆𝒓;
         }
         
-        .preview-img-box {
-            width: 100%; height: 200px; margin-top: 15px; border-radius: 12px;
-            overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.2);
+        .𝒍𝒂𝒏𝒈-𝒃𝒕𝒏:𝒉𝒐𝒗𝒆𝒓 {
+            𝒕𝒓𝒂𝒏𝒔𝒇𝒐𝒓𝒎: 𝒕𝒓𝒂𝒏𝒔𝒍𝒂𝒕𝒆𝒀(-𝟓𝒑𝒙);
+            𝒃𝒐𝒓𝒅𝒆𝒓-𝒄𝒐𝒍𝒐𝒓: 𝒗𝒂𝒓(--𝒄𝒚𝒂𝒏);
+            𝒃𝒐𝒙-𝒔𝒉𝒂𝒅𝒐𝒘: 𝟎 𝟏𝟎𝒑𝒙 𝟑𝟎𝒑𝒙 𝒓𝒈𝒃𝒂(𝟎, 𝟐𝟒𝟐, 𝟐𝟓𝟓, 𝟎.𝟐);
         }
 
-        .preview-img { width: 100%; height: 100%; object-fit: contain; cursor: zoom-in; }
+        /* 𝑬𝒔𝒕𝒊𝒍𝒐𝒔 𝒅𝒆 𝒃𝒐𝒕𝒐𝒏𝒆𝒔 𝒅𝒆 𝒊𝒅𝒊𝒐𝒎𝒂𝒔 */
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒆𝒔 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝒇𝒇𝟎𝟎𝟎𝟎 𝟎%, #𝒇𝒇𝒄𝒄𝟎𝟎 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒃𝒍𝒂𝒄𝒌; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒆𝒏 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝟎𝟎𝟐𝟒𝟕𝒅 𝟎%, #𝒄𝒇𝟏𝟒𝟐𝒃 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒘𝒉𝒊𝒕𝒆; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒑𝒕 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝟎𝟎𝟗𝒄𝟑𝒃 𝟎%, #𝒇𝒇𝒅𝒇𝟎𝟎 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒃𝒍𝒂𝒄𝒌; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒓𝒖 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝟎𝟎𝟑𝟗𝒂𝟔 𝟎%, #𝒅𝟓𝟐𝒃𝟏𝒆 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒘𝒉𝒊𝒕𝒆; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒇𝒓 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝟎𝟎𝟐𝟑𝟗𝟓 𝟎%, #𝒆𝒅𝟐𝟗𝟑𝟗 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒘𝒉𝒊𝒕𝒆; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒅𝒆 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝒇𝒇𝒄𝒆𝟎𝟎 𝟎%, #𝒅𝒅𝟎𝟎𝟎𝟎 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒃𝒍𝒂𝒄𝒌; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒊𝒕 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝟎𝟎𝟗𝟐𝟒𝟔 𝟎%, #𝒄𝒆𝟐𝒃𝟑𝟕 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒘𝒉𝒊𝒕𝒆; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒋𝒑 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝒇𝒇𝒇𝒇𝒇𝒇 𝟎%, #𝒃𝒄𝟎𝟎𝟐𝒅 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒃𝒍𝒂𝒄𝒌; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒄𝒏 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝒆𝒆𝟏𝒄𝟐𝟓 𝟎%, #𝒇𝒇𝒇𝒇𝟎𝟎 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒃𝒍𝒂𝒄𝒌; }
+        .𝒂𝒄𝒕𝒊𝒗𝒆-𝒔𝒂 { 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒍𝒊𝒏𝒆𝒂𝒓-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕(𝟏𝟑𝟓𝒅𝒆𝒈, #𝟎𝟎𝟔𝒄𝟑𝟓 𝟎%, #𝒇𝒇𝒇𝒇𝒇𝒇 𝟏𝟎𝟎%); 𝒄𝒐𝒍𝒐𝒓: 𝒘𝒉𝒊𝒕𝒆; }
 
-        #image-viewer {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 11000;
-            display: none; align-items: center; justify-content: center; padding: 10px;
-            cursor: zoom-out;
+        @𝒌𝒆𝒚𝒇𝒓𝒂𝒎𝒆𝒔 𝒇𝒂𝒅𝒆𝑰𝒏𝑼𝒑 { 
+            𝒇𝒓𝒐𝒎 { 𝒐𝒑𝒂𝒄𝒊𝒕𝒚: 𝟎; 𝒕𝒓𝒂𝒏𝒔𝒇𝒐𝒓𝒎: 𝒕𝒓𝒂𝒏𝒔𝒍𝒂𝒕𝒆𝒀(𝟏𝟎𝒑𝒙); } 
+            𝒕𝒐 { 𝒐𝒑𝒂𝒄𝒊𝒕𝒚: 𝟏; 𝒕𝒓𝒂𝒏𝒔𝒇𝒐𝒓𝒎: 𝒕𝒓𝒂𝒏𝒔𝒍𝒂𝒕𝒆𝒀(𝟎); } 
         }
-        #viewer-img { max-width: 100%; max-height: 90vh; border-radius: 8px; }
-    </style>
-</head>
-<body>
+        .𝒂𝒏𝒊𝒎-𝒇𝒂𝒅𝒆-𝒖𝒑 { 𝒂𝒏𝒊𝒎𝒂𝒕𝒊𝒐𝒏: 𝒇𝒂𝒅𝒆𝑰𝒏𝑼𝒑 𝟎.𝟒𝒔 𝒆𝒂𝒔𝒆-𝒐𝒖𝒕 𝒇𝒐𝒓𝒘𝒂𝒓𝒅𝒔; }
 
-    <div id="language-overlay">
-        <h2 class="font-brand text-4xl font-black italic uppercase text-center mb-4">Select Region</h2>
-        <p class="text-white/40 uppercase text-[10px] tracking-[0.3em] mb-10 font-bold">Excessive Piracy Vault</p>
-        <div class="lang-grid" id="langGrid"></div>
-    </div>
+        .𝒈𝒂𝒎𝒆-𝒄𝒂𝒓𝒅 {
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: #𝟏𝟏𝟏;
+            𝒃𝒐𝒓𝒅𝒆𝒓-𝒓𝒂𝒅𝒊𝒖𝒔: 𝟐𝟒𝒑𝒙;
+            𝒉𝒆𝒊𝒈𝒉𝒕: 𝟑𝟖𝟎𝒑𝒙;
+            𝒑𝒐𝒔𝒊𝒕𝒊𝒐𝒏: 𝒓𝒆𝒍𝒂𝒕𝒊𝒗𝒆;
+            𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘: 𝒉𝒊𝒅𝒅𝒆𝒏;
+            𝒃𝒐𝒓𝒅𝒆𝒓: 𝟏𝒑𝒙 𝒔𝒐𝒍𝒊𝒅 𝒓𝒈𝒃𝒂(𝟐𝟓𝟓,𝟐𝟓𝟓,𝟐𝟓𝟓,𝟎.𝟎𝟓);
+            𝒄𝒖𝒓𝒔𝒐𝒓: 𝒑𝒐𝒊𝒏𝒕𝒆𝒓;
+        }
+        .𝒄𝒉𝒂𝒓-𝒊𝒎𝒈 { 
+            𝒘𝒊𝒅𝒕𝒉: 𝟏𝟎𝟎%; 𝒉𝒆𝒊𝒈𝒉𝒕: 𝟏𝟎𝟎%; 𝒐𝒃𝒋𝒆𝒄𝒕-𝒇𝒊𝒕: 𝒄𝒐𝒗𝒆𝒓; 
+            𝒐𝒑𝒂𝒄𝒊𝒕𝒚: 𝟎.𝟔; 𝒕𝒓𝒂𝒏𝒔𝒊𝒕𝒊𝒐𝒏: 𝟎.𝟓𝒔; 
+        }
 
-    <div id="image-viewer" onclick="closeViewer()">
-        <img id="viewer-img" src="" alt="Cargando HD...">
-    </div>
+        #𝒎𝒐𝒃𝒊𝒍𝒆-𝒎𝒆𝒏𝒖 {
+            𝒑𝒐𝒔𝒊𝒕𝒊𝒐𝒏: 𝒇𝒊𝒙𝒆𝒅; 𝒕𝒐𝒑: 𝟎; 𝒓𝒊𝒈𝒉𝒕: -𝟏𝟎𝟎%; 𝒘𝒊𝒅𝒕𝒉: 𝟖𝟎%; 𝒎𝒂𝒙-𝒘𝒊𝒅𝒕𝒉: 𝟑𝟎𝟎𝒑𝒙; 𝒉𝒆𝒊𝒈𝒉𝒕: 𝟏𝟎𝟎%;
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: #𝟎𝟓𝟎𝟓𝟎𝟓; 𝒛-𝒊𝒏𝒅𝒆𝒙: 𝟏𝟎𝟎; 𝒕𝒓𝒂𝒏𝒔𝒊𝒕𝒊𝒐𝒏: 𝟎.𝟒𝒔;
+            𝒃𝒐𝒓𝒅𝒆𝒓-𝒍𝒆𝒇𝒕: 𝟏𝒑𝒙 𝒔𝒐𝒍𝒊𝒅 𝒗𝒂𝒓(--𝒄𝒚𝒂𝒏); 𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟒𝟎𝒑𝒙 𝟑𝟎𝒑𝒙;
+        }
+        #𝒎𝒐𝒃𝒊𝒍𝒆-𝒎𝒆𝒏𝒖.𝒐𝒑𝒆𝒏 { 𝒓𝒊𝒈𝒉𝒕: 𝟎; }
 
-    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/5 px-6 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="showView('home')">
-            <div class="w-9 h-9 bg-[#00f2ff] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(0,242,255,0.3)]">
-                <svg class="w-5 h-5 fill-black" viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z"/></svg>
-            </div>
-            <span class="font-brand text-xl font-bold italic uppercase tracking-tighter">EXCESSIVE PIRACY</span>
-        </div>
-        <button onclick="toggleMenu()" class="p-2">
-            <div class="w-6 h-0.5 bg-white mb-1.5"></div>
-            <div class="w-6 h-0.5 bg-white"></div>
-        </button>
-    </header>
+        .𝒗𝒊𝒆𝒘-𝒔𝒆𝒄𝒕𝒊𝒐𝒏 { 𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒏𝒐𝒏𝒆; 𝒑𝒂𝒅𝒅𝒊𝒏𝒈-𝒃𝒐𝒕𝒕𝒐𝒎: 𝟏𝟐𝟎𝒑𝒙; }
+        .𝒗𝒊𝒆𝒘-𝒔𝒆𝒄𝒕𝒊𝒐𝒏.𝒂𝒄𝒕𝒊𝒗𝒆 { 𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒃𝒍𝒐𝒄𝒌; }
 
-    <nav id="mobile-menu">
-        <button onclick="toggleMenu()" class="text-[#00f2ff] font-bold mb-12 uppercase text-xs tracking-widest" id="close-menu">CERRAR ✕</button>
-        <a href="#" onclick="showView('home'); toggleMenu(); return false;" class="block text-xl font-bold uppercase mb-6" id="nav-home">Catálogo</a>
-        <a href="https://discord.gg/bsfVCBarR" target="_blank" class="block text-xl font-bold uppercase mb-6">Discord</a>
-        <a href="#" onclick="showView('request'); toggleMenu(); return false;" class="block text-xl font-bold uppercase mb-6" id="nav-request">Peticiones</a>
-        <div class="mt-10 pt-10 border-t border-white/10">
-            <button onclick="location.reload()" class="text-white/30 text-xs font-bold uppercase" id="nav-lang">Cambiar Idioma</button>
-        </div>
-    </nav>
+        .𝒃𝒕𝒏-𝒂𝒄𝒕𝒊𝒐𝒏 {
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒗𝒂𝒓(--𝒄𝒚𝒂𝒏); 𝒄𝒐𝒍𝒐𝒓: 𝒃𝒍𝒂𝒄𝒌; 𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟏𝟖𝒑𝒙; 𝒃𝒐𝒓𝒅𝒆𝒓-𝒓𝒂𝒅𝒊𝒖𝒔: 𝟏𝟒𝒑𝒙;
+            𝒇𝒐𝒏𝒕-𝒘𝒆𝒊𝒈𝒉𝒕: 𝟗𝟎𝟎; 𝒕𝒆𝒙𝒕-𝒕𝒓𝒂𝒏𝒔𝒇𝒐𝒓𝒎: 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆; 𝒘𝒊𝒅𝒕𝒉: 𝟏𝟎𝟎%; 𝒕𝒆𝒙𝒕-𝒂𝒍𝒊𝒈𝒏: 𝒄𝒆𝒏𝒕𝒆𝒓;
+            𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒃𝒍𝒐𝒄𝒌; 𝒃𝒐𝒓𝒅𝒆𝒓: 𝒏𝒐𝒏𝒆; 𝒇𝒐𝒏𝒕-𝒔𝒊𝒛𝒆: 𝟏𝟑𝒑𝒙; 𝒍𝒆𝒕𝒕𝒆𝒓-𝒔𝒑𝒂𝒄𝒊𝒏𝒈: 𝟏𝒑𝒙; 𝒄𝒖𝒓𝒔𝒐𝒓: 𝒑𝒐𝒊𝒏𝒕𝒆𝒓;
+        }
 
-    <main id="home-view" class="view-section active pt-32 px-6">
-        <h1 class="text-5xl font-black italic uppercase font-brand leading-none mb-10 anim-fade-up" id="home-title">...</h1>
-        <div id="gameGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-    </main>
+        .𝒗𝒆𝒓𝒔𝒊𝒐𝒏-𝒄𝒂𝒓𝒅 {
+            𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒓𝒈𝒃𝒂(𝟐𝟓𝟓,𝟐𝟓𝟓,𝟐𝟓𝟓,𝟎.𝟎𝟑);
+            𝒃𝒐𝒓𝒅𝒆𝒓: 𝟏𝒑𝒙 𝒔𝒐𝒍𝒊𝒅 𝒓𝒈𝒃𝒂(𝟐𝟓𝟓,𝟐𝟓𝟓,𝟐𝟓𝟓,𝟎.𝟏);
+            𝒃𝒐𝒓𝒅𝒆𝒓-𝒓𝒂𝒅𝒊𝒖𝒔: 𝟐𝟎𝒑𝒙;
+            𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟐𝟎𝒑𝒙;
+            𝒎𝒂𝒓𝒈𝒊𝒏-𝒃𝒐𝒕𝒕𝒐𝒎: 𝟐𝟎𝒑𝒙;
+        }
+        
+        .𝒑𝒓𝒆𝒗𝒊𝒆𝒘-𝒊𝒎𝒈-𝒃𝒐𝒙 {
+            𝒘𝒊𝒅𝒕𝒉: 𝟏𝟎𝟎%; 𝒉𝒆𝒊𝒈𝒉𝒕: 𝟐𝟎𝟎𝒑𝒙; 𝒎𝒂𝒓𝒈𝒊𝒏-𝒕𝒐𝒑: 𝟏𝟓𝒑𝒙; 𝒃𝒐𝒓𝒅𝒆𝒓-𝒓𝒂𝒅𝒊𝒖𝒔: 𝟏𝟐𝒑𝒙;
+            𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘: 𝒉𝒊𝒅𝒅𝒆𝒏; 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: #𝟎𝟎𝟎; 𝒃𝒐𝒓𝒅𝒆𝒓: 𝟏𝒑𝒙 𝒔𝒐𝒍𝒊𝒅 𝒓𝒈𝒃𝒂(𝟐𝟓𝟓,𝟐𝟓𝟓,𝟐𝟓𝟓,𝟎.𝟐);
+        }
 
-    <section id="request-view" class="view-section pt-32 px-6 text-center">
-        <h1 class="text-5xl font-black italic uppercase font-brand leading-none mb-8 anim-fade-up" id="req-title">...</h1>
-        <div class="bg-white/5 p-8 rounded-[35px] border border-white/10 max-w-xl mx-auto">
-            <input type="text" id="requestInput" class="w-full bg-black border border-white/10 p-5 rounded-xl mb-6 text-white outline-none focus:border-[#00f2ff]" placeholder="...">
-            <button onclick="sendRequest()" class="btn-action" id="req-btn">...</button>
-        </div>
-    </section>
+        .𝒑𝒓𝒆𝒗𝒊𝒆𝒘-𝒊𝒎𝒈 { 𝒘𝒊𝒅𝒕𝒉: 𝟏𝟎𝟎%; 𝒉𝒆𝒊𝒈𝒉𝒕: 𝟏𝟎𝟎%; 𝒐𝒃𝒋𝒆𝒄𝒕-𝒇𝒊𝒕: 𝒄𝒐𝒏𝒕𝒂𝒊𝒏; 𝒄𝒖𝒓𝒔𝒐𝒓: 𝒛𝒐𝒐𝒎-𝒊𝒏; }
 
-    <section id="detail-view" class="view-section pt-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <button onclick="showView('home')" class="mb-8 text-[#00f2ff] font-bold text-xs tracking-widest uppercase" id="back-btn">← VOLVER</button>
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="w-full md:w-80">
-                    <img id="detailImg" src="" class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl bg-zinc-900">
-                </div>
-                <div class="flex-1">
-                    <h2 id="detailTitle" class="text-5xl font-black italic uppercase font-brand mb-8 leading-tight">...</h2>
-                    <div id="downloadContainer"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        #𝒊𝒎𝒂𝒈𝒆-𝒗𝒊𝒆𝒘𝒆𝒓 {
+            𝒑𝒐𝒔𝒊𝒕𝒊𝒐𝒏: 𝒇𝒊𝒙𝒆𝒅; 𝒊𝒏𝒔𝒆𝒕: 𝟎; 𝒃𝒂𝒄𝒌𝒈𝒓𝒐𝒖𝒏𝒅: 𝒓𝒈𝒃𝒂(𝟎,𝟎,𝟎,𝟎.𝟗𝟓); 𝒛-𝒊𝒏𝒅𝒆𝒙: 𝟏𝟏𝟎𝟎𝟎;
+            𝒅𝒊𝒔𝒑𝒍𝒂𝒚: 𝒏𝒐𝒏𝒆; 𝒂𝒍𝒊𝒈𝒏-𝒊𝒕𝒆𝒎𝒔: 𝒄𝒆𝒏𝒕𝒆𝒓; 𝒋𝒖𝒔𝒕𝒊𝒇𝒚-𝒄𝒐𝒏𝒕𝒆𝒏𝒕: 𝒄𝒆𝒏𝒕𝒆𝒓; 𝒑𝒂𝒅𝒅𝒊𝒏𝒈: 𝟏𝟎𝒑𝒙;
+            𝒄𝒖𝒓𝒔𝒐𝒓: 𝒛𝒐𝒐𝒎-𝒐𝒖𝒕;
+        }
+        #𝒗𝒊𝒆𝒘𝒆𝒓-𝒊𝒎𝒈 { 𝒎𝒂𝒙-𝒘𝒊𝒅𝒕𝒉: 𝟏𝟎𝟎%; 𝒎𝒂𝒙-𝒉𝒆𝒊𝒈𝒉𝒕: 𝟗𝟎𝒗𝒉; 𝒃𝒐𝒓𝒅𝒆𝒓-𝒓𝒂𝒅𝒊𝒖𝒔: 𝟖𝒑𝒙; }
+    </𝒔𝒕𝒚𝒍𝒆>
+</𝒉𝒆𝒂𝒅>
+<𝒃𝒐𝒅𝒚>
 
-    <script>
-        const WEBHOOK_URL = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
+    <𝒅𝒊𝒗 𝒊𝒅="𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆-𝒐𝒗𝒆𝒓𝒍𝒂𝒚">
+        <𝒉𝟐 𝒄𝒍𝒂𝒔𝒔="𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 𝒕𝒆𝒙𝒕-𝟒𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒍𝒂𝒄𝒌 𝒊𝒕𝒂𝒍𝒊𝒄 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒕𝒆𝒙𝒕-𝒄𝒆𝒏𝒕𝒆𝒓 𝒎𝒃-𝟒">𝑺𝒆𝒍𝒆𝒄𝒕 𝑹𝒆𝒈𝒊𝒐𝒏</𝒉𝟐>
+        <𝒑 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝒘𝒉𝒊𝒕𝒆/𝟒𝟎 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒕𝒆𝒙𝒕-[𝟏𝟎𝒑𝒙] 𝒕𝒓𝒂𝒄𝒌𝒊𝒏𝒈-[𝟎.𝟑𝒆𝒎] 𝒎𝒃-𝟏𝟎 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅">𝑬𝒙𝒄𝒆𝒔𝒔𝒊𝒗𝒆 𝑷𝒊𝒓𝒂𝒄𝒚 𝑽𝒂𝒖𝒍𝒕</𝒑>
+        <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒍𝒂𝒏𝒈-𝒈𝒓𝒊𝒅" 𝒊𝒅="𝒍𝒂𝒏𝒈𝑮𝒓𝒊𝒅"></𝒅𝒊𝒗>
+    </𝒅𝒊𝒗>
 
-        const languages = [
-            { code: 'es', class: 'active-es', name: 'Español', flag: '🇪🇸', texts: { 
-                home: 'BÓVEDA <br><span class="text-[#00f2ff]">DE JUEGOS</span>', 
-                req: 'NUEVA <br><span class="text-[#00f2ff]">PETICIÓN</span>', 
-                navHome: 'Catálogo', navReq: 'Peticiones', navLang: 'Cambiar Idioma', 
-                reqBtn: 'Enviar Petición', back: '← VOLVER', download: 'DESCARGAR', 
-                dlNow: 'DESCARGAR APK', input: '¿Qué juego buscas?...', close: 'CERRAR ✕',
-                v1: 'V1 - EL MÁS COMPLETO', v2: 'V2 - GRÁFICOS DECENTES', v3: 'V3 - MEJORES GRÁFICOS'
+    <𝒅𝒊𝒗 𝒊𝒅="𝒊𝒎𝒂𝒈𝒆-𝒗𝒊𝒆𝒘𝒆𝒓" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒄𝒍𝒐𝒔𝒆𝑽𝒊𝒆𝒘𝒆𝒓()">
+        <𝒊𝒎𝒈 𝒊𝒅="𝒗𝒊𝒆𝒘𝒆𝒓-𝒊𝒎𝒈" 𝒔𝒓𝒄="" 𝒂𝒍𝒕="𝑽𝒊𝒔𝒕𝒂 𝑷𝒓𝒆𝒗𝒊𝒂">
+    </𝒅𝒊𝒗>
+
+    <𝒉𝒆𝒂𝒅𝒆𝒓 𝒄𝒍𝒂𝒔𝒔="𝒇𝒊𝒙𝒆𝒅 𝒕𝒐𝒑-𝟎 𝒘-𝒇𝒖𝒍𝒍 𝒛-𝟓𝟎 𝒃𝒈-𝒃𝒍𝒂𝒄𝒌/𝟖𝟎 𝒃𝒂𝒄𝒌𝒅𝒓𝒐𝒑-𝒃𝒍𝒖𝒓-𝒍𝒈 𝒃𝒐𝒓𝒅𝒆𝒓-𝒃 𝒃𝒐𝒓𝒅𝒆𝒓-𝒘𝒉𝒊𝒕𝒆/𝟓 𝒑𝒙-𝟔 𝒑𝒚-𝟓 𝒇𝒍𝒆𝒙 𝒋𝒖𝒔𝒕𝒊𝒇𝒚-𝒃𝒆𝒕𝒘𝒆𝒆𝒏 𝒊𝒕𝒆𝒎𝒔-𝒄𝒆𝒏𝒕𝒆𝒓">
+        <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒇𝒍𝒆𝒙 𝒊𝒕𝒆𝒎𝒔-𝒄𝒆𝒏𝒕𝒆𝒓 𝒈𝒂𝒑-𝟑 𝒄𝒖𝒓𝒔𝒐𝒓-𝒑𝒐𝒊𝒏𝒕𝒆𝒓" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒉𝒐𝒘𝑽𝒊𝒆𝒘('𝒉𝒐𝒎𝒆')">
+            <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒘-𝟗 𝒉-𝟗 𝒃𝒈-[#𝟎𝟎𝒇𝟐𝒇𝒇] 𝒓𝒐𝒖𝒏𝒅𝒆𝒅-𝒍𝒈 𝒇𝒍𝒆𝒙 𝒊𝒕𝒆𝒎𝒔-𝒄𝒆𝒏𝒕𝒆𝒓 𝒋𝒖𝒔𝒕𝒊𝒇𝒚-𝒄𝒆𝒏𝒕𝒆𝒓 𝒔𝒉𝒂𝒅𝒐𝒘-[𝟎_𝟎_𝟏𝟓𝒑𝒙_𝒓𝒈𝒃𝒂(𝟎,𝟐𝟒𝟐,𝟐𝟓𝟓,𝟎.𝟑)]">
+                <𝒔𝒗𝒈 𝒄𝒍𝒂𝒔𝒔="𝒘-𝟓 𝒉-𝟓 𝒇𝒊𝒍𝒍-𝒃𝒍𝒂𝒄𝒌" 𝒗𝒊𝒆𝒘𝑩𝒐𝒙="𝟎 𝟎 𝟐𝟒 𝟐𝟒"><𝒑𝒂𝒕𝒉 𝒅="𝑴𝟏𝟐 𝟐𝑳𝟒 𝟕𝒗𝟏𝟎𝒍𝟖 𝟓 𝟖-𝟓𝑽𝟕𝒍-𝟖-𝟓𝒛"/></𝒔𝒗𝒈>
+            </𝒅𝒊𝒗>
+            <𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 𝒕𝒆𝒙𝒕-𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒊𝒕𝒂𝒍𝒊𝒄 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒕𝒓𝒂𝒄𝒌𝒊𝒏𝒈-𝒕𝒊𝒈𝒉𝒕𝒆𝒓">𝑬𝑿𝑪𝑬𝑺𝑺𝑰𝑽𝑬 𝑷𝑰𝑹𝑨𝑪𝒀</𝒔𝒑𝒂𝒏>
+        </𝒅𝒊𝒗>
+        <𝒃𝒖𝒕𝒕𝒐𝒏 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒕𝒐𝒈𝒈𝒍𝒆𝑴𝒆𝒏𝒖()" 𝒄𝒍𝒂𝒔𝒔="𝒑-𝟐">
+            <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒘-𝟔 𝒉-𝟎.𝟓 𝒃𝒈-𝒘𝒉𝒊𝒕𝒆 𝒎𝒃-𝟏.𝟓"></𝒅𝒊𝒗>
+            <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒘-𝟔 𝒉-𝟎.𝟓 𝒃𝒈-𝒘𝒉𝒊𝒕𝒆"></𝒅𝒊𝒗>
+        </𝒃𝒖𝒕𝒕𝒐𝒏>
+    </𝒉𝒆𝒂𝒅𝒆𝒓>
+
+    <𝒏𝒂𝒗 𝒊𝒅="𝒎𝒐𝒃𝒊𝒍𝒆-𝒎𝒆𝒏𝒖">
+        <𝒃𝒖𝒕𝒕𝒐𝒏 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒕𝒐𝒈𝒈𝒍𝒆𝑴𝒆𝒏𝒖()" 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇] 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒎𝒃-𝟏𝟐 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒕𝒆𝒙𝒕-𝒙𝒔 𝒕𝒓𝒂𝒄𝒌𝒊𝒏𝒈-𝒘𝒊𝒅𝒆𝒔𝒕" 𝒊𝒅="𝒄𝒍𝒐𝒔𝒆-𝒎𝒆𝒏𝒖">𝑪𝑬𝑹𝑹𝑨𝑹 ✕</𝒃𝒖𝒕𝒕𝒐𝒏>
+        <𝒂 𝒉𝒓𝒆𝒇="#" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒉𝒐𝒘𝑽𝒊𝒆𝒘('𝒉𝒐𝒎𝒆'); 𝒕𝒐𝒈𝒈𝒍𝒆𝑴𝒆𝒏𝒖(); 𝒓𝒆𝒕𝒖𝒓𝒏 𝒇𝒂𝒍𝒔𝒆;" 𝒄𝒍𝒂𝒔𝒔="𝒃𝒍𝒐𝒄𝒌 𝒕𝒆𝒙𝒕-𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒎𝒃-𝟔" 𝒊𝒅="𝒏𝒂𝒗-𝒉𝒐𝒎𝒆">𝑪𝒂𝒕𝒂́𝒍𝒐𝒈𝒐</𝒂>
+        <𝒂 𝒉𝒓𝒆𝒇="𝒉𝒕𝒕𝒑𝒔://𝒅𝒊𝒔𝒄𝒐𝒓𝒅.𝒈𝒈/𝒃𝒔𝒇𝑽𝑪𝑩𝒂𝒓𝑹" 𝒕𝒂𝒓𝒈𝒆𝒕="_𝒃𝒍𝒂𝒏𝒌" 𝒄𝒍𝒂𝒔𝒔="𝒃𝒍𝒐𝒄𝒌 𝒕𝒆𝒙𝒕-𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒎𝒃-𝟔">𝑫𝒊𝒔𝒄𝒐𝒓𝒅</𝒂>
+        <𝒂 𝒉𝒓𝒆𝒇="#" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒉𝒐𝒘𝑽𝒊𝒆𝒘('𝒓𝒆𝒒𝒖𝒆𝒔𝒕'); 𝒕𝒐𝒈𝒈𝒍𝒆𝑴𝒆𝒏𝒖(); 𝒓𝒆𝒕𝒖𝒓𝒏 𝒇𝒂𝒍𝒔𝒆;" 𝒄𝒍𝒂𝒔𝒔="𝒃𝒍𝒐𝒄𝒌 𝒕𝒆𝒙𝒕-𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒎𝒃-𝟔" 𝒊𝒅="𝒏𝒂𝒗-𝒓𝒆𝒒𝒖𝒆𝒔𝒕">𝑷𝒆𝒕𝒊𝒄𝒊𝒐𝒏𝒆𝒔</𝒂>
+        <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒎𝒕-𝟏𝟎 𝒑𝒕-𝟏𝟎 𝒃𝒐𝒓𝒅𝒆𝒓-𝒕 𝒃𝒐𝒓𝒅𝒆𝒓-𝒘𝒉𝒊𝒕𝒆/𝟏𝟎">
+            <𝒃𝒖𝒕𝒕𝒐𝒏 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒍𝒐𝒄𝒂𝒕𝒊𝒐𝒏.𝒓𝒆𝒍𝒐𝒂𝒅()" 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝒘𝒉𝒊𝒕𝒆/𝟑𝟎 𝒕𝒆𝒙𝒕-𝒙𝒔 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆" 𝒊𝒅="𝒏𝒂𝒗-𝒍𝒂𝒏𝒈">𝑪𝒂𝒎𝒃𝒊𝒂𝒓 𝑰𝒅𝒊𝒐𝒎𝒂</𝒃𝒖𝒕𝒕𝒐𝒏>
+        </𝒅𝒊𝒗>
+    </𝒏𝒂𝒗>
+
+    <𝒎𝒂𝒊𝒏 𝒊𝒅="𝒉𝒐𝒎𝒆-𝒗𝒊𝒆𝒘" 𝒄𝒍𝒂𝒔𝒔="𝒗𝒊𝒆𝒘-𝒔𝒆𝒄𝒕𝒊𝒐𝒏 𝒂𝒄𝒕𝒊𝒗𝒆 𝒑𝒕-𝟑𝟐 𝒑𝒙-𝟔">
+        <𝒉𝟏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝟓𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒍𝒂𝒄𝒌 𝒊𝒕𝒂𝒍𝒊𝒄 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 𝒍𝒆𝒂𝒅𝒊𝒏𝒈-𝒏𝒐𝒏𝒆 𝒎𝒃-𝟏𝟎 𝒂𝒏𝒊𝒎-𝒇𝒂𝒅𝒆-𝒖𝒑" 𝒊𝒅="𝒉𝒐𝒎𝒆-𝒕𝒊𝒕𝒍𝒆">...</𝒉𝟏>
+        <𝒅𝒊𝒗 𝒊𝒅="𝒈𝒂𝒎𝒆𝑮𝒓𝒊𝒅" 𝒄𝒍𝒂𝒔𝒔="𝒈𝒓𝒊𝒅 𝒈𝒓𝒊𝒅-𝒄𝒐𝒍𝒔-𝟏 𝒔𝒎:𝒈𝒓𝒊𝒅-𝒄𝒐𝒍𝒔-𝟐 𝒍𝒈:𝒈𝒓𝒊𝒅-𝒄𝒐𝒍𝒔-𝟒 𝒈𝒂𝒑-𝟔"></𝒅𝒊𝒗>
+    </𝒎𝒂𝒊𝒏>
+
+    <𝒔𝒆𝒄𝒕𝒊𝒐𝒏 𝒊𝒅="𝒓𝒆𝒒𝒖𝒆𝒔𝒕-𝒗𝒊𝒆𝒘" 𝒄𝒍𝒂𝒔𝒔="𝒗𝒊𝒆𝒘-𝒔𝒆𝒄𝒕𝒊𝒐𝒏 𝒑𝒕-𝟑𝟐 𝒑𝒙-𝟔 𝒕𝒆𝒙𝒕-𝒄𝒆𝒏𝒕𝒆𝒓">
+        <𝒉𝟏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝟓𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒍𝒂𝒄𝒌 𝒊𝒕𝒂𝒍𝒊𝒄 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 𝒍𝒆𝒂𝒅𝒊𝒏𝒈-𝒏𝒐𝒏𝒆 𝒎𝒃-𝟖 𝒂𝒏𝒊𝒎-𝒇𝒂𝒅𝒆-𝒖𝒑" 𝒊𝒅="𝒓𝒆𝒒-𝒕𝒊𝒕𝒍𝒆">...</𝒉𝟏>
+        <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒃𝒈-𝒘𝒉𝒊𝒕𝒆/𝟓 𝒑-𝟖 𝒓𝒐𝒖𝒏𝒅𝒆𝒅-[𝟑𝟓𝒑𝒙] 𝒃𝒐𝒓𝒅𝒆𝒓 𝒃𝒐𝒓𝒅𝒆𝒓-𝒘𝒉𝒊𝒕𝒆/𝟏𝟎 𝒎𝒂𝒙-𝒘-𝒙𝒍 𝒎𝒙-𝒂𝒖𝒕𝒐">
+            <𝒊𝒏𝒑𝒖𝒕 𝒕𝒚𝒑𝒆="𝒕𝒆𝒙𝒕" 𝒊𝒅="𝒓𝒆𝒒𝒖𝒆𝒔𝒕𝑰𝒏𝒑𝒖𝒕" 𝒄𝒍𝒂𝒔𝒔="𝒘-𝒇𝒖𝒍𝒍 𝒃𝒈-𝒃𝒍𝒂𝒄𝒌 𝒃𝒐𝒓𝒅𝒆𝒓 𝒃𝒐𝒓𝒅𝒆𝒓-𝒘𝒉𝒊𝒕𝒆/𝟏𝟎 𝒑-𝟓 𝒓𝒐𝒖𝒏𝒅𝒆𝒅-𝒙𝒍 𝒎𝒃-𝟔 𝒕𝒆𝒙𝒕-𝒘𝒉𝒊𝒕𝒆 𝒐𝒖𝒕𝒍𝒊𝒏𝒆-𝒏𝒐𝒏𝒆 𝒇𝒐𝒄𝒖𝒔:𝒃𝒐𝒓𝒅𝒆𝒓-[#𝟎𝟎𝒇𝟐𝒇𝒇]" 𝒑𝒍𝒂𝒄𝒆𝒉𝒐𝒍𝒅𝒆𝒓="...">
+            <𝒃𝒖𝒕𝒕𝒐𝒏 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒆𝒏𝒅𝑹𝒆𝒒𝒖𝒆𝒔𝒕()" 𝒄𝒍𝒂𝒔𝒔="𝒃𝒕𝒏-𝒂𝒄𝒕𝒊𝒐𝒏" 𝒊𝒅="𝒓𝒆𝒒-𝒃𝒕𝒏">...</𝒃𝒖𝒕𝒕𝒐𝒏>
+        </𝒅𝒊𝒗>
+    </𝒔𝒆𝒄𝒕𝒊𝒐𝒏>
+
+    <𝒔𝒆𝒄𝒕𝒊𝒐𝒏 𝒊𝒅="𝒅𝒆𝒕𝒂𝒊𝒍-𝒗𝒊𝒆𝒘" 𝒄𝒍𝒂𝒔𝒔="𝒗𝒊𝒆𝒘-𝒔𝒆𝒄𝒕𝒊𝒐𝒏 𝒑𝒕-𝟑𝟐 𝒑𝒙-𝟔">
+        <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒎𝒂𝒙-𝒘-𝟒𝒙𝒍 𝒎𝒙-𝒂𝒖𝒕𝒐">
+            <𝒃𝒖𝒕𝒕𝒐𝒏 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒉𝒐𝒘𝑽𝒊𝒆𝒘('𝒉𝒐𝒎𝒆')" 𝒄𝒍𝒂𝒔𝒔="𝒎𝒃-𝟖 𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇] 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒕𝒆𝒙𝒕-𝒙𝒔 𝒕𝒓𝒂𝒄𝒌𝒊𝒏𝒈-𝒘𝒊𝒅𝒆𝒔𝒕 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆" 𝒊𝒅="𝒃𝒂𝒄𝒌-𝒃𝒕𝒏">← 𝑽𝑶𝑳𝑽𝑬𝑹</𝒃𝒖𝒕𝒕𝒐𝒏>
+            <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒇𝒍𝒆𝒙 𝒇𝒍𝒆𝒙-𝒄𝒐𝒍 𝒎𝒅:𝒇𝒍𝒆𝒙-𝒓𝒐𝒘 𝒈𝒂𝒑-𝟏𝟐">
+                <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒘-𝒇𝒖𝒍𝒍 𝒎𝒅:𝒘-𝟖𝟎">
+                    <𝒊𝒎𝒈 𝒊𝒅="𝒅𝒆𝒕𝒂𝒊𝒍𝑰𝒎𝒈" 𝒔𝒓𝒄="" 𝒄𝒍𝒂𝒔𝒔="𝒘-𝒇𝒖𝒍𝒍 𝒉-𝒂𝒖𝒕𝒐 𝒓𝒐𝒖𝒏𝒅𝒆𝒅-𝟑𝒙𝒍 𝒃𝒐𝒓𝒅𝒆𝒓 𝒃𝒐𝒓𝒅𝒆𝒓-𝒘𝒉𝒊𝒕𝒆/𝟏𝟎 𝒔𝒉𝒂𝒅𝒐𝒘-𝟐𝒙𝒍 𝒃𝒈-𝒛𝒊𝒏𝒄-𝟗𝟎𝟎">
+                </𝒅𝒊𝒗>
+                <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒇𝒍𝒆𝒙-𝟏">
+                    <𝒉𝟐 𝒊𝒅="𝒅𝒆𝒕𝒂𝒊𝒍𝑻𝒊𝒕𝒍𝒆" 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝟓𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒍𝒂𝒄𝒌 𝒊𝒕𝒂𝒍𝒊𝒄 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 𝒎𝒃-𝟖 𝒍𝒆𝒂𝒅𝒊𝒏𝒈-𝒕𝒊𝒈𝒉𝒕">...</𝒉𝟐>
+                    <𝒅𝒊𝒗 𝒊𝒅="𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝑪𝒐𝒏𝒕𝒂𝒊𝒏𝒆𝒓"></𝒅𝒊𝒗>
+                </𝒅𝒊𝒗>
+            </𝒅𝒊𝒗>
+        </𝒅𝒊𝒗>
+    </𝒔𝒆𝒄𝒕𝒊𝒐𝒏>
+
+    <𝒔𝒄𝒓𝒊𝒑𝒕>
+        𝒄𝒐𝒏𝒔𝒕 𝑾𝑬𝑩𝑯𝑶𝑶𝑲_𝑼𝑹𝑳 = "𝒉𝒕𝒕𝒑𝒔://𝒅𝒊𝒔𝒄𝒐𝒓𝒅.𝒄𝒐𝒎/𝒂𝒑𝒊/𝒘𝒆𝒃𝒉𝒐𝒐𝒌𝒔/𝟏𝟒𝟗𝟑𝟎𝟐𝟗𝟕𝟓𝟑𝟒𝟔𝟐𝟗𝟖𝟒𝟕𝟐𝟒/𝑾𝟗𝟐𝑮𝒐_𝒘𝒘𝟎𝒌𝒈𝒔𝒇𝒁𝒀𝑿𝒉-𝑱𝑩𝒐𝒐𝟗𝑴𝑺𝑱𝒑𝑽𝑰𝑿𝒂𝒐𝒁𝑻𝒏𝒒𝒇𝟔𝟏𝒏𝟓𝒌𝑹𝑲𝑮𝒉𝒏𝑳𝑮𝒕𝑻𝑷𝑶𝑬𝒕𝒄𝒂𝟗𝒊𝑽𝑨𝟖𝒎𝒛𝒚𝟒𝟒𝒌";
+
+        𝒄𝒐𝒏𝒔𝒕 𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔 = [
+            { 𝒄𝒐𝒅𝒆: '𝒆𝒔', 𝒄𝒍𝒂𝒔𝒔: '𝒂𝒄𝒕𝒊𝒗𝒆-𝒆𝒔', 𝒏𝒂𝒎𝒆: '𝑬𝒔𝒑𝒂𝒏̃𝒐𝒍', 𝒇𝒍𝒂𝒈: '🇪🇸', 𝒕𝒆𝒙𝒕𝒔: { 
+                𝒉𝒐𝒎𝒆: '𝑩𝑶́𝑽𝑬𝑫𝑨 <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">𝑫𝑬 𝑱𝑼𝑬𝑮𝑶𝑺</𝒔𝒑𝒂𝒏>', 
+                𝒓𝒆𝒒: '𝑵𝑼𝑬𝑽𝑨 <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">𝑷𝑬𝑻𝑰𝑪𝑰𝑶́𝑵</𝒔𝒑𝒂𝒏>', 
+                𝒏𝒂𝒗𝑯𝒐𝒎𝒆: '𝑪𝒂𝒕𝒂́𝒍𝒐𝒈𝒐', 𝒏𝒂𝒗𝑹𝒆𝒒: '𝑷𝒆𝒕𝒊𝒄𝒊𝒐𝒏𝒆𝒔', 𝒏𝒂𝒗𝑳𝒂𝒏𝒈: '𝑪𝒂𝒎𝒃𝒊𝒂𝒓 𝑰𝒅𝒊𝒐𝒎𝒂', 
+                𝒓𝒆𝒒𝑩𝒕𝒏: '𝑬𝒏𝒗𝒊𝒂𝒓 𝑷𝒆𝒕𝒊𝒄𝒊𝒐́𝒏', 𝒃𝒂𝒄𝒌: '← 𝑽𝑶𝑳𝑽𝑬𝑹', 𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅: '𝑫𝑬𝑺𝑪𝑨𝑹𝑮𝑨𝑹', 
+                𝒅𝒍𝑵𝒐𝒘: '𝑫𝑬𝑺𝑪𝑨𝑹𝑮𝑨𝑹 𝑨𝑷𝑲', 𝒊𝒏𝒑𝒖𝒕: '¿𝑸𝒖𝒆́ 𝒋𝒖𝒆𝒈𝒐 𝒃𝒖𝒔𝒄𝒂𝒔?...', 𝒄𝒍𝒐𝒔𝒆: '𝑪𝑬𝑹𝑹𝑨𝑹 ✕',
+                𝒗𝟏: '𝑽𝟏 - 𝑬𝑳 𝑴𝑨́𝑺 𝑪𝑶𝑴𝑷𝑳𝑬𝑻𝑶', 𝒗𝟐: '𝑽𝟐 - 𝑮𝑹𝑨́𝑭𝑰𝑪𝑶𝑺 𝑫𝑬𝑪𝑬𝑵𝑻𝑬𝑺', 𝒗𝟑: '𝑽𝟑 - 𝑴𝑬𝑱𝑶𝑹𝑬𝑺 𝑮𝑹𝑨́𝑭𝑰𝑪𝑶𝑺'
             }},
-            { code: 'en', class: 'active-en', name: 'English', flag: '🇺🇸', texts: { 
-                home: 'GAME <br><span class="text-[#00f2ff]">VAULT</span>', 
-                req: 'NEW <br><span class="text-[#00f2ff]">REQUEST</span>', 
-                navHome: 'Catalog', navReq: 'Requests', navLang: 'Change Language', 
-                reqBtn: 'Send Request', back: '← BACK', download: 'DOWNLOAD', 
-                dlNow: 'DOWNLOAD APK', input: 'Search game...', close: 'CLOSE ✕',
-                v1: 'V1 - THE MOST COMPLETE', v2: 'V2 - DECENT GRAPHICS', v3: 'V3 - BEST GRAPHICS'
+            { 𝒄𝒐𝒅𝒆: '𝒆𝒏', 𝒄𝒍𝒂𝒔𝒔: '𝒂𝒄𝒕𝒊𝒗𝒆-𝒆𝒏', 𝒏𝒂𝒎𝒆: '𝑬𝒏𝒈𝒍𝒊𝒔𝒉', 𝒇𝒍𝒂𝒈: '🇺🇸', 𝒕𝒆𝒙𝒕𝒔: { 
+                𝒉𝒐𝒎𝒆: '𝑮𝑨𝑴𝑬 <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">𝑽𝑨𝑼𝑳𝑻</𝒔𝒑𝒂𝒏>', 
+                𝒓𝒆𝒒: '𝑵𝑬𝑾 <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">𝑹𝑬𝑸𝑼𝑬𝑺𝑻</𝒔𝒑𝒂𝒏>', 
+                𝒏𝒂𝒗𝑯𝒐𝒎𝒆: '𝑪𝒂𝒕𝒂𝒍𝒐𝒈', 𝒏𝒂𝒗𝑹𝒆𝒒: '𝑹𝒆𝒒𝒖𝒆𝒔𝒕𝒔', 𝒏𝒂𝒗𝑳𝒂𝒏𝒈: '𝑪𝒉𝒂𝒏𝒈𝒆 𝑳𝒂𝒏𝒈𝒖𝒂𝒈𝒆', 
+                𝒓𝒆𝒒𝑩𝒕𝒏: '𝑺𝒆𝒏𝒅 𝑹𝒆𝒒𝒖𝒆𝒔𝒕', 𝒃𝒂𝒄𝒌: '← 𝑩𝑨𝑪𝑲', 𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅: '𝑫𝑶𝑾𝑵𝑳𝑶𝑨𝑫', 
+                𝒅𝒍𝑵𝒐𝒘: '𝑫𝑶𝑾𝑵𝑳𝑶𝑨𝑫 𝑨𝑷𝑲', 𝒊𝒏𝒑𝒖𝒕: '𝑺𝒆𝒂𝒓𝒄𝒉 𝒈𝒂𝒎𝒆...', 𝒄𝒍𝒐𝒔𝒆: '𝑪𝑳𝑶𝑺𝑬 ✕',
+                𝒗𝟏: '𝑽𝟏 - 𝑻𝑯𝑬 𝑴𝑶𝑺𝑻 𝑪𝑶𝑴𝑷𝑳𝑬𝑻𝑬', 𝒗𝟐: '𝑽𝟐 - 𝑫𝑬𝑪𝑬𝑵𝑻 𝑮𝑹𝑨𝑷𝑯𝑰𝑪𝑺', 𝒗𝟑: '𝑽𝟑 - 𝑩𝑬𝑺𝑻 𝑮𝑹𝑨𝑷𝑯𝑰𝑪𝑺'
             }},
-            { code: 'pt', class: 'active-pt', name: 'Português', flag: '🇧🇷', texts: { 
-                home: 'COFRE DE <br><span class="text-[#00f2ff]">JOGOS</span>', 
-                req: 'NOVO <br><span class="text-[#00f2ff]">PEDIDO</span>', 
-                navHome: 'Catálogo', navReq: 'Pedidos', navLang: 'Mudar Idioma', 
-                reqBtn: 'Enviar Pedido', back: '← VOLTAR', download: 'BAIXAR', 
-                dlNow: 'BAIXAR APK', input: 'Procurar juego...', close: 'FECHAR ✕',
-                v1: 'V1 - O MAIS COMPLETO', v2: 'V2 - GRÁFICOS DECENTES', v3: 'V3 - MELHORES GRÁFICOS'
+            { 𝒄𝒐𝒅𝒆: '𝒑𝒕', 𝒄𝒍𝒂𝒔𝒔: '𝒂𝒄𝒕𝒊𝒗𝒆-𝒑𝒕', 𝒏𝒂𝒎𝒆: '𝑷𝒐𝒓𝒕𝒖𝒈𝒖𝒆̂𝒔', 𝒇𝒍𝒂𝒈: '🇧🇷', 𝒕𝒆𝒙𝒕𝒔: { 
+                𝒉𝒐𝒎𝒆: '𝑪𝑶𝑭𝑹𝑬 𝑫𝑬 <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">𝑱𝑶𝑮𝑶𝑺</𝒔𝒑𝒂𝒏>', 
+                𝒓𝒆𝒒: '𝑵𝑶𝑽𝑶 <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">𝑷𝑬𝑫𝑰𝑫𝑶</𝒔𝒑𝒂𝒏>', 
+                𝒏𝒂𝒗𝑯𝒐𝒎𝒆: '𝑪𝒂𝒕𝒂́𝒍𝒐𝒈𝒐', 𝒏𝒂𝒗𝑹𝒆𝒒: '𝑷𝒆𝒅𝒊𝒅𝒐𝒔', 𝒏𝒂𝒗𝑳𝒂𝒏𝒈: '𝑴𝒖𝒅𝒂𝒓 𝑰𝒅𝒊𝒐𝒎𝒂', 
+                𝒓𝒆𝒒𝑩𝒕𝒏: '𝑬𝒏𝒗𝒊𝒂𝒓 𝑷𝒆𝒅𝒊𝒅𝒐', 𝒃𝒂𝒄𝒌: '← 𝑽𝑶𝑳𝑻𝑨𝑹', 𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅: '𝑩𝑨𝑰𝑿𝑨𝑹', 
+                𝒅𝒍𝑵𝒐𝒘: '𝑩𝑨𝑰𝑿𝑨𝑹 𝑨𝑷𝑲', 𝒊𝒏𝒑𝒖𝒕: '𝑷𝒓𝒐𝒄𝒖𝒓𝒂𝒓 𝒋𝒐𝒈𝒐...', 𝒄𝒍𝒐𝒔𝒆: '𝑭𝑬𝑪𝑯𝑨𝑹 ✕',
+                𝒗𝟏: '𝑽𝟏 - 𝑶 𝑴𝑨𝑰𝑺 𝑪𝑶𝑴𝑷𝑳𝑬𝑻𝑶', 𝒗𝟐: '𝑽𝟐 - 𝑮𝑹𝑨́𝑭𝑰𝑪𝑶𝑺 𝑫𝑬𝑪𝑬𝑵𝑻𝑬𝑺', 𝒗𝟑: '𝑽𝟑 - 𝑴𝑬𝑳𝑯𝑶𝑹𝑬𝑺 𝑮𝑹𝑨́𝑭𝑰𝑪𝑶𝑺'
             }},
-            { code: 'ru', class: 'active-ru', name: 'Русский', flag: '🇷🇺', texts: { 
-                home: 'ХРАНИЛИЩЕ <br><span class="text-[#00f2ff]">ИГР</span>', 
-                req: 'ЗАПРОС <br><span class="text-[#00f2ff]">ИГРЫ</span>', 
-                navHome: 'Каталог', navReq: 'Запросы', navLang: 'Сменить язык', 
-                reqBtn: 'Отправить', back: '← НАЗАД', download: 'СКАЧАТЬ', 
-                dlNow: 'СКАЧАТЬ APK', input: 'Поиск...', close: 'ЗАКРЫТЬ ✕',
-                v1: 'V1 - САМАЯ ПОЛНАЯ', v2: 'V2 - СРЕДНЯЯ ГРАФИКА', v3: 'V3 - ЛУЧШАЯ ГРАФИКА'
+            { 𝒄𝒐𝒅𝒆: '𝒓𝒖', 𝒄𝒍𝒂𝒔𝒔: '𝒂𝒄𝒕𝒊𝒗𝒆-𝒓𝒖', 𝒏𝒂𝒎𝒆: 'Русский', 𝒇𝒍𝒂𝒈: '🇷🇺', 𝒕𝒆𝒙𝒕𝒔: { 
+                𝒉𝒐𝒎𝒆: 'ХРАНИЛИЩЕ <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">ИГР</𝒔𝒑𝒂𝒏>', 
+                𝒓𝒆𝒒: 'ЗАПРОС <𝒃𝒓><𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[#𝟎𝟎𝒇𝟐𝒇𝒇]">ИГРЫ</𝒔𝒑𝒂𝒏>', 
+                𝒏𝒂𝒗𝑯𝒐𝒎𝒆: 'Каталог', 𝒏𝒂𝒗𝑹𝒆𝒒: 'Запросы', 𝒏𝒂𝒗𝑳𝒂𝒏𝒈: 'Сменить язык', 
+                𝒓𝒆𝒒𝑩𝒕𝒏: 'Отправить', 𝒃𝒂𝒄𝒌: '← НАЗАД', 𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅: 'СКАЧАТЬ', 
+                𝒅𝒍𝑵𝒐𝒘: 'СКАЧАТЬ 𝑨𝑷𝑲', 𝒊𝒏𝒑𝒖𝒕: 'Поиск...', 𝒄𝒍𝒐𝒔𝒆: 'ЗАКРЫТЬ ✕',
+                𝒗𝟏: '𝑽𝟏 - САМАЯ ПОЛНАЯ', 𝒗𝟐: '𝑽𝟐 - СРЕДНЯЯ ГРАФИКА', 𝒗𝟑: '𝑽𝟑 - ЛУЧШАЯ ГРАФИКА'
             }}
         ];
 
-        // Rellenar automáticamente los 20 idiomas con el fallback de inglés
-        const restCodes = [
-            {code:'fr', c:'active-fr', n:'Français', f:'🇫🇷'}, {code:'de', c:'active-de', n:'Deutsch', f:'🇩🇪'},
-            {code:'it', c:'active-it', n:'Italiano', f:'🇮🇹'}, {code:'jp', c:'active-jp', n:'日本語', f:'🇯🇵'},
-            {code:'cn', c:'active-cn', n:'中文', f:'🇨🇳'}, {code:'ar', c:'active-sa', n:'العربية', f:'🇸🇦'},
-            {code:'tr', c:'lang-btn', n:'Türkçe', f:'🇹🇷'}, {code:'in', c:'lang-btn', n:'Hindi', f:'🇮🇳'},
-            {code:'pl', c:'lang-btn', n:'Polski', f:'🇵🇱'}, {code:'nl', c:'lang-btn', n:'Nederlands', f:'🇳🇱'},
-            {code:'se', c:'lang-btn', n:'Svenska', f:'🇸🇪'}, {code:'gr', c:'lang-btn', n:'Ελληνικά', f:'🇬🇷'},
-            {code:'th', c:'lang-btn', n:'ไทย', f:'🇹🇭'}, {code:'vn', c:'lang-btn', n:'Tiếng Việt', f:'🇻🇳'},
-            {code:'ua', c:'lang-btn', n:'Українська', f:'🇺🇦'}
+        // 𝑹𝒆𝒍𝒍𝒆𝒏𝒂𝒓 𝒅𝒊𝒏𝒂́𝒎𝒊𝒄𝒂𝒎𝒆𝒏𝒕𝒆 𝒆𝒍 𝒓𝒆𝒔𝒕𝒐 𝒅𝒆 𝒍𝒐𝒔 𝟐𝟎 𝒊𝒅𝒊𝒐𝒎𝒂𝒔 𝒄𝒐𝒏 𝒕𝒓𝒂𝒅𝒖𝒄𝒄𝒊𝒐́𝒏 𝒊𝒏𝒈𝒍𝒆𝒔𝒂 𝒃𝒂𝒔𝒆
+        𝒄𝒐𝒏𝒔𝒕 𝒓𝒆𝒔𝒕𝑪𝒐𝒅𝒆𝒔 = [
+            {𝒄𝒐𝒅𝒆:'𝒇𝒓', 𝒄:'𝒂𝒄𝒕𝒊𝒗𝒆-𝒇𝒓', 𝒏:'𝑭𝒓𝒂𝒏𝒄̧𝒂𝒊𝒔', 𝒇:'🇫🇷'}, {𝒄𝒐𝒅𝒆:'𝒅𝒆', 𝒄:'𝒂𝒄𝒕𝒊𝒗𝒆-𝒅𝒆', 𝒏:'𝑫𝒆𝒖𝒕𝒔𝒄𝒉', 𝒇:'🇩🇪'},
+            {𝒄𝒐𝒅𝒆:'𝒊𝒕', 𝒄:'𝒂𝒄𝒕𝒊𝒗𝒆-𝒊𝒕', 𝒏:'𝑰𝒕𝒂𝒍𝒊𝒂𝒏𝒐', 𝒇:'🇮🇹'}, {𝒄𝒐𝒅𝒆:'𝒋𝒑', 𝒄:'𝒂𝒄𝒕𝒊𝒗𝒆-𝒋𝒑', 𝒏:'日本語', 𝒇:'🇯🇵'},
+            {𝒄𝒐𝒅𝒆:'𝒄𝒏', 𝒄:'𝒂𝒄𝒕𝒊𝒗𝒆-𝒄𝒏', 𝒏:'中文', 𝒇:'🇨🇳'}, {𝒄𝒐𝒅𝒆:'𝒂𝒓', 𝒄:'𝒂𝒄𝒕𝒊𝒗𝒆-𝒔𝒂', 𝒏:'العربية', 𝒇:'🇸🇦'},
+            {𝒄𝒐𝒅𝒆:'𝒕𝒓', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'𝑻𝒖̈𝒓𝒌𝒄̧𝒆', 𝒇:'🇹🇷'}, {𝒄𝒐𝒅𝒆:'𝒊𝒏', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'𝑯𝒊𝒏𝒅𝒊', 𝒇:'🇮🇳'},
+            {𝒄𝒐𝒅𝒆:'𝒑𝒍', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'𝑷𝒐𝒍𝒔𝒌𝒊', 𝒇:'🇵🇱'}, {𝒄𝒐𝒅𝒆:'𝒏𝒍', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'𝑵𝒆𝒅𝒆𝒓𝒍𝒂𝒏𝒅𝒔', 𝒇:'🇳🇱'},
+            {𝒄𝒐𝒅𝒆:'𝒔𝒆', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'𝑺𝒗𝒆𝒏𝒔𝒌𝒂', 𝒇:'🇸🇪'}, {𝒄𝒐𝒅𝒆:'𝒈𝒓', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'Ελληνικά', 𝒇:'🇬🇷'},
+            {𝒄𝒐𝒅𝒆:'𝒕𝒉', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'ไทย', 𝒇:'🇹🇭'}, {𝒄𝒐𝒅𝒆:'𝒗𝒏', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'𝑻𝒊𝒆̂́𝒏𝒈 𝑽𝒊𝒆̣̂𝒕', 𝒇:'🇻🇳'},
+            {𝒄𝒐𝒅𝒆:'𝒖𝒂', 𝒄:'𝒍𝒂𝒏𝒈-𝒃𝒕𝒏', 𝒏:'Українська', 𝒇:'🇺🇦'}
         ];
 
-        restCodes.forEach(r => {
-            languages.push({ code: r.code, class: r.c, name: r.n, flag: r.f, texts: languages[1].texts });
+        𝒓𝒆𝒔𝒕𝑪𝒐𝒅𝒆𝒔.𝒇𝒐𝒓𝑬𝒂𝒄𝒉(𝒓 => {
+            𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔.𝒑𝒖𝒔𝒉({ 𝒄𝒐𝒅𝒆: 𝒓.𝒄𝒐𝒅𝒆, 𝒄𝒍𝒂𝒔𝒔: 𝒓.𝒄, 𝒏𝒂𝒎𝒆: 𝒓.𝒏, 𝒇𝒍𝒂𝒈: 𝒓.𝒇, 𝒕𝒆𝒙𝒕𝒔: {...𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔[𝟏].𝒕𝒆𝒙𝒕𝒔} });
         });
 
-        let currentLang = languages[0];
+        𝒍𝒆𝒕 𝒄𝒖𝒓𝒓𝒆𝒏𝒕𝑳𝒂𝒏𝒈 = 𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔[𝟎];
 
-        const games = [
+        𝒄𝒐𝒏𝒔𝒕 𝒈𝒂𝒎𝒆𝒔 = [
             { 
-                id: 'p5', 
-                title: 'Poppy Playtime 5', 
-                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', 
-                hasVersions: true, 
-                versions: [
-                    { vid: 'v1', link: 'https://piro775.itch.io/toy-factory-chapter-5-fangame-unity/download', preview: 'https://i.ibb.co/bjvtp7Wx/v1.png' },
-                    { vid: 'v2', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-5', preview: 'https://i.postimg.cc/fVMY07GV/v2.png' },
-                    { vid: 'v3', link: 'https://www.mediafire.com/file/00g7j35tkc416g6/Poppy+Playtime+Chapter+5.apk/file', preview: 'https://i.postimg.cc/RNBHjQVp/v3.png' }
+                𝒊𝒅: '𝒑𝟓', 
+                𝒕𝒊𝒕𝒍𝒆: '𝑷𝒐𝒑𝒑𝒚 𝑷𝒍𝒂𝒚𝒕𝒊𝒎𝒆 𝟓', 
+                𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒆𝒏𝒄𝒓𝒚𝒑𝒕𝒆𝒅-𝒕𝒃𝒏𝟎.𝒈𝒔𝒕𝒂𝒕𝒊𝒄.𝒄𝒐𝒎/𝒊𝒎𝒂𝒈𝒆𝒔?𝒒=𝒕𝒃𝒏:𝑨𝑵𝒅𝟗𝑮𝒄𝑸𝟔𝑵𝑪𝒊𝒓𝒁𝑿𝒔𝒑𝒏𝑹𝒆𝒉𝒊𝒘𝒑𝒅𝒉𝒔𝑹𝒂𝟒𝒘𝑸_𝒆𝒄𝑿𝒖𝒔𝑪𝒉𝒐𝒊𝑫𝑴𝑱𝟐𝒐𝑽𝑳𝒂𝒃𝒍𝑸𝑮𝑪𝑾𝒋𝑪𝑩𝑳𝒍𝒇𝑮𝟏𝒁&𝒔=𝟏𝟎', 
+                𝒉𝒂𝒔𝑽𝒆𝒓𝒔𝒊𝒐𝒏𝒔: 𝒕𝒓𝒖𝒆, 
+                𝒗𝒆𝒓𝒔𝒊𝒐𝒏𝒔: [
+                    { 𝒗𝒊𝒅: '𝒗𝟏', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒑𝒊𝒓𝒐𝟕𝟕𝟓.𝒊𝒕𝒄𝒉.𝒊𝒐/𝒕𝒐𝒚-𝒇𝒂𝒄𝒕𝒐𝒓𝒚-𝒄𝒉𝒂𝒑𝒕𝒆𝒓-𝟓-𝒇𝒂𝒏𝒈𝒂𝒎𝒆-𝒖𝒏𝒊𝒕𝒚/𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅', 𝒑𝒓𝒆𝒗𝒊𝒆𝒘: '𝒉𝒕𝒕𝒑𝒔://𝒊.𝒊𝒃𝒃.𝒄𝒐/𝒃𝒋𝒗𝒕𝒑𝟕𝑾𝒙/𝒗𝟏.𝒑𝒏𝒈' },
+                    { 𝒗𝒊𝒅: '𝒗𝟐', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒖𝒏𝒓𝒆𝒂𝒍-𝒑𝒍𝒂𝒚-𝒔𝒕𝒖𝒅𝒊𝒐.𝒄𝒐𝒎/𝒈𝒂𝒎𝒆𝒔/𝒑𝒐𝒑𝒑𝒚-𝒑𝒍𝒂𝒚𝒕𝒊𝒎𝒆-𝒄𝒉𝒂𝒑𝒕𝒆𝒓-𝟓', 𝒑𝒓𝒆𝒗𝒊𝒆𝒘: '𝒉𝒕𝒕𝒑𝒔://𝒊.𝒑𝒐𝒔𝒕𝒊𝒎𝒈.𝒄𝒄/𝒇𝑽𝑴𝒀𝟎𝟕𝑮𝑽/𝒗𝟐.𝒑𝒏𝒈' },
+                    { 𝒗𝒊𝒅: '𝒗𝟑', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆/𝟎𝟎𝒈𝟕𝒋𝟑𝟓𝒕𝒌𝒄𝟒𝟏𝟔𝒈𝟔/𝑷𝒐𝒑𝒑𝒚+𝑷𝒍𝒂𝒚𝒕𝒊𝒎𝒆+𝑪𝒉𝒂𝒑𝒕𝒆𝒓+𝟓.𝒂𝒑𝒌/𝒇𝒊𝒍𝒆', 𝒑𝒓𝒆𝒗𝒊𝒆𝒘: '𝒉𝒕𝒕𝒑𝒔://𝒊.𝒑𝒐𝒔𝒕𝒊𝒎𝒈.𝒄𝒄/𝑹𝑵𝑩𝑯𝒋𝑸𝑽𝒑/𝒗𝟑.𝒑𝒏𝒈' }
                 ]
             },
-            { id: 'p4', title: 'Poppy Playtime 4', img: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', link: 'https://piro775.itch.io/toy-factory-chapter-4' },
-            { id: 'p3', title: 'Poppy Playtime 3', img: 'https://play-lh.googleusercontent.com/-4dSZjsh1LX-aczh0SrslsgUIH6s7qMOSLFcsTlNn1B6M4zSnm_IC5hw2xFcPH9Jhi4', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3' },
-            { id: 'descenders', title: 'Descenders', img: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', link: 'https://www.mediafire.com/file_premium/ctlrgu6xyb7ybtk/Descenders-v1.10.3-mod-apkvision.org.apk/file' },
-            { id: 'miles', title: 'Miles Morales', img: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbd1fbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', link: 'https://www.mediafire.com/file/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_[www.AndroSU.com].apk/file' },
-            { id: 'fnaf', title: 'FNaF Spanish', img: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', link: 'https://www.mediafire.com/file/7nysoswlpi8cm9l/Five_Nights_at_Freddy%25C2%25B4s_%2528Spanish%2529_-_espacioapk.com.apk/file?dkey=7nysoswlpi8cm9l' },
-            { id: 'cuphead', title: 'Cuphead + DLC', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', link: 'https://www.mediafire.com/file/vdlzhn68ru3nuo5/Cuphead+++DLC+-+v1.0.3+-+VPR.apk/file?dkey=ocmx5h85l1c&r=148' },
-            { id: 'hollow', title: 'Hollow Knight', img: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', link: 'https://www.mediafire.com/file/bsqgq7dnvz6w187/HKVulkanV2.7z/file' },
-            { id: 'pes2019', title: 'PES 2019 PSP', img: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pro-evolution-soccer-2019/0/08/Pes-2019---button-1525885009367.jpg', link: 'https://www.mediafire.com/file/dck5ouwiw2d62c0/Pro_Evolution_Soccer_2019_PSP_%2528USA%2529_%2528Lost_Media_C19%2529.iso/file' }
+            { 𝒊𝒅: '𝒑𝟒', 𝒕𝒊𝒕𝒍𝒆: '𝑷𝒐𝒑𝒑𝒚 𝑷𝒍𝒂𝒚𝒕𝒊𝒎𝒆 𝟒', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒂𝒔𝒔𝒆𝒕𝒔𝒊𝒐.𝒈𝒏𝒘𝒄𝒅𝒏.𝒄𝒐𝒎/𝑷𝒐𝒑𝒑𝒚-𝑷𝒍𝒂𝒚𝒕𝒊𝒎𝒆-𝑪𝒉𝒂𝒑𝒕𝒆𝒓-𝟒-𝒑𝒓𝒐𝒎𝒐-𝒊𝒎𝒂𝒈𝒆-𝒔𝒉𝒐𝒘𝒊𝒏𝒈-𝒂-𝒕𝒐𝒚-𝒄𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓-𝒆𝒙𝒕𝒆𝒏𝒅𝒊𝒏𝒈-𝒊𝒕𝒔-𝒉𝒂𝒏𝒅-𝒕𝒐𝒘𝒂𝒓𝒅𝒔-𝒕𝒉𝒆-𝒄𝒂𝒎𝒆𝒓𝒂.𝒋𝒑𝒈?𝒘𝒊𝒅𝒕𝒉=𝟏𝟐𝟎𝟎&𝒉𝒆𝒊𝒈𝒉𝒕=𝟏𝟐𝟎𝟎&𝒇𝒊𝒕=𝒄𝒓𝒐𝒑&𝒒𝒖𝒂𝒍𝒊𝒕𝒚=𝟏𝟎𝟎&𝒇𝒐𝒓𝒎𝒂𝒕=𝒑𝒏𝒈&𝒆𝒏𝒂𝒃𝒍𝒆=𝒖𝒑𝒔𝒄𝒂𝒍𝒆&𝒂𝒖𝒕𝒐=𝒘𝒆𝒃𝒑', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒑𝒊𝒓𝒐𝟕𝟕𝟓.𝒊𝒕𝒄𝒉.𝒊𝒐/𝒕𝒐𝒚-𝒇𝒂𝒄𝒕𝒐𝒓𝒚-𝒄𝒉𝒂𝒑𝒕𝒆𝒓-𝟒' },
+            { 𝒊𝒅: '𝒑𝟑', 𝒕𝒊𝒕𝒍𝒆: '𝑷𝒐𝒑𝒑𝒚 𝑷𝒍𝒂𝒚𝒕𝒊𝒎𝒆 𝟑', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒑𝒍𝒂𝒚-𝒍𝒉.𝒈𝒐𝒐𝒈𝒍𝒆𝒖𝒔𝒆𝒓𝒄𝒐𝒏𝒕𝒆𝒏𝒕.𝒄𝒐𝒎/-𝟒𝒅𝑺𝒁𝒋𝒔𝒉𝟏𝑳𝑿-𝒂𝒄𝒛𝒉𝟎𝑺𝒓𝒔𝒍𝒔𝒈𝑼𝑰𝑯𝟔𝒔𝟕𝒒𝑴𝑶𝑺𝑳𝑭𝒄𝒔𝑻𝒍𝑵𝒏𝟏𝑩𝟔𝑴𝟒𝒛𝑺𝒏𝒎_𝑰𝑪𝟓𝒉𝒘𝟐𝒙𝑭𝒄𝑷𝑯𝟗𝑱𝒉𝒊𝟒', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒖𝒏𝒓𝒆𝒂𝒍-𝒑𝒍𝒂𝒚-𝒔𝒕𝒖𝒅𝒊𝒐.𝒄𝒐𝒎/𝒈𝒂𝒎𝒆𝒔/𝒑𝒐𝒑𝒑𝒚-𝒑𝒍𝒂𝒚𝒕𝒊𝒎𝒆-𝒄𝒉𝒂𝒑𝒕𝒆𝒓-𝟑' },
+            { 𝒊𝒅: '𝒅𝒆𝒔𝒄𝒆𝒏𝒅𝒆𝒓𝒔', 𝒕𝒊𝒕𝒍𝒆: '𝑫𝒆𝒔𝒄𝒆𝒏𝒅𝒆𝒓𝒔', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒖𝒑𝒍𝒐𝒂𝒅.𝒘𝒊𝒌𝒊𝒎𝒆𝒅𝒊𝒂.𝒐𝒓𝒈/𝒘𝒊𝒌𝒊𝒑𝒆𝒅𝒊𝒂/𝒆𝒏/𝟖/𝟖𝒂/𝑫𝒆𝒔𝒄𝒆𝒏𝒅𝒆𝒓𝒔_𝒄𝒐𝒗𝒆𝒓.𝒋𝒑𝒈', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆_𝒑𝒓𝒆𝒎𝒊𝒖𝒎/𝒄𝒕𝒍𝒓𝒈𝒖𝟔𝒙𝒚𝒃𝟕𝒚𝒃𝒕𝒌/𝑫𝒆𝒔𝒄𝒆𝒏𝒅𝒆𝒓𝒔-𝒗𝟏.𝟏𝟎.𝟑-𝒎𝒐𝒅-𝒂𝒑𝒌𝒗𝒊𝒔𝒊𝒐𝒏.𝒐𝒓𝒈.𝒂𝒑𝒌/𝒇𝒊𝒍𝒆' },
+            { 𝒊𝒅: '𝒎𝒊𝒍𝒆𝒔', 𝒕𝒊𝒕𝒍𝒆: '𝑴𝒊𝒍𝒆𝒔 𝑴𝒐𝒓𝒂𝒍𝒆𝒔', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒊𝒎𝒈.𝒂𝒔𝒎𝒆𝒅𝒊𝒂.𝒆𝒑𝒊𝒎𝒈.𝒏𝒆𝒕/𝒓𝒆𝒔𝒊𝒛𝒆𝒓/𝒗𝟐/𝑻𝑩𝑴𝑫𝑪𝑳𝑴𝑨𝑽𝑹𝑱𝟑𝑳𝑫𝑿𝑬𝑷𝑱𝑬𝑪𝑶𝑼𝑴𝑴𝑼𝟒.𝒋𝒑𝒈?𝒂𝒖𝒕𝒉=𝟐𝟗𝒆𝒄𝟎𝒆𝟖𝒄𝟐𝒅𝒆𝒇𝒅𝟑𝒆𝒄𝒇𝒃𝒅𝟏𝒇𝒃𝒃𝟎𝟐𝟔𝒆𝟐𝟓𝟐𝟗𝒂𝟏𝟑𝟒𝒂𝒄𝟕𝒂𝟗𝒄𝟕𝒂𝟖𝒇𝒆𝒄𝟕𝟓𝟎𝒂𝒆𝒅𝒃𝟓𝒅𝒄𝟖𝒄𝒆𝒃𝟏𝟗𝒇&𝒘𝒊𝒅𝒕𝒉=𝟏𝟒𝟕𝟐&𝒉𝒆𝒊𝒈𝒉𝒕=𝟏𝟏𝟎𝟒&𝒔𝒎𝒂𝒓𝒕=𝒕𝒓𝒖𝒆', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆/𝒌𝒒𝒂𝒓𝒌𝒂𝒒𝒎𝒉𝟎𝒏𝒉𝒓𝒕𝒙/𝑺𝒑𝒊𝒅𝒆𝒓𝒎𝒂𝒏_𝑴𝒊𝒍𝒆𝒔_𝑴𝒐𝒓𝒂𝒍𝒆𝒔_𝒗𝟏_[𝒘𝒘𝒘.𝑨𝒏𝒅𝒓𝒐𝑺𝑼.𝒄𝒐𝒎].𝒂𝒑𝒌/𝒇𝒊𝒍𝒆' },
+            { 𝒊𝒅: '𝒇𝒏𝒂𝒇', 𝒕𝒊𝒕𝒍𝒆: '𝑭𝑵𝒂𝑭 𝑺𝒑𝒂𝒏𝒊𝒔𝒉', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒊𝒎𝒂𝒈𝒆𝒔.𝒈𝒆𝒏𝒊𝒖𝒔.𝒄𝒐𝒎/𝒃𝟒𝟗𝟐𝟒𝟎𝒆𝒃𝟓𝒆𝟓𝟏𝟎𝒃𝒃𝟎𝒃𝟓𝟔𝒅𝟓𝒂𝒃𝒅𝟕𝒃𝟒𝟓𝟐𝟕𝟎𝒅.𝟓𝟏𝟐𝒙𝟓𝟏𝟐𝒙𝟏.𝒑𝒏𝒈', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆/𝟕𝒏𝒚𝒔𝒐𝒔𝒘𝒍𝒑𝒊𝟖𝒄𝒎𝟗𝒍/𝑭𝒊𝒗𝒆_𝑵𝒊𝒈𝒉𝒕𝒔_𝒂𝒕_𝑭𝒓𝒆𝒅𝒅𝒚%𝟐𝟓𝑪𝟐%𝟐𝟓𝑩𝟒𝒔_%𝟐𝟓𝟐𝟖𝑺𝒑𝒂𝒏𝒊𝒔𝒉%𝟐𝟓𝟐𝟗_-_𝒆𝒔𝒑𝒂𝒄𝒊𝒐𝒂𝒑𝒌.𝒄𝒐𝒎.𝒂𝒑𝒌/𝒇𝒊𝒍𝒆?𝒅𝒌𝒆𝒚=𝟕𝒏𝒚𝒔𝒐𝒔𝒘𝒍𝒑𝒊𝟖𝒄𝒎𝟗𝒍' },
+            { 𝒊𝒅: '𝒄𝒖𝒑𝒉𝒆𝒂𝒅', 𝒕𝒊𝒕𝒍𝒆: '𝑪𝒖𝒑𝒉𝒆𝒂𝒅 + 𝑫𝑳𝑪', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒆𝒏𝒄𝒓𝒚𝒑𝒕𝒆𝒅-𝒕𝒃𝒏𝟎.𝒈𝒔𝒕𝒂𝒕𝒊𝒄.𝒄𝒐𝒎/𝒊𝒎𝒂𝒈𝒆𝒔?𝒒=𝒕𝒃𝒏:𝑨𝑵𝒅𝟗𝑮𝒄𝑺𝑻𝒐𝒂𝟓𝑿𝟎𝒖𝒎𝒉𝒖𝑳𝒘𝟕𝑶𝒗𝑼𝒕𝒊𝒒𝟖𝑾𝒖_𝑿𝑽𝒒𝑺𝑷𝑶𝒉𝒇𝑯𝑫𝒀𝒍𝒈𝒒𝟏𝑩𝒆𝟕𝒌𝒈&𝒔=𝟏𝟎', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆/𝒗𝒅𝒍𝒛𝒉𝒏𝟔𝟖𝒓𝒖𝟑𝒏𝒖𝒐𝟓/𝑪𝒖𝒑𝒉𝒆𝒂𝒅+++𝑫𝑳𝑪+-+𝒗𝟏.𝟎.𝟑+-+𝑽𝑷𝑹.𝒂𝒑𝒌/𝒇𝒊𝒍𝒆?𝒅𝒌𝒆𝒚=𝒐𝒄𝒎𝒙𝟓𝒉𝟖𝟓𝒍𝟏𝒄&𝒓=𝟏𝟒𝟖' },
+            { 𝒊𝒅: '𝒉𝒐𝒍𝒍𝒐𝒘', 𝒕𝒊𝒕𝒍𝒆: '𝑯𝒐𝒍𝒍𝒐𝒘 𝑲𝒏𝒊𝒈𝒉𝒕', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒔𝒕𝒐𝒓𝒆-𝒊𝒎𝒂𝒈𝒆𝒔.𝒔-𝒎𝒊𝒄𝒓𝒐𝒔𝒐𝒇𝒕.𝒄𝒐𝒎/𝒊𝒎𝒂𝒈𝒆/𝒂𝒑𝒑𝒔.𝟓𝟖𝟗𝟓𝟗.𝟏𝟑𝟖𝟒𝟕𝟔𝟒𝟒𝟎𝟓𝟕𝟔𝟎𝟗𝟖𝟔𝟖.𝟖𝟖𝟔𝟓𝒅𝟐𝒂𝟐-𝟓𝒆𝟏𝟏-𝟒𝟒𝟐𝟒-𝟖𝟓𝒄𝒆-𝟏𝒅𝒃𝟑𝟎𝒂𝟏𝟔𝟏𝒃𝒅𝟗.𝟒𝟏𝒄𝒂𝟑𝟖𝟑𝟒-𝟑𝟑𝟏𝒄-𝟒𝒅𝟑𝟒-𝒃𝟐𝒄𝟗-𝟕𝒅𝒇𝒆𝟑𝟏𝟖𝒇𝒅𝟏𝟔𝟖', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆/𝒃𝒔𝒒𝒈𝒒𝟕𝒅𝒏𝒗𝒛𝟔𝒘𝟏𝟖𝟕/𝑯𝑲𝑽𝒖𝒍𝒌𝒂𝒏𝑽𝟐.𝟕𝒛/𝒇𝒊𝒍𝒆' },
+            { 𝒊𝒅: '𝒑𝒆𝒔𝟐𝟎𝟏𝟗', 𝒕𝒊𝒕𝒍𝒆: '𝑷𝑬𝑺 𝟐𝟎𝟏𝟗 𝑷𝑺𝑷', 𝒊𝒎𝒈: '𝒉𝒕𝒕𝒑𝒔://𝒐𝒚𝒔𝒕𝒆𝒓.𝒊𝒈𝒏𝒊𝒎𝒈𝒔.𝒄𝒐𝒎/𝒎𝒆𝒅𝒊𝒂𝒘𝒊𝒌𝒊/𝒂𝒑𝒊𝒔.𝒊𝒈𝒏.𝒄𝒐𝒎/𝒑𝒓𝒐-𝒆𝒗𝒐𝒍𝒖𝒕𝒊𝒐𝒏-𝒔𝒐𝒄𝒄𝒆𝒓-𝟐𝟎𝟏𝟗/𝟎/𝟎𝟖/𝑷𝒆𝒔-𝟐𝟎𝟏𝟗---𝒃𝒖𝒕𝒕𝒐𝒏-𝟏𝟓𝟐𝟓𝟖𝟖𝟓𝟎𝟎𝟗𝟑𝟔𝟕.𝒋𝒑𝒈', 𝒍𝒊𝒏𝒌: '𝒉𝒕𝒕𝒑𝒔://𝒘𝒘𝒘.𝒎𝒆𝒅𝒊𝒂𝒇𝒊𝒓𝒆.𝒄𝒐𝒎/𝒇𝒊𝒍𝒆/𝒅𝒄𝒌𝟓𝒐𝒖𝒘𝒊𝒘𝟐𝒅𝟔𝟐𝒄𝟎/𝑷𝒓𝒐_𝑬𝒗𝒐𝒍𝒖𝒕𝒊𝒐𝒏_𝑺𝒐𝒄𝒄𝒆𝒓_𝟐𝟎𝟏𝟗_𝑷𝑺𝑷_%𝟐𝟓𝟐𝟖𝑼𝑺𝑨%𝟐𝟓𝟐𝟗_%𝟐𝟓𝟐𝟖𝑳𝒐𝒔𝒕_𝑴𝒆𝒅𝒊𝒂_𝑪𝟏𝟗%𝟐𝟓𝟐𝟗.𝒊𝒔𝒐/𝒇𝒊𝒍𝒆' }
         ];
 
-        function init() {
-            const grid = document.getElementById('langGrid');
-            languages.forEach(lang => {
-                const btn = document.createElement('div');
-                btn.className = `lang-btn ${lang.class || ''}`;
-                btn.innerHTML = `
-                    <span class="text-4xl">${lang.flag}</span>
-                    <span class="text-[10px] font-black uppercase tracking-widest opacity-80">${lang.name}</span>
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒊𝒏𝒊𝒕() {
+            𝒄𝒐𝒏𝒔𝒕 𝒈𝒓𝒊𝒅 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒍𝒂𝒏𝒈𝑮𝒓𝒊𝒅');
+            𝒈𝒓𝒊𝒅.𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = ''; // 𝑳𝒊𝒎𝒑𝒊𝒂𝒓 𝒑𝒓𝒆𝒗𝒊𝒐
+            𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔.𝒇𝒐𝒓𝑬𝒂𝒄𝒉(𝒍𝒂𝒏𝒈 => {
+                𝒄𝒐𝒏𝒔𝒕 𝒃𝒕𝒏 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒄𝒓𝒆𝒂𝒕𝒆𝑬𝒍𝒆𝒎𝒆𝒏𝒕('𝒅𝒊𝒗');
+                𝒃𝒕𝒏.𝒄𝒍𝒂𝒔𝒔𝑵𝒂𝒎𝒆 = `𝒍𝒂𝒏𝒈-𝒃𝒕𝒏 ${𝒍𝒂𝒏𝒈.𝒄𝒍𝒂𝒔𝒔 || ''}`;
+                𝒃𝒕𝒏.𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = `
+                    <𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝟒𝒙𝒍">${𝒍𝒂𝒏𝒈.𝒇𝒍𝒂𝒈}</𝒔𝒑𝒂𝒏>
+                    <𝒔𝒑𝒂𝒏 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[𝟏𝟎𝒑𝒙] 𝒇𝒐𝒏𝒕-𝒃𝒍𝒂𝒄𝒌 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒕𝒓𝒂𝒄𝒌𝒊𝒏𝒈-𝒘𝒊𝒅𝒆𝒔𝒕 𝒐𝒑𝒂𝒄𝒊𝒕𝒚-𝟖𝟎">${𝒍𝒂𝒏𝒈.𝒏𝒂𝒎𝒆}</𝒔𝒑𝒂𝒏>
                 `;
-                btn.onclick = () => selectLanguage(lang.code);
-                grid.appendChild(btn);
+                𝒃𝒕𝒏.𝒐𝒏𝒄𝒍𝒊𝒄𝒌 = () => 𝒔𝒆𝒍𝒆𝒄𝒕𝑳𝒂𝒏𝒈𝒖𝒂𝒈𝒆(𝒍𝒂𝒏𝒈.𝒄𝒐𝒅𝒆);
+                𝒈𝒓𝒊𝒅.𝒂𝒑𝒑𝒆𝒏𝒅𝑪𝒉𝒊𝒍𝒅(𝒃𝒕𝒏);
             });
         }
 
-        function selectLanguage(code) {
-            currentLang = languages.find(l => l.code === code) || languages[0];
-            const t = currentLang.texts;
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒔𝒆𝒍𝒆𝒄𝒕𝑳𝒂𝒏𝒈𝒖𝒂𝒈𝒆(𝒄𝒐𝒅𝒆) {
+            𝒄𝒖𝒓𝒓𝒆𝒏𝒕𝑳𝒂𝒏𝒈 = 𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔.𝒇𝒊𝒏𝒅(𝒍 => 𝒍.𝒄𝒐𝒅𝒆 === 𝒄𝒐𝒅𝒆) || 𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆𝒔[𝟎];
+            𝒄𝒐𝒏𝒔𝒕 𝒕 = 𝒄𝒖𝒓𝒓𝒆𝒏𝒕𝑳𝒂𝒏𝒈.𝒕𝒆𝒙𝒕𝒔;
             
-            document.getElementById('home-title').innerHTML = t.home;
-            document.getElementById('req-title').innerHTML = t.req;
-            document.getElementById('nav-home').innerText = t.navHome;
-            document.getElementById('nav-request').innerText = t.navReq;
-            document.getElementById('nav-lang').innerText = t.navLang;
-            document.getElementById('req-btn').innerText = t.reqBtn;
-            document.getElementById('back-btn').innerText = t.back;
-            document.getElementById('requestInput').placeholder = t.input;
-            document.getElementById('close-menu').innerText = t.close;
+            // 𝑨𝒄𝒕𝒖𝒂𝒍𝒊𝒛𝒂𝒓 𝒊𝒏𝒕𝒆𝒓𝒇𝒂𝒛 𝒑𝒓𝒊𝒏𝒄𝒊𝒑𝒂𝒍
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒉𝒐𝒎𝒆-𝒕𝒊𝒕𝒍𝒆').𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = 𝒕.𝒉𝒐𝒎𝒆;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒓𝒆𝒒-𝒕𝒊𝒕𝒍𝒆').𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = 𝒕.𝒓𝒆𝒒;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒏𝒂𝒗-𝒉𝒐𝒎𝒆').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒕.𝒏𝒂𝒗𝑯𝒐𝒎𝒆;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒏𝒂𝒗-𝒓𝒆𝒒𝒖𝒆𝒔𝒕').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒕.𝒏𝒂𝒗𝑹𝒆𝒒;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒏𝒂𝒗-𝒍𝒂𝒏𝒈').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒕.𝒏𝒂𝒗𝑳𝒂𝒏𝒈;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒓𝒆𝒒-𝒃𝒕𝒏').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒕.𝒓𝒆𝒒𝑩𝒕𝒏;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒃𝒂𝒄𝒌-𝒃𝒕𝒏').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒕.𝒃𝒂𝒄𝒌;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒓𝒆𝒒𝒖𝒆𝒔𝒕𝑰𝒏𝒑𝒖𝒕').𝒑𝒍𝒂𝒄𝒆𝒉𝒐𝒍𝒅𝒆𝒓 = 𝒕.𝒊𝒏𝒑𝒖𝒕;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒄𝒍𝒐𝒔𝒆-𝒎𝒆𝒏𝒖').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒕.𝒄𝒍𝒐𝒔𝒆;
             
-            document.getElementById('language-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            renderCatalog();
+            // 𝑪𝒆𝒓𝒓𝒂𝒓 𝒆𝒍 𝒐𝒗𝒆𝒓𝒍𝒂𝒚 𝒆 𝒊𝒏𝒊𝒄𝒊𝒂𝒓 𝒄𝒂𝒕𝒂́𝒍𝒐𝒈𝒐
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒍𝒂𝒏𝒈𝒖𝒂𝒈𝒆-𝒐𝒗𝒆𝒓𝒍𝒂𝒚').𝒔𝒕𝒚𝒍𝒆.𝒅𝒊𝒔𝒑𝒍𝒂𝒚 = '𝒏𝒐𝒏𝒆';
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒃𝒐𝒅𝒚.𝒔𝒕𝒚𝒍𝒆.𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘 = '𝒂𝒖𝒕𝒐';
+            𝒓𝒆𝒏𝒅𝒆𝒓𝑪𝒂𝒕𝒂𝒍𝒐𝒈();
         }
 
-        function renderCatalog() {
-            document.getElementById('gameGrid').innerHTML = games.map((g, i) => `
-                <div class="game-card anim-fade-up" style="animation-delay: ${i*0.05}s" onclick="openGame('${g.id}')">
-                    <img src="${g.img}" class="char-img">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div class="absolute bottom-8 left-8 pr-8 text-left">
-                        <h3 class="text-2xl font-black italic uppercase font-brand leading-none">${g.title}</h3>
-                    </div>
-                </div>
-            `).join('');
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒓𝒆𝒏𝒅𝒆𝒓𝑪𝒂𝒕𝒂𝒍𝒐𝒈() {
+            𝒄𝒐𝒏𝒔𝒕 𝒈𝒓𝒊𝒅 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒈𝒂𝒎𝒆𝑮𝒓𝒊𝒅');
+            𝒈𝒓𝒊𝒅.𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = 𝒈𝒂𝒎𝒆𝒔.𝒎𝒂𝒑((𝒈, 𝒊) => `
+                <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒈𝒂𝒎𝒆-𝒄𝒂𝒓𝒅 𝒂𝒏𝒊𝒎-𝒇𝒂𝒅𝒆-𝒖𝒑" 𝒔𝒕𝒚𝒍𝒆="𝒂𝒏𝒊𝒎𝒂𝒕𝒊𝒐𝒏-𝒅𝒆𝒍𝒂𝒚: ${𝒊*𝟎.𝟎𝟓}𝒔" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒐𝒑𝒆𝒏𝑮𝒂𝒎𝒆('${𝒈.𝒊𝒅}')">
+                    <𝒊𝒎𝒈 𝒔𝒓𝒄="${𝒈.𝒊𝒎𝒈}" 𝒄𝒍𝒂𝒔𝒔="𝒄𝒉𝒂𝒓-𝒊𝒎𝒈">
+                    <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒂𝒃𝒔𝒐𝒍𝒖𝒕𝒆 𝒊𝒏𝒔𝒆𝒕-𝟎 𝒃𝒈-𝒈𝒓𝒂𝒅𝒊𝒆𝒏𝒕-𝒕𝒐-𝒕 𝒇𝒓𝒐𝒎-𝒃𝒍𝒂𝒄𝒌 𝒗𝒊𝒂-𝒕𝒓𝒂𝒏𝒔𝒑𝒂𝒓𝒆𝒏𝒕 𝒕𝒐-𝒕𝒓𝒂𝒏𝒔𝒑𝒂𝒓𝒆𝒏𝒕"></𝒅𝒊𝒗>
+                    <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒂𝒃𝒔𝒐𝒍𝒖𝒕𝒆 𝒃𝒐𝒕𝒕𝒐𝒎-𝟖 𝒍𝒆𝒇𝒕-𝟖 𝒑𝒓-𝟖 𝒕𝒆𝒙𝒕-𝒍𝒆𝒇𝒕">
+                        <𝒉𝟑 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-𝟐𝒙𝒍 𝒇𝒐𝒏𝒕-𝒃𝒍𝒂𝒄𝒌 𝒊𝒕𝒂𝒍𝒊𝒄 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒇𝒐𝒏𝒕-𝒃𝒓𝒂𝒏𝒅 𝒍𝒆𝒂𝒅𝒊𝒏𝒈-𝒏𝒐𝒏𝒆">${𝒈.𝒕𝒊𝒕𝒍𝒆}</𝒉𝟑>
+                    </𝒅𝒊𝒗>
+                </𝒅𝒊𝒗>
+            `).𝒋𝒐𝒊𝒏('');
         }
 
-        function openGame(id) {
-            const g = games.find(x => x.id === id);
-            document.getElementById('detailImg').src = g.img;
-            document.getElementById('detailTitle').innerText = g.title;
-            const container = document.getElementById('downloadContainer');
-            container.innerHTML = '';
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒐𝒑𝒆𝒏𝑮𝒂𝒎𝒆(𝒊𝒅) {
+            𝒄𝒐𝒏𝒔𝒕 𝒈 = 𝒈𝒂𝒎𝒆𝒔.𝒇𝒊𝒏𝒅(𝒙 => 𝒙.𝒊𝒅 === 𝒊𝒅);
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒅𝒆𝒕𝒂𝒊𝒍𝑰𝒎𝒈').𝒔𝒓𝒄 = 𝒈.𝒊𝒎𝒈;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒅𝒆𝒕𝒂𝒊𝒍𝑻𝒊𝒕𝒍𝒆').𝒊𝒏𝒏𝒆𝒓𝑻𝒆𝒙𝒕 = 𝒈.𝒕𝒊𝒕𝒍𝒆;
+            𝒄𝒐𝒏𝒔𝒕 𝒄𝒐𝒏𝒕𝒂𝒊𝒏𝒆𝒓 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝑪𝒐𝒏𝒕𝒂𝒊𝒏𝒆𝒓');
+            𝒄𝒐𝒏𝒕𝒂𝒊𝒏𝒆𝒓.𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = '';
+            𝒄𝒐𝒏𝒔𝒕 𝒕 = 𝒄𝒖𝒓𝒓𝒆𝒏𝒕𝑳𝒂𝒏𝒈.𝒕𝒆𝒙𝒕𝒔;
 
-            const t = currentLang.texts;
-
-            if (g.hasVersions) {
-                g.versions.forEach((v, idx) => {
-                    const versionLabel = t[v.vid] || v.vid;
-                    const card = document.createElement('div');
-                    card.className = 'version-card anim-fade-up';
-                    card.style.animationDelay = `${idx * 0.1}s`;
-                    card.innerHTML = `
-                        <p class="text-[10px] font-bold text-white/30 uppercase mb-4 tracking-widest">${versionLabel}</p>
-                        <a href="${v.link}" target="_blank" onclick="sendLog('${g.title} [${v.vid}]')" class="btn-action">${t.download}</a>
-                        <div class="preview-img-box">
-                            <img src="${v.preview}" class="preview-img" onclick="viewImage('${v.preview}')" alt="Preview HD">
-                        </div>
+            𝒊𝒇 (𝒈.𝒉𝒂𝒔𝑽𝒆𝒓𝒔𝒊𝒐𝒏𝒔) {
+                𝒈.𝒗𝒆𝒓𝒔𝒊𝒐𝒏𝒔.𝒇𝒐𝒓𝑬𝒂𝒄𝒉((𝒗, 𝒊𝒅𝒙) => {
+                    𝒄𝒐𝒏𝒔𝒕 𝒗𝒆𝒓𝒔𝒊𝒐𝒏𝑳𝒂𝒃𝒆𝒍 = 𝒕[𝒗.𝒗𝒊𝒅] || 𝒗.𝒗𝒊𝒅;
+                    𝒄𝒐𝒏𝒔𝒕 𝒄𝒂𝒓𝒅 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒄𝒓𝒆𝒂𝒕𝒆𝑬𝒍𝒆𝒎𝒆𝒏𝒕('𝒅𝒊𝒗');
+                    𝒄𝒂𝒓𝒅.𝒄𝒍𝒂𝒔𝒔𝑵𝒂𝒎𝒆 = '𝒗𝒆𝒓𝒔𝒊𝒐𝒏-𝒄𝒂𝒓𝒅 𝒂𝒏𝒊𝒎-𝒇𝒂𝒅𝒆-𝒖𝒑';
+                    𝒄𝒂𝒓𝒅.𝒔𝒕𝒚𝒍𝒆.𝒂𝒏𝒊𝒎𝒂𝒕𝒊𝒐𝒏𝑫𝒆𝒍𝒂𝒚 = `${𝒊𝒅𝒙 * 𝟎.𝟏}𝒔`;
+                    𝒄𝒂𝒓𝒅.𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = `
+                        <𝒑 𝒄𝒍𝒂𝒔𝒔="𝒕𝒆𝒙𝒕-[𝟏𝟎𝒑𝒙] 𝒇𝒐𝒏𝒕-𝒃𝒐𝒍𝒅 𝒕𝒆𝒙𝒕-𝒘𝒉𝒊𝒕𝒆/𝟑𝟎 𝒖𝒑𝒑𝒆𝒓𝒄𝒂𝒔𝒆 𝒎𝒃-𝟒 𝒕𝒓𝒂𝒄𝒌𝒊𝒏𝒈-𝒘𝒊𝒅𝒆𝒔𝒕">${𝒗𝒆𝒓𝒔𝒊𝒐𝒏𝑳𝒂𝒃𝒆𝒍}</𝒑>
+                        <𝒂 𝒉𝒓𝒆𝒇="${𝒗.𝒍𝒊𝒏𝒌}" 𝒕𝒂𝒓𝒈𝒆𝒕="_𝒃𝒍𝒂𝒏𝒌" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒆𝒏𝒅𝑳𝒐𝒈('${𝒈.𝒕𝒊𝒕𝒍𝒆} [${𝒗.𝒗𝒊𝒅}]')" 𝒄𝒍𝒂𝒔𝒔="𝒃𝒕𝒏-𝒂𝒄𝒕𝒊𝒐𝒏">${𝒕.𝒅𝒐𝒘𝒏𝒍𝒐𝒂𝒅}</𝒂>
+                        <𝒅𝒊𝒗 𝒄𝒍𝒂𝒔𝒔="𝒑𝒓𝒆𝒗𝒊𝒆𝒘-𝒊𝒎𝒈-𝒃𝒐𝒙">
+                            <𝒊𝒎𝒈 𝒔𝒓𝒄="${𝒗.𝒑𝒓𝒆𝒗𝒊𝒆𝒘}" 𝒄𝒍𝒂𝒔𝒔="𝒑𝒓𝒆𝒗𝒊𝒆𝒘-𝒊𝒎𝒈" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒗𝒊𝒆𝒘𝑰𝒎𝒂𝒈𝒆('${𝒗.𝒑𝒓𝒆𝒗𝒊𝒆𝒘}')" 𝒂𝒍𝒕="𝑷𝒓𝒆𝒗𝒊𝒆𝒘">
+                        </𝒅𝒊𝒗>
                     `;
-                    container.appendChild(card);
+                    𝒄𝒐𝒏𝒕𝒂𝒊𝒏𝒆𝒓.𝒂𝒑𝒑𝒆𝒏𝒅𝑪𝒉𝒊𝒍𝒅(𝒄𝒂𝒓𝒅);
                 });
-            } else {
-                container.innerHTML = `<a href="${g.link}" target="_blank" onclick="sendLog('${g.title}')" class="btn-action">${t.dlNow}</a>`;
+            } 𝒆𝒍𝒔𝒆 {
+                𝒄𝒐𝒏𝒕𝒂𝒊𝒏𝒆𝒓.𝒊𝒏𝒏𝒆𝒓𝑯𝑻𝑴𝑳 = `
+                    <𝒂 𝒉𝒓𝒆𝒇="${𝒈.𝒍𝒊𝒏𝒌}" 𝒕𝒂𝒓𝒈𝒆𝒕="_𝒃𝒍𝒂𝒏𝒌" 𝒐𝒏𝒄𝒍𝒊𝒄𝒌="𝒔𝒆𝒏𝒅𝑳𝒐𝒈('${𝒈.𝒕𝒊𝒕𝒍𝒆}')" 𝒄𝒍𝒂𝒔𝒔="𝒃𝒕𝒏-𝒂𝒄𝒕𝒊𝒐𝒏">${𝒕.𝒅𝒍𝑵𝒐𝒘}</𝒂>
+                `;
             }
-            showView('detail');
+            𝒔𝒉𝒐𝒘𝑽𝒊𝒆𝒘('𝒅𝒆𝒕𝒂𝒊𝒍');
         }
 
-        function viewImage(src) {
-            const vi = document.getElementById('viewer-img');
-            vi.src = src;
-            document.getElementById('image-viewer').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒗𝒊𝒆𝒘𝑰𝒎𝒂𝒈𝒆(𝒔𝒓𝒄) {
+            𝒄𝒐𝒏𝒔𝒕 𝒗𝒊 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒗𝒊𝒆𝒘𝒆𝒓-𝒊𝒎𝒈');
+            𝒗𝒊.𝒔𝒓𝒄 = 𝒔𝒓𝒄;
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒊𝒎𝒂𝒈𝒆-𝒗𝒊𝒆𝒘𝒆𝒓').𝒔𝒕𝒚𝒍𝒆.𝒅𝒊𝒔𝒑𝒍𝒂𝒚 = '𝒇𝒍𝒆𝒙';
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒃𝒐𝒅𝒚.𝒔𝒕𝒚𝒍𝒆.𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘 = '𝒉𝒊𝒅𝒅𝒆𝒏';
         }
 
-        function closeViewer() {
-            document.getElementById('image-viewer').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒄𝒍𝒐𝒔𝒆𝑽𝒊𝒆𝒘𝒆𝒓() {
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒊𝒎𝒂𝒈𝒆-𝒗𝒊𝒆𝒘𝒆𝒓').𝒔𝒕𝒚𝒍𝒆.𝒅𝒊𝒔𝒑𝒍𝒂𝒚 = '𝒏𝒐𝒏𝒆';
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒃𝒐𝒅𝒚.𝒔𝒕𝒚𝒍𝒆.𝒐𝒗𝒆𝒓𝒇𝒍𝒐𝒘 = '𝒂𝒖𝒕𝒐';
         }
 
-        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-        function showView(v) {
-            document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(v + '-view').classList.add('active');
-            window.scrollTo(0,0);
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒕𝒐𝒈𝒈𝒍𝒆𝑴𝒆𝒏𝒖() { 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒎𝒐𝒃𝒊𝒍𝒆-𝒎𝒆𝒏𝒖').𝒄𝒍𝒂𝒔𝒔𝑳𝒊𝒔𝒕.𝒕𝒐𝒈𝒈𝒍𝒆('𝒐𝒑𝒆𝒏'); }
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒔𝒉𝒐𝒘𝑽𝒊𝒆𝒘(𝒗) {
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒒𝒖𝒆𝒓𝒚𝑺𝒆𝒍𝒆𝒄𝒕𝒐𝒓𝑨𝒍𝒍('.𝒗𝒊𝒆𝒘-𝒔𝒆𝒄𝒕𝒊𝒐𝒏').𝒇𝒐𝒓𝑬𝒂𝒄𝒉(𝒔 => 𝒔.𝒄𝒍𝒂𝒔𝒔𝑳𝒊𝒔𝒕.𝒓𝒆𝒎𝒐𝒗𝒆('𝒂𝒄𝒕𝒊𝒗𝒆'));
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅(𝒗 + '-𝒗𝒊𝒆𝒘').𝒄𝒍𝒂𝒔𝒔𝑳𝒊𝒔𝒕.𝒂𝒅𝒅('𝒂𝒄𝒕𝒊𝒗𝒆');
+            𝒘𝒊𝒏𝒅𝒐𝒘.𝒔𝒄𝒓𝒐𝒍𝒍𝑻𝒐(𝟎,𝟎);
         }
 
-        function sendLog(item) {
-            const data = { embeds: [{ title: "🔥 DESCARGA", description: `**Juego:** ${item}\n**Idioma:** ${currentLang.name}`, color: 62207 }] };
-            navigator.sendBeacon(WEBHOOK_URL, JSON.stringify(data));
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒔𝒆𝒏𝒅𝑳𝒐𝒈(𝒊𝒕𝒆𝒎) {
+            𝒄𝒐𝒏𝒔𝒕 𝒅𝒂𝒕𝒂 = { 𝒆𝒎𝒃𝒆𝒅𝒔: [{ 𝒕𝒊𝒕𝒍𝒆: "🔥 𝑫𝑬𝑺𝑪𝑨𝑹𝑮𝑨", 𝒅𝒆𝒔𝒄𝒓𝒊𝒑𝒕𝒊𝒐𝒏: `**𝑱𝒖𝒆𝒈𝒐:** ${𝒊𝒕𝒆𝒎}\𝒏**𝑰𝒅𝒊𝒐𝒎𝒂:** ${𝒄𝒖𝒓𝒓𝒆𝒏𝒕𝑳𝒂𝒏𝒈.𝒏𝒂𝒎𝒆}`, 𝒄𝒐𝒍𝒐𝒓: 𝟔𝟐𝟐𝟎𝟕 }] };
+            𝒏𝒂𝒗𝒊𝒈𝒂𝒕𝒐𝒓.𝒔𝒆𝒏𝒅𝑩𝒆𝒂𝒄𝒐𝒏(𝑾𝑬𝑩𝑯𝑶𝑶𝑲_𝑼𝑹𝑳, 𝑱𝑺𝑶𝑵.𝒔𝒕𝒓𝒊𝒏𝒈𝒊𝒇𝒚(𝒅𝒂𝒕𝒂));
         }
 
-        function sendRequest() {
-            const val = document.getElementById('requestInput').value;
-            if(!val.trim()) return;
-            navigator.sendBeacon(WEBHOOK_URL, JSON.stringify({ embeds: [{ title: "🏴‍☠️ PETICIÓN", description: `**Busca:** ${val}`, color: 16711680 }] }));
-            document.getElementById('requestInput').value = "";
+        𝒇𝒖𝒏𝒄𝒕𝒊𝒐𝒏 𝒔𝒆𝒏𝒅𝑹𝒆𝒒𝒖𝒆𝒔𝒕() {
+            𝒄𝒐𝒏𝒔𝒕 𝒗𝒂𝒍 = 𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒓𝒆𝒒𝒖𝒆𝒔𝒕𝑰𝒏𝒑𝒖𝒕').𝒗𝒂𝒍𝒖𝒆;
+            𝒊𝒇(!𝒗𝒂𝒍.𝒕𝒓𝒊𝒎()) 𝒓𝒆𝒕𝒖𝒓𝒏;
+            𝒏𝒂𝒗𝒊𝒈𝒂𝒕𝒐𝒓.𝒔𝒆𝒏𝒅𝑩𝒆𝒂𝒄𝒐𝒏(𝑾𝑬𝑩𝑯𝑶𝑶𝑲_𝑼𝑹𝑳, 𝑱𝑺𝑶𝑵.𝒔𝒕𝒓𝒊𝒏𝒈𝒊𝒇𝒚({ 𝒆𝒎𝒃𝒆𝒅𝒔: [{ 𝒕𝒊𝒕𝒍𝒆: "🏴‍☠️ 𝑷𝑬𝑻𝑰𝑪𝑰𝑶́𝑵", 𝒅𝒆𝒔𝒄𝒓𝒊𝒑𝒕𝒊𝒐𝒏: `**𝑩𝒖𝒔𝒄𝒂:** ${𝒗𝒂𝒍}`, 𝒄𝒐𝒍𝒐𝒓: 𝟏𝟔𝟕𝟏𝟏𝟔𝟖𝟎 }] }));
+            𝒅𝒐𝒄𝒖𝒎𝒆𝒏𝒕.𝒈𝒆𝒕𝑬𝒍𝒆𝒎𝒆𝒏𝒕𝑩𝒚𝑰𝒅('𝒓𝒆𝒒𝒖𝒆𝒔𝒕𝑰𝒏𝒑𝒖𝒕').𝒗𝒂𝒍𝒖𝒆 = "";
         }
 
-        window.onload = init;
-    </script>
-</body>
-</html>
+        𝒘𝒊𝒏𝒅𝒐𝒘.𝒐𝒏𝒍𝒐𝒂𝒅 = 𝒊𝒏𝒊𝒕;
+    </𝒔𝒄𝒓𝒊𝒑𝒕>
+</𝒃𝒐𝒅𝒚>
+</𝒉𝒕𝒎𝒍>
 
 ```
