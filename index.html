@@ -217,32 +217,28 @@
                 req: 'NUEVA <br><span class="text-[#00f2ff]">PETICIÓN</span>', 
                 navHome: 'Catálogo', navReq: 'Peticiones', navLang: 'Cambiar Idioma', 
                 reqBtn: 'Enviar Petición', back: '← VOLVER', download: 'DESCARGAR', 
-                dlNow: 'DESCARGAR APK', input: '¿Qué juego buscas?...', close: 'CERRAR ✕',
-                v1: 'V1 - EL MÁS COMPLETO'
+                dlNow: 'DESCARGAR APK', input: '¿Qué juego buscas?...', close: 'CERRAR ✕'
             }},
             { code: 'en', class: 'active-en', name: 'English', flag: '🇺🇸', texts: { 
                 home: 'GAME <br><span class="text-[#00f2ff]">VAULT</span>', 
                 req: 'NEW <br><span class="text-[#00f2ff]">REQUEST</span>', 
                 navHome: 'Catalog', navReq: 'Requests', navLang: 'Change Language', 
                 reqBtn: 'Send Request', back: '← BACK', download: 'DOWNLOAD', 
-                dlNow: 'DOWNLOAD APK', input: 'Search game...', close: 'CLOSE ✕',
-                v1: 'V1 - THE MOST COMPLETE'
+                dlNow: 'DOWNLOAD APK', input: 'Search game...', close: 'CLOSE ✕'
             }},
             { code: 'pt', class: 'active-pt', name: 'Português', flag: '🇧🇷', texts: { 
                 home: 'COFRE DE <br><span class="text-[#00f2ff]">JOGOS</span>', 
                 req: 'NOVO <br><span class="text-[#00f2ff]">PEDIDO</span>', 
                 navHome: 'Catálogo', navReq: 'Pedidos', navLang: 'Mudar Idioma', 
                 reqBtn: 'Enviar Pedido', back: '← VOLTAR', download: 'BAIXAR', 
-                dlNow: 'BAIXAR APK', input: 'Procurar juego...', close: 'FECHAR ✕',
-                v1: 'V1 - O MAIS COMPLETO'
+                dlNow: 'BAIXAR APK', input: 'Procurar juego...', close: 'FECHAR ✕'
             }},
             { code: 'ru', class: 'active-ru', name: 'Русский', flag: '🇷🇺', texts: { 
                 home: 'ХРАНИЛИЩЕ <br><span class="text-[#00f2ff]">ИГР</span>', 
                 req: 'ЗАПРОС <br><span class="text-[#00f2ff]">ИГРЫ</span>', 
                 navHome: 'Каталог', navReq: 'Запросы', navLang: 'Сменить язык', 
                 reqBtn: 'Отправить', back: '← НАЗАД', download: 'СКАЧАТЬ', 
-                dlNow: 'СКАЧАТЬ APK', input: 'Поиск...', close: 'ЗАКРЫТЬ ✕',
-                v1: 'V1 - САМАЯ ПОЛНАЯ'
+                dlNow: 'СКАЧАТЬ APK', input: 'Поиск...', close: 'ЗАКРЫТЬ ✕'
             }}
         ];
 
@@ -268,10 +264,9 @@
                 id: 'p5', 
                 title: 'Poppy Playtime 5', 
                 img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', 
-                hasVersions: true, 
-                versions: [
-                    { vid: 'v1', link: 'https://piro775.itch.io/toy-factory-chapter-5-fangame-unity/download', preview: 'https://i.ibb.co/bjvtp7Wx/v1.png' }
-                ]
+                link: 'https://www.mediafire.com/file/b1d6r5ym0dcj9ta/PoppyPlaytime5+(1).apk/file',
+                credits: 'Piro775',
+                warning: 'UN POCO DE RETRASO AL SALTAR'
             },
             { id: 'fnaf_sb', title: 'FNaF Security Breach', img: 'https://static.wikia.nocookie.net/freddy-fazbears-pizza/images/a/aa/FNaF_Security_Breach_%28Poster%29.jpeg/revision/latest?cb=20230417011733&path-prefix=es', link: 'https://www.mediafire.com/file/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk/file' },
             { id: 'p4', title: 'Poppy Playtime 4', img: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', link: 'https://piro775.itch.io/toy-factory-chapter-4' },
@@ -339,21 +334,19 @@
             container.innerHTML = '';
             const t = currentLang.texts;
 
-            if (g.hasVersions) {
-                g.versions.forEach((v, idx) => {
-                    const versionLabel = t[v.vid] || v.vid;
-                    const card = document.createElement('div');
-                    card.className = 'version-card anim-fade-up';
-                    card.style.animationDelay = `${idx * 0.1}s`;
-                    card.innerHTML = `
-                        <p class="text-[10px] font-bold text-white/30 uppercase mb-4 tracking-widest">${versionLabel}</p>
-                        <a href="${v.link}" target="_blank" onclick="sendLog('${g.title} [${v.vid}]')" class="btn-action">${t.download}</a>
-                        <div class="preview-img-box">
-                            <img src="${v.preview}" class="preview-img" onclick="viewImage('${v.preview}')" alt="Preview">
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
+            if (g.id === 'p5') {
+                // Diseño especial para Poppy 5 solicitado
+                container.innerHTML = `
+                    <div class="space-y-6">
+                        <a href="${g.link}" target="_blank" onclick="sendLog('${g.title}')" class="btn-action">DESCARGAR APK</a>
+                        <p class="text-2xl md:text-3xl font-black text-[#00f2ff] uppercase italic font-brand text-center md:text-left leading-tight">
+                            ${g.warning}
+                        </p>
+                        <p class="text-sm font-bold text-white/40 uppercase tracking-[0.2em] mt-8">
+                            Créditos: <span class="text-white">${g.credits}</span>
+                        </p>
+                    </div>
+                `;
             } else {
                 container.innerHTML = `<a href="${g.link}" target="_blank" onclick="sendLog('${g.title}')" class="btn-action">${t.dlNow}</a>`;
             }
@@ -397,4 +390,3 @@
 </html>
 
 ```
-
