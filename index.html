@@ -4,191 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Excessive Piracy | Vault v42</title>
     
-    <!-- SEO & Google Search Meta Tags -->
-    <title>Excessive Piracy | Vault v28</title>
-    <meta name="description" content="Disfruta en Excessive Piracy los mejores juegos portados para Android. Encuentra actualizaciones y novedades diarias en nuestro sitio oficial.">
-    <meta name="keywords" content="juegos android, apks, portados, fnaf mobile, gta v android, silksong android">
-    <meta name="author" content="Excessive Piracy">
-    <link rel="canonical" href="https://excessive-piracy.com">
-
-    <!-- Favicon (Icono de Google y Navegador) -->
     <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10">
-    <link rel="apple-touch-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10">
-
-    <!-- Open Graph / Facebook / Discord -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://excessive-piracy.com">
-    <meta property="og:title" content="Excessive Piracy | Vault v28">
-    <meta property="og:description" content="Descarga los mejores juegos portados y exclusivos para Android.">
-    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Excessive Piracy | Vault v28">
-    <meta property="twitter:description" content="Descarga los mejores juegos portados y exclusivos para Android.">
-    <meta property="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10">
-
-    <meta name="theme-color" content="#00f2ff">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    
     <style>
         :root { --cyan: #00f2ff; --dark: #050505; }
-        
-        body { 
-            background-color: var(--dark); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
+        body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
         .font-brand { font-family: 'Rajdhani', sans-serif; }
 
-        /* Pantalla de carga */
-        #loading-screen {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 50000;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .spinner {
-            width: 60px; height: 60px; border: 4px solid rgba(0, 242, 255, 0.1);
-            border-top: 4px solid var(--cyan); border-radius: 50%;
-            animation: spin 1s linear infinite; margin-bottom: 20px;
-        }
+        #loading-screen { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 50000; display: none; flex-direction: column; align-items: center; justify-content: center; }
+        .spinner { width: 60px; height: 60px; border: 4px solid rgba(0, 242, 255, 0.1); border-top: 4px solid var(--cyan); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Idiomas */
-        #language-overlay {
-            position: fixed; inset: 0; background: radial-gradient(circle at center, #111 0%, #000 100%);
-            z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;
-        }
-        .lang-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
-            max-width: 800px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 20px;
-        }
-        .lang-btn {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 5px; border-radius: 18px; display: flex; flex-direction: column;
-            align-items: center; gap: 5px; transition: 0.3s; cursor: pointer;
-        }
+        #language-overlay { position: fixed; inset: 0; background: radial-gradient(circle at center, #111 0%, #000 100%); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .lang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 800px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 20px; }
+        .lang-btn { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px 5px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; gap: 5px; transition: 0.3s; cursor: pointer; }
         .lang-btn:hover { border-color: var(--cyan); background: rgba(0, 242, 255, 0.1); }
 
-        /* Animaciones */
-        @keyframes fadeInUp { 
-            from { opacity: 0; transform: translateY(20px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        .anim-fade-up { animation: fadeInUp 0.5s ease-out forwards; }
-
-        /* Tarjetas */
-        .game-card {
-            background: #111; border-radius: 24px; height: 380px; position: relative;
-            overflow: hidden; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;
-            transition: 0.4s ease;
-        }
+        .game-card { background: #111; border-radius: 24px; height: 380px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: 0.4s ease; }
         .game-card:hover { border-color: var(--cyan); transform: translateY(-5px); }
         .char-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .game-card:hover .char-img { opacity: 1; transform: scale(1.05); }
 
-        .btn-action {
-            background: var(--cyan); color: black; padding: 20px; border-radius: 16px;
-            font-weight: 900; text-transform: uppercase; width: 100%; text-align: center;
-            display: block; border: none; font-size: 14px; letter-spacing: 1px; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2); transition: 0.2s;
-        }
-        .btn-action:active { transform: scale(0.96); }
+        .btn-action { background: var(--cyan); color: black; padding: 20px; border-radius: 16px; font-weight: 900; text-transform: uppercase; width: 100%; text-align: center; display: block; border: none; font-size: 14px; letter-spacing: 1px; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2); transition: 0.2s; }
+        
+        #warning-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #0a0a0a; border: 2px solid var(--cyan); border-radius: 32px; max-width: 420px; width: 100%; padding: 40px; text-align: center; }
 
-        #warning-modal {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000;
-            display: none; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-content {
-            background: #0a0a0a; border: 2px solid var(--cyan); border-radius: 32px;
-            max-width: 420px; width: 100%; padding: 40px; text-align: center;
-        }
-
-        #mobile-menu {
-            position: fixed; top: 0; right: -100%; width: 85%; max-width: 320px; height: 100%;
-            background: #050505; z-index: 100; transition: 0.4s; border-left: 1px solid var(--cyan); padding: 40px;
-        }
+        #mobile-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 320px; height: 100%; background: #050505; z-index: 100; transition: 0.4s; border-left: 1px solid var(--cyan); padding: 40px; }
         #mobile-menu.open { right: 0; }
 
         .view-section { display: none; padding-bottom: 120px; }
         .view-section.active { display: block; }
         
-        #toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: var(--cyan); color: black; font-weight: 900; padding: 15px 30px;
-            border-radius: 50px; z-index: 60000; display: none; text-transform: uppercase;
-        }
-
-        /* Barra de búsqueda */
-        .search-container {
-            position: relative;
-            margin-bottom: 40px;
-            width: 100%;
-            max-width: 600px;
-        }
-        .search-input {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 18px 24px 18px 56px;
-            border-radius: 20px;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-input:focus {
-            border-color: var(--cyan);
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 20px rgba(0,242,255,0.1);
-        }
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255,255,255,0.4);
-        }
+        .search-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 18px 24px; border-radius: 20px; color: white; outline: none; transition: 0.3s; }
     </style>
 </head>
 <body>
 
-    <div id="toast"></div>
-
-    <!-- Pantalla de Carga -->
     <div id="loading-screen">
         <div class="spinner"></div>
-        <p id="loading-text" class="font-brand text-2xl font-bold uppercase tracking-widest text-[#00f2ff]">CARGANDO APKS...</p>
+        <p id="loading-text" class="font-brand text-2xl font-bold uppercase text-[#00f2ff]">CARGANDO...</p>
     </div>
 
-    <!-- Selección de Idioma -->
     <div id="language-overlay">
-        <h2 class="font-brand text-4xl font-black italic uppercase text-center mb-8">CHOOSE LANGUAGE</h2>
+        <h2 class="font-brand text-4xl font-black italic uppercase mb-8 text-center">CHOOSE LANGUAGE</h2>
         <div class="lang-grid" id="langGrid"></div>
     </div>
 
-    <!-- Modal Advertencia (Poppy 5) -->
     <div id="warning-modal">
-        <div class="modal-content anim-fade-up">
-            <div class="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-500">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            </div>
-            <h3 class="font-brand text-3xl font-bold uppercase mb-4 tracking-tighter" id="warn-title">¡ADVERTENCIA!</h3>
-            <p class="text-white/70 text-base mb-10 leading-relaxed" id="warn-desc"></p>
-            <button onclick="confirmDownload()" class="btn-action" id="warn-btn">ACEPTAR Y DESCARGAR</button>
+        <div class="modal-content">
+            <h3 class="font-brand text-3xl font-bold uppercase mb-4" id="warn-title">¡ADVERTENCIA!</h3>
+            <p class="text-white/70 mb-10" id="warn-desc"></p>
+            <button onclick="confirmDownload()" class="btn-action" id="warn-btn">ACEPTAR</button>
         </div>
     </div>
 
     <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5 px-6 py-6 flex justify-between items-center">
         <div class="flex items-center gap-3 cursor-pointer" onclick="showView('home')">
-            <div class="w-10 h-10 bg-[#00f2ff] rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(0,242,255,0.4)]">
-                <!-- Icono Principal de la página -->
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10" class="w-7 h-7 rounded-lg" alt="Logo">
+            <div class="w-10 h-10 bg-[#00f2ff] rounded-xl flex items-center justify-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10" class="w-7 h-7 rounded-lg">
             </div>
             <span class="font-brand text-2xl font-black italic uppercase tracking-tighter">EXCESSIVE PIRACY</span>
         </div>
@@ -199,45 +77,41 @@
     </header>
 
     <nav id="mobile-menu">
-        <button onclick="toggleMenu()" class="text-[#00f2ff] font-black mb-16 uppercase text-sm tracking-[0.2em]" id="close-menu">CERRAR ✕</button>
+        <button onclick="toggleMenu()" class="text-[#00f2ff] font-black mb-16 uppercase text-sm" id="close-menu">CERRAR ✕</button>
         <a href="#" onclick="showView('home'); toggleMenu(); return false;" class="block text-2xl font-black uppercase mb-8" id="nav-home">Catálogo</a>
         <a href="https://discord.gg/bsfVCBarR" target="_blank" class="block text-2xl font-black uppercase mb-8">Discord</a>
         <a href="#" onclick="showView('request'); toggleMenu(); return false;" class="block text-2xl font-black uppercase mb-8" id="nav-request">Peticiones</a>
         <div class="mt-12 pt-12 border-t border-white/10">
-            <button onclick="location.reload()" class="text-white/30 text-xs font-black uppercase tracking-widest" id="nav-lang">Cambiar Idioma</button>
+            <button onclick="location.reload()" class="text-white/30 text-xs font-black uppercase" id="nav-lang">Idioma</button>
         </div>
     </nav>
 
     <main id="home-view" class="view-section active pt-36 px-6">
-        <h1 class="text-6xl font-black italic uppercase font-brand leading-[0.9] mb-8 anim-fade-up" id="home-title">...</h1>
-        
-        <!-- Barra de Búsqueda -->
-        <div class="search-container anim-fade-up">
-            <svg class="search-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <h1 class="text-6xl font-black italic uppercase font-brand leading-[0.9] mb-8" id="home-title">...</h1>
+        <div class="relative mb-10 max-w-lg">
             <input type="text" id="catalogSearch" class="search-input" oninput="filterGames()" placeholder="...">
         </div>
-
         <div id="gameGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
     </main>
 
     <section id="request-view" class="view-section pt-36 px-6 text-center">
-        <h1 class="text-6xl font-black italic uppercase font-brand leading-[0.9] mb-10 anim-fade-up" id="req-title">...</h1>
-        <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 max-w-2xl mx-auto shadow-2xl">
-            <input type="text" id="requestInput" class="w-full bg-black border border-white/10 p-6 rounded-2xl mb-8 text-white outline-none focus:border-[#00f2ff] transition-all text-lg" placeholder="...">
+        <h1 class="text-6xl font-black italic uppercase font-brand mb-10" id="req-title">...</h1>
+        <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 max-w-2xl mx-auto">
+            <input type="text" id="requestInput" class="w-full bg-black border border-white/10 p-6 rounded-2xl mb-8 text-white outline-none" placeholder="...">
             <button onclick="sendRequest()" class="btn-action" id="req-btn">...</button>
         </div>
     </section>
 
     <section id="detail-view" class="view-section pt-36 px-6">
         <div class="max-w-5xl mx-auto">
-            <button onclick="showView('home')" class="mb-10 text-[#00f2ff] font-black text-sm tracking-[0.3em] uppercase" id="back-btn">← VOLVER</button>
+            <button onclick="showView('home')" class="mb-10 text-[#00f2ff] font-black uppercase" id="back-btn">← VOLVER</button>
             <div class="flex flex-col lg:flex-row gap-16 items-start">
-                <div class="w-full lg:w-[60%] anim-fade-up">
-                    <p class="text-[10px] text-white/40 font-black uppercase tracking-[0.4em] mb-4">Gameplay Screenshot</p>
-                    <img id="detailImg" src="" class="w-full h-auto rounded-[32px] border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.8)] bg-zinc-900 object-cover aspect-video" onerror="this.src='https://placehold.co/800x450/111/fff?text=No+Image'">
+                <div class="w-full lg:w-[50%]">
+                    <img id="detailImg" class="w-full h-auto rounded-[32px] border border-white/10 aspect-video object-cover bg-zinc-900">
                 </div>
-                <div class="flex-1 w-full anim-fade-up" style="animation-delay: 0.1s">
-                    <h2 id="detailTitle" class="text-6xl font-black italic uppercase font-brand mb-10 leading-[0.9] tracking-tighter">...</h2>
+                <div class="flex-1 w-full">
+                    <h2 id="detailTitle" class="text-6xl font-black italic uppercase font-brand mb-6 leading-none"></h2>
+                    <div id="detailDesc" class="text-white/60 mb-8 text-lg leading-relaxed space-y-2"></div>
                     <div id="downloadContainer"></div>
                 </div>
             </div>
@@ -246,32 +120,151 @@
 
     <script>
         const WEBHOOK_URL = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
+        let currentLangCode = 'es';
         let pendingUrl = "";
         let pendingName = "";
-        let filterValue = "";
+        let currentGameId = "";
 
-        const languages = [
-            { code: 'es', name: 'Español', flag: '🇪🇸', texts: { home: 'BÓVEDA <br><span class="text-[#00f2ff]">DE JUEGOS</span>', req: 'NUEVA <br><span class="text-[#00f2ff]">PETICIÓN</span>', navHome: 'Catálogo', navReq: 'Peticiones', navLang: 'Cambiar Idioma', reqBtn: 'Enviar Petición', back: '← VOLVER', dlNow: 'Descargar Apk', input: '¿Qué juego buscas?...', searchPlaceholder: 'Buscar en el catálogo...', close: 'CERRAR ✕', warnTitle: '¡ADVERTENCIA!', warnDesc: 'Recuerda que el juego tiene un retraso al saltar así que salta a tiempo', warnBtn: 'ACEPTAR Y DESCARGAR', toast: '¡Petición enviada!', credit: 'Créditos', loading: 'CARGANDO APKS...' }},
-            { code: 'en', name: 'English', flag: '🇺🇸', texts: { home: 'GAME <br><span class="text-[#00f2ff]">VAULT</span>', req: 'NEW <br><span class="text-[#00f2ff]">REQUEST</span>', navHome: 'Catalog', navReq: 'Requests', navLang: 'Change Language', reqBtn: 'Send Request', back: '← BACK', dlNow: 'Download Apk', input: 'Search game...', searchPlaceholder: 'Search catalog...', close: 'CLOSE ✕', warnTitle: 'WARNING!', warnDesc: 'The game has a jump delay, so jump on time', warnBtn: 'ACCEPT AND DOWNLOAD', toast: 'Request sent!', credit: 'Credits', loading: 'LOADING APKS...' }},
-            { code: 'pt', name: 'Português', flag: '🇧🇷', texts: { home: 'COFRE <br><span class="text-[#00f2ff]">DE JOGOS</span>', req: 'NOVO <br><span class="text-[#00f2ff]">PEDIDO</span>', navHome: 'Catálogo', navReq: 'Pedidos', navLang: 'Mudar Idioma', reqBtn: 'Enviar Pedido', back: '← VOLTAR', dlNow: 'Baixar Apk', input: 'Busca jogo...', searchPlaceholder: 'Pesquisar catálogo...', close: 'FECHAR ✕', warnTitle: 'AVISO!', warnDesc: 'O juego tiene un atraso no pulo, pule a tempo', warnBtn: 'ACEITAR E BAIXAR', toast: 'Pedido enviado!', credit: 'Créditos', loading: 'CARREGANDO APKS...' }},
-            { code: 'fr', name: 'Français', flag: '🇫🇷', texts: { home: 'COFFRE <br><span class="text-[#00f2ff]">DE JEUX</span>', req: 'NOUVELLE <br><span class="text-[#00f2ff]">REQUÊTE</span>', navHome: 'Catalogue', navReq: 'Requêtes', navLang: 'Changer Langue', reqBtn: 'Envoyer Requête', back: '← RETOUR', dlNow: 'Télécharger Apk', input: 'Chercher jeu...', searchPlaceholder: 'Rechercher...', close: 'FERMER ✕', warnTitle: 'ATTENTION !', warnDesc: 'Le jeu a un délai de saut, sautez à temps', warnBtn: 'ACCEPTER ET TÉLÉCHARGER', toast: 'Envoyé !', credit: 'Crédits', loading: 'CHARGEMENT DES APKS...' }},
-            { code: 'it', name: 'Italiano', flag: '🇮🇹', texts: { home: 'CAVEAU <br><span class="text-[#00f2ff]">DEI GIOCHI</span>', req: 'RICHIESTA <br><span class="text-[#00f2ff]">NUOVA</span>', navHome: 'Catalogo', navReq: 'Richieste', navLang: 'Cambia Langua', reqBtn: 'Invia Richiesta', back: '← INDIETRO', dlNow: 'Scarica Apk', input: 'Cerca gioco...', searchPlaceholder: 'Cerca nel catalogo...', close: 'CHIUDI ✕', warnTitle: 'ATTENZIONE!', warnDesc: 'Il gioco ha un ritardo, salta in tempo', warnBtn: 'ACCETTA E SCARICA', toast: 'Inviato!', credit: 'Crediti', loading: 'CARICAMENTO APK...' }},
-            { code: 'de', name: 'Deutsch', flag: '🇩🇪', texts: { home: 'SPIELE <br><span class="text-[#00f2ff]">TRESOR</span>', req: 'NEUE <br><span class="text-[#00f2ff]">ANFRAGE</span>', navHome: 'Katalog', navReq: 'Anfragen', navLang: 'Sprache ändern', reqBtn: 'Senden', back: '← ZURÜCK', dlNow: 'Herunterladen', input: 'Spiel suchen...', searchPlaceholder: 'Katalog durchsuchen...', close: 'SCHLIESSEN ✕', warnTitle: 'WARNUNG!', warnDesc: 'Sprungverzögerung beachten!', warnBtn: 'AKZEPTIEREN', toast: 'Gesendet!', credit: 'Credits', loading: 'LADE APKS...' }},
-            { code: 'ru', name: 'Русский', flag: '🇷🇺', texts: { home: 'АРХИВ <br><span class="text-[#00f2ff]">ИГР</span>', req: 'НОВЫЙ <br><span class="text-[#00f2ff]">ЗАПРОС</span>', navHome: 'Каталог', navReq: 'Запросы', navLang: 'Язык', reqBtn: 'Отправить', back: '← НАЗАД', dlNow: 'Скачать Apk', input: 'Поиск...', searchPlaceholder: 'Поиск по каталогу...', close: 'ЗАКРЫТЬ ✕', warnTitle: 'ВНИМАНИЕ!', warnDesc: 'Задержка прыжка, прыгайте вовремя', warnBtn: 'ПРИНЯТЬ', toast: 'Отправлено!', credit: 'Кредиты', loading: 'ЗАГРУЗКА APK...' }},
-            { code: 'jp', name: '日本語', flag: '🇯🇵', texts: { home: 'ゲーム <br><span class="text-[#00f2ff]">保管庫</span>', req: 'リクエスト <br><span class="text-[#00f2ff]">新規</span>', navHome: 'カタログ', navReq: 'リクエスト', navLang: '言語変更', reqBtn: '送信', back: '← 戻る', dlNow: 'ダウンロード', input: '検索...', searchPlaceholder: 'カタログを検索...', close: '閉じる ✕', warnTitle: '警告！', warnDesc: 'ジャンプ遅延に注意してください', warnBtn: '同意してダウンロード', toast: '完了！', credit: 'クレジット', loading: 'APK読み込み中...' }},
-            { code: 'cn', name: '中文', flag: '🇨🇳', texts: { home: '游戏 <br><span class="text-[#00f2ff]">宝库</span>', req: '新 <br><span class="text-[#00f2ff]">请求</span>', navHome: '目录', navReq: '请求', navLang: '语言', reqBtn: '发送', back: '← 返回', dlNow: '下载 Apk', input: '搜索...', searchPlaceholder: '搜索目录...', close: '关闭 ✕', warnTitle: '警告！', warnDesc: '跳跃有延迟，请及时', warnBtn: '接受', toast: '已发送！', credit: '学分', loading: '正在加载...' }},
-            { code: 'kr', name: '한국어', flag: '🇰🇷', texts: { home: '게임 <br><span class="text-[#00f2ff]">저장소</span>', req: '새 <br><span class="text-[#00f2ff]">요청</span>', navHome: '목록', navReq: '요청', navLang: '언어', reqBtn: '보내기', back: '← 뒤로', dlNow: '다운로드', input: '검색...', searchPlaceholder: '카탈로그 검색...', close: '닫기 ✕', warnTitle: '경고!', warnDesc: '점프 지연 주의!', warnBtn: '수락', toast: '완료!', credit: '크레딧', loading: '로딩 중...' }},
-            { code: 'sa', name: 'العربية', flag: '🇸🇦', texts: { home: 'قبو <br><span class="text-[#00f2ff]">الألعاب</span>', req: 'طلب <br><span class="text-[#00f2ff]">جديد</span>', navHome: 'الكتالوج', navReq: 'الطلبات', navLang: 'اللغة', reqBtn: 'إرسال', back: '← عودة', dlNow: 'تحميل', input: 'بحث...', searchPlaceholder: 'البحث في القائمة...', close: 'إغلاق ✕', warnTitle: 'تحذير!', warnDesc: 'تأخير في القفز!', warnBtn: 'قبول', toast: 'تم الإرسال!', credit: 'الاعتمادات', loading: 'جاري التحميل...' }},
-            { code: 'tr', name: 'Türkçe', flag: '🇹🇷', texts: { home: 'OYUN <br><span class="text-[#00f2ff]">MAHZENİ</span>', req: 'İSTEK <br><span class="text-[#00f2ff]">YENİ</span>', navHome: 'Katalog', navReq: 'İstekler', navLang: 'Dil', reqBtn: 'Gönder', back: '← GERİ', dlNow: 'İndir', input: 'Ara...', searchPlaceholder: 'Katalogda ara...', close: 'KAPAT ✕', warnTitle: 'UYARI!', warnDesc: 'Zıplama gecikmesi var!', warnBtn: 'KABUL ET', toast: 'Gönderildi!', credit: 'Krediler', loading: 'YÜKLENİYOR...' }},
-            { code: 'vn', name: 'Tiếng Việt', flag: '🇻🇳', texts: { home: 'KHO <br><span class="text-[#00f2ff]">TRÒ CHƠI</span>', req: 'YÊU CẦU <br><span class="text-[#00f2ff]">MỚI</span>', navHome: 'Danh mục', navReq: 'Yêu cầu', navLang: 'Ngôn ngữ', reqBtn: 'Gửi', back: '← QUAY LẠI', dlNow: 'Tải về', input: 'Tìm kiếm...', searchPlaceholder: 'Tìm trong danh mục...', close: 'ĐÓNG ✕', warnTitle: 'CẢNH BÁO!', warnDesc: 'Độ trễ nhảy!', warnBtn: 'CHẤP NHẬN', toast: 'Đã gửi!', credit: 'Tín dụng', loading: 'ĐANG TẢI...' }},
-            { code: 'pl', name: 'Polski', flag: '🇵🇱', texts: { home: 'SKARBIEC <br><span class="text-[#00f2ff]">GIER</span>', req: 'PROŚBA <br><span class="text-[#00f2ff]">NOWA</span>', navHome: 'Katalog', navReq: 'Prośby', navLang: 'Język', reqBtn: 'Wyślij', back: '← POWRÓT', dlNow: 'Pobierz', input: 'Szukaj...', searchPlaceholder: 'Szukaj w katalogu...', close: 'ZAMKNIJ ✕', warnTitle: 'OSTRZEŻENIE!', warnDesc: 'Opóźnienie skoku!', warnBtn: 'AKCEPTUJ', toast: 'Wysłano!', credit: 'Twórcy', loading: 'ŁADOWANIE...' }}
-        ];
-
-        let currentLang = languages[0];
+        const languages = {
+            es: { 
+                name: 'Español', flag: '🇪🇸', 
+                home: 'BÓVEDA <br><span class="text-[#00f2ff]">DE APKS</span>', 
+                req: 'PETICIÓN', navHome: 'Catálogo', navReq: 'Peticiones', navLang: 'Cambiar Idioma', 
+                reqBtn: 'Enviar', back: '← VOLVER', dlNow: 'Descargar Apk', search: 'Buscar...', 
+                close: 'CERRAR ✕', warnTitle: '¡AVISO!', warnDesc: 'Recuerda que el juego tiene un retraso al saltar así que salta a tiempo.', 
+                warnBtn: 'ACEPTAR', loading: 'CARGANDO...', downloading: 'DESCARGANDO...', credits: 'Créditos', updated: 'Actualizado hace 1 día',
+                gameDescs: {
+                    hff: '¡Física loca y diversión sin fin! Controla a Bob en este divertido juego de puzzles donde la gravedad es tu mayor reto.',
+                    gtav: 'Explora Los Santos en la palma de tu mano. El mundo abierto definitivo ahora disponible para móviles.',
+                    p5: 'La entrega más aterradora hasta la fecha. Nuevos puzzles, enemigos más rápidos y una atmósfera que te dejará sin aliento.',
+                    fnaf_sb: 'Sobrevive a la noche en el Mega Pizzaplex. Corre, escóndete y burla a los animatrónicos.',
+                    p4: 'Continúa el misterio en la fábrica abandonada. Descubre los secretos que Playtime Co. ha intentado ocultar.',
+                    silksong: 'La esperada secuela de Hollow Knight. Juega como Hornet en un vasto reino nuevo.',
+                    p3: 'Enfréntate a CatNap en el orfanato. El capítulo más oscuro de la saga Poppy Playtime.',
+                    descenders: 'Ciclismo de montaña extremo con niveles generados por procedimientos.',
+                    miles: 'Colúmpiate por Nueva York como Miles Morales con gráficos increíbles.',
+                    fnaf: 'El clásico de terror totalmente traducido al español. Sobrevive a las cinco noches.',
+                    cuphead: 'Acción de disparos y plataformas con estilo de dibujos animados de los años 30. Incluye DLC.',
+                    hollow: 'Una aventura épica a través de un reino de insectos y héroes.',
+                    pes2019: 'Vive la emoción del fútbol con esta versión clásica para PSP compatible con emuladores.'
+                },
+                p5Features: ['Poppy playtime chapter 5 fangame unity', 'V1.5', 'Añadidos múltiples mapas', 'Añadida la ubicación del taller de ingeniería', 'Añadidos nuevos efectos de sonido (SFX)', 'Añadidas nuevas mecánicas', 'Añadida cinemática del Prototipo', 'Errores corregidos', 'Y más...', 'V1.5.1 Errores corregidos', 'V1.5.2 Más problemas solucionados']
+            },
+            en: { 
+                name: 'English', flag: '🇺🇸', 
+                home: 'APK <br><span class="text-[#00f2ff]">VAULT</span>', 
+                req: 'REQUEST', navHome: 'Catalog', navReq: 'Requests', navLang: 'Language', 
+                reqBtn: 'Send', back: '← BACK', dlNow: 'Download Apk', search: 'Search...', 
+                close: 'CLOSE ✕', warnTitle: 'WARNING!', warnDesc: 'The game has a jump delay, jump on time.', 
+                warnBtn: 'ACCEPT', loading: 'LOADING...', downloading: 'DOWNLOADING...', credits: 'Credits', updated: 'Updated 1 day ago',
+                gameDescs: {
+                    hff: 'Crazy physics and endless fun! Control Bob in this hilarious puzzle game.',
+                    gtav: 'Explore Los Santos in the palm of your hand. The ultimate open world on mobile.',
+                    p5: 'The most terrifying installment to date. New puzzles, faster enemies, and chilling atmosphere.',
+                    fnaf_sb: 'Survive the night at Mega Pizzaplex. Run, hide and outsmart the animatronics.',
+                    p4: 'Continue the mystery in the abandoned factory. Discover secrets Playtime Co. hid.',
+                    silksong: 'The long-awaited sequel to Hollow Knight. Play as Hornet in a vast new kingdom.',
+                    p3: 'Face CatNap in the orphanage. The darkest chapter of the Poppy Playtime saga.',
+                    descenders: 'Extreme mountain biking with procedurally generated levels.',
+                    miles: 'Swing through New York as Miles Morales with incredible graphics.',
+                    fnaf: 'The horror classic. Survive five nights at Freddy Fazbears Pizza.',
+                    cuphead: 'Run and gun action with 1930s cartoon style. Includes DLC.',
+                    hollow: 'An epic adventure through a kingdom of bugs and heroes.',
+                    pes2019: 'Experience the thrill of football with this classic PSP version.'
+                },
+                p5Features: ['Poppy playtime chapter 5 fangame unity', 'V1.5', 'Added multiple maps', 'Added Engineering workshop', 'New SFX', 'New Mechanics', 'Prototype cutscene', 'Bugs fixed', 'And more...', 'V1.5.1 Fixed bugs', 'V1.5.2 More fixes']
+            },
+            pt: { 
+                name: 'Português', flag: '🇧🇷', 
+                home: 'COFRE <br><span class="text-[#00f2ff]">DE APKS</span>', req: 'PEDIDO', navHome: 'Catálogo', navReq: 'Pedidos', navLang: 'Idioma', 
+                reqBtn: 'Enviar', back: '← VOLTAR', dlNow: 'Baixar Apk', search: 'Pesquisar...', close: 'FECHAR ✕', warnTitle: 'AVISO!', warnDesc: 'O jogo tem um atraso no salto, salte a tempo.', 
+                warnBtn: 'ACEITAR', loading: 'CARREGANDO...', downloading: 'BAIXANDO...', credits: 'Créditos', updated: 'Actualizado há 1 dia',
+                gameDescs: { hff: 'Física louca e diversão sem fim!', gtav: 'Explore Los Santos no seu celular.', p5: 'O capítulo mais assustador até agora.', fnaf_sb: 'Sobreviva à noite no Mega Pizzaplex.', p4: 'Descubra os segredos da Playtime Co.', silksong: 'A sequela de Hollow Knight.', p3: 'Enfrente o CatNap no orfanato.', descenders: 'Ciclismo de montanha extremo.', miles: 'Seja o Miles Morales no Android.', fnaf: 'O clássico do terror.', cuphead: 'Ação estilo anos 30.', hollow: 'Uma aventura épica.', pes2019: 'Futebol clássico no PSP.' },
+                p5Features: ['V1.5 Mapas adicionados', 'Oficina adicionada', 'Novas mecânicas', 'Bugs corrigidos']
+            },
+            fr: { 
+                name: 'Français', flag: '🇫🇷', home: 'COFFRE <br><span class="text-[#00f2ff]">APK</span>', req: 'REQUÊTE', navHome: 'Catalogue', navReq: 'Requêtes', navLang: 'Langue', 
+                reqBtn: 'Envoyer', back: '← RETOUR', dlNow: 'Télécharger', search: 'Chercher...', close: 'FERMER ✕', warnTitle: 'ATTENTION!', warnDesc: 'Le jeu a un délai de saut, sautez à temps.', 
+                warnBtn: 'ACCEPTER', loading: 'CHARGEMENT...', downloading: 'TÉLÉCHARGEMENT...', credits: 'Crédits', updated: 'Mis à jour il y a 1 jour',
+                gameDescs: { hff: 'Physique folle et amusement!', gtav: 'Explorez Los Santos sur mobile.', p5: 'Le chapitre le plus terrifiant.', fnaf_sb: 'Survivez au Mega Pizzaplex.', p4: 'Mystère à l\'usine Playtime.', silksong: 'La suite de Hollow Knight.', p3: 'Affrontez CatNap à l\'orphelinat.', descenders: 'VTT extrême.', miles: 'Spider-Man sur Android.', fnaf: 'Le classique de l\'horreur.', cuphead: 'Action style années 30.', hollow: 'Aventure épique.', pes2019: 'Football classique PSP.' },
+                p5Features: ['V1.5 Cartes ajoutées', 'Atelier ajouté', 'Mécaniques corrigées']
+            },
+            it: { 
+                name: 'Italiano', flag: '🇮🇹', home: 'CAVEAU <br><span class="text-[#00f2ff]">APK</span>', req: 'RICHIESTA', navHome: 'Catalogo', navReq: 'Richieste', navLang: 'Lingua', 
+                reqBtn: 'Invia', back: '← INDIETRO', dlNow: 'Scarica', search: 'Cerca...', close: 'CHIUDI ✕', warnTitle: 'ATTENZIONE!', warnDesc: 'Il gioco ha un ritardo nel salto, salta in tempo.', 
+                warnBtn: 'ACCETTA', loading: 'CARICAMENTO...', downloading: 'SCARICAMENTO...', credits: 'Crediti', updated: 'Aggiornato 1 giorno fa',
+                gameDescs: { hff: 'Fisica folle e divertimento!', gtav: 'Esplora Los Santos su mobile.', p5: 'Il capitolo più spaventoso.', fnaf_sb: 'Sopravvivi al Mega Pizzaplex.', p4: 'Mistero alla fabbrica.', silksong: 'Il seguito di Hollow Knight.', p3: 'Affronta CatNap.', descenders: 'Mountain bike estrema.', miles: 'Miles Morales su Android.', fnaf: 'Il classico horror.', cuphead: 'Azione anni \'30.', hollow: 'Avventura epica.', pes2019: 'Calcio classico PSP.' },
+                p5Features: ['V1.5 Mappe aggiunte', 'Nuove meccaniche', 'Bug risolti']
+            },
+            de: { 
+                name: 'Deutsch', flag: '🇩🇪', home: 'APK <br><span class="text-[#00f2ff]">TRESOR</span>', req: 'ANFRAGE', navHome: 'Katalog', navReq: 'Anfragen', navLang: 'Sprache', 
+                reqBtn: 'Senden', back: '← ZURÜCK', dlNow: 'Herunterladen', search: 'Suchen...', close: 'SCHLIESSEN ✕', warnTitle: 'WARNUNG!', warnDesc: 'Sprungverzögerung beachten, rechtzeitig springen.', 
+                warnBtn: 'AKZEPTIEREN', loading: 'LADEN...', downloading: 'LÄDT HERUNTER...', credits: 'Credits', updated: 'Vor 1 Tag aktualisiert',
+                gameDescs: { hff: 'Verrückte Physik!', gtav: 'Los Santos auf dem Handy.', p5: 'Das gruseligste Kapitel.', fnaf_sb: 'Überlebe im Mega Pizzaplex.', p4: 'Geheimnisse der Fabrik.', silksong: 'Hollow Knight Fortsetzung.', p3: 'Stelle dich CatNap.', descenders: 'Extremes Mountainbiking.', miles: 'Spider-Man auf Android.', fnaf: 'Horror-Klassiker.', cuphead: 'Action im 30er-Stil.', hollow: 'Episches Abenteuer.', pes2019: 'PSP Fußball Klassiker.' },
+                p5Features: ['V1.5 Neue Karten', 'Fehler behoben', 'Neue Mechanik']
+            },
+            ru: { 
+                name: 'Русский', flag: '🇷🇺', home: 'АРХИВ <br><span class="text-[#00f2ff]">ИГР</span>', req: 'ЗАПРОС', navHome: 'Каталог', navReq: 'Запросы', navLang: 'Язык', 
+                reqBtn: 'Отправить', back: '← НАЗАД', dlNow: 'Скачать', search: 'Поиск...', close: 'ЗАКРЫТЬ ✕', warnTitle: 'ВНИМАНИЕ!', warnDesc: 'Задержка прыжка, прыгайте вовремя.', 
+                warnBtn: 'ПРИНЯТЬ', loading: 'ЗАГРУЗКА...', downloading: 'СКАЧИВАНИЕ...', credits: 'Авторы', updated: 'Обновлено 1 день назад',
+                gameDescs: { hff: 'Безумная физика!', gtav: 'Лос-Сантос на мобильном.', p5: 'Самая страшная глава.', fnaf_sb: 'Выживи в Mega Pizzaplex.', p4: 'Тайны фабрики.', silksong: 'Продолжение Hollow Knight.', p3: 'Сразись с CatNap.', descenders: 'Экстремальный велоспорт.', miles: 'Майлз Моралес на Android.', fnaf: 'Классика хоррора.', cuphead: 'Экшен в стиле 30-х.', hollow: 'Эпическое приключение.', pes2019: 'Классика футбола PSP.' },
+                p5Features: ['V1.5 Новые карты', 'Баги исправлены', 'Новая механика']
+            },
+            ja: { 
+                name: '日本語', flag: '🇯🇵', home: 'APK <br><span class="text-[#00f2ff]">保管庫</span>', req: 'リクエスト', navHome: 'カタログ', navReq: 'リクエスト', navLang: '言語', 
+                reqBtn: '送信', back: '← 戻る', dlNow: 'ダウンロード', search: '検索...', close: '閉じる ✕', warnTitle: '警告!', warnDesc: 'ジャンプが遅れるので、時間通りにジャンプしてください。', 
+                warnBtn: '同意', loading: '読み込み中...', downloading: 'ダウンロード中...', credits: 'クレジット', updated: '1日前に更新',
+                gameDescs: { hff: '物理パズルゲーム！', gtav: 'スマホでGTA V。', p5: '史上最恐のチャプター。', fnaf_sb: '夜を生き延びろ。', p4: '工場の謎を解け。', silksong: '待望の続編。', p3: 'CatNapに立ち向かえ。', descenders: '究極のマウンテンバイク。', miles: 'マイルズ・モラレス。', fnaf: 'ホラーの傑作。', cuphead: '30年代アニメ風アクション。', hollow: '虫たちの王国の冒険。', pes2019: 'PSPサッカー名作。' },
+                p5Features: ['V1.5 マップ追加', 'バグ修正', '新機能']
+            },
+            zh: { 
+                name: '中文', flag: '🇨🇳', home: 'APK <br><span class="text-[#00f2ff]">宝库</span>', req: '请求', navHome: '目录', navReq: '请求', navLang: '语言', 
+                reqBtn: '发送', back: '← 返回', dlNow: '下载', search: '搜索...', close: '关闭 ✕', warnTitle: '警告!', warnDesc: '跳跃有延迟，请及时跳跃。', 
+                warnBtn: '接受', loading: '加载中...', downloading: '下载中...', credits: '学分', updated: '1天前更新',
+                gameDescs: { hff: '疯狂物理游戏！', gtav: '手机版GTA5。', p5: '最恐怖的章节。', fnaf_sb: '在披萨店生存。', p4: '工厂的秘密。', silksong: '空洞骑士续作。', p3: '对抗CatNap。', descenders: '极限骑行。', miles: '迈尔斯莫拉莱斯。', fnaf: '恐怖经典。', cuphead: '复古动作游戏。', hollow: '史诗冒险。', pes2019: '经典足球PSP。' },
+                p5Features: ['V1.5 地图更新', '修复Bug', '新机制']
+            },
+            ko: { 
+                name: '한국어', flag: '🇰🇷', home: 'APK <br><span class="text-[#00f2ff]">저장소</span>', req: '요청', navHome: '목록', navReq: '요청', navLang: '언어', 
+                reqBtn: '보내기', back: '← 뒤로', dlNow: '다운로드', search: '검색...', close: '닫기 ✕', warnTitle: '경고!', warnDesc: '점프 지연이 있으니 제시간에 점프하세요.', 
+                warnBtn: '수락', loading: '로딩 중...', downloading: '다운로드 중...', credits: '크레딧', updated: '1일 전 업데이트',
+                gameDescs: { hff: '재미있는 물리 퍼즐!', gtav: '모바일 GTA5.', p5: '가장 무서운 챕터.', fnaf_sb: '피자 가게 생존.', p4: '공장의 비밀.', silksong: '할로우 나이트 후속작.', p3: 'CatNap에 맞서라.', descenders: '익스트림 사이클링.', miles: '마일즈 모랄레스.', fnaf: '공포 클래식.', cuphead: '복고풍 액션.', hollow: '서사적 모험.', pes2019: 'PSP 축구 클래식.' },
+                p5Features: ['V1.5 맵 추가', '버그 수정', '새로운 기능']
+            },
+            sa: { 
+                name: 'العربية', flag: '🇸🇦', home: 'قبو <br><span class="text-[#00f2ff]">APK</span>', req: 'طلب', navHome: 'الكتالوج', navReq: 'الطلبات', navLang: 'اللغة', 
+                reqBtn: 'إرسال', back: '← عودة', dlNow: 'تحميل', search: 'بحث...', close: 'إإغلاق ✕', warnTitle: 'تحذير!', warnDesc: 'هناك تأخير في القفز، اقفز في الوقت المناسب.', 
+                warnBtn: 'قبول', loading: 'جاري التحميل...', downloading: 'جاري التنزيل...', credits: 'الاعتمادات', updated: 'تم التحديث منذ يوم واحد',
+                gameDescs: { hff: 'فيزياء مجنونة!', gtav: 'GTA V على الجوال.', p5: 'الجزء الأكثر رعباً.', fnaf_sb: 'ابق على قيد الحياة.', p4: 'أسرار المصنع.', silksong: 'تكملة Hollow Knight.', p3: 'واجه CatNap.', descenders: 'ركوب الدراجات.', miles: 'مايلز موراليس.', fnaf: 'رعب كلاسيكي.', cuphead: 'أكشن كلاسيكي.', hollow: 'مغامرة ملحمية.', pes2019: 'كرة قدم PSP.' },
+                p5Features: ['V1.5 إضافة خرائط', 'إصلاح الأخطاء', 'ميكانيكا جديدة']
+            },
+            tr: { 
+                name: 'Türkçe', flag: '🇹🇷', home: 'APK <br><span class="text-[#00f2ff]">MAHZENİ</span>', req: 'İSTEK', navHome: 'Katalog', navReq: 'İstekler', navLang: 'Dil', 
+                reqBtn: 'Gönder', back: '← GERİ', dlNow: 'İndir', search: 'Ara...', close: 'KAPAT ✕', warnTitle: 'UYARI!', warnDesc: 'Zıplama gecikmesi var, zamanında zıpla.', 
+                warnBtn: 'KABUL', loading: 'YÜKLENİYOR...', downloading: 'İNDİRİLİYOR...', credits: 'Krediler', updated: '1 gün önce güncellendi',
+                gameDescs: { hff: 'Çılgın fizik!', gtav: 'Mobilde GTA V.', p5: 'En korkunç bölüm.', fnaf_sb: 'Hayatta kal.', p4: 'Fabrikanın sırları.', silksong: 'Hollow Knight devamı.', p3: 'CatNap ile yüzleş.', descenders: 'Ekstrem dağ bisikleti.', miles: 'Miles Morales Android.', fnaf: 'Korku klasiği.', cuphead: 'Retro aksiyon.', hollow: 'Destansı macera.', pes2019: 'PSP futbol klasiği.' },
+                p5Features: ['V1.5 Haritalar eklendi', 'Hatalar giderildi', 'Yeni mekanik']
+            },
+            vn: { 
+                name: 'Tiếng Việt', flag: '🇻🇳', home: 'KHO <br><span class="text-[#00f2ff]">APK</span>', req: 'YÊU CẦU', navHome: 'Danh mục', navReq: 'Yêu cầu', navLang: 'Ngôn ngữ', 
+                reqBtn: 'Gửi', back: '← QUAY LẠI', dlNow: 'Tải về', search: 'Tìm kiếm...', close: 'ĐÓNG ✕', warnTitle: 'CẢNH BÁO!', warnDesc: 'Có độ trễ nhảy, hãy nhảy đúng lúc.', 
+                warnBtn: 'CHẤP NHẬN', loading: 'ĐANG TẢI...', downloading: 'ĐANG TẢI XUỐNG...', credits: 'Tín dụng', updated: 'Cập nhật 1 día trước',
+                gameDescs: { hff: 'Vật lý điên rồ!', gtav: 'GTA V trên di động.', p5: 'Phần đáng sợ nhất.', fnaf_sb: 'Sống sót ban đêm.', p4: 'Bí mật nhà máy.', silksong: 'Hậu bản Hollow Knight.', p3: 'Đối mặt CatNap.', descenders: 'Đua xe đạp địa hình.', miles: 'Miles Morales trên Android.', fnaf: 'Kinh dị cổ điển.', cuphead: 'Hành động retro.', hollow: 'Phiêu lưu sử thi.', pes2019: 'Bóng đá PSP.' },
+                p5Features: ['V1.5 Thêm bản đồ', 'Sửa lỗi', 'Cơ chế mới']
+            },
+            pl: { 
+                name: 'Polski', flag: '🇵🇱', home: 'SKARBIEC <br><span class="text-[#00f2ff]">APK</span>', req: 'PROŚBA', navHome: 'Katalog', navReq: 'Prośby', navLang: 'Język', 
+                reqBtn: 'Wyślij', back: '← POWRÓT', dlNow: 'Pobierz', search: 'Szukaj...', close: 'ZAMKNIJ ✕', warnTitle: 'OSTRZEŻENIE!', warnDesc: 'Gra ma opóźnienie skoku, skacz na czas.', 
+                warnBtn: 'AKCEPTUJ', loading: 'ŁADOWANIE...', downloading: 'POBIERANIE...', credits: 'Twórcy', updated: 'Zaktualizowano 1 dzień temu',
+                gameDescs: { hff: 'Szalona fizyka!', gtav: 'GTA V na telefon.', p5: 'Najstraszniejszy rozdział.', fnaf_sb: 'Przetrwaj noc.', p4: 'Tajemnica fabryki.', silksong: 'Kontynuacja Hollow Knight.', p3: 'Zmierz się z CatNap.', descenders: 'Ekstremalna jazda.', miles: 'Miles Morales Android.', fnaf: 'Klasyk horroru.', cuphead: 'Akcja w stylu lat 30.', hollow: 'Epicka przygoda.', pes2019: 'Klasyk piłki PSP.' },
+                p5Features: ['V1.5 Nowe mapy', 'Naprawione błędy', 'Nowe mechaniki']
+            }
+        };
 
         const games = [
+            { id: 'hff', title: 'Human Fall Flat', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLgujSbYHhalK_BA7ViEBzgbyTsdjquFxBPGz4AQROeG6t8fs_8Xo5-kmN&s=10', screen: 'https://img.apkvision.org/human-fall-flat/human-fall-flat-5.webp', link: 'https://www.mediafire.com/file/6gyc9xlhng29hps/Human-Fall-Flat-v2.5.1-full-apkvision.apk/file' },
             { id: 'gtav', title: 'Grand Theft Auto V', poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png', screen: 'https://root-nation.com/wp-content/uploads/2021/08/GTA5-Mobile-APK-02.jpg', link: 'https://www.mediafire.com/file/hjoahu9to2lyal0/Grand+Theft+Auto+V+-+espacioapk.com.apk/file' },
-            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjU5MzQwNS5wbmc=/original/Rcedmc.png', link: 'https://www.mediafire.com/file/b1d6r5ym0dcj9ta/PoppyPlaytime5+(1).apk/file', credits: 'Piro775' },
+            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjU5MzQwNS5wbmc=/original/Rcedmc.png', link: 'https://www.mediafire.com/file/b1d6r5ym0dcj9ta/PoppyPlaytime5+(1).apk/file', credits: 'Piro775', updated: true },
             { id: 'fnaf_sb', title: 'FNaF Security Breach', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlLcK2U0rmkMIKo7BDuYMM8vpJFmzJ68dJd7IuoRMO4ZLzi7qqlauQ7icKX7Y4gyKMKxi3a6WYA4QS5gEVPHvD7hIPuQh_ctq6LJZndg&s=10', screen: 'https://unreal-play-studio.com/asset/fnaf-security-breach-mobile/7xm6jD.webp', link: 'https://www.mediafire.com/file/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk/file' },
             { id: 'p4', title: 'Poppy Playtime 4', poster: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', screen: 'https://img.itch.zone/aW1hZ2UvMzQxOTQ2MC8yMDg0MTc1Mi5wbmc=/original/N3fagg.png', link: 'https://piro775.itch.io/toy-factory-chapter-4' },
             { id: 'silksong', title: 'Hollow Knight Silksong', poster: 'https://m.media-amazon.com/images/M/MV5BMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://www.mediafire.com/file/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk/file' },
@@ -286,158 +279,140 @@
 
         function init() {
             const grid = document.getElementById('langGrid');
-            grid.innerHTML = '';
-            languages.forEach(lang => {
-                const btn = document.createElement('div');
-                btn.className = `lang-btn`;
-                btn.innerHTML = `<span class="text-3xl">${lang.flag}</span><span class="text-[9px] font-black uppercase">${lang.name}</span>`;
-                btn.onclick = () => selectLanguage(lang.code);
-                grid.appendChild(btn);
-            });
+            grid.innerHTML = Object.keys(languages).map(code => `
+                <div class="lang-btn" onclick="setLanguage('${code}')">
+                    <span class="text-3xl">${languages[code].flag}</span>
+                    <span class="text-[10px] font-black uppercase">${languages[code].name}</span>
+                </div>
+            `).join('');
         }
 
-        function selectLanguage(code) {
-            currentLang = languages.find(l => l.code === code) || languages[0];
-            const t = currentLang.texts;
+        function setLanguage(code) {
+            currentLangCode = code;
+            document.getElementById('language-overlay').style.display = 'none';
+            const t = languages[code];
             document.getElementById('home-title').innerHTML = t.home;
-            document.getElementById('req-title').innerHTML = t.req;
+            document.getElementById('req-title').innerText = t.req;
             document.getElementById('nav-home').innerText = t.navHome;
             document.getElementById('nav-request').innerText = t.navReq;
+            document.getElementById('nav-lang').innerText = t.navLang;
             document.getElementById('req-btn').innerText = t.reqBtn;
             document.getElementById('back-btn').innerText = t.back;
             document.getElementById('close-menu').innerText = t.close;
-            document.getElementById('nav-lang').innerText = t.navLang;
-            document.getElementById('requestInput').placeholder = t.input;
-            document.getElementById('catalogSearch').placeholder = t.searchPlaceholder;
+            document.getElementById('loading-text').innerText = t.loading;
+            document.getElementById('catalogSearch').placeholder = t.search;
             document.getElementById('warn-title').innerText = t.warnTitle;
             document.getElementById('warn-btn').innerText = t.warnBtn;
-            document.getElementById('loading-text').innerText = t.loading;
-            document.getElementById('language-overlay').style.display = 'none';
-            renderCatalog();
-        }
 
-        function filterGames() {
-            filterValue = document.getElementById('catalogSearch').value.toLowerCase();
+            if(currentGameId) openGame(currentGameId);
             renderCatalog();
         }
 
         function renderCatalog() {
             const grid = document.getElementById('gameGrid');
-            const filtered = games.filter(g => g.title.toLowerCase().includes(filterValue));
-            
-            if(filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full py-20 text-center opacity-40 uppercase font-black tracking-widest">No se encontraron juegos</div>`;
-                return;
-            }
-
-            grid.innerHTML = filtered.map((g) => `
-                <div class="game-card anim-fade-up" onclick="openGame('${g.id}')">
+            const search = document.getElementById('catalogSearch').value.toLowerCase();
+            const filtered = games.filter(g => g.title.toLowerCase().includes(search));
+            grid.innerHTML = filtered.map(g => `
+                <div class="game-card" onclick="openGame('${g.id}')">
                     <img src="${g.poster}" class="char-img" onerror="this.src='https://placehold.co/400x600/111/fff?text=No+Image'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-6 left-6 text-left">
-                        <h3 class="text-2xl font-black italic uppercase font-brand leading-none tracking-tight">${g.title}</h3>
-                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6"><h3 class="text-2xl font-black font-brand">${g.title}</h3></div>
                 </div>
             `).join('');
         }
 
         function openGame(id) {
+            currentGameId = id;
             const g = games.find(x => x.id === id);
-            const t = currentLang.texts;
+            pendingUrl = g.link;
+            pendingName = g.title;
+            const t = languages[currentLangCode];
             
             document.getElementById('detailImg').src = g.screen;
             document.getElementById('detailTitle').innerText = g.title;
-            const container = document.getElementById('downloadContainer');
             
-            let extra = '';
+            let descHtml = "";
             if (g.id === 'p5') {
-                extra = `
-                    <p class="text-xl font-black text-[#00f2ff] uppercase italic font-brand leading-tight mt-6">⚠️ ${t.warnDesc}</p>
-                    <p class="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mt-2">${t.credit}: ${g.credits}</p>
-                `;
+                descHtml += `<ul class="list-disc list-inside mb-4 text-sm text-white/70 space-y-1">`;
+                t.p5Features.forEach(feat => {
+                    descHtml += `<li>${feat}</li>`;
+                });
+                descHtml += `</ul>`;
+                descHtml += `<p class="mt-4">${t.gameDescs.p5}</p>`;
+            } else {
+                // Restauramos la descripción completa de cada juego por idioma
+                const desc = t.gameDescs[g.id] || g.title + " Full Version";
+                descHtml += `<p class="mt-4">${desc}</p>`;
+            }
+            
+            if (g.updated) {
+                descHtml += `<p class="mt-4 text-[#00f2ff] font-bold uppercase text-xs tracking-widest">${t.updated}</p>`;
             }
 
-            container.innerHTML = `
-                <div class="space-y-6">
-                    <button onclick="handleDownload('${g.link}', '${g.title}')" class="btn-action shadow-[0_0_20px_rgba(0,242,255,0.4)]">${t.dlNow}</button>
-                    ${extra}
-                </div>
+            document.getElementById('detailDesc').innerHTML = descHtml;
+            
+            let extra = '';
+            if (g.credits) {
+                extra = `<p class="text-xs font-bold text-white/40 uppercase tracking-widest mt-4">${t.credits}: ${g.credits}</p>`;
+            }
+            if (g.id === 'p5') {
+                extra += `<p class="text-lg font-black text-[#00f2ff] uppercase italic font-brand mt-4">⚠️ ${t.warnDesc}</p>`;
+            }
+
+            document.getElementById('downloadContainer').innerHTML = `
+                <button onclick="handleDownload()" class="btn-action shadow-[0_0_20px_rgba(0,242,255,0.4)]">${t.dlNow}</button>
+                ${extra}
             `;
             showView('detail');
         }
 
-        function handleDownload(url, name) {
-            pendingUrl = url;
-            pendingName = name;
-            if (name.includes("Poppy Playtime 5")) {
-                document.getElementById('warn-desc').innerText = currentLang.texts.warnDesc;
+        function handleDownload() {
+            if (currentGameId === 'p5') {
+                document.getElementById('warn-desc').innerText = languages[currentLangCode].warnDesc;
                 document.getElementById('warning-modal').style.display = 'flex';
-            } else {
-                confirmDownload();
-            }
+            } else { confirmDownload(); }
         }
 
         function confirmDownload() {
             document.getElementById('warning-modal').style.display = 'none';
+            document.getElementById('loading-text').innerText = languages[currentLangCode].downloading;
             document.getElementById('loading-screen').style.display = 'flex';
             
-            sendLog(pendingName);
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: `✅ DESCARGA: ${pendingName} (Lang: ${currentLangCode})` })
+            });
 
             setTimeout(() => {
                 document.getElementById('loading-screen').style.display = 'none';
                 window.open(pendingUrl, '_blank');
-            }, 3000);
-        }
-
-        function sendLog(item) {
-            const data = {
-                content: "✅ **DESCARGA SOLICITADA**",
-                embeds: [{ 
-                    title: item, 
-                    description: `Procesando APK.\n**Idioma:** ${currentLang.name}`, 
-                    color: 65535,
-                    timestamp: new Date().toISOString()
-                }]
-            };
-            fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                document.getElementById('loading-text').innerText = languages[currentLangCode].loading;
+            }, 2000);
         }
 
         function sendRequest() {
             const val = document.getElementById('requestInput').value;
             if(!val.trim()) return;
-            const t = currentLang.texts;
-            
-            const data = {
-                content: "❓ **NUEVA PETICIÓN**",
-                embeds: [{ 
-                    title: "Búsqueda en Vault", 
-                    description: `Juego solicitado: **${val}**\n**Idioma:** ${currentLang.name}`, 
-                    color: 16711680,
-                    timestamp: new Date().toISOString()
-                }]
-            };
-            
-            fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-            .then(() => {
-                const toast = document.getElementById('toast');
-                toast.innerText = t.toast;
-                toast.style.display = 'block';
-                setTimeout(() => toast.style.display = 'none', 3000);
-                document.getElementById('requestInput').value = "";
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: `❓ PETICIÓN: ${val} (Lang: ${currentLangCode})` })
             });
+            document.getElementById('requestInput').value = "";
+            alert(currentLangCode === 'es' ? "¡Petición enviada!" : "Request sent!");
         }
 
+        function filterGames() { renderCatalog(); }
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
         function showView(v) {
             document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
             document.getElementById(v + '-view').classList.add('active');
             window.scrollTo(0,0);
         }
-
         window.onload = init;
     </script>
 </body>
 </html>
 
 ```
-
