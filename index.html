@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Excessive Piracy | EP Team</title>
+    <title>Excessive Piracy | EP Team Official</title>
     
     <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMqOETdu4C_mZKtvgCjDBlpkUyExJjMOIEBPlAEF0OTNL-L5hSai_n-Zg&s=10">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +48,6 @@
             transition: 0.3s; font-size: 14px;
         }
 
-        /* Banner Portada */
         .top-banner {
             width: 100%; margin: 0 auto 2rem auto;
             border-radius: 12px; overflow: hidden;
@@ -59,7 +58,6 @@
         .top-banner.active-banner { max-height: 600px; opacity: 1; }
         .top-banner img { width: 100%; height: auto; display: block; object-fit: cover; }
 
-        /* Game Card */
         .game-card { 
             background: #080808; border: 1px solid #1a1a1a;
             position: relative; overflow: hidden; border-radius: 14px;
@@ -80,7 +78,6 @@
         }
         .verified-tag { font-size: 7px; color: var(--cyan); font-weight: bold; margin-bottom: 4px; display: block; }
 
-        /* Pantalla de Carga 0.1s */
         #loading-screen {
             position: fixed; inset: 0; z-index: 10000;
             background: #000; display: none; align-items: center; justify-content: center;
@@ -92,7 +89,6 @@
         }
         @keyframes loading { to { left: 0; } }
 
-        /* Menu Lateral Derecha */
         #mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1999; display: none; backdrop-filter: blur(4px); }
         #mobile-menu {
             position: fixed; top: 0; right: -100%; width: 65%; height: 100vh;
@@ -108,12 +104,39 @@
         .view-section { display: none; opacity: 0; transition: 0.3s ease-out; }
         .view-section.active { display: block; opacity: 1; }
 
-        /* Idiomas */
         #language-overlay { position: fixed; inset: 0; z-index: 9999; background: #000; display: flex; align-items: center; justify-content: center; }
         .lang-container { background: #0a0a0a; padding: 1.5rem; border-radius: 20px; border: 1px solid #111; }
         .lang-btn { background: #151515; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
 
         .game-description { color: #aaa; font-size: 13px; line-height: 1.6; margin-top: 1rem; font-family: 'Outfit'; }
+        
+        .req-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--cyan);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 12px 12px 0;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .req-title { color: var(--cyan); font-weight: 700; font-size: 14px; margin-bottom: 8px; letter-spacing: 1px; }
+        .req-item { font-size: 12px; color: #eee; margin-bottom: 4px; display: block; }
+        .req-warning { font-size: 10px; color: #666; margin-top: 8px; font-style: italic; }
+
+        .download-btn {
+            background: var(--cyan);
+            color: #000;
+            font-weight: 900;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            text-align: center;
+            display: block;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .download-btn:active { transform: scale(0.98); opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -179,7 +202,9 @@
                         <h2 id="detailTitle" class="text-4xl font-brand mb-1"></h2>
                         <div class="text-[9px] text-cyan-400 font-bold tracking-widest uppercase mb-4">Verificado Por Ep team ✓</div>
                         <p id="detailDesc" class="game-description"></p>
-                        <div id="specsContainer"></div>
+                        
+                        <div id="requirementsContainer"></div>
+
                         <div id="downloadContainer" class="mt-8"></div>
                     </div>
                 </div>
@@ -193,23 +218,159 @@
         const flags = { es: '🇪🇸', en: '🇺🇸', fr: '🇫🇷', pt: '🇧🇷', de: '🇩🇪', it: '🇮🇹', jp: '🇯🇵', kr: '🇰🇷', cn: '🇨🇳', ru: '🇷🇺', ar: '🇸🇦', tr: '🇹🇷', hi: '🇮🇳', nl: '🇳🇱', pl: '🇵🇱' };
 
         const games = [
-            { id: 'hff', title: 'Human Fall Flat', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLgujSbYHhalK_BA7ViEBzgbyTsdjquFxBPGz4AQROeG6t8fs_8Xo5-kmN&s=10', screen: 'https://img.apkvision.org/human-fall-flat/human-fall-flat-5.webp', link: 'https://www.mediafire.com/file/6gyc9xlhng29hps/Human-Fall-Flat-v2.5.1-full-apkvision.apk/file', desc: 'Un divertido juego de plataformas basado en la física donde controlas a un humano torpe en paisajes oníricos.' },
-            { id: 'gtav', title: 'Grand Theft Auto V', poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png', screen: 'https://root-nation.com/wp-content/uploads/2021/08/GTA5-Mobile-APK-02.jpg', link: 'https://www.mediafire.com/file/hjoahu9to2lyal0/Grand+Theft+Auto+V+-+espacioapk.com.apk/file', desc: 'La mítica experiencia de mundo abierto de Rockstar Games, ahora adaptada para dispositivos móviles con gran optimización.' },
-            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjU5MzQwNS5wbmc=/original/Rcedmc.png', link: 'https://www.mediafire.com/file/ouo5nqc2upq6w24/PoppyPlaytime5+(3).apk/file', desc: 'El capítulo más reciente del terror en la fábrica de juguetes. Nuevos puzzles y enemigos que te pondrán a prueba.', hasSpecs: true },
-            { id: 'fnaf_sb', title: 'FNaF Security Breach', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlLcK2U0rmkMIKo7BDuYMM8vpJFmzJ68dJd7IuoRMO4ZLzi7qqlauQ7icKX7Y4gyKMKxi3a6WYA4QS5gEVPHvD7hIPuQh_ctq6LJZndg&s=10', screen: 'https://unreal-play-studio.com/asset/fnaf-security-breach-mobile/7xm6jD.webp', link: 'https://www.mediafire.com/file/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk/file', desc: 'Sobrevive una noche en el Mega Pizzaplex de Freddy Fazbear como Gregory, el pequeño atrapado en el complejo.' },
-            { id: 'p4', title: 'Poppy Playtime 4', poster: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', screen: 'https://img.itch.zone/aW1hZ2UvMzQxOTQ2MC8yMDg0MTc1Mi5wbmc=/original/N3fagg.png', link: 'https://piro775.itch.io/toy-factory-chapter-4', desc: 'Continúa la historia de la fábrica Playtime. Desvela los secretos oscuros que se ocultan en las profundidades.' },
-            { id: 'silksong', title: 'Hollow Knight Silksong', poster: 'https://m.media-amazon.com/images/M/MV5BMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://www.mediafire.com/file/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk/file', desc: 'Juega como Hornet, la princesa de Hallownest, en un reino completamente nuevo plagado de seda y canciones.' },
-            { id: 'p3', title: 'Poppy Playtime 3', poster: 'https://play-lh.googleusercontent.com/-4dSZjsh1LX-aczh0SrslsgUIH6s7qMOSLFcsTlNn1B6M4zSnm_IC5hw2xFcPH9Jhi4', screen: 'https://unreal-play-studio.com/asset/poppy-playtime-3/o4ozI7.webp', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3', desc: 'Un orfanato decrépito conocido como Playcare debajo de la fábrica. Deberás atravesar este lugar encantado.' },
-            { id: 'descenders', title: 'Descenders', poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', link: 'https://descenders.tech専list.com/download/', desc: 'Ciclismo de montaña extremo con generación procedimental de mundos y donde los errores tienen consecuencias reales.' },
-            { id: 'miles', title: 'Miles Morales', poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbd1fbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://www.mediafire.com/file/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_[www.AndroSU.com].apk/file', desc: 'Siente el poder de Miles Morales mientras domina sus habilidades explosivas para convertirse en su propio Spider-Man.' },
-            { id: 'fnaf', title: 'FNaF Spanish', poster: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', screen: 'https://imag.malavida.com/mvimgbig/download-fs/five-nights-at-freddys-14759-1.jpg', link: 'https://www.mediafire.com/file/7nysoswlpi8cm9l/Five_Nights_at_Freddy%25C2%25B4s_%2528Spanish%2529_-_espacioapk.com.apk/file', desc: 'El clásico juego de terror donde eres el guardia nocturno de Freddy Fazbear Pizza. Edición completamente en español.' },
-            { id: 'cuphead', title: 'Cuphead + DLC', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', link: 'https://www.mediafire.com/file/vdlzhn68ru3nuo5/Cuphead+++DLC+-+v1.0.3+-+VPR.apk/file', desc: 'Acción de correr y disparar con estética de dibujos animados de los años 30. Incluye el DLC "The Delicious Last Course".' },
-            { id: 'hollow', title: 'Hollow Knight', poster: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://www.mediafire.com/file/bsqgq7dnvz6w187/HKVulkanV2.7z/file', desc: 'Explora un vasto reino en ruinas de insectos y héroes en esta aventura épica de acción clásica en 2D.' },
-            { id: 'pes2019', title: 'PES 2019 PSP', poster: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pro-evolution-soccer-2019/0/08/Pes-2019---button-1525885009367.jpg', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://www.mediafire.com/file/dck5ouwiw2d62c0/Pro_Evolution_Soccer_2019_PSP_%2528USA%2529_%2528Lost_Media_C19%2529.iso/file', desc: 'El simulador de fútbol definitivo para PSP, ahora disponible para jugar en tu móvil mediante emulación optimizada.' },
-            { id: 'subnautica', title: 'Subnautica', poster: 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/subnautica_cover.JPG', screen: 'https://play-lh.googleusercontent.com/cNG4a8w8Ve05wIItXkxzhmw-Bw0uqA4t4t8LaxnFXR6klkTSe4YbNrALOCR-GI3lTw=w526-h296-rw', link: 'https://www.mediafire.com/file/yxk9uno0d6hq45c/Subnautica+v1.22.83315-espacioapk.com.apk/file', desc: 'Desciende a las profundidades de un mundo submarino alienígena lleno de maravillas y peligros. Sobrevive al océano.' },
-            { id: 'p1', title: 'Poppy Playtime 1', poster: 'https://plusgami.store/cdn/shop/files/Poppy-Playtime-Chapter-1-Juego-Digital-600x748.webp?v=1755981188', screen: 'https://play-lh.googleusercontent.com/4ZxkngWs2YPRF2SdpEk3IL9fjbW5N2C2c7x7IC3Wg1X28dkGBDultx3EGIQkPViWig=w526-h296-rw', link: 'https://www.mediafire.com/file/cc1338960hyor1h/poppy+playtime+v1.0.18+-+espacioapk.com.apk/file', desc: '¿Dónde están los empleados? Investiga la fábrica de juguetes abandonada y no dejes que Huggy Wuggy te atrape.' },
-            { id: 'p2', title: 'Poppy Playtime 2', poster: 'https://static.wikia.nocookie.net/doblaje-fanon/images/0/09/PoppyPlaytime2.webp/revision/latest?cb=20260220055258&path-prefix=es', screen: 'https://i.ytimg.com/vi/wvKlIelE9zM/maxresdefault.jpg', link: 'https://www.mediafire.com/file/xnfqqjvb8gesqya/Poppy_Playtime_Chapter_2_1.42_1730227580_latestmodapks.com.apk/file', desc: 'Explora una de las instalaciones más populares de Playtime Co., la Estación de Juegos. Mommy Long Legs te espera.' },
-            { id: 'fnaf2_lat', title: 'FNaF 2 Latino', poster: 'https://es.pickgamer.com/media/3888/Five-Nights-at-Freddy%27s-2-285x380.jpg', screen: 'https://play-lh.googleusercontent.com/LOc2pzjEn1nqtEOtfukauDtZJYMWYuE5VWTHVrsnqzCWqZ3qnBR23ELwfIrfoFfKsD9__B1hInQyZQUNgi6I=w526-h296-rw', link: 'https://www.mediafire.com/file/qxuqjfb86v0d5kd/Five+Nights+at+Freddys+2+(Spanish)+-+espacioapk.com.apk/file', desc: 'Vuelven los animatrónicos originales con nuevos amigos. Sobrevive al turno de noche con voces latinas.' }
+            { 
+                id: 'hff', 
+                title: 'Human Fall Flat', 
+                poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLgujSbYHhalK_BA7ViEBzgbyTsdjquFxBPGz4AQROeG6t8fs_8Xo5-kmN&s=10', 
+                screen: 'https://img.apkvision.org/human-fall-flat/human-fall-flat-5.webp', 
+                link: 'https://www.mediafire.com/file/6gyc9xlhng29hps/Human-Fall-Flat-v2.5.1-full-apkvision.apk/file', 
+                desc: 'Un divertido juego de plataformas basado en la física donde controlas a un humano torpe en paisajes oníricos.',
+                reqs: ["Ram necesitada: 3 GB o más", "Procesador mínimo: Octa-Core 1.8 GHz (Gama Media)", "Espacio en disco: 800 MB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'gtav', 
+                title: 'Grand Theft Auto V', 
+                poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png', 
+                screen: 'https://root-nation.com/wp-content/uploads/2021/08/GTA5-Mobile-APK-02.jpg', 
+                link: 'https://www.mediafire.com/file/hjoahu9to2lyal0/Grand+Theft+Auto+V+-+espacioapk.com.apk/file', 
+                desc: 'La mítica experiencia de mundo abierto de Rockstar Games, ahora adaptada para dispositivos móviles con gran optimización.',
+                reqs: ["Ram necesitada: 2 GB o 3 GB", "Procesador mínimo: Quad-Core 1.5 GHz (Gama Baja)", "Espacio en disco: 500 MB libres", "Versión de Android: Android 8.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'p5', 
+                title: 'Poppy Playtime 5', 
+                poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', 
+                screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjU5MzQwNS5wbmc=/original/Rcedmc.png', 
+                link: 'https://www.mediafire.com/file/ouo5nqc2upq6w24/PoppyPlaytime5+(3).apk/file', 
+                desc: 'El capítulo más reciente del terror en la fábrica de juguetes. Nuevos puzzles y enemigos que te pondrán a prueba.',
+                reqs: ["Ram necesitada: 6 GB o 8 GB", "Procesador mínimo: Octa-Core 2.6 GHz (Gama Alta)", "Espacio en disco: 2.5 GB libres", "Versión de Android: Android 10 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'fnaf_sb', 
+                title: 'FNaF Security Breach', 
+                poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlLcK2U0rmkMIKo7BDuYMM8vpJFmzJ68dJd7IuoRMO4ZLzi7qqlauQ7icKX7Y4gyKMKxi3a6WYA4QS5gEVPHvD7hIPuQh_ctq6LJZndg&s=10', 
+                screen: 'https://unreal-play-studio.com/asset/fnaf-security-breach-mobile/7xm6jD.webp', 
+                link: 'https://www.mediafire.com/file/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk/file', 
+                desc: 'Sobrevive una noche en el Mega Pizzaplex de Freddy Fazbear como Gregory, el pequeño atrapado en el complejo.',
+                reqs: ["Ram necesitada: 4 GB o 6 GB", "Procesador mínimo: Octa-Core 2.0 GHz (Gama Media-Alta)", "Espacio en disco: 2 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'p4', 
+                title: 'Poppy Playtime 4', 
+                poster: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', 
+                screen: 'https://img.itch.zone/aW1hZ2UvMzQxOTQ2MC8yMDg0MTc1Mi5wbmc=/original/N3fagg.png', 
+                link: 'https://piro775.itch.io/toy-factory-chapter-4', 
+                desc: 'Continúa la historia de la fábrica Playtime. Desvela los secretos oscuros que se ocultan en las profundidades.',
+                reqs: ["Ram necesitada: 6 GB o 8 GB", "Procesador mínimo: Octa-Core 2.8 GHz (Gama Alta)", "Espacio en disco: 2.0 GB libres", "Versión de Android: Android 10 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'silksong', 
+                title: 'Hollow Knight Silksong', 
+                poster: 'https://m.media-amazon.com/images/M/MV5BMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 
+                screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', 
+                link: 'https://www.mediafire.com/file/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk/file', 
+                desc: 'Juega como Hornet, la princesa de Hallownest, en un reino completamente nuevo plagado de seda y canciones.',
+                reqs: ["Ram necesitada: 4 GB o 6 GB", "Procesador mínimo: Octa-Core 2.0 GHz (Gama Media)", "Espacio en disco: 2.0 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'p3', 
+                title: 'Poppy Playtime 3', 
+                poster: 'https://play-lh.googleusercontent.com/-4dSZjsh1LX-aczh0SrslsgUIH6s7qMOSLFcsTlNn1B6M4zSnm_IC5hw2xFcPH9Jhi4', 
+                screen: 'https://unreal-play-studio.com/asset/poppy-playtime-3/o4ozI7.webp', 
+                link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3', 
+                desc: 'Un orfanato decrépito conocido como Playcare debajo de la fábrica. Deberás atravesar este lugar encantado.',
+                reqs: ["Qualcomm Snapdragon 855 o equivalente", "4 GB RAM Memoria mínima", "Android 8.0 o superior", "3 GB de espacio libre"]
+            },
+            { 
+                id: 'descenders', 
+                title: 'Descenders', 
+                poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', 
+                screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', 
+                link: 'https://descenders.techylist.com/download/', 
+                desc: 'Ciclismo de montaña extremo con generación procedimental de mundos y donde los errores tienen consecuencias reales.',
+                reqs: ["Ram necesitada: 4 GB o 6 GB", "Procesador mínimo: Octa-Core 2.2 GHz (Gama Media-Alta)", "Espacio en disco: 2.5 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'miles', 
+                title: 'Miles Morales', 
+                poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbd1fbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', 
+                screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', 
+                link: 'https://www.mediafire.com/file/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_[www.AndroSU.com].apk/file', 
+                desc: 'Siente el poder de Miles Morales mientras domina sus habilidades explosivas para convertirse en su propio Spider-Man.',
+                reqs: ["Ram necesitada: 2 GB o 3 GB", "Procesador mínimo: Quad-Core 1.8 GHz (Gama Baja)", "Espacio en disco: 400 MB libres", "Versión de Android: Android 8.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'fnaf', 
+                title: 'FNaF Spanish', 
+                poster: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', 
+                screen: 'https://imag.malavida.com/mvimgbig/download-fs/five-nights-at-freddys-14759-1.jpg', 
+                link: 'https://www.mediafire.com/file/7nysoswlpi8cm9l/Five_Nights_at_Freddy%25C2%25B4s_%2528Spanish%2529_-_espacioapk.com.apk/file', 
+                desc: 'El clásico juego de terror donde eres el guardia nocturno de Freddy Fazbear Pizza. Edición completamente en español.',
+                reqs: ["Ram necesitada: 2 GB o 3 GB", "Procesador mínimo: Quad-Core 2.0 GHz (Gama Baja-Media)", "Espacio en disco: 1 GB libre", "Versión de Android: Android 8.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'cuphead', 
+                title: 'Cuphead + DLC', 
+                poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', 
+                screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', 
+                link: 'https://www.mediafire.com/file/vdlzhn68ru3nuo5/Cuphead+++DLC+-+v1.0.3+-+VPR.apk/file', 
+                desc: 'Acción de correr y disparar con estética de dibujos animados de los años 30. Incluye el DLC "The Delicious Last Course".',
+                reqs: ["Ram necesitada: 3 GB o 4 GB", "Procesador mínimo: Octa-Core 2.0 GHz (Gama Media)", "Espacio en disco: 2.5 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'hollow', 
+                title: 'Hollow Knight', 
+                poster: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', 
+                screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', 
+                link: 'https://www.mediafire.com/file/bsqgq7dnvz6w187/HKVulkanV2.7z/file', 
+                desc: 'Explora un vasto reino en ruinas de insectos y héroes en esta aventura épica de acción clásica en 2D.',
+                reqs: ["Ram necesitada: 3 GB o 4 GB", "Procesador mínimo: Octa-Core 2.0 GHz (Gama Media)", "Espacio en disco: 1.2 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'pes2019', 
+                title: 'PES 2019 PSP', 
+                poster: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pro-evolution-soccer-2019/0/08/Pes-2019---button-1525885009367.jpg', 
+                screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', 
+                link: 'https://www.mediafire.com/file/dck5ouwiw2d62c0/Pro_Evolution_Soccer_2019_PSP_%2528USA%2529_%2528Lost_Media_C19%2529.iso/file', 
+                desc: 'El simulador de fútbol definitivo para PSP, ahora disponible para jugar en tu móvil mediante emulación optimizada.',
+                reqs: ["Ram necesitada: 2 GB o 3 GB", "Procesador mínimo: Quad-Core 2.0 GHz (Gama Baja-Media)", "Espacio en disco: 1 GB libre", "Versión de Android: Android 8.0 o superior"]
+            },
+            { 
+                id: 'subnautica', 
+                title: 'Subnautica', 
+                poster: 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/subnautica_cover.JPG', 
+                screen: 'https://play-lh.googleusercontent.com/cNG4a8w8Ve05wIItXkxzhmw-Bw0uqA4t4t8LaxnFXR6klkTSe4YbNrALOCR-GI3lTw=w526-h296-rw', 
+                link: 'https://www.mediafire.com/file/yxk9uno0d6hq45c/Subnautica+v1.22.83315-espacioapk.com.apk/file', 
+                desc: 'Desciende a las profundidades de un mundo submarino alienígena lleno de maravillas y peligros. Sobrevive al océano.',
+                reqs: ["Ram necesitada: 4 GB o 6 GB", "Procesador mínimo: Octa-Core 2.2 GHz (Gama Media-Alta)", "Espacio en disco: 2.5 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'p1', 
+                title: 'Poppy Playtime 1', 
+                poster: 'https://plusgami.store/cdn/shop/files/Poppy-Playtime-Chapter-1-Juego-Digital-600x748.webp?v=1755981188', 
+                screen: 'https://play-lh.googleusercontent.com/4ZxkngWs2YPRF2SdpEk3IL9fjbW5N2C2c7x7IC3Wg1X28dkGBDultx3EGIQkPViWig=w526-h296-rw', 
+                link: 'https://www.mediafire.com/file/cc1338960hyor1h/poppy+playtime+v1.0.18+-+espacioapk.com.apk/file', 
+                desc: '¿Dónde están los empleados? Investiga la fábrica de juguetes abandonada y no dejes que Huggy Wuggy te atrape.',
+                reqs: ["Ram necesitada: 3 GB o 4 GB", "Procesador mínimo: Octa-Core 2.0 GHz (Gama Media)", "Espacio en disco: 1.5 GB libres", "Versión de Android: Android 9.0 o superior"]
+            },
+            { 
+                id: 'p2', 
+                title: 'Poppy Playtime 2', 
+                poster: 'https://static.wikia.nocookie.net/doblaje-fanon/images/0/09/PoppyPlaytime2.webp/revision/latest?cb=20260220055258&path-prefix=es', 
+                screen: 'https://i.ytimg.com/vi/wvKlIelE9zM/maxresdefault.jpg', 
+                link: 'https://www.mediafire.com/file/xnfqqjvb8gesqya/Poppy_Playtime_Chapter_2_1.42_1730227580_latestmodapks.com.apk/file', 
+                desc: 'Explora una de las instalaciones más populares de Playtime Co., la Estación de Juegos. Mommy Long Legs te espera.',
+                reqs: ["Ram necesitada: 4 GB o 6 GB", "Procesador mínimo: Octa-Core 2.0 GHz (Gama Media)", "Espacio en disco: 2 GB libres", "Versión de Android: Android 9.0 o superior", "Rendimiento: 10-20 FPS en dispositivos básicos"]
+            },
+            { 
+                id: 'fnaf2_lat', 
+                title: 'FNaF 2 Latino', 
+                poster: 'https://es.pickgamer.com/media/3888/Five-Nights-at-Freddy%27s-2-285x380.jpg', 
+                screen: 'https://play-lh.googleusercontent.com/LOc2pzjEn1nqtEOtfukauDtZJYMWYuE5VWTHVrsnqzCWqZ3qnBR23ELwfIrfoFfKsD9__B1hInQyZQUNgi6I=w526-h296-rw', 
+                link: 'https://www.mediafire.com/file/qxuqjfb86v0d5kd/Five+Nights+at+Freddys+2+(Spanish)+-+espacioapk.com.apk/file', 
+                desc: 'Vuelven los animatrónicos originales con nuevos amigos. Sobrevive al turno de noche con voces latinas.',
+                reqs: ["Ram necesitada: 2 GB", "Procesador mínimo: Quad-Core 1.5 GHz (Gama Baja)", "Espacio en disco: 400 MB libres", "Versión de Android: Android 8.0 o superior", "Rendimiento: 30-60 FPS en dispositivos básicos"]
+            }
         ];
 
         function init() {
@@ -248,7 +409,7 @@
                 if(gameId === 'home') showView('home');
                 else if(gameId === 'request') showView('request');
                 else openGame(gameId);
-            }, 100); // 0.1s de carga
+            }, 100);
         }
 
         function openGame(id) {
@@ -256,9 +417,24 @@
             document.getElementById('detailImg').src = g.screen;
             document.getElementById('detailTitle').innerText = g.title;
             document.getElementById('detailDesc').innerText = g.desc;
-            let specsHTML = g.hasSpecs ? `<div class="bg-white/5 p-4 rounded-xl mt-4 border border-white/5"><div class="text-cyan-400 font-bold text-xs mb-2 uppercase">Changelog V1.5</div><p class="text-[11px] text-white/60">• Nuevos prototipos añadidos<br>• Taller de ingeniería arreglado</p></div>` : '';
-            document.getElementById('specsContainer').innerHTML = specsHTML;
-            document.getElementById('downloadContainer').innerHTML = `<button onclick="window.open('${g.link}', '_blank')" class="bg-cyan-400 text-black font-black w-full py-4 rounded-xl font-brand text-lg">DESCARGAR APK</button>`;
+            
+            let reqsHTML = '';
+            if(g.reqs) {
+                reqsHTML = `
+                    <div class="req-box">
+                        <div class="req-title uppercase tracking-[2px]">REQUISITOS DE SISTEMA</div>
+                        ${g.reqs.map(r => `<span class="req-item">• ${r}</span>`).join('')}
+                        <p class="req-warning">Datos aproximados, No está garantizado estos requisitos</p>
+                    </div>
+                `;
+            }
+            document.getElementById('requirementsContainer').innerHTML = reqsHTML;
+
+            // Atributo download añadido para intentar forzar la descarga directa
+            document.getElementById('downloadContainer').innerHTML = `
+                <a href="${g.link}" download="${g.title}.apk" class="download-btn">
+                    DESCARGAR APK
+                </a>`;
             showView('detail');
         }
 
@@ -293,4 +469,3 @@
 </html>
 
 ```
-
