@@ -50,7 +50,7 @@
         }
 
         .top-banner {
-            width: 100%; margin: 0 auto 2rem auto;
+            width: 100%; margin: 0 auto 1rem auto;
             border-radius: 12px; overflow: hidden;
             border-bottom: 2px solid var(--cyan);
             max-height: 0; opacity: 0;
@@ -58,6 +58,29 @@
         }
         .top-banner.active-banner { max-height: 600px; opacity: 1; }
         .top-banner img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+        /* Estilo del contador de juegos */
+        .game-counter-container {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            padding: 0 4px;
+        }
+        .game-counter-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .game-counter-number {
+            color: var(--cyan);
+            background: rgba(0, 242, 255, 0.1);
+            padding: 2px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
 
         .game-card { 
             background: #080808; border: 1px solid #1a1a1a;
@@ -212,6 +235,15 @@
             <div id="mainBanner" class="top-banner">
                 <img src="https://i.ibb.co/Hfb046TK/fa4b7a137758b4d05d00c033090e576f.jpg" alt="Banner Excessive Piracy">
             </div>
+
+            <!-- Contador de Juegos -->
+            <div class="game-counter-container">
+                <div class="game-counter-text">
+                    <span id="counter-label">Juegos disponibles</span>
+                    <span id="game-total-count" class="game-counter-number">0</span>
+                </div>
+            </div>
+
             <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 pb-20"></div>
         </main>
 
@@ -248,16 +280,16 @@
         let pendingGameId = null;
         
         const i18n = {
-            es: { search: "BUSCAR...", back: "VOLVER", catalog: "CATÁLOGO", request: "SOLICITAR", send: "ENVIAR", reqPlaceholder: "NOMBRE DEL JUEGO...", verified: "Verificado Por Ep team ✓", download: "DESCARGAR APK", reqTitle: "REQUISITOS DE SISTEMA", reqWarning: "Datos aproximados, No está garantizado estos requisitos", accept: "Aceptar", cancel: "Volver", wait: "Espera", warnTitle: "⚠️ ADVERTENCIA", warnText: "Este Juego tiene retraso al saltar asique salta antes, Recuerda que al darle a Nuevo juego tendras que esperar 1 minuto en esa interfaz sin cerrar y después cargara el anuncio y podrás jugar totalmente gratis", ram: "Ram: ", proc: "Procesador: ", disk: "Espacio: ", os: "Android: ", perf: "Rendimiento: " },
-            en: { search: "SEARCH...", back: "BACK", catalog: "CATALOG", request: "REQUEST", send: "SEND", reqPlaceholder: "GAME NAME...", verified: "Verified By Ep team ✓", download: "DOWNLOAD APK", reqTitle: "SYSTEM REQUIREMENTS", reqWarning: "Approximate data, these requirements are not guaranteed", accept: "Accept", cancel: "Back", wait: "Wait", warnTitle: "⚠️ WARNING", warnText: "This Game has jump lag so jump earlier. Remember that when clicking New Game you will have to wait 1 minute on that interface without closing and then the ad will load and you can play totally free", ram: "Ram: ", proc: "Processor: ", disk: "Disk space: ", os: "Android: ", perf: "Performance: " },
-            pt: { search: "BUSCAR...", back: "VOLTAR", catalog: "CATÁLOGO", request: "SOLICITAR", send: "ENVIAR", reqPlaceholder: "NOME DO JOGO...", verified: "Verificado Por Ep team ✓", download: "BAIXAR APK", reqTitle: "REQUISITOS DO SISTEMA", reqWarning: "Dados aproximados, estes requisitos não são garantidos", accept: "Aceitar", cancel: "Voltar", wait: "Espere", warnTitle: "⚠️ AVISO", warnText: "Este jogo tem atraso no salto, então salte mais cedo. Lembre-se que ao clicar em Novo Jogo você terá que esperar 1 minuto nessa interface sem fechar e então o anúncio carregará e você poderá jogar totalmente grátis", ram: "Ram: ", proc: "Processador: ", disk: "Espaço: ", os: "Android: ", perf: "Desempenho: " },
-            fr: { search: "RECHERCHER...", back: "RETOUR", catalog: "CATALOGUE", request: "DEMANDER", send: "ENVOYER", reqPlaceholder: "NOM DU JEU...", verified: "Vérifié par l'équipe Ep ✓", download: "TÉLÉCHARGER L'APK", reqTitle: "CONFIGURATION REQUISE", reqWarning: "Données approximatives, ces exigences ne sont pas garanties", accept: "Accepter", cancel: "Retour", wait: "Attendez", warnTitle: "⚠️ AVERTISSEMENT", warnText: "Ce jeu a un retard de saut, donc sautez plus tôt. N'oubliez pas qu'en cliquant sur Nouveau jeu, vous devrez attendre 1 minute sur cette interface sans fermer, puis l'annonce se chargera et vous pourrez jouer totalement gratuitement", ram: "Ram: ", proc: "Processeur: ", disk: "Espace: ", os: "Android: ", perf: "Performance: " },
-            ru: { search: "ПОИСК...", back: "НАЗАД", catalog: "КАТАЛОГ", request: "ЗАПРОСИТЬ", send: "ОТПРАВИТЬ", reqPlaceholder: "НАЗВАНИЕ ИГРЫ...", verified: "Проверено командой Ep ✓", download: "СКАЧАТЬ APK", reqTitle: "СИСТЕМНЫЕ ТРЕБОВАНИЯ", reqWarning: "Приблизительные данные, требования не гарантированы", accept: "Принять", cancel: "Назад", wait: "Подождите", warnTitle: "⚠️ ПРЕДУПРЕЖДЕНИЕ", warnText: "В этой игре есть задержка прыжка, поэтому прыгайте раньше. Помните, что при нажатии кнопки «Новая игра» вам придется подождать 1 минуту в этом интерфейсе, не закрывая его, после чего загрузится реклама, и вы сможете играть совершенно бесплатно.", ram: "ОЗУ: ", proc: "Процессор: ", disk: "Место: ", os: "Android: ", perf: "Производительность: " },
-            zh: { search: "搜索...", back: "返回", catalog: "目录", request: "请求", send: "发送", reqPlaceholder: "游戏名称...", verified: "由 Ep 团队验证 ✓", download: "下载 APK", reqTitle: "系统要求", reqWarning: "近似数据，不保证这些要求", accept: "接受", cancel: "返回", wait: "等待", warnTitle: "⚠️ 警告", warnText: "由于这款游戏跳跃延迟，建议提前跳跃。点击新游戏后需在界面停留1分钟不要关闭，广告加载后即可免费游玩。", ram: "内存: ", proc: "处理器: ", disk: "空间: ", os: "安卓版本: ", perf: "性能: " },
-            ja: { search: "検索...", back: "戻る", catalog: "カタログ", request: "リクエスト", send: "送信", reqPlaceholder: "ゲーム名...", verified: "Ep チームによる確認済み ✓", download: "APK をダウンロード", reqTitle: "システム要件", reqWarning: "概算データであり、要件は保証されません", accept: "同意する", cancel: "戻る", wait: "待機中", warnTitle: "⚠️ 警告", warnText: "このゲームはジャンプの遅延があるため、早めにジャンプしてください。新しいゲームをクリックした後、そのインターフェイスを閉じずに1分間待つ必要があります。その後、広告が読み込まれ、完全に無料でプレイできます。", ram: "メモリ: ", proc: "プロセッサ: ", disk: "容量: ", os: "Android: ", perf: "パフォーマンス: " },
-            ko: { search: "검색...", back: "뒤로", catalog: "카탈로그", request: "요청하기", send: "보내기", reqPlaceholder: "게임 이름...", verified: "Ep 팀 인증됨 ✓", download: "APK 다운로드", reqTitle: "시스템 요구 사항", reqWarning: "대략적인 데이터이며 요구 사항은 보장되지 않습니다", accept: "동의", cancel: "뒤로", wait: "대기", warnTitle: "⚠️ 경고", warnText: "이 게임은 점프 지연이 있으므로 더 일찍 점프하십시오. '새 게임'을 클릭한 후 닫지 않고 1분 동안 기다려야 광고가 로드되고 무료로 플레이할 수 있습니다.", ram: "램: ", proc: "프로세서: ", disk: "공간: ", os: "안드로이드: ", perf: "성능: " },
-            de: { search: "SUCHE...", back: "ZURÜCK", catalog: "KATALOG", request: "ANFORDERN", send: "SENDEN", reqPlaceholder: "SPIELNAME...", verified: "Verifiziert vom Ep-Team ✓", download: "APK HERUNTERLADEN", reqTitle: "SYSTEMANFORDERUNGEN", reqWarning: "Ungefähre Daten, Anforderungen nicht garantiert", accept: "Akzeptieren", cancel: "Zurück", wait: "Warten", warnTitle: "⚠️ WARNUNG", warnText: "Dieses Spiel hat eine Sprungverzögerung, springen Sie also früher. Wenn Sie auf 'Neues Spiel' klicken, müssen Sie 1 Minute in der Benutzeroberfläche warten, ohne sie zu schließen. Dann wird die Werbung geladen und Sie können kostenlos spielen.", ram: "RAM: ", proc: "Prozessor: ", disk: "Speicher: ", os: "Android: ", perf: "Leistung: " },
-            it: { search: "CERCA...", back: "INDIETRO", catalog: "CATALOGO", request: "RICHIEDI", send: "INVIA", reqPlaceholder: "NOME DEL GIOCO...", verified: "Verificato dal team Ep ✓", download: "SCARICA APK", reqTitle: "REQUISITI DI SISTEMA", reqWarning: "Dati approssimativi, requisiti non garantiti", accept: "Accetta", cancel: "Indietro", wait: "Attendi", warnTitle: "⚠️ AVVISO", warnText: "Questo gioco ha un ritardo nel salto, quindi salta in anticipo. Cliccando su Nuovo Gioco dovrai attendere 1 minuto nell'interfaccia senza chiuderla, poi l'annuncio verrà caricato e potrai giocare gratis.", ram: "Ram: ", proc: "Processore: ", disk: "Spazio: ", os: "Android: ", perf: "Prestazioni: " }
+            es: { availableGames: "Juegos disponibles", search: "BUSCAR...", back: "VOLVER", catalog: "CATÁLOGO", request: "SOLICITAR", send: "ENVIAR", reqPlaceholder: "NOMBRE DEL JUEGO...", verified: "Verificado Por Ep team ✓", download: "DESCARGAR APK", reqTitle: "REQUISITOS DE SISTEMA", reqWarning: "Datos aproximados, No está garantizado estos requisitos", accept: "Aceptar", cancel: "Volver", wait: "Espera", warnTitle: "⚠️ ADVERTENCIA", warnText: "Este Juego tiene retraso al saltar asique salta antes, Recuerda que al darle a Nuevo juego tendras que esperar 1 minuto en esa interfaz sin cerrar y después cargara el anuncio y podrás jugar totalmente gratis", ram: "Ram: ", proc: "Procesador: ", disk: "Espacio: ", os: "Android: ", perf: "Rendimiento: " },
+            en: { availableGames: "Games available", search: "SEARCH...", back: "BACK", catalog: "CATALOG", request: "REQUEST", send: "SEND", reqPlaceholder: "GAME NAME...", verified: "Verified By Ep team ✓", download: "DOWNLOAD APK", reqTitle: "SYSTEM REQUIREMENTS", reqWarning: "Approximate data, these requirements are not guaranteed", accept: "Accept", cancel: "Back", wait: "Wait", warnTitle: "⚠️ WARNING", warnText: "This Game has jump lag so jump earlier. Remember that when clicking New Game you will have to wait 1 minute on that interface without closing and then the ad will load and you can play totally free", ram: "Ram: ", proc: "Processor: ", disk: "Disk space: ", os: "Android: ", perf: "Performance: " },
+            pt: { availableGames: "Jogos disponíveis", search: "BUSCAR...", back: "VOLTAR", catalog: "CATÁLOGO", request: "SOLICITAR", send: "ENVIAR", reqPlaceholder: "NOME DO JOGO...", verified: "Verificado Por Ep team ✓", download: "BAIXAR APK", reqTitle: "REQUISITOS DO SISTEMA", reqWarning: "Dados aproximados, estes requisitos não são garantidos", accept: "Aceitar", cancel: "Voltar", wait: "Espere", warnTitle: "⚠️ AVISO", warnText: "Este jogo tem atraso no salto, então salte mais cedo. Lembre-se que ao clicar em Novo Jogo você terá que esperar 1 minuto nessa interface sem fechar e então o anúncio carregará e você poderá jogar totalmente grátis", ram: "Ram: ", proc: "Processador: ", disk: "Espaço: ", os: "Android: ", perf: "Desempenho: " },
+            fr: { availableGames: "Jeux disponibles", search: "RECHERCHER...", back: "RETOUR", catalog: "CATALOGUE", request: "DEMANDER", send: "ENVOYER", reqPlaceholder: "NOM DU JEU...", verified: "Vérifié par l'équipe Ep ✓", download: "TÉLÉCHARGER L'APK", reqTitle: "CONFIGURATION REQUISE", reqWarning: "Données approximatives, ces exigences ne sont pas garanties", accept: "Accepter", cancel: "Retour", wait: "Attendez", warnTitle: "⚠️ AVERTISSEMENT", warnText: "Ce jeu a un retard de saut, donc sautez plus tôt. N'oubliez pas qu'en cliquant sur Nouveau jeu, vous devrez attendre 1 minute sur cette interface sans fermer, puis l'annonce se chargera et vous pourrez jouer totalement gratuitement", ram: "Ram: ", proc: "Processeur: ", disk: "Espace: ", os: "Android: ", perf: "Performance: " },
+            ru: { availableGames: "Доступные игры", search: "ПОИСК...", back: "НАЗАД", catalog: "КАТАЛОГ", request: "ЗАПРОСИТЬ", send: "ОТПРАВИТЬ", reqPlaceholder: "НАЗВАНИЕ ИГРЫ...", verified: "Проверено командой Ep ✓", download: "СКАЧАТЬ APK", reqTitle: "СИСТЕМНЫЕ ТРЕБОВАНИЯ", reqWarning: "Приблизительные данные, требования не гарантированы", accept: "Принять", cancel: "Назад", wait: "Подождите", warnTitle: "⚠️ ПРЕДУПРЕЖДЕНИЕ", warnText: "В этой игре есть задержка прыжка, поэтому прыгайте раньше. Помните, что при нажатии кнопки «Новая игра» вам придется подождать 1 минуту в этом интерфейсе, не закрывая его, после чего загрузится реклама, и вы сможете играть совершенно бесплатно.", ram: "ОЗУ: ", proc: "Процессор: ", disk: "Место: ", os: "Android: ", perf: "Производительность: " },
+            zh: { availableGames: "可用游戏", search: "搜索...", back: "返回", catalog: "目录", request: "请求", send: "发送", reqPlaceholder: "游戏名称...", verified: "由 Ep 团队验证 ✓", download: "下载 APK", reqTitle: "系统要求", reqWarning: "近似数据，不保证这些要求", accept: "接受", cancel: "返回", wait: "等待", warnTitle: "⚠️ 警告", warnText: "由于这款游戏跳跃延迟，建议提前跳跃。点击新游戏后需在界面停留1分钟不要关闭，广告加载后即可免费游玩。", ram: "内存: ", proc: "处理器: ", disk: "空间: ", os: "安卓版本: ", perf: "性能: " },
+            ja: { availableGames: "利用可能なゲーム", search: "検索...", back: "戻る", catalog: "カタログ", request: "リクエスト", send: "送信", reqPlaceholder: "ゲーム名...", verified: "Ep チームによる確認済み ✓", download: "APK をダウンロード", reqTitle: "システム要件", reqWarning: "概算データであり、要件は保証されません", accept: "同意する", cancel: "戻る", wait: "待機中", warnTitle: "⚠️ 警告", warnText: "このゲームはジャンプの遅延があるため、早めにジャンプしてください。新しいゲームをクリックした後、そのインターフェイスを閉じずに1分間待つ必要があります。その後、広告が読み込まれ、完全に無料でプレイできます。", ram: "メモリ: ", proc: "プロセッサ: ", disk: "容量: ", os: "Android: ", perf: "パフォーマンス: " },
+            ko: { availableGames: "사용 가능한 게임", search: "검색...", back: "뒤로", catalog: "카탈로그", request: "요청하기", send: "보내기", reqPlaceholder: "게임 이름...", verified: "Ep 팀 인증됨 ✓", download: "APK 다운로드", reqTitle: "시스템 요구 사항", reqWarning: "대략적인 데이터이며 요구 사항은 보장되지 않습니다", accept: "동의", cancel: "뒤로", wait: "대기", warnTitle: "⚠️ 경고", warnText: "이 게임은 점프 지연이 있으므로 더 일찍 점프하십시오. '새 게임'을 클릭한 후 닫지 않고 1분 동안 기다려야 광고가 로드되고 무료로 플레이할 수 있습니다.", ram: "램: ", proc: "프로세서: ", disk: "공간: ", os: "안드로이드: ", perf: "성능: " },
+            de: { availableGames: "Verfügbare Spiele", search: "SUCHE...", back: "ZURÜCK", catalog: "KATALOG", request: "ANFORDERN", send: "SENDEN", reqPlaceholder: "SPIELNAME...", verified: "Verifiziert vom Ep-Team ✓", download: "APK HERUNTERLADEN", reqTitle: "SYSTEMANFORDERUNGEN", reqWarning: "Ungefähre Daten, Anforderungen nicht garantiert", accept: "Akzeptieren", cancel: "Zurück", wait: "Warten", warnTitle: "⚠️ WARNUNG", warnText: "Dieses Spiel hat eine Sprungverzögerung, springen Sie also früher. Wenn Sie auf 'Neues Spiel' klicken, müssen Sie 1 Minute in der Benutzeroberfläche warten, ohne sie zu schließen. Dann wird die Werbung geladen und Sie können kostenlos spielen.", ram: "RAM: ", proc: "Prozessor: ", disk: "Speicher: ", os: "Android: ", perf: "Leistung: " },
+            it: { availableGames: "Giochi disponibili", search: "CERCA...", back: "INDIETRO", catalog: "CATALOGO", request: "RICHIEDI", send: "INVIA", reqPlaceholder: "NOME DEL GIOCO...", verified: "Verificato dal team Ep ✓", download: "SCARICA APK", reqTitle: "REQUISITI DI SISTEMA", reqWarning: "Dati approssimativi, requisiti non garantiti", accept: "Accetta", cancel: "Indietro", wait: "Attendi", warnTitle: "⚠️ AVVISO", warnText: "Questo gioco ha un ritardo nel salto, quindi salta in anticipo. Cliccando su Nuovo Gioco dovrai attendere 1 minuto nell'interfaccia senza chiuderla, poi l'annuncio verrà caricato e potrai giocare gratis.", ram: "Ram: ", proc: "Processore: ", disk: "Spazio: ", os: "Android: ", perf: "Prestazioni: " }
         };
 
         const flags = { es: '🇪🇸', en: '🇺🇸', pt: '🇧🇷', fr: '🇫🇷', ru: '🇷🇺', zh: '🇨🇳', ja: '🇯🇵', ko: '🇰🇷', de: '🇩🇪', it: '🇮🇹' };
@@ -275,11 +307,11 @@
             { id: 'descenders', title: 'Descenders', poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', link: 'https://apks.trulhost.com/Descenders-v1.10.3-Mod.apk', desc: { es: 'Ciclismo de montaña extremo.', en: 'Extreme mountain biking.', pt: 'Ciclismo de montanha extremo.', fr: 'VTT extrême.' }, reqs: ["4 GB / 6 GB", "Octa-Core 2.2 GHz", "2.5 GB", "9.0+"] },
             { id: 'miles', title: 'Miles Morales', poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbd1fbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/flardfv1eaugWiNAVIpBDlfD44n8IdUq6fOUqXL1GOnzjxtv9HGgltN5XvAEnp5sL1zzmA5FrxMvozmZ9HXG2AZhvh5S3m9OBaZvEfwrd5i-d79usTxxJXBBcY8y5LvPUUIWBrKp059qh59p5XlPi0YaU83dRn-IS69D-GTvKYdtWp1S/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Poder de Miles Morales en móvil.', en: 'Miles Morales power on mobile.', pt: 'Poder de Miles Morales no celular.', fr: 'Le pouvoir de Miles Morales sur mobile.' }, reqs: ["2 GB / 3 GB", "Quad-Core 1.8 GHz", "400 MB", "8.0+"] },
             { id: 'fnaf', title: 'FNaF Spanish', poster: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', screen: 'https://imag.malavida.com/mvimgbig/download-fs/five-nights-at-freddys-14759-1.jpg', link: 'https://download2391.mediafire.com/3adlnz5zrzgg13wEdyCDxs-PLBmusoVZH-IW9JU8_dG0BRxL8QgI54GfMV4d9gs5ghf0Tk_IOO7AYR7h_Viokruh4fZ1FJb2BgTQPuMDO6jbHd8COhIj5Fw0xFJ9xUt4VC1tmzdYoMMVwJRdwjSax8ibGzgEfaj4eeHT--HWtLJ9w68I/7nysoswlpi8cm9l/Five+Nights+at+Freddy%C2%B4s+%28Spanish%29+-+espacioapk.com.apk', desc: { es: 'Clásico terror en español.', en: 'Classic horror in Spanish.', pt: 'Terror clásico em espanhol.', fr: 'Horreur classique en espagnol.' }, reqs: ["2 GB / 3 GB", "Quad-Core 2.0 GHz", "1 GB", "8.0+"] },
-            { id: 'cuphead', title: 'Cuphead + DLC', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', link: 'https://download2390.mediafire.com/hwz2k55t8rlg54nrK4Horbp1IALV7vRu3wS9V6D9Whux1qDHA0Sc1gju9LFxEIruGl8dayXmgz-Z3gcLpiPvaOSFLA81NIxVp5rcgPPV9EJ8U5xbmSPdzPo1SAGPIXl2wyymLX1K2CiiENMMmuQe7CO8ZFNfeTBUTcX3-WHzE6BsIvO4/vdlzhn68ru3nuo5/Cuphead+%2B+DLC+-+v1.0.3+-+VPR.apk', desc: { es: 'Acción con el DLC incluido.', en: 'Action with DLC included.', pt: 'Ação com o DLC incluído.', fr: 'Action avec le DLC inclus.' }, reqs: ["3 GB / 4 GB", "Octa-Core 2.0 GHz", "2.5 GB", "9.0+"] },
+            { id: 'cuphead', title: 'Cuphead + DLC', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', link: 'https://download2390.mediafire.com/hwz2k55t8rlg54nrK4Horbp1IALV7vRu3wS9V6D9Whux1qDHA0Sc1gju9LFxEIruGl8dayXmgz-Z3gcLpiPvaOSFLA81NIxVp5rcgPPV9EJ8U5xbmSPdzPo1SAGPIXl2wyymLX1K2CiiENMMmuQe7CO8ZFNfeTBUTcX3-WHzE6BsIvO4/vdlzhn68ru3nuo5/Cuphead+%2B+DLC+-+v1.0.3+-+VPR.apk', desc: { es: 'Acción con el DLC incluido.', en: 'Action with DLC included.', pt: 'Ação con o DLC incluído.', fr: 'Action avec le DLC inclus.' }, reqs: ["3 GB / 4 GB", "Octa-Core 2.0 GHz", "2.5 GB", "9.0+"] },
             { id: 'hollow', title: 'Hollow Knight', poster: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://download2447.mediafire.com/saztt5f99fogbb8f94SRFEJDbxJC5Bcgaaa8KxCCHwNXVewD7wg-bPLdGl_o9VGaMJXsPW7CuuT8P_Ayw9-x3ygklGXEqzd52o1KxX_k0vUimJPxQCjlioH-7o_IkASlN56O9ERT4aUgFuIrG2IMiG8zhKDc9Nw6wPqjVvWU_nZMqGIR/bsqgq7dnvz6w187/HKVulkanV2.7z', desc: { es: 'Explora un vasto reino en ruinas.', en: 'Explore a vast ruined kingdom.', pt: 'Explore um vasto reino em ruínas.', fr: 'Explorez un vaste royaume en ruines.' }, reqs: ["3 GB / 4 GB", "Octa-Core 2.0 GHz", "1.2 GB", "9.0+"] },
             { id: 'pes2019', title: 'PES 2019 PSP', poster: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pro-evolution-soccer-2019/0/08/Pes-2019---button-1525885009367.jpg', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://download2302.mediafire.com/zt3swdmx5iwggX-YguJISo5OqQuIHcplIJd_b1vEHEtaOnBlpT71FRZOj2nh_oPGccO8DImQcmolOwmxwCq8SBpjzRDWHKionveAeEjek8LrIWxEy62SwxiU9zXjcXgiTEnSKLJSzEcChsjyJrHftMo5yXlARDURkA7mkz3HyGD8ychP/dck5ouwiw2d62c0/Pro+Evolution+Soccer+2019+PSP+%28USA%29+%28Lost+Media+C19%29.iso', desc: { es: 'Fútbol de PSP en tu móvil.', en: 'PSP soccer on your mobile.', pt: 'Futebol de PSP no seu celular.', fr: 'Football PSP sur votre mobile.' }, reqs: ["2 GB / 3 GB", "Quad-Core 2.0 GHz", "1 GB", "8.0+"] },
             { id: 'subnautica', title: 'Subnautica', poster: 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/subnautica_cover.JPG', screen: 'https://play-lh.googleusercontent.com/cNG4a8w8Ve05wIItXkxzhmw-Bw0uqA4t4t8LaxnFXR6klkTSe4YbNrALOCR-GI3lTw=w526-h296-rw', link: 'https://download2444.mediafire.com/sb20pfuhagpgfIyHgXhf1duPVyaL6OQ10WauQceUAnpppIrpdE7HQDpO62Y1M7njKf1PdUlL2MpbkOlTNHs5jNigDGR-2JgXpft6KvEUhGcuYuDLrvwVJPySSGx9nSCD_w0KQqwjpmBKkXfOQB5T1iUBxqefdba5_DU_sK-_gJfhu8Uu/yxk9uno0d6hq45c/Subnautica+v1.22.83315-espacioapk.com.apk', desc: { es: 'Supervivencia submarina alienígena.', en: 'Alien underwater survival.', pt: 'Sobrevivência subaquática alienígena.', fr: 'Survie sous-marine extraterrestre.' }, reqs: ["4 GB / 6 GB", "Octa-Core 2.2 GHz", "2.5 GB", "9.0+"] },
-            { id: 'p1', title: 'Poppy Playtime 1', poster: 'https://plusgami.store/cdn/shop/files/Poppy-Playtime-Chapter-1-Juego-Digital-600x748.webp?v=1755981188', screen: 'https://play-lh.googleusercontent.com/4ZxkngWs2YPRF2SdpEk3IL9fjbW5N2C2c7x7IC3Wg1X28dkGBDultx3EGIQkPViWig=w526-h296-rw', link: 'https://download2441.mediafire.com/ogxtoknngfbgeHe3ZfUfSUikwozUZ47h-9V5oY6JLm5bXNrCWYeug0N96YiuV3N23nOKSE4LqCYZUFqq-xVQUodqj0b7lg_Q0zGOKvZWG1kv9mM8eZ-9fiR2lfhAFjWZ-6ZAVq2q47nde-XIsGFqEn8PKjYP8QXxx28xcfRTgdv8JyGJ/cc1338960hyor1h/poppy+playtime+v1.0.18+-+espacioapk.com.apk', desc: { es: 'Sobrevive a Huggy Wuggy.', en: 'Survive Huggy Wuggy.', pt: 'Sobreviva a Huggy Wuggy.', fr: 'Survivez à Huggy Wuggy.' }, reqs: ["3 GB / 4 GB", "Octa-Core 2.0 GHz", "1.5 GB", "9.0+"] },
+            { id: 'p1', title: 'Poppy Playtime 1', poster: 'https://plusgami.store/cdn/shop/files/Poppy-Playtime-Chapter-1-Juego-Digital-600x748.webp?v=1755981188', screen: 'https://play-lh.googleusercontent.com/4ZxkngWs2YPRF2SdpEk3IL9fjbW5N2C2c7x7IC3Wg1X28dkGBDultx3EGIQkPViWig=w526-h296-rw', link: 'https://download2441.mediafire.com/ogxtoknngfbgeHe3ZfUfSUikwozUZ47h-9V5oY6JLm5bXNrCWYeug0N96YiuV3N23nOKSE4LqCYZUFqq-xVQUodqj0b7lg_Q0zGOKvZWG1kv9mM8eZ-9fiR2lfhAFjWZ-6ZAVq2q47nde-XIsGFqEn8PKjYP8QXxx28xcfRTgdv8JyGJ/cc1338960hyor1h/poppy+playtime+v1.0.18+-+espacioapk.com.apk', desc: { es: 'Sobrevive a Huggy Wuggy.', en: 'Survive Huggy Wuggy.', pt: 'Sobreviva a Huggy Wuggy.', fr: 'Survivre à Huggy Wuggy.' }, reqs: ["3 GB / 4 GB", "Octa-Core 2.0 GHz", "1.5 GB", "9.0+"] },
             { id: 'p2', title: 'Poppy Playtime 2', poster: 'https://static.wikia.nocookie.net/doblaje-fanon/images/0/09/PoppyPlaytime2.webp/revision/latest?cb=20260220055258&path-prefix=es', screen: 'https://i.ytimg.com/vi/wvKlIelE9zM/maxresdefault.jpg', link: 'https://download2388.mediafire.com/rbsk5us3ilgglqyGycAq7WvwsAtSmAiLSu7wcJgR4CyZHGj_shvt_UZAfA-boWDzzva5JFfnW52vYTP3Prr4XCYirKVgn5v8ahmVM1uOaYEoJa-O6qGSztL0ubytKu-Ia6G95Twr9baVBjnLW2Fc7q-gSfzEY3ByTgPTyR3aMpW5EE2u/xnfqqjvb8gesqya/Poppy_Playtime_Chapter_2_1.42_1730227580_latestmodapks.com.apk', desc: { es: 'Mamá Piernas Largas te espera.', en: 'Mommy Long Legs awaits you.', pt: 'Mamãe Pernas Longas espera por você.', fr: 'Mommy Long Legs vous attend.' }, reqs: ["4 GB / 6 GB", "Octa-Core 2.0 GHz", "2 GB", "9.0+"] },
             { id: 'fnaf2_lat', title: 'FNaF 2 Latino', poster: 'https://es.pickgamer.com/media/3888/Five-Nights-at-Freddy%27s-2-285x380.jpg', screen: 'https://play-lh.googleusercontent.com/LOc2pzjEn1nqtEOtfukauDtZJYMWYuE5VWTHVrsnqzCWqZ3qnBR23ELwfIrfoFfKsD9__B1hInQyZQUNgi6I=w526-h296-rw', link: 'https://download2284.mediafire.com/44chpiyx3phg4-Mmk21PLbxQ3X9-gK2Iwx6eLC0iDowVm3c-07sBfol6ODw0gc0omQrlXb6tkfemXitTB3DlqetnPxYpzBtgJdZGp9YKeCiirZAkuRTg-4EYYfCszOf78gx5GNafjdk8NTQ8vpK1q4OtRdlqC7CfDpFmX5GemqzYrxux/qxuqjfb86v0d5kd/Five+Nights+at+Freddys+2+%28Spanish%29+-+espacioapk.com.apk', desc: { es: 'Animatrónicos con voces latinas.', en: 'Animatronics with Latin voices.', pt: 'Animatrônicos com vozes latinas.', fr: 'Animatroniques avec des voix latines.' }, reqs: ["2 GB", "Quad-Core 1.5 GHz", "400 MB", "8.0+"] }
         ];
@@ -287,6 +319,10 @@
         function init() {
             const grid = document.getElementById('langGrid');
             grid.innerHTML = Object.keys(flags).map(code => `<button onclick="setLang('${code}')" class="lang-btn ${code === curLang ? 'selected' : ''}" id="flag-${code}">${flags[code]}</button>`).join('');
+            
+            // Inicializar el contador de juegos
+            document.getElementById('game-total-count').innerText = games.length;
+            
             AOS.init({ duration: 800, once: true });
         }
 
@@ -316,6 +352,7 @@
             document.getElementById('warn-title').innerText = dict.warnTitle;
             document.getElementById('warn-text').innerText = dict.warnText;
             document.getElementById('warn-cancel').innerText = dict.cancel;
+            document.getElementById('counter-label').innerText = dict.availableGames;
             
             const currentDetailId = document.getElementById('detailTitle').dataset.gameId;
             if (currentDetailId) {
@@ -361,7 +398,6 @@
             
             const btnContainer = document.getElementById('downloadContainer');
             
-            // Logic for wait (Poppy Playtime 5 only)
             if (g.hasWait) {
                 btnContainer.innerHTML = `<button id="pre-download-btn" class="download-btn" disabled>${dict.wait} (5)</button>`;
                 showView('detail');
@@ -382,7 +418,6 @@
                     }
                 }, 1000);
             } else {
-                // No wait for others (GTA VC included)
                 btnContainer.innerHTML = `<button id="pre-download-btn" class="download-btn">${dict.download}</button>`;
                 document.getElementById('pre-download-btn').onclick = () => {
                     if(g.hasWarning) showWarning(g.link);
@@ -484,3 +519,4 @@
 </html>
 
 ```
+
