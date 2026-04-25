@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Excessive Piracy | EP Team Official</title>
+    <meta name="google-site-verification" content="DpeRZ9_SRFu19zvGQZrZvuI9wQDQ6hjhnOaLVhxSODg" />
     
+    <title>Excessive Piracy | EP Team Official</title>
+    <meta name="description" content="La biblioteca definitiva de juegos premium para Android. Descarga APKs verificadas por el EP Team.">
+    <meta property="og:image" content="https://i.ibb.co/G4Z5gvHw/icon.png">
+    <meta name="theme-color" content="#00f2ff">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/G4Z5gvHw/icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Bebas+Neue&family=Outfit:wght@300;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -12,173 +18,527 @@
 
     <style>
         :root { --cyan: #00f2ff; --dark: #000000; --glow: rgba(0, 242, 255, 0.3); }
-        body { background-color: var(--dark); color: #fff; font-family: 'Outfit', sans-serif; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
+        body { 
+            background-color: var(--dark); 
+            color: #fff; 
+            font-family: 'Outfit', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
         .font-brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
         .font-ui { font-family: 'Rajdhani', sans-serif; }
         
-        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0, 242, 255, 0.1); height: 70px; display: flex; align-items: center; padding: 0 1rem; }
+        header { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            background: rgba(0, 0, 0, 0.7); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1); 
+            height: 70px; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 1rem;
+            transition: all 0.3s ease;
+        }
         
-        .search-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 16px; border-radius: 12px; color: white; outline: none; font-size: 14px; }
-        .search-input:focus { border-color: var(--cyan); box-shadow: 0 0 15px var(--glow); }
+        .search-input { 
+            width: 100%; 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 10px 16px; 
+            border-radius: 12px; 
+            color: white; 
+            outline: none; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            font-size: 14px; 
+        }
+        .search-input:focus {
+            border-color: var(--cyan);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+        }
         
-        .game-card { background: #0a0a0a; border: 1px solid #1a1a1a; position: relative; overflow: hidden; border-radius: 18px; transition: 0.4s; cursor: pointer; }
-        .game-card:hover { transform: translateY(-5px); border-color: var(--cyan); }
+        .top-banner { 
+            width: 100%; 
+            margin: 0 auto 1.5rem auto; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 1px solid rgba(0, 242, 255, 0.2); 
+            max-height: 600px; 
+            opacity: 1; 
+            transform: translateY(0);
+            transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
         
-        .char-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; transition: 0.6s ease; }
-        .game-title-badge { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, #000 40%, transparent); padding: 20px 10px 10px 10px; }
-        .game-title-text { color: #fff; font-weight: 700; font-family: 'Space Grotesk'; text-transform: uppercase; font-size: 10px; border-left: 3px solid var(--cyan); padding-left: 8px; }
+        .game-card { 
+            background: #0a0a0a; 
+            border: 1px solid #1a1a1a; 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 18px; 
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            cursor: pointer; 
+        }
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--cyan);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow);
+        }
+        .game-card:active { transform: scale(0.94); }
+        
+        .char-img { 
+            width: 100%; 
+            aspect-ratio: 2/3; 
+            object-fit: cover; 
+            opacity: 0.9; 
+            transition: 0.6s ease;
+        }
+        .game-card:hover .char-img { opacity: 1; transform: scale(1.05); }
 
-        .view-section { display: none; opacity: 0; transition: 0.4s; }
-        .view-section.active { display: block; opacity: 1; }
+        .portada-updated-badge { 
+            position: absolute; 
+            top: 12px; 
+            left: 12px; 
+            background: var(--cyan); 
+            color: black; 
+            padding: 4px 10px; 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 0.75rem; 
+            border-radius: 6px; 
+            z-index: 10; 
+            animation: pulse-glow 2s infinite; 
+        }
+        @keyframes pulse-glow { 
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 242, 255, 0); } 
+            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 255, 0.5); } 
+        }
 
-        .download-btn { background: var(--cyan); color: #000; font-weight: 900; width: 100%; padding: 1rem; border-radius: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; transition: 0.3s; }
-        .download-btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+        .game-title-badge { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 70%, transparent); 
+            padding: 24px 14px 12px 14px; 
+        }
+        .game-title-text { 
+            color: #fff; 
+            font-weight: 700; 
+            font-family: 'Space Grotesk'; 
+            text-transform: uppercase; 
+            font-size: 11px; 
+            border-left: 3px solid var(--cyan); 
+            padding-left: 10px;
+            display: block;
+        }
 
-        /* Estilo para los campos de reseña que pediste */
-        .review-input { width: 100%; background: #000; border: 1px solid #333; padding: 12px; border-radius: 8px; color: #fff; font-size: 14px; outline: none; margin-bottom: 10px; }
-        .review-input:focus { border-color: var(--cyan); }
-        .review-card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid var(--cyan); }
+        #loading-screen { 
+            position: fixed; 
+            inset: 0; 
+            z-index: 10000; 
+            background: #000; 
+            display: none; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            gap: 20px;
+        }
+        .loader-logo { width: 60px; height: 60px; animation: breathe 2s infinite ease-in-out; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 10px var(--cyan)); } }
+        
+        .loader-bar { width: 160px; height: 3px; background: rgba(255,255,255,0.05); border-radius: 10px; position: relative; overflow: hidden; }
+        .loader-progress { position: absolute; left: -100%; width: 100%; height: 100%; background: var(--cyan); animation: loading 1.2s infinite cubic-bezier(0.65, 0, 0.35, 1); }
+        @keyframes loading { 0% { left: -100%; } 50% { left: 0%; } 100% { left: 100%; } }
+
+        #detailImg {
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+        #detailImg:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 15px 30px rgba(0, 242, 255, 0.2));
+        }
+
+        .view-section { 
+            display: none; 
+            opacity: 0; 
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease; 
+        }
+        .view-section.active { 
+            display: block; 
+            opacity: 1; 
+            transform: translateY(0);
+        }
+
+        .download-btn { 
+            background: var(--cyan); 
+            color: #000; 
+            font-weight: 900; 
+            width: 100%; 
+            padding: 1.2rem; 
+            border-radius: 16px; 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.4rem; 
+            text-align: center; 
+            display: block; 
+            border: none; 
+            cursor: pointer; 
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
+        }
+        .download-btn:hover { 
+            transform: scale(1.03); 
+            box-shadow: 0 8px 25px rgba(0, 242, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .star { cursor: pointer; font-size: 28px; color: #222; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .star.active { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); transform: scale(1.1); }
+
+        .review-card { 
+            background: rgba(255,255,255,0.02); 
+            border-radius: 16px; 
+            padding: 16px; 
+            margin-bottom: 12px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+        }
+
+        /* Estilos Formulario Reseñas Directo */
+        .review-input-field {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .review-input-field:focus {
+            border-color: var(--cyan);
+            background: rgba(255,255,255,0.1);
+        }
+
+        #mobile-menu { box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
-            <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-10 h-10 rounded-lg">
-            <span class="font-brand text-xl text-white">EP <span class="text-cyan-400">TEAM</span></span>
+    <div id="loading-screen">
+        <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="loader-logo">
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+
+    <header id="main-header">
+        <div class="flex items-center gap-3 cursor-pointer min-w-max" onclick="navigate('home')">
+            <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-10 h-10 rounded-xl shadow-lg shadow-cyan-400/10">
+            <div class="flex flex-col leading-none">
+                <span class="font-brand text-lg text-white">EXCESSIVE</span>
+                <span class="font-brand text-lg text-cyan-400">PIRACY</span>
+            </div>
         </div>
         <div class="flex-grow mx-4">
-            <input type="text" id="catalogSearch" class="search-input" oninput="render()" placeholder="Buscar...">
+            <input type="text" id="catalogSearch" class="search-input font-ui" oninput="render()" placeholder="BUSCAR JUEGO...">
         </div>
+        <button onclick="toggleMenu()" class="group flex flex-col gap-1.5 items-end p-2">
+            <div class="w-7 h-[2px] bg-cyan-400"></div>
+            <div class="w-5 h-[2px] bg-white"></div>
+        </button>
     </header>
 
-    <div class="pt-24 pb-10">
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-md z-[1999] hidden opacity-0 transition-opacity duration-300" onclick="toggleMenu()"></div>
+    <nav id="mobile-menu" class="fixed top-0 right-[-100%] w-[80%] max-w-[320px] h-screen bg-[#050505]/95 backdrop-blur-2xl z-[2000] flex flex-col p-10 border-l border-white/5 transition-all duration-500">
+        <div class="flex flex-col gap-4">
+            <button onclick="navigate('home'); toggleMenu();" class="text-4xl text-white font-brand block text-left">CATÁLOGO</button>
+            <button onclick="navigate('request'); toggleMenu();" class="text-4xl text-white font-brand block text-left">SOLICITAR</button>
+        </div>
+    </nav>
+
+    <div class="pt-28 pb-16">
         <main id="home-view" class="view-section active px-4 max-w-7xl mx-auto">
-            <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+            <div id="mainBanner" class="top-banner">
+                <img src="https://i.ibb.co/Hfb046TK/fa4b7a137758b4d05d00c033090e576f.jpg" class="w-full h-[180px] sm:h-[300px] object-cover">
+            </div>
+            <div class="mb-8 flex items-center gap-3 font-brand text-xl text-gray-500" data-aos="fade-right">
+                <span>Disponibles</span>
+                <span id="game-total-count" class="bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-lg border border-cyan-400/20">0</span>
+            </div>
+            <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"></div>
         </main>
 
         <section id="detail-view" class="view-section px-4">
-            <div class="max-w-4xl mx-auto">
-                <button onclick="navigate('home')" class="text-cyan-400 font-bold mb-6 block uppercase text-sm">← Volver al catálogo</button>
+            <div class="max-w-5xl mx-auto">
+                <button onclick="navigate('home')" class="group mb-8 text-cyan-400 font-ui text-sm tracking-widest uppercase flex items-center gap-2">
+                    <span>←</span> <span>VOLVER</span>
+                </button>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <img id="detailImg" class="w-full rounded-2xl shadow-2xl">
-                    <div>
-                        <h2 id="detailTitle" class="text-4xl font-brand mb-2"></h2>
-                        <p id="detailDesc" class="text-gray-400 mb-6"></p>
-                        <div id="downloadArea"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                    <div data-aos="fade-right">
+                        <img id="detailImg" class="w-full rounded-[2rem] border border-white/10 aspect-video object-cover shadow-2xl">
+                    </div>
+                    <div data-aos="fade-left" class="flex flex-col justify-center">
+                        <h2 id="detailTitle" class="text-5xl font-brand mb-2 text-white leading-tight"></h2>
+                        <div class="inline-flex items-center gap-2 text-[11px] text-cyan-400 font-bold uppercase mb-6 px-3 py-1 bg-cyan-400/5 rounded-full border border-cyan-400/10 self-start">✓ Verificado</div>
+                        <p id="detailDesc" class="text-gray-400 text-base leading-relaxed mb-8"></p>
+                        <div id="reqsContainer" class="space-y-4"></div>
+                        <div id="downloadArea" class="mt-10"></div>
                     </div>
                 </div>
 
-                <div class="mt-10 border-t border-white/10 pt-10">
-                    <h3 class="font-brand text-3xl mb-6">RESEÑAS</h3>
-                    
-                    <div class="bg-[#0a0a0a] p-6 rounded-2xl border border-white/5 mb-10">
-                        <label class="text-[10px] text-gray-500 uppercase font-bold">Correo electrónico:</label>
-                        <input type="email" id="revEmail" class="review-input" placeholder="tu@correo.com">
-                        
-                        <label class="text-[10px] text-gray-500 uppercase font-bold">Usuario:</label>
-                        <input type="text" id="revUser" class="review-input" placeholder="Nombre de usuario">
-                        
-                        <label class="text-[10px] text-gray-500 uppercase font-bold">Reseña:</label>
-                        <textarea id="revText" class="review-input h-24" placeholder="Escribe tu opinión aquí..."></textarea>
-                        
-                        <button onclick="saveReview()" class="w-full bg-white text-black font-bold py-3 rounded-lg hover:bg-cyan-400 transition">PUBLICAR RESEÑA</button>
+                <div class="border-t border-white/5 pt-16">
+                    <h3 class="font-brand text-3xl mb-10 text-white">RESEÑAS</h3>
+                    <div id="review-form-container" class="mb-12 p-8 bg-[#0a0a0a] rounded-[2rem] border border-white/5">
+                        <div id="active-review-form">
+                            <p class="text-xs text-cyan-400 font-bold mb-4 uppercase tracking-widest">Tu Calificación</p>
+                            <div class="star-rating flex gap-3 mb-6" id="star-input">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            
+                            <input type="text" id="review-user" class="review-input-field" placeholder="Usuario:">
+                            <input type="email" id="review-email" class="review-input-field" placeholder="Correo electrónico:">
+                            <textarea id="review-text" class="review-input-field h-32 resize-none" placeholder="Reseña:"></textarea>
+                            
+                            <button onclick="submitReview()" id="btn-submit-review" class="mt-4 bg-cyan-400 text-black font-black px-12 py-4 rounded-2xl font-brand text-xl w-full">PUBLICAR</button>
+                        </div>
                     </div>
+                    <div id="reviews-list" class="space-y-6 pb-24"></div>
+                </div>
+            </div>
+        </section>
 
-                    <div id="reviews-list" class="space-y-4"></div>
+        <section id="request-view" class="view-section px-6 text-center">
+            <div class="max-w-2xl mx-auto py-10">
+                <h1 class="text-6xl font-brand mb-10 text-white" data-aos="zoom-out">SOLICITAR</h1>
+                <div class="bg-[#0a0a0a] p-10 rounded-[3rem] border border-white/5 shadow-2xl" data-aos="fade-up">
+                    <input type="text" id="requestInput" class="w-full bg-black border border-white/10 p-5 rounded-2xl mb-6 text-white outline-none font-ui text-lg" placeholder="NOMBRE DEL JUEGO...">
+                    <button onclick="sendRequest()" class="bg-cyan-400 text-black font-black w-full py-5 rounded-2xl font-brand text-2xl">ENVIAR</button>
                 </div>
             </div>
         </section>
     </div>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'ep-team-v4';
+        const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
+
+        let selectedRating = 0;
+        let currentGameId = null;
+
         const games = [
-            { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', link: 'https://dl.apkvision.org/...', desc: 'La épica historia del forajido John Marston.' },
-            { id: 'pvzfusion', title: 'PvZ Fusion', poster: 'https://thepvzfusion.pro/wp-content/uploads/2026/02/images-12-1.webp', link: 'https://file.pvzfusionapk.mx/...', desc: 'Versión modificada con fusiones increíbles.' },
-            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', link: '#', desc: 'El capítulo más aterrador hasta la fecha.' }
+            { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'La épica historia del forajido John Marston en el salvaje oeste.' }, reqs: ["6GB - 8GB", "Octa-Core 2.8GHz", "10GB", "11.0+"], showNewBadge: true },
+            { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/bz7qbwzvjuwgTzOdZT8hC3HXsCgawmEiH0XKkQQH8o85luobIkW8hjkVdU5Go8Tspvl8F96ywYj4nQlKcMGOPtmgFbFuUImjG7CPoNLlwvSs6dNKuukuEjXWgElIfgk6fYvgt2IIWi_rkPxo1p4-1VWT6Yd04d8tXMEeRgkdcJ9GC90/ygxlaj72vkll9oi/Hello+Neighbor+2+v0.1.3+-+espacioapk.com.apk', desc: { es: 'Descubre los secretos que esconde tu vecino.' }, reqs: ["4GB RAM", "Snapdragon 855", "3GB", "8.0+"], showNewBadge: true },
+            { id: 're4beta', title: 'Resident evil 4 BETA', poster: 'https://m.media-amazon.com/images/M/MV5BZWY3ZjRiNTctYzU2My00NDIwLWI3NTAtNmUwZDBlZjlhYjI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://i.redd.it/resident-evil-4-mobile-hd-android-v0-r45d7j5wvhhc1.jpg?width=1001&format=pjpg&auto=webp&s=22ab2d8a664fb14eed998c9ec4e596d0671f152e', link: 'https://download2444.mediafire.com/ur8khq91qaogWIJ85ZTUbLTeIl0KrfSDzK8O0-jnwOyE0eWs-g411i4eRLlylZsNi_9ECtlaiiM7gYskQ4VFiz1L0hrkDfBzBdLtf-iU0T5R8goyzU36_TsOK8ElnM0vuzDwGBThgJrOe7iES0f6EJ-mdhTA2zvC7bv-Hiwyk2SMZoQ/resen04k0nveqp8/RESDT+EVIL+4+BETA_%E2%9C%85SIN+VIRUS.apk', desc: { es: 'Beta clásica de supervivencia y terror.' }, reqs: ["3GB RAM", "Octa-Core 2.0", "350MB", "8.0+"], showNewBadge: true },
+            { id: 'fnafsotm', title: 'FNaF Secret of the Mimic', poster: 'https://static.wikia.nocookie.net/triple-a-fazbear/images/c/cb/SecretoftheMimic_CoverKeyArt.jpg/revision/latest?cb=20250213034421', screen: 'https://img.apkvision.org/five-nights-at-freddys-secret-of-the-mimic/five-nights-at-freddys-secret-of-the-mimic-10.webp', link: 'https://download2389.mediafire.com/blz1demeye5gZAQRqphYEvnLNNVOXtfSksNDmRP8p0JJUNjt9jVxVycFot2-Xx-NSIxv5scmz0tRtHpM_dmj1gMtYuyivW_u48wTDjsyZz9pIovlHBetV6kHibY4MOKMSyaTpOJdpH_8_qNDPaSkARhHCSimVpOz7HISKdBt0WvTgV8/q73wqvyyjisxaqw/fnaf+sotm+mobile+v0.1.9+-+espacioapk.com.apk', desc: { es: 'Explora secretos del Mimic.' }, reqs: ["4GB RAM", "Octa-Core 2.4", "2.5GB", "10+"], showNewBadge: true },
+            { id: 'ln1', title: 'Little Nightmares', poster: 'https://image.api.playstation.com/vulcan/ap/rnd/202505/2806/bf55ecf7705258517e66f19128536c4835ec475a25ec1cf8.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ25onFavqxqCa9TzWTPI6AHrWvU3s3-uiJKDgzevnywPviKusX2fs7X4Lu&s=10', link: 'https://download2436.mediafire.com/06npzj2kkyogijmvX5Z3GlkhrR4d-zRP31vdhVT2OncmDk7UZ3l4i73JWUp6tuEP_kQ8fi4GD2QyvbF2n9DTPT5fi0yH7GiOqn6PdlIYEGmfAABh2J5ZAyBL89vGdc1sEHEDE4-gLyjgjeUdyNguN3q_2mMj3Q1X3WH3mO3zXYBvkuU/y7hznysx5ube1sy/Litle+Naightmares_%E2%9C%85SIN+VIRUS.apk', desc: { es: 'Ayuda a Seis a escapar.' }, reqs: ["4GB RAM", "Octa-Core 2.0", "1.5GB", "9.0+"] },
+            { id: 'hff', title: 'Human Fall Flat', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLgujSbYHhalK_BA7ViEBzgbyTsdjquFxBPGz4AQROeG6t8fs_8Xo5-kmN&s=10', screen: 'https://img.apkvision.org/human-fall-flat/human-fall-flat-5.webp', link: 'https://download2393.mediafire.com/juxht3ku9fog1zmPAw5vWZv1ANuUbywxhMUOn8tVXhQbGVNaAKrVy5XnxrN19GRqXKYYHeA9-xgNIMOQNND3EQUsaT7yeLE_7Whbp4b81vL2BZDcUjnX7dZ9Kv6WnuE4flns3Lb-jXJmj-WPVRNP2f2KnW4fBoWJna93huuxUYtU5ME/6gyc9xlhng29hps/Human-Fall-Flat-v2.5.1-full-apkvision.apk', desc: { es: 'Física y plataformas.' }, reqs: ["3GB RAM", "1.8GHz", "800MB", "9.0+"] },
+            { id: 'gtav', title: 'Grand Theft Auto V', poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png', screen: 'https://root-nation.com/wp-content/uploads/2021/08/GTA5-Mobile-APK-02.jpg', link: 'https://download2389.mediafire.com/u6d6yje090tgoxg5iijecH20XypblqLzfwYFryiMeozS6bD76PnGqyUzIiwS2NzQUmmTid5W16mKLjAZx86uoDY7UcG4WV0ZyQ9QmTR2reFn17mILLv_b6tu8eGIyHkOPE55nq_36iqv2ZGodDn5EPtZ-ux8xJ5rFDUI-3KroBbnGoc/hjoahu9to2lyal0/Grand+Theft+Auto+V+-+espacioapk.com.apk', desc: { es: 'Mundo abierto Rockstar.' }, reqs: ["2GB RAM", "1.5GHz", "500MB", "8.0+"] },
+            { id: 'fnafsb', title: 'FNaF Security Breach', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlLcK2U0rmkMIKo7BDuYMM8vpJFmzJ68dJd7IuoRMO4ZLzi7qqlauQ7icKX7Y4gyKMKxi3a6WYA4QS5gEVPHvD7hIPuQh_ctq6LJZndg&s=10', screen: 'https://unreal-play-studio.com/asset/fnaf-security-breach-mobile/7xm6jD.webp', link: 'https://download2438.mediafire.com/c41li4v2ttpgq7IP0SzVJl8i78LJ0Lll2Vvc_fqUmP4yknc2FtxatDge2OHDSvVbjXfm9uG2nnEo79Gzx_PDh4M5_6v3V1gNGyAx8K6EkILfgB7VVhryzyyrbfIaVtJXL6XMnMprDgnthlaEJ8DJeY9DClUw3KGSql_7fcv1oFxDZn0/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk', desc: { es: 'Pizzaplex terror.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
+            { id: 'pvzfusion', title: 'Plants vs Zombies Fusion', poster: 'https://thepvzfusion.pro/wp-content/uploads/2026/02/images-12-1.webp', screen: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/pvz-fusion-3-media.webp', link: 'https://file.pvzfusionapk.mx/pvz-fusion-v3.4.2-pvzfusionapk.mx.apk', desc: { es: 'Fusión definitiva con nuevas mecánicas.' }, reqs: ["2GB RAM", "Octa-Core 1.8", "600MB", "7.0+"] },
+            { id: 'gtasa', title: 'Grand Theft Auto San Andreas', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HDsIEYbbjaj7Ga-y6R7ubG_XRz4wC2DI9g&s', screen: 'https://play-lh.googleusercontent.com/XJIXWvMtYKOfdE8k_353XZwKEHE63JigwjZnsSyhUH6VzOeUHhxouqGHpy7f1nQGyQ=h650', link: 'https://download2434.mediafire.com/itlmicpzebgMBogY-jCfIBRmWkh1HWyrEkejDMdlycF5xTkWgt16TmW3AOguA3D69OoA3zcNo8ICitq91-wYS30LmhPbj4ga0CSGa8T7nnorUImnXplp8e2VONcjRYtAMpZL_kDNgTCHAqvS8OACJGry3BRqjVprYrBfh4WldFlvQE/5brnv5qxhtng8no/gta+san+andreas+v2.11.277+-+espacioapk.com.apk', desc: { es: 'CJ regresa a Los Santos.' }, reqs: ["3GB RAM", "Quad-Core 1.8", "3GB", "9.0+"] },
+            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjg3NTAzMS5wbmc=/original/6YkwSP.png', link: 'https://download1587.mediafire.com/x90ixzasf6ygfhvAEodBgFnHkAJewsVEd2_79NTzQm5DrwYZZvRFduSdFE615obipXfhTg8WuMNVRRDa1S9-6KO7QCUvK1cIud79bbutwoPVniN4RbiIS717bfEWFurTY74Uga6UxA38xmZNApOvwoEGsad-tGKb9oIPA0AGuJK-ZxA/ouo5nqc2upq6w24/PoppyPlaytime5+%283%29.apk', desc: { es: 'V1.6: Nuevos mapas y mecánicas.' }, reqs: ["6GB RAM", "Octa-Core 2.6", "2.5GB", "10+"] },
+            { id: 'gtavc', title: 'Grand Theft Auto: Vice City', poster: 'https://static.wikia.nocookie.net/esgta/images/0/0f/Grand_Theft_Auto_Vice_City.JPG/revision/latest/scale-to-width-down/1200?cb=20161127222945', screen: 'https://img.apkvision.org/grand-theft-auto-vice-city/grand-theft-auto-vice-city-1.webp', link: 'https://dl.apkvision.org/grand-theft-auto-vice-city/GTA-VC-v1.12.259-full-apkvision.apk', desc: { es: 'Los 80 en Vice City.' }, reqs: ["2GB RAM", "1.5GHz", "1.5GB", "8.0+"] },
+            { id: 'subn_bz', title: 'Subnautica: Below Zero', poster: 'https://store-images.s-microsoft.com/image/apps.25913.13546341381523259.8f30b71b-aac8-4816-a999-212ef85f8876.1b6b3f4d-3d78-409e-acc2-57b4950505b7', screen: 'https://img.apkvision.org/subnautica-below-zero/subnautica-below-zero-1.webp', link: 'https://dl.apkvision.org/subnautica-below-zero/Subnautica-Below-Zero-v1.22.55044-full-apkvision.apk', desc: { es: 'Gélida supervivencia.' }, reqs: ["4GB RAM", "2.4GHz", "3GB", "9.0+"] },
+            { id: 'p4', title: 'Poppy Playtime 4', poster: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', screen: 'https://img.itch.zone/aW1hZ2UvMzQxOTQ2MC8yMDQxODI1NC5wbmc=/original/hVzrVs.png', link: 'https://piro775.itch.io/toy-factory-chapter-4', desc: { es: 'Playtime historia.' }, reqs: ["6GB RAM", "2.8GHz", "2GB", "10+"] },
+            { id: 'silksong', title: 'Hollow Knight Silksong', poster: 'https://m.media-amazon.com/images/M/MV5BMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://download2447.mediafire.com/w84peg5sx8fgBc-7cVVmCeWeTHT7srV5XEq4NbfMtzlim6gxgE54Vr-cxARCyg2zmDRL5j6HiNz_i9PGgKqstW7i9WWZow41PaBe8omyaRLz7n8BeztpmXVbOQMB2-2soj3Z3mjB1Tu100nj-S6iMiqkIH5w3aDUGplF1Y7s_4zHS4I/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk', desc: { es: 'Hornet en reino nuevo.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
+            { id: 'p3', title: 'Poppy Playtime 3', poster: 'https://http2.mlstatic.com/D_NQ_NP_615692-MLM96301603984_102025-O.webp', screen: 'https://unreal-play-studio.com/asset/poppy-playtime-3/o4ozI7.webp', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3', desc: { es: 'Orfanato Playcare.' }, reqs: ["SD 855", "4GB RAM", "3GB", "8.0+"] },
+            { id: 'descenders', title: 'Descenders', poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', link: 'https://apks.trulhost.com/Descenders-v1.10.3-Mod.apk', desc: { es: 'MTB extremo.' }, reqs: ["4GB RAM", "2.2GHz", "2.5GB", "9.0+"] },
+            { id: 'miles', title: 'Miles Morales', poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbd1fbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/doaqi0p34hbgSi7mQcuB9wuZxs99BBxGjSznCCWArLig-alMXAYJ1289MM8fTj8lmAEVy47CyBZ9eRoboCUtyVFqs1I1zTuqOmVsfsrH7m9XUO5lnXwPK9DewQOm_w8vSTLkVYz5KOCfPa83rTTI2s-Gg1QoF3o-4ziGQgpfMtKAJnw/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Miles Morales móvil.' }, reqs: ["2GB RAM", "1.8GHz", "400MB", "8.0+"] },
+            { id: 'fnaf', title: 'FNaF Spanish', poster: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', screen: 'https://imag.malavida.com/mvimgbig/download-fs/five-nights-at-freddys-14759-1.jpg', link: 'https://download2391.mediafire.com/4awsa1pfuqkg_ojkGcYFDme4_OXIyK-uykrHLpBkHiOAI8rIJOBB2iqmYFxLLMjIcEJYXvXELlHNavqV-7pg7Ey1fKuzwDK2_-VrYI2f3wbVKBc4JyLVNOPBgDKnmVTqgIuvVrgbv8in3yE9erjX7GMgZUOJD0CgDOOYlvCI7XjU6Ik/7nysoswlpi8cm9l/Five+Nights+at+Freddy%C2%B4s+%28Spanish%29+-+espacioapk.com.apk', desc: { es: 'Terror en español.' }, reqs: ["2GB RAM", "2.0GHz", "1GB", "8.0+"] },
+            { id: 'cuphead', title: 'Cuphead + DLC', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', link: 'https://download2390.mediafire.com/2apu3aa59cqgUW8WOTsFRW_CNVJY0mQbikGsRMsccfTvqx0mCA1VsOVFXpWHxy6-rjpxC8_t-EuexMVwQ4sy4PBUTuqFcGRcAGx0ZYHszUXnQbCtGC7y0RrkB5KUQsVHYURU8LRC09zUrxTOjL-MeeOO3yfMWCKne3w9LjJY7G88g7A/vdlzhn68ru3nuo5/Cuphead+%2B+DLC+-+v1.0.3+-+VPR.apk', desc: { es: 'Acción DLC incluido.' }, reqs: ["3GB RAM", "2.0GHz", "2.5GB", "9.0+"] },
+            { id: 'hollow', title: 'Hollow Knight', poster: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://download2447.mediafire.com/6pwcinoz923g4rm5JW4aO8IZ_LGG0dAEVgbihR-sUpiB4F0lE7n6fdMoQGQARq9I5bs_sN36Jsr-FWjFeTkRQnYOJi-_gJO5PjE4_Aj1kh58gzoMnZG-KRhbPw99mpzUDNmnVM41SPbQHK8g-cmdjWolJi0kUlk7W3g7vxgPdIEXYP8/bsqgq7dnvz6w187/HKVulkanV2.7z', desc: { es: 'Explora reino ruinas.' }, reqs: ["3GB RAM", "2.0GHz", "1.2GB", "9.0+"] },
+            { id: 'pes2019', title: 'PES 2019 PSP', poster: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pro-evolution-soccer-2019/0/08/Pes-2019---button-1525885009367.jpg', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://download2302.mediafire.com/zt3swdmx5iwggX-YguJISo5OqQuIHcplIJd_b1vEHEtaOnBlpT71FRZOj2nh_oPGccO8DImQcmolOwmxwCq8SBpjzRDWHKionveAeEjek8LrIWxEy62SwxiU9zXjcXgiTEnSKLJSzEcChsjyJrHftMo5yXlARDURkA7mkz3HyGD8ychP/dck5ouwiw2d62c0/Pro+Evolution+Pes+2019+PSP+%28USA%29+%28Lost+Media+C19%29.iso', desc: { es: 'PES móvil PSP.' }, reqs: ["2GB RAM", "2.0GHz", "1GB", "8.0+"] },
+            { id: 'subnautica', title: 'Subnautica', poster: 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/subnautica_cover.JPG', screen: 'https://play-lh.googleusercontent.com/cNG4a8w8Ve05wIItXkxzhmw-Bw0uqA4t4t8LaxnFXR6klkTSe4YbNrALOCR-GI3lTw=w526-h296-rw', link: 'https://download2444.mediafire.com/7i63ty3ufoygSuk3mCe12Re1SXEgAcrulrZRKZXjof3D6ebEB6Lg8GRETd2-RrOl-yHYJ6RblW-LkwnHttGmSSv9wA3lz5bm6rRBywV9hem4mEZf4BUQHcPlh4OsT0KIsrCntqEKals7nOewT19kwsrxjpnPsDNk36ohAu1gxq4hP2g/yxk9uno0d6hq45c/Subnautica+v1.22.83315-espacioapk.com.apk', desc: { es: 'Marte submarino.' }, reqs: ["4GB RAM", "2.2GHz", "2.5GB", "9.0+"] },
+            { id: 'p1', title: 'Poppy Playtime 1', poster: 'https://plusgami.store/cdn/shop/files/Poppy-Playtime-Chapter-1-Juego-Digital-600x748.webp?v=1755981188', screen: 'https://play-lh.googleusercontent.com/4ZxkngWs2YPRF2SdpEk3IL9fjbW5N2C2c7x7IC3Wg1X28dkGBDultx3EGIQkPViWig=w526-h296-rw', link: 'https://download2441.mediafire.com/igmoapc1gtwgA-0TiHJ97w7lu_cCjFWdCe9UNvEtG0VjznLDpeUmlMdXWtKXi-MA8OUaT48VL8nPaWKlyfmepiGF8PILQsX1kaHSBCOnwBsQv5_XKqY6HFVBfK_Qz6n8nFbHHxUamAEqfsw3rbFKhCpcSdldZHtwdKTaEz9u_F9fCck/cc1338960hyor1h/poppy+playtime+v1.0.18+-+espacioapk.com.apk', desc: { es: 'Huggy Wuggy.' }, reqs: ["3GB RAM", "2.0GHz", "1.5GB", "9.0+"] },
+            { id: 'p2', title: 'Poppy Playtime 2', poster: 'https://static.wikia.nocookie.net/doblaje-fanon/images/0/09/PoppyPlaytime2.webp/revision/latest?cb=20260220055258&path-prefix=es', screen: 'https://i.ytimg.com/vi/wvKlIelE9zM/maxresdefault.jpg', link: 'https://download2388.mediafire.com/nbcrjarfplbgTy39ADyYLCWpuQjg-_xOBex_ntmf9WP3kVeYbNhfr4R9gydkmVg3DZkC8HlJaqC6dd2gT2v43mKgYJ77TYZkn8xFAEikSzUZgqjT2hck6spxYkoYZkxwKawQ301GEcedDDNxYs7DKN6ZiLLI3nU6UO5zuLep0sOe8GU/xnfqqjvb8gesqya/Poppy_Playtime_Chapter_2_1.42_1730227580_latestmodapks.com.apk', desc: { es: 'Mommy Long Legs.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
+            { id: 'fnaf2_lat', title: 'FNaF 2 Latino', poster: 'https://es.pickgamer.com/media/3888/Five-Nights-at-Freddy%27s-2-285x380.jpg', screen: 'https://play-lh.googleusercontent.com/LOc2pzjEn1nqtEOtfukauDtZJYMWYuE5VWTHVrsnqzCWqZ3qnBR23ELwfIrfoFfKsD9__B1hInQyZQUNgi6I=w526-h296-rw', link: 'https://download2443.mediafire.com/7yhnowyobazg12rakflefBZyxiYZw7oFyVsSFWTDlABYDmTtHtnDBday11_cNW22Can6iYDDGygPlX98cbsgGwQ8fQUt_QO1VEjEntucQYTSSne94csxl43JtmaAVirQ5zkrgSJCmwyMYsl3Dw8FSXoJilrqCEue6mYOL_yWvVFML0k/qxuqjfb86v0d5kd/Five+Nights+at+Freddys+2+%28Spanish%29+-+espacioapk.com.apk', desc: { es: 'Voces latinas.' }, reqs: ["2GB RAM", "1.5GHz", "400MB", "8.0+"] }
         ];
 
-        let currentGameId = '';
+        window.init = () => {
+            render();
+            AOS.init({ duration: 1000, once: true });
+        };
 
-        function render() {
+        document.querySelectorAll('#star-input .star').forEach(star => {
+            star.onclick = (e) => {
+                const val = parseInt(e.target.dataset.value);
+                selectedRating = val;
+                updateStars(val);
+            };
+        });
+
+        function updateStars(val) {
+            document.querySelectorAll('#star-input .star').forEach(s => {
+                s.classList.toggle('active', parseInt(s.dataset.value) <= val);
+            });
+        }
+
+        window.submitReview = async () => {
+            const userName = document.getElementById('review-user').value;
+            const userEmail = document.getElementById('review-email').value;
+            const text = document.getElementById('review-text').value;
+
+            if(selectedRating === 0 || !text.trim() || !userName.trim() || !userEmail.trim()) {
+                alert("Por favor completa todos los campos y la calificación.");
+                return;
+            }
+
+            const btn = document.getElementById('btn-submit-review');
+            btn.disabled = true;
+            btn.innerText = "Publicando...";
+            
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', `reviews_${currentGameId}`), {
+                    name: userName,
+                    email: userEmail,
+                    photo: `https://ui-avatars.com/api/?name=${userName}&background=00f2ff&color=000`,
+                    rating: selectedRating,
+                    text: text,
+                    createdAt: serverTimestamp()
+                });
+                
+                document.getElementById('review-text').value = "";
+                document.getElementById('review-user').value = "";
+                document.getElementById('review-email').value = "";
+                selectedRating = 0;
+                updateStars(0);
+                btn.disabled = false;
+                btn.innerText = "PUBLICAR";
+            } catch (e) { 
+                btn.innerText = "ERROR";
+                btn.disabled = false;
+            }
+        };
+
+        window.loadReviews = (gameId) => {
+            const list = document.getElementById('reviews-list');
+            list.innerHTML = `<p class="text-gray-600 text-xs text-center animate-pulse">Cargando reseñas...</p>`;
+            const q = collection(db, 'artifacts', appId, 'public', 'data', `reviews_${gameId}`);
+            
+            onSnapshot(q, (snapshot) => {
+                const reviews = snapshot.docs.map(doc => doc.data()).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                if(reviews.length === 0) {
+                    list.innerHTML = `<p class="text-gray-600 text-xs text-center py-10 opacity-50">Sé el primero en opinar.</p>`;
+                    return;
+                }
+                list.innerHTML = reviews.map((r) => `
+                    <div class="review-card">
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="${r.photo}" class="w-8 h-8 rounded-full border border-white/10">
+                            <div class="flex flex-col">
+                                <span class="text-xs font-bold text-white">${r.name}</span>
+                                <div class="flex gap-0.5">${'★'.repeat(r.rating).split('').map(() => `<span class="text-cyan-400 text-[10px]">★</span>`).join('')}</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">${r.text}</p>
+                    </div>
+                `).join('');
+            });
+        };
+
+        window.render = () => {
             const val = document.getElementById('catalogSearch').value.toLowerCase();
             const grid = document.getElementById('gameGrid');
             const filtered = games.filter(g => g.title.toLowerCase().includes(val));
-            
-            grid.innerHTML = filtered.map(g => `
-                <div class="game-card" onclick="openGame('${g.id}')">
+            document.getElementById('game-total-count').innerText = filtered.length;
+            grid.innerHTML = filtered.map((g, i) => `
+                <div class="game-card" data-aos="fade-up" data-aos-delay="${(i % 5) * 100}" onclick="openGame('${g.id}')">
+                    ${g.showNewBadge ? `<div class="portada-updated-badge">NUEVO</div>` : ''}
                     <img src="${g.poster}" class="char-img">
                     <div class="game-title-badge"><span class="game-title-text">${g.title}</span></div>
                 </div>
             `).join('');
-        }
+        };
 
-        function openGame(id) {
+        window.openGame = (id) => {
             const g = games.find(x => x.id === id);
+            if(!g) return;
             currentGameId = id;
-            document.getElementById('detailImg').src = g.poster;
+            document.getElementById('detailImg').src = g.screen;
             document.getElementById('detailTitle').innerText = g.title;
-            document.getElementById('detailDesc').innerText = g.desc;
-            document.getElementById('downloadArea').innerHTML = `<a href="${g.link}" class="download-btn block text-center">DESCARGAR APK</a>`;
-            
-            loadReviews(id);
-            navigate('detail');
-        }
-
-        function navigate(v) {
-            document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(v + '-view').classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        // --- LÓGICA DE RESEÑAS LOCALES ---
-        function saveReview() {
-            const email = document.getElementById('revEmail').value;
-            const user = document.getElementById('revUser').value;
-            const text = document.getElementById('revText').value;
-
-            if(!user || !text) { alert("Por favor completa Usuario y Reseña"); return; }
-
-            const newReview = {
-                user: user,
-                email: email,
-                text: text,
-                date: new Date().toLocaleDateString()
-            };
-
-            let allReviews = JSON.parse(localStorage.getItem('ep_reviews_' + currentGameId)) || [];
-            allReviews.unshift(newReview);
-            localStorage.setItem('ep_reviews_' + currentGameId, JSON.stringify(allReviews));
-
-            document.getElementById('revText').value = "";
-            loadReviews(currentGameId);
-        }
-
-        function loadReviews(gameId) {
-            const list = document.getElementById('reviews-list');
-            const reviews = JSON.parse(localStorage.getItem('ep_reviews_' + gameId)) || [];
-            
-            if(reviews.length === 0) {
-                list.innerHTML = `<p class="text-gray-600 text-center text-sm">No hay reseñas aún. ¡Sé el primero!</p>`;
-                return;
-            }
-
-            list.innerHTML = reviews.map(r => `
-                <div class="review-card">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-cyan-400 font-bold text-xs uppercase">${r.user}</span>
-                        <span class="text-[10px] text-gray-600">${r.date}</span>
+            document.getElementById('detailDesc').innerText = g.desc.es;
+            document.getElementById('reqsContainer').innerHTML = `
+                <div class="p-6 bg-[#0a0a0a] border-l-4 border-cyan-400 rounded-r-3xl">
+                    <p class="text-xs text-cyan-400 font-bold mb-4 uppercase tracking-widest">REQUISITOS</p>
+                    <div class="grid grid-cols-2 gap-4 text-xs text-gray-400 font-ui">
+                        <span>RAM: ${g.reqs[0]}</span>
+                        <span>CPU: ${g.reqs[1]}</span>
+                        <span>DISK: ${g.reqs[2]}</span>
+                        <span>ANDR: ${g.reqs[3]}</span>
                     </div>
-                    <p class="text-sm text-gray-300">${r.text}</p>
-                    <p class="text-[9px] text-gray-700 mt-2 italic">${r.email}</p>
                 </div>
-            `).join('');
-        }
+            `;
+            document.getElementById('downloadArea').innerHTML = `<button onclick="handleDownload('${g.id}', '${g.link}')" class="download-btn"><span>DESCARGAR APK</span></button>`;
+            showView('detail');
+            loadReviews(id);
+        };
 
-        // Inicializar
-        render();
-        AOS.init();
+        window.handleDownload = async (id, link) => {
+            window.open(link, '_blank');
+        };
+
+        window.showView = (v) => {
+            const sections = document.querySelectorAll('.view-section');
+            sections.forEach(s => { s.style.opacity = '0'; s.style.transform = 'translateY(15px)'; });
+            setTimeout(() => {
+                sections.forEach(s => s.classList.remove('active'));
+                const active = document.getElementById(v + '-view');
+                active.classList.add('active');
+                setTimeout(() => { active.style.opacity = '1'; active.style.transform = 'translateY(0)'; }, 50);
+                window.scrollTo(0,0);
+            }, 300);
+        };
+
+        window.navigate = (v) => {
+            document.getElementById('loading-screen').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.display = 'none';
+                showView(v);
+            }, 800);
+        };
+
+        window.toggleMenu = () => {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const isOpen = menu.style.right === '0px';
+            if(isOpen) {
+                menu.style.right = '-100%';
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            } else {
+                overlay.classList.remove('hidden');
+                setTimeout(() => { overlay.style.opacity = '1'; menu.style.right = '0'; }, 10);
+            }
+        };
+
+        window.sendRequest = async () => {
+            const val = document.getElementById('requestInput').value;
+            if(!val) return;
+            alert("Petición enviada: " + val);
+            document.getElementById('requestInput').value = "";
+        };
+
+        init();
     </script>
 </body>
 </html>
+
