@@ -362,7 +362,8 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
-        const firebaseConfig = JSON.parse(__firebase_config);
+        // Intentar obtener config de Firebase, si no existe el entorno dar valores vacios para no romper
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -385,14 +386,13 @@
         // AUTH INITIALIZATION
         const initAuth = async () => {
             try {
+                // Quitamos el hideLoader de aquí y lo ponemos en un timer global de 2 seg
                 await signInAnonymously(auth);
                 onAuthStateChanged(auth, (user) => {
                     currentUser = user;
-                    hideLoader();
                 });
             } catch (err) {
                 console.error("Auth init error", err);
-                hideLoader();
             }
         };
 
@@ -446,11 +446,16 @@
             AOS.init({ duration: 1000, once: true });
             
             initAuth();
+
+            // TIMER DE 2 SEGUNDOS PARA EL LOADER (Regla del usuario)
+            setTimeout(() => {
+                hideLoader();
+            }, 2000);
         };
 
         window.hideLoader = () => {
             const loader = document.getElementById('loading-screen');
-            if(loader) {
+            if(loader && loader.style.display !== 'none') {
                 loader.style.opacity = '0';
                 setTimeout(() => loader.style.display = 'none', 500);
             }
@@ -502,8 +507,8 @@
 
         window.submitReview = async () => {
             if (!currentUser) {
-                alert("Iniciando sesión anónima...");
-                await signInAnonymously(auth);
+                alert("Conectando con el servidor...");
+                try { await signInAnonymously(auth); } catch(e) { return; }
             }
             
             const name = document.getElementById('review-name').value;
@@ -518,7 +523,6 @@
             btn.disabled = true; btn.innerText = "...";
 
             try {
-                // RULE 1: Seguir el path estricto
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', `rev_${currentGameId}`), {
                     name: name,
                     rating: selectedRating,
@@ -539,8 +543,8 @@
 
         window.loadReviews = (gameId) => {
             const list = document.getElementById('reviews-list');
-            if(!currentUser) return;
-
+            
+            // Usamos un listener simple de Firestore siguiendo la Regla 2 (sin filtros complejos)
             const q = query(collection(db, 'artifacts', appId, 'public', 'data', `rev_${gameId}`));
             onSnapshot(q, (snapshot) => {
                 const reviews = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
@@ -637,3 +641,4 @@
 </html>
 
 ```
+
