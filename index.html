@@ -2,413 +2,145 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="google-site-verification" content="DpeRZ9_SRFu19zvGQZrZvuI9wQDQ6hjhnOaLVhxSODg" />
-    
-    <title>Excessive Piracy | EP Team Official</title>
-    <meta name="description" content="La biblioteca definitiva de juegos premium para Android. Descarga APKs verificadas por el EP Team.">
-    <meta property="og:image" content="https://i.ibb.co/G4Z5gvHw/icon.png">
-    <meta name="theme-color" content="#00f2ff">
-    <link rel="icon" type="image/png" href="https://i.ibb.co/G4Z5gvHw/icon.png">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excessive Piracy | EP Team</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Bebas+Neue&family=Outfit:wght@300;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        :root { --cyan: #00f2ff; --dark: #000000; --glow: rgba(0, 242, 255, 0.3); }
-        body { 
-            background-color: var(--dark); 
-            color: #fff; 
-            font-family: 'Outfit', sans-serif; 
-            margin: 0; 
-            overflow-x: hidden; 
-            -webkit-tap-highlight-color: transparent;
-            scroll-behavior: smooth;
-        }
-        .font-brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
-        .font-ui { font-family: 'Rajdhani', sans-serif; }
-        
-        header { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            background: rgba(0, 0, 0, 0.7); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid rgba(0, 242, 255, 0.1); 
-            height: 70px; 
-            display: flex; 
-            align-items: center; 
-            padding: 0 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input { 
-            width: 100%; 
-            background: rgba(255,255,255,0.05); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            padding: 10px 16px; 
-            border-radius: 12px; 
-            color: white; 
-            outline: none; 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            font-size: 14px; 
-        }
-        .search-input:focus {
-            border-color: var(--cyan);
-            background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
-        }
-        
-        .top-banner { 
-            width: 100%; 
-            margin: 0 auto 1.5rem auto; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            border: 1px solid rgba(0, 242, 255, 0.2); 
-            max-height: 0; 
-            opacity: 0; 
-            transform: translateY(20px);
-            transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
-        }
-        .top-banner.active-banner { max-height: 600px; opacity: 1; transform: translateY(0); }
-        
-        .game-card { 
-            background: #0a0a0a; 
-            border: 1px solid #1a1a1a; 
-            position: relative; 
-            overflow: hidden; 
-            border-radius: 18px; 
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
-            cursor: pointer; 
-        }
-        .game-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--cyan);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow);
-        }
-        
-        .char-img { 
-            width: 100%; 
-            aspect-ratio: 2/3; 
-            object-fit: cover; 
-            opacity: 0.9; 
-            transition: 0.6s ease;
-        }
-
-        .portada-updated-badge { 
-            position: absolute; 
-            top: 12px; 
-            left: 12px; 
-            background: var(--cyan); 
-            color: black; 
-            padding: 4px 10px; 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 0.75rem; 
-            border-radius: 6px; 
-            z-index: 10; 
-        }
-
-        .game-title-badge { 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 100%; 
-            background: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 70%, transparent); 
-            padding: 24px 14px 12px 14px; 
-        }
-        .game-title-text { 
-            color: #fff; 
-            font-weight: 700; 
-            font-family: 'Space Grotesk'; 
-            text-transform: uppercase; 
-            font-size: 11px; 
-            border-left: 3px solid var(--cyan); 
-            padding-left: 10px;
-            display: block;
-        }
-
-        /* Cargador oculto por defecto para evitar pantalla negra */
-        #loading-screen { 
-            position: fixed; 
-            inset: 0; 
-            z-index: 10000; 
-            background: #000; 
-            display: none; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center; 
-            gap: 20px;
-        }
-
-        .view-section { 
-            display: none; 
-            opacity: 0; 
-            transform: translateY(15px);
-            transition: opacity 0.5s ease, transform 0.5s ease; 
-        }
-        .view-section.active { 
-            display: block; 
-            opacity: 1; 
-            transform: translateY(0);
-        }
-
-        .download-btn { 
-            background: var(--cyan); 
-            color: #000; 
-            font-weight: 900; 
-            width: 100%; 
-            padding: 1.2rem; 
-            border-radius: 16px; 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 1.4rem; 
-            text-align: center; 
-            display: block; 
-            cursor: pointer; 
-        }
-        
-        .star { cursor: pointer; font-size: 28px; color: #222; }
-        .star.active { color: var(--cyan); }
-
-        .lang-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1.5rem;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
+        body { background-color: #000; color: #fff; font-family: 'Outfit', sans-serif; }
+        .font-brand { font-family: 'Bebas Neue', sans-serif; }
+        .game-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 12px; overflow: hidden; }
+        .view-section { display: none; padding-top: 80px; }
+        .active { display: block; }
+        header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(0,0,0,0.9); border-bottom: 1px solid #00f2ff33; height: 70px; display: flex; align-items: center; padding: 0 20px; }
     </style>
 </head>
 <body>
 
-    <div id="loading-screen">
-        <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-12 h-12">
-    </div>
-
-    <div id="language-overlay" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center p-4">
-        <div class="bg-[#050505] p-10 rounded-[3rem] border border-white/5 max-w-2xl w-full text-center">
-            <h2 class="font-brand text-4xl mb-6 text-white tracking-[4px]">SELECT LANGUAGE</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-10" id="langGrid"></div>
-            <label class="flex items-center justify-center gap-3 cursor-pointer">
-                <input type="checkbox" id="rememberLang" class="w-5 h-5">
-                <span id="label-no-ask" class="text-gray-500 font-ui text-xs">No volver a preguntar / Don't ask again</span>
-            </label>
+    <header>
+        <div onclick="navigate('home')" class="cursor-pointer">
+            <span class="font-brand text-2xl text-white">EXCESSIVE <span class="text-cyan-400">PIRACY</span></span>
         </div>
-    </div>
-
-    <header id="main-header">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
-            <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-10 h-10">
-            <div class="flex flex-col leading-none">
-                <span class="font-brand text-lg text-white">EXCESSIVE</span>
-                <span class="font-brand text-lg text-cyan-400">PIRACY</span>
-            </div>
-        </div>
-        <div class="flex-grow mx-4">
-            <input type="text" id="catalogSearch" class="search-input font-ui" oninput="render()" placeholder="BUSCAR...">
-        </div>
-        <button onclick="toggleMenu()" class="flex flex-col gap-1.5 items-end p-2">
-            <div class="w-7 h-[2px] bg-cyan-400"></div>
-            <div class="w-5 h-[2px] bg-white"></div>
-        </button>
     </header>
 
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/70 z-[1999] hidden" onclick="toggleMenu()"></div>
-    <nav id="mobile-menu" class="fixed top-0 right-[-100%] w-[80%] max-w-[320px] h-screen bg-[#050505] z-[2000] flex flex-col p-10 transition-all duration-500">
-        <div id="user-profile" class="mb-12 flex items-center gap-4 p-4 bg-white/5 rounded-2xl hidden">
-            <img id="user-photo" class="w-12 h-12 rounded-full">
-            <div>
-                <p id="user-name" class="text-sm font-bold text-white"></p>
-                <p class="text-[11px] text-cyan-400" id="label-verified-user">VERIFIED USER</p>
+    <main id="home-view" class="view-section active px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="gameGrid"></div>
+    </main>
+
+    <section id="detail-view" class="view-section px-6">
+        <button onclick="navigate('home')" class="text-cyan-400 mb-6 font-bold">← VOLVER</button>
+        
+        <div class="max-w-xl mx-auto">
+            <img id="dImg" class="w-full rounded-2xl mb-4 shadow-lg shadow-cyan-500/20">
+            <h2 id="dTitle" class="text-4xl font-brand text-cyan-400"></h2>
+            <p id="dDesc" class="text-gray-400 mt-2 mb-6"></p>
+            <div id="dLink"></div>
+
+            <hr class="border-gray-800 my-10">
+
+            <div class="bg-zinc-900 p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4">Escribir Reseña</h3>
+                <div class="space-y-3">
+                    <div>
+                        <label class="text-xs text-gray-500">Correo electrónico:</label>
+                        <input type="email" id="revEmail" class="w-full bg-black border border-zinc-700 p-2 rounded text-sm outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="text-xs text-gray-500">Usuario:</label>
+                        <input type="text" id="revUser" class="w-full bg-black border border-zinc-700 p-2 rounded text-sm outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="text-xs text-gray-500">Reseña:</label>
+                        <textarea id="revText" class="w-full bg-black border border-zinc-700 p-2 rounded text-sm h-24 outline-none focus:border-cyan-500"></textarea>
+                    </div>
+                    <button onclick="saveReview()" class="w-full bg-white text-black font-bold py-2 rounded-lg hover:bg-cyan-400 transition">PUBLICAR</button>
+                </div>
+
+                <div id="reviewsList" class="mt-8 space-y-4">
+                    </div>
             </div>
         </div>
-        <button id="btn-login" onclick="login()" class="mb-10 w-full py-4 bg-white text-black font-brand text-xl rounded-2xl">GOOGLE LOGIN</button>
-        <button onclick="navigate('home'); toggleMenu();" class="text-4xl text-white font-brand mb-4 text-left" id="nav-catalog">CATÁLOGO</button>
-        <button onclick="navigate('request'); toggleMenu();" class="text-4xl text-white font-brand mb-4 text-left" id="nav-request">SOLICITAR</button>
-        <button onclick="resetLanguage()" class="text-sm mt-6 text-cyan-400/70" id="nav-changelang">🌐 CAMBIAR IDIOMA</button>
-    </nav>
+    </section>
 
-    <div class="pt-28 pb-16">
-        <main id="home-view" class="view-section active px-4">
-            <div id="mainBanner" class="top-banner">
-                <img src="https://i.ibb.co/Hfb046TK/fa4b7a137758b4d05d00c033090e576f.jpg" class="w-full h-[200px] object-cover">
-            </div>
-            <div class="mb-8 flex items-center gap-3 font-brand text-xl text-gray-500">
-                <span id="counter-label">Disponibles</span>
-                <span id="game-total-count" class="text-cyan-400">0</span>
-            </div>
-            <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-5 gap-4"></div>
-        </main>
-
-        <section id="detail-view" class="view-section px-4">
-            <div class="max-w-5xl mx-auto">
-                <button onclick="navigate('home')" id="btn-back" class="mb-8 text-cyan-400 font-ui text-sm">← VOLVER</button>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <img id="detailImg" class="w-full rounded-[2rem] aspect-video object-cover">
-                    <div>
-                        <h2 id="detailTitle" class="text-5xl font-brand mb-2 text-white"></h2>
-                        <div class="text-[11px] text-cyan-400 font-bold mb-6" id="verified-label">✓ Verificado</div>
-                        <p id="detailDesc" class="text-gray-400 mb-8"></p>
-                        <div id="reqsContainer"></div>
-                        <div id="downloadArea" class="mt-10"></div>
-                    </div>
-                </div>
-                <div id="reviews-list" class="mt-20 space-y-6 pb-24"></div>
-            </div>
-        </section>
-
-        <section id="request-view" class="view-section px-6 text-center">
-            <h1 class="text-6xl font-brand mb-10 text-white" id="req-view-title">SOLICITAR</h1>
-            <div class="bg-[#0a0a0a] p-10 rounded-[3rem] border border-white/5">
-                <input type="text" id="requestInput" class="w-full bg-black border border-white/10 p-5 rounded-2xl mb-6 text-white" placeholder="...">
-                <button onclick="sendRequest()" class="bg-cyan-400 text-black font-black w-full py-5 rounded-2xl font-brand text-2xl" id="req-btn">ENVIAR</button>
-            </div>
-        </section>
-    </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-
-        // --- ATENCIÓN: PEGA TUS DATOS DE FIREBASE AQUÍ ---
-        const firebaseConfig = {
-            apiKey: "TU_API_KEY",
-            authDomain: "TU_PROYECTO.firebaseapp.com",
-            projectId: "TU_PROYECTO",
-            storageBucket: "TU_PROYECTO.appspot.com",
-            messagingSenderId: "TU_SENDER_ID",
-            appId: "TU_APP_ID"
-        };
-        // ------------------------------------------------
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = 'ep-team-v4';
-        const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
-
-        const i18n = {
-            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", verifiedUser: "USUARIO VERIFICADO", name: "Español" },
-            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", verifiedUser: "VERIFIED USER", name: "English" }
-        };
-
-        const flags = { en: '🇺🇸', es: '🇪🇸' };
-        let currentUser = null;
-        let currentGameId = null;
-        let curLang = 'es';
-
+    <script>
         const games = [
-            { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'John Marston en el salvaje oeste.', en: 'John Marston in the wild west.' }, reqs: ["8GB", "2.8GHz", "10GB", "11.0+"], showNewBadge: true },
-            { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/...', desc: { es: 'Secretos de tu vecino.', en: 'Neighbor secrets.' }, reqs: ["4GB", "SD 855", "3GB", "8.0+"], showNewBadge: true }
+            { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', desc: 'Acción épica en el viejo oeste.', link: '#' },
+            { id: 'gtasa', title: 'GTA San Andreas', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HDsIEYbbjaj7Ga-y6R7ubG_XRz4wC2DI9g&s', desc: 'Vuelve a las calles de Los Santos.', link: '#' },
+            { id: 'pvz', title: 'PvZ Fusion', poster: 'https://thepvzfusion.pro/wp-content/uploads/2026/02/images-12-1.webp', desc: 'Nuevas fusiones de plantas y zombies.', link: '#' }
         ];
 
-        window.init = () => {
-            const savedLang = localStorage.getItem('ep_lang');
-            if(savedLang) {
-                curLang = savedLang;
-                document.getElementById('language-overlay').style.display = 'none';
-                applyTranslations();
-                document.getElementById('mainBanner').classList.add('active-banner');
-            }
+        let currentGameId = '';
 
-            const grid = document.getElementById('langGrid');
-            grid.innerHTML = Object.keys(flags).map(code => `
-                <div onclick="setLang('${code}')" class="lang-card">
-                    <span class="text-4xl">${flags[code]}</span>
-                    <span class="text-[10px] text-white/40 uppercase">${i18n[code].name}</span>
+        function render() {
+            const grid = document.getElementById('gameGrid');
+            grid.innerHTML = games.map(g => `
+                <div class="game-card" onclick="openGame('${g.id}')">
+                    <img src="${g.poster}" class="w-full aspect-[2/3] object-cover">
+                    <div class="p-2 text-center text-xs font-bold">${g.title}</div>
                 </div>
             `).join('');
-
-            render();
-            AOS.init();
-        };
-
-        window.setLang = (code) => {
-            curLang = code;
-            if(document.getElementById('rememberLang').checked) localStorage.setItem('ep_lang', code);
-            document.getElementById('language-overlay').style.display = 'none';
-            applyTranslations();
-            document.getElementById('mainBanner').classList.add('active-banner');
-        };
-
-        function applyTranslations() {
-            const t = i18n[curLang] || i18n.en;
-            document.getElementById('catalogSearch').placeholder = t.search;
-            document.getElementById('nav-catalog').innerText = t.catalog;
-            document.getElementById('nav-request').innerText = t.request;
-            document.getElementById('counter-label').innerText = t.available;
-            document.getElementById('btn-back').innerText = t.back;
-            document.getElementById('req-view-title').innerText = t.request;
-            render();
         }
 
-        window.login = async () => {
-            const provider = new GoogleAuthProvider();
-            try { await signInWithPopup(auth, provider); } catch (e) { console.error(e); }
-        };
-
-        onAuthStateChanged(auth, (user) => {
-            currentUser = user;
-            if(user) {
-                document.getElementById('user-profile').classList.remove('hidden');
-                document.getElementById('btn-login').classList.add('hidden');
-                document.getElementById('user-photo').src = user.photoURL;
-                document.getElementById('user-name').innerText = user.displayName;
-            }
-        });
-
-        window.render = () => {
-            const val = document.getElementById('catalogSearch').value.toLowerCase();
-            const grid = document.getElementById('gameGrid');
-            const filtered = games.filter(g => g.title.toLowerCase().includes(val));
-            document.getElementById('game-total-count').innerText = filtered.length;
-            grid.innerHTML = filtered.map(g => `
-                <div class="game-card" onclick="openGame('${g.id}')">
-                    <img src="${g.poster}" class="char-img">
-                    <div class="game-title-badge"><span class="game-title-text">${g.title}</span></div>
-                </div>
-            `).join('');
-        };
-
-        window.openGame = (id) => {
+        function openGame(id) {
             const g = games.find(x => x.id === id);
-            if(!g) return;
             currentGameId = id;
-            document.getElementById('detailImg').src = g.screen;
-            document.getElementById('detailTitle').innerText = g.title;
-            document.getElementById('detailDesc').innerText = g.desc[curLang] || g.desc.en;
-            document.getElementById('reqsContainer').innerHTML = `<div class="p-6 bg-[#0a0a0a] border-l-4 border-cyan-400">RAM: ${g.reqs[0]} | CPU: ${g.reqs[1]}</div>`;
-            document.getElementById('downloadArea').innerHTML = `<button onclick="window.open('${g.link}')" class="download-btn">DESCARGAR APK</button>`;
+            document.getElementById('dImg').src = g.poster;
+            document.getElementById('dTitle').innerText = g.title;
+            document.getElementById('dDesc').innerText = g.desc;
+            document.getElementById('dLink').innerHTML = `<a href="${g.link}" class="bg-cyan-400 text-black p-4 rounded-xl font-bold block text-center">DESCARGAR APK</a>`;
+            
+            loadReviews();
             navigate('detail');
-        };
+        }
 
-        window.navigate = (v) => {
+        function navigate(v) {
             document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
             document.getElementById(v + '-view').classList.add('active');
             window.scrollTo(0,0);
-        };
+        }
 
-        window.toggleMenu = () => {
-            const menu = document.getElementById('mobile-menu');
-            const isOpen = menu.style.right === '0px';
-            menu.style.right = isOpen ? '-100%' : '0px';
-            document.getElementById('mobile-menu-overlay').classList.toggle('hidden');
-        };
+        // LÓGICA DE RESEÑAS (LocalStorage)
+        function saveReview() {
+            const email = document.getElementById('revEmail').value;
+            const user = document.getElementById('revUser').value;
+            const text = document.getElementById('revText').value;
 
-        window.resetLanguage = () => {
-            localStorage.removeItem('ep_lang');
-            location.reload();
-        };
+            if(!user || !text) return alert("Por favor llena los campos");
 
-        init();
+            const review = { email, user, text, date: new Date().toLocaleDateString() };
+            
+            // Guardar en la "memoria" del navegador
+            let allReviews = JSON.parse(localStorage.getItem('ep_reviews_' + currentGameId)) || [];
+            allReviews.unshift(review); // Poner la más reciente arriba
+            localStorage.setItem('ep_reviews_' + currentGameId, JSON.stringify(allReviews));
+
+            // Limpiar y recargar
+            document.getElementById('revText').value = "";
+            loadReviews();
+        }
+
+        function loadReviews() {
+            const list = document.getElementById('reviewsList');
+            const reviews = JSON.parse(localStorage.getItem('ep_reviews_' + currentGameId)) || [];
+            
+            if(reviews.length === 0) {
+                list.innerHTML = `<p class="text-gray-600 text-center text-sm">No hay reseñas aún. ¡Sé el primero!</p>`;
+                return;
+            }
+
+            list.innerHTML = reviews.map(r => `
+                <div class="border-l-2 border-cyan-500 bg-black/40 p-4 rounded-r-lg">
+                    <div class="flex justify-between text-[10px] mb-1 text-cyan-400 uppercase font-bold">
+                        <span>${r.user}</span>
+                        <span class="text-gray-600">${r.date}</span>
+                    </div>
+                    <p class="text-sm text-gray-300">${r.text}</p>
+                    <p class="text-[9px] text-gray-700 mt-2 italic">${r.email}</p>
+                </div>
+            `).join('');
+        }
+
+        render();
     </script>
 </body>
 </html>
-
