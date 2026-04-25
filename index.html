@@ -215,6 +215,31 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
+
+        /* Mejora Menu Idioma */
+        .lang-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+        .lang-card:hover {
+            background: rgba(0, 242, 255, 0.05);
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+        .lang-card:hover span.flag {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px var(--cyan));
+        }
     </style>
 </head>
 <body>
@@ -224,15 +249,31 @@
         <div class="loader-bar"><div class="loader-progress"></div></div>
     </div>
 
-    <!-- Overlay Idioma -->
+    <!-- Overlay Idioma Mejorado -->
     <div id="language-overlay" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center p-4">
-        <div class="bg-[#0a0a0a] p-10 rounded-[2.5rem] border border-white/5 max-w-lg w-full text-center shadow-2xl" data-aos="zoom-in">
-            <h2 class="font-brand text-3xl mb-8 text-cyan-400 tracking-wider">SELECT LANGUAGE</h2>
-            <div class="grid grid-cols-4 sm:grid-cols-5 gap-6 mb-10" id="langGrid"></div>
-            <label class="flex items-center justify-center gap-3 cursor-pointer text-gray-400 font-ui text-sm hover:text-white transition">
-                <input type="checkbox" id="rememberLang" class="accent-cyan-400 w-5 h-5">
-                <span id="label-no-ask">No volver a preguntar / Don't ask again</span>
-            </label>
+        <div class="bg-[#050505] p-6 sm:p-10 rounded-[3rem] border border-white/5 max-w-2xl w-full text-center shadow-[0_0_100px_rgba(0,0,0,1)] relative overflow-hidden" data-aos="zoom-in">
+            <!-- Glow background decor -->
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full"></div>
+            
+            <div class="relative z-10">
+                <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-12 h-12 mx-auto mb-6 drop-shadow-[0_0_10px_rgba(0,242,255,0.5)]">
+                <h2 class="font-brand text-4xl mb-2 text-white tracking-[4px]">SELECT LANGUAGE</h2>
+                <p class="font-ui text-cyan-400/60 text-xs tracking-[2px] mb-10 uppercase">Choose your preferred experience</p>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 mb-10" id="langGrid"></div>
+                
+                <div class="flex flex-col items-center gap-6">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <div class="relative">
+                            <input type="checkbox" id="rememberLang" class="peer hidden">
+                            <div class="w-6 h-6 border-2 border-white/10 rounded-md peer-checked:bg-cyan-400 peer-checked:border-cyan-400 transition-all"></div>
+                            <svg class="absolute top-1 left-1 w-4 h-4 text-black opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span id="label-no-ask" class="text-gray-500 font-ui text-xs group-hover:text-white transition-colors">No volver a preguntar / Don't ask again</span>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -357,18 +398,17 @@
         
         const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
 
-        // Traducciones expandidas para soportar todos los idiomas del selector
         const i18n = {
-            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", loginMsg: "Inicia sesión para escribir reseñas", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", msgLogin: "Inicia sesión con Google...", post: "PUBLICAR", noAsk: "No volver a preguntar", new: "NUEVO", reqsTitle: "REQUISITOS", reviewsTitle: "RESEÑAS", yourRating: "TU CALIFICACIÓN", opinionPlh: "Tu opinión...", loginNow: "LOGIN AHORA", loadingCom: "Cargando...", beFirst: "Sé el primero.", verifiedBy: "✓ Verificado", verifiedUser: "USUARIO VERIFICADO" },
-            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", loginMsg: "Log in to write reviews", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", msgLogin: "Login with Google...", post: "POST", noAsk: "Don't ask again", new: "NEW", reqsTitle: "REQUIREMENTS", reviewsTitle: "REVIEWS", yourRating: "YOUR RATING", opinionPlh: "Your opinion...", loginNow: "LOGIN NOW", loadingCom: "Loading...", beFirst: "Be the first.", verifiedBy: "✓ Verified", verifiedUser: "VERIFIED USER" },
-            zh: { search: "搜索游戏...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "可用游戏", loginMsg: "登录以撰写评论", download: "下载 APK", back: "← 返回", send: "发送请求", placeholder: "游戏名称...", msgLogin: "谷歌登录...", post: "发布", noAsk: "不再询问", new: "新", reqsTitle: "要求", reviewsTitle: "评论", yourRating: "你的评分", opinionPlh: "你的意见...", loginNow: "立即登录", loadingCom: "加载中...", beFirst: "成为第一个。", verifiedBy: "✓ 已验证", verifiedUser: "已验证用户" },
-            ja: { search: "ゲームを検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語を変更", available: "利用可能なゲーム", loginMsg: "レビューを書くにはログインしてください", download: "APKをダウンロード", back: "← 戻る", send: "リクエストを送信", placeholder: "ゲーム名...", msgLogin: "Googleでログイン...", post: "投稿", noAsk: "次回から表示しない", new: "新規", reqsTitle: "要件", reviewsTitle: "レビュー", yourRating: "あなたの評価", opinionPlh: "あなたの意見...", loginNow: "今すぐログイン", loadingCom: "読み込み中...", beFirst: "最初の一人になろう。", verifiedBy: "✓ 確認済み", verifiedUser: "認証済みユーザー" },
-            ko: { search: "게임 검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "사용 가능한 게임", loginMsg: "리뷰를 쓰려면 로그인하세요", download: "APK 다운로드", back: "← 뒤로", send: "요청 보내기", placeholder: "게임 이름...", msgLogin: "Google 로그인...", post: "게시", noAsk: "다시 묻지 않음", new: "신규", reqsTitle: "요구 사항", reviewsTitle: "리뷰", yourRating: "내 평점", opinionPlh: "내 의견...", loginNow: "지금 로그인", loadingCom: "로딩 중...", beFirst: "첫 번째가 되세요.", verifiedBy: "✓ 인증됨", verifiedUser: "인증된 사용자" },
-            fr: { search: "CHERCHER UN JEU...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 CHANGER DE LANGUE", available: "JEUX DISPONIBLES", loginMsg: "Connectez-vous pour donner votre avis", download: "TÉLÉCHARGER APK", back: "← RETOUR", send: "ENVOYER LA DEMANDE", placeholder: "NOM DU JEU...", msgLogin: "Connexion avec Google...", post: "PUBLIER", noAsk: "Ne plus demander", new: "NOUVEAU", reqsTitle: "EXIGENCES", reviewsTitle: "AVIS", yourRating: "VOTRE NOTE", opinionPlh: "Votre avis...", loginNow: "SE CONNECTER", loadingCom: "Chargement...", beFirst: "Soyez le premier.", verifiedBy: "✓ Vérifié", verifiedUser: "UTILISATEUR VÉRIFIÉ" },
-            hi: { search: "खेल खोजें...", catalog: "कैटलॉग", request: "अनुरोध", changelang: "🌐 भाषा बदलें", available: "उपलब्ध खेल", loginMsg: "समीक्षा लिखने के लिए लॉग इन करें", download: "APK डाउनलोड", back: "← वापस", send: "अनुरोध भेजें", placeholder: "खेल का नाम...", msgLogin: "Google से लॉगिन करें...", post: "पोस्ट करें", noAsk: "फिर से न पूछें", new: "नया", reqsTitle: "आवश्यकताएं", reviewsTitle: "समीक्षाएं", yourRating: "आपकी रेटिंग", opinionPlh: "आपकी राय...", loginNow: "अभी लॉगिन करें", loadingCom: "लोड हो रहा है...", beFirst: "पहले बनें।", verifiedBy: "✓ सत्यापित", verifiedUser: "सत्यापित उपयोगकर्ता" },
-            ru: { search: "ПОИСК ИГРЫ...", catalog: "КАТАЛОГ", request: "ЗАПРОСИТЬ", changelang: "🌐 СМЕНИТЬ ЯЗЫК", available: "ДОСТУПНЫЕ ИГРЫ", loginMsg: "Войдите, чтобы написать отзыв", download: "СКАЧАТЬ APK", back: "← НАЗАД", send: "ОТПРАВИТЬ ЗАПРОС", placeholder: "НАЗВАНИЕ ИГРЫ...", msgLogin: "Вход через Google...", post: "ОПУБЛИКОВАТЬ", noAsk: "Больше не спрашивать", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", reviewsTitle: "ОТЗЫВЫ", yourRating: "ВАША ОЦЕНКА", opinionPlh: "Ваше мнение...", loginNow: "ВОЙТИ СЕЙЧАС", loadingCom: "Загрузка...", beFirst: "Будьте первым.", verifiedBy: "✓ Проверено", verifiedUser: "ПРОВЕРЕННЫЙ ПОЛЬЗОВАТЕЛЬ" },
-            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", loginMsg: "Faça login para escrever avaliações", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", msgLogin: "Login com Google...", post: "POSTAR", noAsk: "Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", reviewsTitle: "AVALIAÇÕES", yourRating: "SUA NOTA", opinionPlh: "Sua opinião...", loginNow: "ENTRAR AGORA", loadingCom: "Carregando...", beFirst: "Seja o primeiro.", verifiedBy: "✓ Verificado", verifiedUser: "USUÁRIO VERIFICADO" },
-            id: { search: "CARI GAME...", catalog: "KATALOG", request: "PERMINTAAN", changelang: "🌐 UBAH BAHASA", available: "GAME TERSEDIA", loginMsg: "Masuk untuk menulis ulasan", download: "UNDUH APK", back: "← KEMBALI", send: "KIRIM PERMINTAAN", placeholder: "NAMA GAME...", msgLogin: "Login Google...", post: "PUBLIKASIKAN", noAsk: "Jangan tanya lagi", new: "BARU", reqsTitle: "PERSYARATAN", reviewsTitle: "ULASAN", yourRating: "RATING ANDA", opinionPlh: "Pendapat Anda...", loginNow: "LOGIN SEKARANG", loadingCom: "Memuat...", beFirst: "Jadilah yang pertama.", verifiedBy: "✓ Diverifikasi", verifiedUser: "PENGGUNA TERVERIFIKASI" }
+            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", loginMsg: "Inicia sesión para escribir reseñas", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", msgLogin: "Inicia sesión con Google...", post: "PUBLICAR", noAsk: "No volver a preguntar", new: "NUEVO", reqsTitle: "REQUISITOS", reviewsTitle: "RESEÑAS", yourRating: "TU CALIFICACIÓN", opinionPlh: "Tu opinión...", loginNow: "LOGIN AHORA", loadingCom: "Cargando...", beFirst: "Sé el primero.", verifiedBy: "✓ Verificado", verifiedUser: "USUARIO VERIFICADO", name: "Español" },
+            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", loginMsg: "Log in to write reviews", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", msgLogin: "Login with Google...", post: "POST", noAsk: "Don't ask again", new: "NEW", reqsTitle: "REQUIREMENTS", reviewsTitle: "REVIEWS", yourRating: "YOUR RATING", opinionPlh: "Your opinion...", loginNow: "LOGIN NOW", loadingCom: "Loading...", beFirst: "Be the first.", verifiedBy: "✓ Verified", verifiedUser: "VERIFIED USER", name: "English" },
+            zh: { search: "搜索游戏...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "可用游戏", loginMsg: "登录以撰写评论", download: "下载 APK", back: "← 返回", send: "发送请求", placeholder: "游戏名称...", msgLogin: "谷歌登录...", post: "发布", noAsk: "不再询问", new: "新", reqsTitle: "要求", reviewsTitle: "评论", yourRating: "你的评分", opinionPlh: "你的意见...", loginNow: "立即登录", loadingCom: "加载中...", beFirst: "成为第一个。", verifiedBy: "✓ 已验证", verifiedUser: "已验证用户", name: "中文" },
+            ja: { search: "ゲームを検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語を変更", available: "利用可能なゲーム", loginMsg: "レビューを書くにはログインしてください", download: "APKをダウンロード", back: "← 戻る", send: "リクエストを送信", placeholder: "ゲーム名...", msgLogin: "Googleでログイン...", post: "投稿", noAsk: "次回から表示しない", new: "新規", reqsTitle: "要件", reviewsTitle: "レビュー", yourRating: "あなたの評価", opinionPlh: "あなたの意見...", loginNow: "今すぐログイン", loadingCom: "読み込み中...", beFirst: "最初の一人になろう。", verifiedBy: "✓ 確認済み", verifiedUser: "認証済みユーザー", name: "日本語" },
+            ko: { search: "게임 검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "사용 가능한 게임", loginMsg: "리뷰를 쓰려면 로그인하세요", download: "APK 다운로드", back: "← 뒤로", send: "요청 보내기", placeholder: "게임 이름...", msgLogin: "Google 로그인...", post: "게시", noAsk: "다시 묻지 않음", new: "신규", reqsTitle: "요구 사항", reviewsTitle: "리뷰", yourRating: "내 평점", opinionPlh: "내 의견...", loginNow: "지금 로그인", loadingCom: "로딩 중...", beFirst: "첫 번째가 되세요.", verifiedBy: "✓ 인증됨", verifiedUser: "인증된 사용자", name: "한국어" },
+            fr: { search: "CHERCHER UN JEU...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 CHANGER DE LANGUE", available: "JEUX DISPONIBLES", loginMsg: "Connectez-vous pour donner votre avis", download: "TÉLÉCHARGER APK", back: "← RETOUR", send: "ENVOYER LA DEMANDE", placeholder: "NOM DU JEU...", msgLogin: "Connexion avec Google...", post: "PUBLIER", noAsk: "Ne plus demander", new: "NOUVEAU", reqsTitle: "EXIGENCES", reviewsTitle: "AVIS", yourRating: "VOTRE NOTE", opinionPlh: "Votre avis...", loginNow: "SE CONNECTER", loadingCom: "Chargement...", beFirst: "Soyez le premier.", verifiedBy: "✓ Vérifié", verifiedUser: "UTILISATEUR VÉRIFIÉ", name: "Français" },
+            hi: { search: "खेल खोजें...", catalog: "कैटलॉग", request: "अनुरोध", changelang: "🌐 भाषा बदलें", available: "उपलब्ध खेल", loginMsg: "समीक्षा लिखने के लिए लॉग in करें", download: "APK डाउनलोड", back: "← वापस", send: "अनुरोध भेजें", placeholder: "खेल का नाम...", msgLogin: "Google से लॉगिन करें...", post: "पोस्ट करें", noAsk: "फिर से न पूछें", new: "नया", reqsTitle: "आवश्यकताएं", reviewsTitle: "समीक्षाएं", yourRating: "आपकी रेटिंग", opinionPlh: "आपकी राय...", loginNow: "अभी लॉगिन करें", loadingCom: "लोड हो रहा है...", beFirst: "पहले बनें।", verifiedBy: "✓ सत्यापित", verifiedUser: "सत्यापित उपयोगकर्ता", name: "हिन्दी" },
+            ru: { search: "ПОИСК ИГРЫ...", catalog: "КАТАЛОГ", request: "ЗАПРОСИТЬ", changelang: "🌐 СМЕНИТЬ ЯЗЫК", available: "ДОСТУПНЫЕ ИГРЫ", loginMsg: "Войдите, чтобы написать отзыв", download: "СКАЧАТЬ APK", back: "← НАЗАД", send: "ОТПРАВИТЬ ЗАПРОС", placeholder: "НАЗВАНИЕ ИГРЫ...", msgLogin: "Вход через Google...", post: "ОПУБЛИКОВАТЬ", noAsk: "Больше не спрашивать", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", reviewsTitle: "ОТЗЫВЫ", yourRating: "ВАША ОЦЕНКА", opinionPlh: "Ваше мнение...", loginNow: "ВОЙТИ СЕЙЧАС", loadingCom: "Загрузка...", beFirst: "Будьте первым.", verifiedBy: "✓ Проверено", verifiedUser: "ПРОВЕРЕННЫЙ ПОЛЬЗОВАТЕЛЬ", name: "Русский" },
+            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", loginMsg: "Faça login para escrever avaliações", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", msgLogin: "Login com Google...", post: "POSTAR", noAsk: "Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", reviewsTitle: "AVALIAÇÕES", yourRating: "SUA NOTA", opinionPlh: "Sua opinião...", loginNow: "ENTRAR AGORA", loadingCom: "Carregando...", beFirst: "Seja o primeiro.", verifiedBy: "✓ Verificado", verifiedUser: "USUÁRIO VERIFICADO", name: "Português" },
+            id: { search: "CARI GAME...", catalog: "KATALOG", request: "PERMINTAAN", changelang: "🌐 UBAH BAHASA", available: "GAME TERSEDIA", loginMsg: "Masuk untuk menulis ulasan", download: "UNDUH APK", back: "← KEMBALI", send: "KIRIM PERMINTAAN", placeholder: "NAMA GAME...", msgLogin: "Login Google...", post: "PUBLIKASIKAN", noAsk: "Jangan tanya lagi", new: "BARU", reqsTitle: "PERSYARATAN", reviewsTitle: "ULASAN", yourRating: "RATING ANDA", opinionPlh: "Pendapat Anda...", loginNow: "LOGIN SEKARANG", loadingCom: "Memuat...", beFirst: "Jadilah yang primera.", verifiedBy: "✓ Diverifikasi", verifiedUser: "PENGGUNA TERVERIFIKASI", name: "Bahasa" }
         };
 
         const flags = { en: '🇺🇸', es: '🇪🇸', zh: '🇨🇳', hi: '🇮🇳', fr: '🇫🇷', pt: '🇧🇷', ru: '🇷🇺', ja: '🇯🇵', ko: '🇰🇷', id: '🇮🇩' };
@@ -378,7 +418,6 @@
         let currentGameId = null;
         let curLang = 'es';
 
-        // LISTA DE JUEGOS ACTUALIZADA CON PRIORIDADES Y CAMBIOS DE ETIQUETA
         const games = [
             { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'La épica historia del forajido John Marston en el salvaje oeste.', en: 'The epic story of outlaw John Marston in the wild west.' }, reqs: ["6GB - 8GB", "Octa-Core 2.8GHz", "10GB", "11.0+"], showNewBadge: true },
             { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/bz7qbwzvjuwgTzOdZT8hC3HXsCgawmEiH0XKkQQH8o85luobIkW8hjkVdU5Go8Tspvl8F96ywYj4nQlKcMGOPtmgFbFuUImjG7CPoNLlwvSs6dNKuukuEjXWgElIfgk6fYvgt2IIWi_rkPxo1p4-1VWT6Yd04d8tXMEeRgkdcJ9GC90/ygxlaj72vkll9oi/Hello+Neighbor+2+v0.1.3+-+espacioapk.com.apk', desc: { es: 'Descubre los secretos que esconde tu vecino.', en: 'Uncover the neighbor secrets.' }, reqs: ["4GB RAM", "Snapdragon 855", "3GB", "8.0+"], showNewBadge: true },
@@ -389,7 +428,7 @@
             { id: 'gtav', title: 'Grand Theft Auto V', poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png', screen: 'https://root-nation.com/wp-content/uploads/2021/08/GTA5-Mobile-APK-02.jpg', link: 'https://download2389.mediafire.com/u6d6yje090tgoxg5iijecH20XypblqLzfwYFryiMeozS6bD76PnGqyUzIiwS2NzQUmmTid5W16mKLjAZx86uoDY7UcG4WV0ZyQ9QmTR2reFn17mILLv_b6tu8eGIyHkOPE55nq_36iqv2ZGodDn5EPtZ-ux8xJ5rFDUI-3KroBbnGoc/hjoahu9to2lyal0/Grand+Theft+Auto+V+-+espacioapk.com.apk', desc: { es: 'Mundo abierto Rockstar.', en: 'Rockstar open world.' }, reqs: ["2GB RAM", "1.5GHz", "500MB", "8.0+"] },
             { id: 'fnafsb', title: 'FNaF Security Breach', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlLcK2U0rmkMIKo7BDuYMM8vpJFmzJ68dJd7IuoRMO4ZLzi7qqlauQ7icKX7Y4gyKMKxi3a6WYA4QS5gEVPHvD7hIPuQh_ctq6LJZndg&s=10', screen: 'https://unreal-play-studio.com/asset/fnaf-security-breach-mobile/7xm6jD.webp', link: 'https://download2438.mediafire.com/c41li4v2ttpgq7IP0SzVJl8i78LJ0Lll2Vvc_fqUmP4yknc2FtxatDge2OHDSvVbjXfm9uG2nnEo79Gzx_PDh4M5_6v3V1gNGyAx8K6EkILfgB7VVhryzyyrbfIaVtJXL6XMnMprDgnthlaEJ8DJeY9DClUw3KGSql_7fcv1oFxDZn0/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk', desc: { es: 'Pizzaplex terror.', en: 'Pizzaplex horror.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
             { id: 'pvzfusion', title: 'Plants vs Zombies Fusion', poster: 'https://thepvzfusion.pro/wp-content/uploads/2026/02/images-12-1.webp', screen: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/pvz-fusion-3-media.webp', link: 'https://file.pvzfusionapk.mx/pvz-fusion-v3.4.2-pvzfusionapk.mx.apk', desc: { es: 'Fusión definitiva con nuevas mecánicas.', en: 'Ultimate fusion with new mechanics.' }, reqs: ["2GB RAM", "Octa-Core 1.8", "600MB", "7.0+"], showNewBadge: false },
-            { id: 'gtasa', title: 'Grand Theft Auto San Andreas', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HDsIEYbbjaj7Ga-y6R7ubG_XRz4wC2DI9g&s', screen: 'https://play-lh.googleusercontent.com/XJIXWvMtYKOfdE8k_353XZwKEHE63JigwjZnsSyhUH6VzOeUHhxouqGHpy7f1nQGyQ=h650', link: 'https://download2434.mediafire.com/itlmkicpzebgMBogY-jCfIBRmWkh1HWyrEkejDMdlycF5xTkWgt16TmW3AOguA3D69OoA3zcNo8ICitq91-wYS30LmhPbj4ga0CSGa8T7nnorUImnXplp8e2VONcjRYtAMpZL_kDNgTCHAqvS8OACJGry3BRqjVprYrBfh4WldFlvQE/5brnv5qxhtng8no/gta+san+andreas+v2.11.277+-+espacioapk.com.apk', desc: { es: 'CJ regresa a Los Santos.', en: 'CJ returns to Los Santos.' }, reqs: ["3GB RAM", "Quad-Core 1.8", "3GB", "9.0+"], showNewBadge: false },
+            { id: 'gtasa', title: 'Grand Theft Auto San Andreas', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HDsIEYbbjaj7Ga-y6R7ubG_XRz4wC2DI9g&s', screen: 'https://play-lh.googleusercontent.com/XJIXWvMtYKOfdE8k_353XZwKEHE63JigwjZnsSyhUH6VzOeUHhxouqGHpy7f1nQGyQ=h650', link: 'https://download2434.mediafire.com/itlmicpzebgMBogY-jCfIBRmWkh1HWyrEkejDMdlycF5xTkWgt16TmW3AOguA3D69OoA3zcNo8ICitq91-wYS30LmhPbj4ga0CSGa8T7nnorUImnXplp8e2VONcjRYtAMpZL_kDNgTCHAqvS8OACJGry3BRqjVprYrBfh4WldFlvQE/5brnv5qxhtng8no/gta+san+andreas+v2.11.277+-+espacioapk.com.apk', desc: { es: 'CJ regresa a Los Santos.', en: 'CJ returns to Los Santos.' }, reqs: ["3GB RAM", "Quad-Core 1.8", "3GB", "9.0+"], showNewBadge: false },
             { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjg3NTAzMS5wbmc=/original/6YkwSP.png', link: 'https://download1587.mediafire.com/x90ixzasf6ygfhvAEodBgFnHkAJewsVEd2_79NTzQm5DrwYZZvRFduSdFE615obipXfhTg8WuMNVRRDa1S9-6KO7QCUvK1cIud79bbutwoPVniN4RbiIS717bfEWFurTY74Uga6UxA38xmZNApOvwoEGsad-tGKb9oIPA0AGuJK-ZxA/ouo5nqc2upq6w24/PoppyPlaytime5+%283%29.apk', desc: { es: 'V1.6: Nuevos mapas y mecánicas.', en: 'V1.6: New maps and mechanics.' }, reqs: ["6GB RAM", "Octa-Core 2.6", "2.5GB", "10+"], showNewBadge: false },
             { id: 'gtavc', title: 'Grand Theft Auto: Vice City', poster: 'https://static.wikia.nocookie.net/esgta/images/0/0f/Grand_Theft_Auto_Vice_City.JPG/revision/latest/scale-to-width-down/1200?cb=20161127222945', screen: 'https://img.apkvision.org/grand-theft-auto-vice-city/grand-theft-auto-vice-city-1.webp', link: 'https://dl.apkvision.org/grand-theft-auto-vice-city/GTA-VC-v1.12.259-full-apkvision.apk', desc: { es: 'Los 80 en Vice City.', en: 'The 80s in Vice City.' }, reqs: ["2GB RAM", "1.5GHz", "1.5GB", "8.0+"] },
             { id: 'subn_bz', title: 'Subnautica: Below Zero', poster: 'https://store-images.s-microsoft.com/image/apps.25913.13546341381523259.8f30b71b-aac8-4816-a999-212ef85f8876.1b6b3f4d-3d78-409e-acc2-57b4950505b7', screen: 'https://img.apkvision.org/subnautica-below-zero/subnautica-below-zero-1.webp', link: 'https://dl.apkvision.org/subnautica-below-zero/Subnautica-Below-Zero-v1.22.55044-full-apkvision.apk', desc: { es: 'Gélida supervivencia.', en: 'Frozen survival.' }, reqs: ["4GB RAM", "2.4GHz", "3GB", "9.0+"] },
@@ -422,9 +461,10 @@
 
             const grid = document.getElementById('langGrid');
             grid.innerHTML = Object.keys(flags).map(code => `
-                <button onclick="setLang('${code}')" class="text-4xl hover:scale-150 transition-all">
-                    ${flags[code]}
-                </button>
+                <div onclick="setLang('${code}')" class="lang-card">
+                    <span class="flag text-4xl transition-transform duration-300">${flags[code]}</span>
+                    <span class="font-ui text-[10px] text-white/40 uppercase tracking-widest">${i18n[code].name}</span>
+                </div>
             `).join('');
 
             render();
@@ -568,18 +608,14 @@
         window.render = () => {
             const val = document.getElementById('catalogSearch').value.toLowerCase();
             const grid = document.getElementById('gameGrid');
-            
-            // Ordenamos: Los que tienen showNewBadge: true arriba
             const sortedGames = [...games].sort((a, b) => {
                 if (a.showNewBadge && !b.showNewBadge) return -1;
                 if (!a.showNewBadge && b.showNewBadge) return 1;
                 return 0;
             });
-
             const filtered = sortedGames.filter(g => g.title.toLowerCase().includes(val));
             const t = i18n[curLang] || i18n.en;
             document.getElementById('game-total-count').innerText = filtered.length;
-            
             grid.innerHTML = filtered.map((g, i) => `
                 <div class="game-card" data-aos="fade-up" data-aos-delay="${(i % 5) * 100}" onclick="openGame('${g.id}')">
                     ${g.showNewBadge ? `<div class="portada-updated-badge">${t.new || 'NEW'}</div>` : ''}
@@ -622,7 +658,7 @@
                 const embed = {
                     title: "🚀 Nueva Descarga",
                     color: 62207,
-                    thumbnail: { url: g.poster }, // Se añade la portada del juego al webhook
+                    thumbnail: { url: g.poster },
                     fields: [
                         { name: "🎮 Juego", value: g.title, inline: true },
                         { name: "👤 Usuario", value: userData.name, inline: true }
@@ -630,11 +666,7 @@
                     footer: { text: "EP Team Official Logger" },
                     timestamp: new Date().toISOString()
                 };
-                await fetch(DISCORD_WEBHOOK, {
-                    method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({ embeds: [embed] })
-                });
+                await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [embed] }) });
             } catch (err) {}
         };
 
@@ -686,11 +718,7 @@
                     footer: { text: "EP Team Request System" },
                     timestamp: new Date().toISOString()
                 };
-                await fetch(DISCORD_WEBHOOK, {
-                    method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({ embeds: [embed] })
-                });
+                await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [embed] }) });
                 document.getElementById('requestInput').value = "";
                 btn.innerText = "¡ENVIADO!";
                 setTimeout(() => { applyTranslations(); }, 2000);
