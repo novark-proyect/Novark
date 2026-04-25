@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,12 +13,19 @@
     <link rel="icon" type="image/png" href="https://i.ibb.co/G4Z5gvHw/icon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Bebas+Neue&family=Outfit:wght@300;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Bebas+Neue&family=Outfit:wght@300;400;700;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        :root { --cyan: #00f2ff; --dark: #000000; --glow: rgba(0, 242, 255, 0.3); }
+        :root { 
+            --cyan: #00f2ff; 
+            --dark: #050505; 
+            --card-bg: #0d0d0d;
+            --glow: rgba(0, 242, 255, 0.4); 
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
         body { 
             background-color: var(--dark); 
             color: #fff; 
@@ -25,8 +33,30 @@
             margin: 0; 
             overflow-x: hidden; 
             -webkit-tap-highlight-color: transparent;
-            scroll-behavior: auto;
+            scroll-behavior: smooth;
         }
+        
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: " ";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.3;
+        }
+
         .font-brand { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
         .font-ui { font-family: 'Rajdhani', sans-serif; }
         
@@ -35,87 +65,115 @@
             top: 0; 
             width: 100%; 
             z-index: 1000; 
-            background: rgba(0, 0, 0, 0.7); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid rgba(0, 242, 255, 0.1); 
-            height: 70px; 
+            background: rgba(5, 5, 5, 0.8); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+            height: 80px; 
             display: flex; 
             align-items: center; 
-            padding: 0 1rem;
-            transition: all 0.3s ease;
+            padding: 0 1.5rem;
+            transition: all 0.4s ease;
         }
         
+        header.scrolled {
+            height: 70px;
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom-color: var(--cyan);
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+        }
+
         .search-input { 
             width: 100%; 
-            background: rgba(255,255,255,0.05); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            padding: 10px 16px; 
-            border-radius: 12px; 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            padding: 12px 20px; 
+            border-radius: 100px; 
             color: white; 
             outline: none; 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
             font-size: 14px; 
         }
+        
         .search-input:focus {
             border-color: var(--cyan);
-            background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+            transform: scale(1.02);
         }
         
         .top-banner { 
             width: 100%; 
-            margin: 0 auto 1.5rem auto; 
-            border-radius: 20px; 
+            margin: 0 auto 2.5rem auto; 
+            border-radius: 30px; 
             overflow: hidden; 
-            border: 1px solid rgba(0, 242, 255, 0.2); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            position: relative;
             max-height: 0; 
             opacity: 0; 
-            transform: translateY(20px);
-            transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+            transform: translateY(30px);
+            transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
-        .top-banner.active-banner { max-height: 600px; opacity: 1; transform: translateY(0); }
+        
+        .top-banner::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, var(--dark), transparent);
+        }
+
+        .top-banner.active-banner { max-height: 450px; opacity: 1; transform: translateY(0); }
         
         .game-card { 
-            background: #0a0a0a; 
-            border: 1px solid #1a1a1a; 
+            background: var(--card-bg); 
+            border: 1px solid rgba(255,255,255,0.03); 
             position: relative; 
             overflow: hidden; 
-            border-radius: 18px; 
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            border-radius: 24px; 
+            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1); 
             cursor: pointer; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+
         .game-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-15px) scale(1.03);
             border-color: var(--cyan);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 242, 255, 0.2);
         }
-        .game-card:active { transform: scale(0.94); }
+
+        .game-card:active { transform: scale(0.95); }
         
         .char-img { 
             width: 100%; 
             aspect-ratio: 2/3; 
             object-fit: cover; 
-            opacity: 0.9; 
-            transition: 0.6s ease;
+            filter: grayscale(20%);
+            transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .game-card:hover .char-img { opacity: 1; transform: scale(1.05); }
+        .game-card:hover .char-img { filter: grayscale(0%); transform: scale(1.15); }
 
         .portada-updated-badge { 
             position: absolute; 
-            top: 12px; 
-            left: 12px; 
+            top: 15px; 
+            right: 15px; 
             background: var(--cyan); 
             color: black; 
-            padding: 4px 10px; 
+            padding: 5px 12px; 
             font-family: 'Bebas Neue', sans-serif; 
-            font-size: 0.75rem; 
-            border-radius: 6px; 
+            font-size: 0.8rem; 
+            border-radius: 8px; 
             z-index: 10; 
-            animation: pulse-glow 2s infinite; 
+            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.4);
+            animation: float-badge 3s ease-in-out infinite;
         }
-        @keyframes pulse-glow { 
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 242, 255, 0); } 
-            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 242, 255, 0.5); } 
+
+        @keyframes float-badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .game-title-badge { 
@@ -123,30 +181,29 @@
             bottom: 0; 
             left: 0; 
             width: 100%; 
-            background: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0.6) 70%, transparent); 
-            padding: 24px 14px 12px 14px; 
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.7) 60%, transparent); 
+            padding: 30px 15px 15px 15px; 
         }
+
         .game-title-text { 
             color: #fff; 
-            font-weight: 700; 
-            font-family: 'Space Grotesk'; 
-            text-transform: uppercase; 
-            font-size: 11px; 
-            border-left: 3px solid var(--cyan); 
-            padding-left: 10px;
+            font-weight: 800; 
+            font-family: 'Outfit'; 
+            letter-spacing: 0.5px;
+            font-size: 13px; 
             display: block;
+            transition: 0.3s ease;
         }
 
         .view-section { 
             display: none; 
             opacity: 0; 
-            transform: translateY(15px);
-            transition: opacity 0.5s ease, transform 0.5s ease; 
+            transition: 0.4s ease-out; 
         }
+
         .view-section.active { 
             display: block; 
             opacity: 1; 
-            transform: translateY(0);
         }
 
         .download-btn { 
@@ -154,177 +211,202 @@
             color: #000; 
             font-weight: 900; 
             width: 100%; 
-            padding: 1.2rem; 
-            border-radius: 16px; 
+            padding: 1.3rem; 
+            border-radius: 20px; 
             font-family: 'Bebas Neue', sans-serif; 
-            font-size: 1.4rem; 
+            font-size: 1.6rem; 
             text-align: center; 
             display: block; 
             border: none; 
             cursor: pointer; 
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
-        }
-        
-        .star { cursor: pointer; font-size: 28px; color: #222; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .star.active { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); transform: scale(1.1); }
-
-        .review-card { 
-            background: rgba(255,255,255,0.02); 
-            border-radius: 20px; 
-            padding: 24px; 
-            margin-bottom: 16px; 
-            border: 1px solid rgba(255,255,255,0.05); 
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 10px 25px rgba(0, 242, 255, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .lang-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1.5rem;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            cursor: pointer;
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 242, 255, 0.5);
+            background: #fff;
         }
 
         .input-ep {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 12px 16px;
+            border-radius: 16px;
+            padding: 16px;
             color: white;
             width: 100%;
             outline: none;
-            font-size: 14px;
-            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            transition: 0.4s ease;
         }
-        .input-ep:focus { border-color: var(--cyan); }
+
+        .input-ep:focus { 
+            border-color: var(--cyan); 
+            background: rgba(255,255,255,0.05); 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+        }
         
-        .label-ep {
-            font-size: 10px;
-            color: rgba(255,255,255,0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            display: block;
-            font-family: 'Space Grotesk', sans-serif;
+        .skeleton {
+            background: linear-gradient(90deg, #0d0d0d 25%, #1a1a1a 50%, #0d0d0d 75%);
+            background-size: 200% 100%;
+            animation: loading 2s infinite;
+            border-radius: 24px;
         }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .burger-line {
+            height: 2px;
+            background-color: var(--cyan);
+            border-radius: 10px;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        #detail-view::-webkit-scrollbar { width: 5px; }
+        #detail-view::-webkit-scrollbar-track { background: transparent; }
+        #detail-view::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
+
     </style>
 </head>
 <body>
 
-    <div id="language-overlay" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center p-4">
-        <div class="bg-[#050505] p-6 sm:p-10 rounded-[3rem] border border-white/5 max-w-2xl w-full text-center shadow-[0_0_100px_rgba(0,0,0,1)] relative overflow-y-auto max-h-[95vh]">
-            <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-12 h-12 mx-auto mb-6">
-            <h2 class="font-brand text-4xl mb-2 text-white">SELECT LANGUAGE</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 mb-10 mt-8" id="langGrid"></div>
-            <label class="flex items-center justify-center gap-3 cursor-pointer">
+    <div class="bg-mesh"></div>
+
+    <div id="language-overlay" class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-4">
+        <div class="p-8 sm:p-12 rounded-[4rem] border border-white/5 max-w-5xl w-full text-center shadow-[0_0_150px_rgba(0,0,0,1)] relative overflow-y-auto max-h-[90vh]" data-aos="zoom-in">
+            <div class="relative inline-block mb-8">
+                <div class="absolute inset-0 bg-cyan-400 blur-2xl opacity-20 animate-pulse"></div>
+                <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-16 h-16 relative z-10">
+            </div>
+            <h2 class="font-brand text-5xl mb-12 text-white">SELECT LANGUAGE</h2>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12" id="langGrid"></div>
+            
+            <label class="flex items-center justify-center gap-3 cursor-pointer group">
                 <input type="checkbox" id="rememberLang" class="peer hidden">
-                <div class="w-5 h-5 border border-white/20 rounded peer-checked:bg-cyan-400"></div>
-                <span id="label-no-ask" class="text-gray-500 font-ui text-sm">No volver a preguntar / Don't ask again</span>
+                <div class="w-6 h-6 border-2 border-white/10 rounded-lg peer-checked:bg-cyan-400 peer-checked:border-cyan-400 transition-all duration-300 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-black opacity-0 peer-checked:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <span id="label-no-ask" class="text-gray-500 group-hover:text-gray-300 font-ui text-sm transition-colors uppercase tracking-widest"></span>
             </label>
         </div>
     </div>
 
     <header id="main-header">
-        <div class="flex items-center gap-3 cursor-pointer min-w-max" onclick="navigate('home')">
-            <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-10 h-10">
-            <div class="flex flex-col leading-none">
-                <span class="font-brand text-lg text-white">EXCESSIVE</span>
-                <span class="font-brand text-lg text-cyan-400">PIRACY</span>
+        <div class="flex items-center gap-4 cursor-pointer min-w-max group" onclick="navigate('home')">
+            <div class="relative">
+                <div class="absolute inset-0 bg-cyan-400 blur-lg opacity-0 group-hover:opacity-40 transition-opacity"></div>
+                <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-12 h-12 relative">
+            </div>
+            <div class="flex flex-col leading-tight">
+                <span class="font-brand text-xl text-white">EXCESSIVE</span>
+                <span class="font-brand text-xl text-cyan-400">PIRACY</span>
             </div>
         </div>
-        <div class="flex-grow mx-4">
-            <input type="text" id="catalogSearch" class="search-input font-ui" oninput="render()" placeholder="...">
+        
+        <div class="flex-grow mx-6 max-w-2xl hidden md:block">
+            <div class="search-container">
+                <input type="text" id="catalogSearch" class="search-input font-ui" oninput="render()" placeholder="...">
+            </div>
         </div>
-        <button onclick="toggleMenu()" class="flex flex-col gap-1.5 items-end p-2">
-            <div class="w-7 h-[2px] bg-cyan-400"></div>
-            <div class="w-5 h-[2px] bg-white"></div>
-        </button>
+
+        <div class="flex items-center gap-4 ml-auto">
+            <button onclick="toggleMenu()" class="group flex flex-col gap-1.5 items-end p-4 bg-white/5 hover:bg-cyan-400/10 rounded-2xl transition-colors">
+                <div class="w-8 burger-line"></div>
+                <div class="w-5 burger-line !bg-white group-hover:!bg-cyan-400"></div>
+                <div class="w-7 burger-line"></div>
+            </button>
+        </div>
     </header>
 
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-md z-[1999] hidden opacity-0 transition-opacity duration-300" onclick="toggleMenu()"></div>
-    <nav id="mobile-menu" class="fixed top-0 right-[-100%] w-[80%] max-w-[320px] h-screen bg-[#050505] z-[2000] flex flex-col p-10 border-l border-white/5 transition-all duration-500">
-        <div class="flex flex-col gap-4">
-            <button onclick="navigate('home'); toggleMenu();" class="text-4xl text-white font-brand text-left" id="nav-catalog">CATÁLOGO</button>
-            <button onclick="navigate('request'); toggleMenu();" class="text-4xl text-white font-brand text-left" id="nav-request">SOLICITAR</button>
-            <button onclick="resetLanguage()" class="text-sm mt-6 text-cyan-400/70 font-ui font-bold text-left" id="nav-changelang">🌐 CAMBIAR IDIOMA</button>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-[1999] hidden opacity-0 transition-all duration-500" onclick="toggleMenu()"></div>
+    <nav id="mobile-menu" class="fixed top-0 right-[-100%] w-[85%] max-w-[400px] h-screen bg-black/50 z-[2000] flex flex-col p-12 border-l border-white/5 transition-all duration-700 ease-[cubic-bezier(0.19, 1, 0.22, 1)]">
+        <div class="mb-20">
+             <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-16 h-16 mb-4">
+             <p class="text-cyan-400 font-brand text-2xl">EP TEAM OFFICIAL</p>
         </div>
+        <div class="flex flex-col gap-8">
+            <button onclick="navigate('home'); toggleMenu();" class="text-6xl text-white font-brand text-left hover:text-cyan-400 hover:translate-x-4 transition-all duration-300" id="nav-catalog"></button>
+            <button onclick="navigate('request'); toggleMenu();" class="text-6xl text-white font-brand text-left hover:text-cyan-400 hover:translate-x-4 transition-all duration-300" id="nav-request"></button>
+            <div class="h-px bg-white/10 my-4"></div>
+            <button onclick="resetLanguage()" class="text-lg text-cyan-400/60 hover:text-cyan-400 font-ui font-bold text-left flex items-center gap-3 transition-colors" id="nav-changelang"></button>
+        </div>
+        <div class="mt-auto opacity-20 text-[10px] uppercase tracking-[4px] text-white">© 2024 EP Team | Secure Library</div>
     </nav>
 
-    <div class="pt-28 pb-16">
-        <main id="home-view" class="view-section active px-4 max-w-7xl mx-auto">
+    <div class="pt-32 pb-20">
+        <main id="home-view" class="view-section active px-6 max-w-7xl mx-auto">
             <div id="mainBanner" class="top-banner">
-                <img src="https://i.ibb.co/Hfb046TK/fa4b7a137758b4d05d00c033090e576f.jpg" class="w-full h-[180px] sm:h-[300px] object-cover">
-            </div>
-            <div class="mb-8 flex items-center gap-3 font-brand text-xl text-gray-500">
-                <span id="counter-label">Disponibles</span>
-                <span id="game-total-count" class="bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-lg border border-cyan-400/20">0</span>
-            </div>
-            <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"></div>
-        </main>
-
-        <section id="detail-view" class="view-section px-4">
-            <div class="max-w-5xl mx-auto">
-                <button onclick="navigate('home')" id="btn-back" class="group mb-8 text-cyan-400 font-ui text-sm uppercase flex items-center gap-2">
-                    <span>←</span> <span>VOLVER</span>
-                </button>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-                    <div>
-                        <img id="detailImg" class="w-full rounded-[2rem] border border-white/10 aspect-video object-cover">
-                    </div>
-                    <div class="flex flex-col justify-center">
-                        <h2 id="detailTitle" class="text-5xl font-brand mb-2 text-white"></h2>
-                        <div class="inline-flex items-center gap-2 text-[11px] text-cyan-400 font-bold uppercase mb-6 px-3 py-1 bg-cyan-400/5 rounded-full border border-cyan-400/10 self-start" id="verified-label">✓ Verificado</div>
-                        <p id="detailDesc" class="text-gray-400 text-base mb-8"></p>
-                        <div id="reqsContainer" class="space-y-4"></div>
-                        <div id="downloadArea" class="mt-10"></div>
+                <img src="https://i.ibb.co/Hfb046TK/fa4b7a137758b4d05d00c033090e576f.jpg" class="w-full h-[250px] sm:h-[400px] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-10">
+                    <div class="max-w-md" data-aos="fade-right">
+                        <span class="text-cyan-400 font-ui font-bold text-sm tracking-[5px] uppercase mb-4 block">Premium Release</span>
+                        <h1 class="text-6xl font-brand text-white leading-none mb-6">UNLIMITED EXPERIENCE</h1>
                     </div>
                 </div>
+            </div>
 
-                <div class="border-t border-white/5 pt-16">
-                    <h3 class="font-brand text-3xl mb-10 text-white" id="label-reviews-title">RESEÑAS</h3>
-                    <div id="review-form-container" class="mb-12 p-8 bg-[#0a0a0a] rounded-[2rem] border border-white/5">
-                        <div id="active-review-form" class="space-y-6">
-                            <div>
-                                <label class="label-ep" id="lbl-user">Usuario:</label>
-                                <input type="text" id="review-name" class="input-ep" placeholder="Nombre...">
-                            </div>
+            <div class="md:hidden mb-10">
+                <input type="text" id="catalogSearchMobile" class="search-input font-ui" oninput="syncAndRender(this)" placeholder="...">
+            </div>
 
-                            <div>
-                                <p class="text-[10px] text-cyan-400 font-bold mb-4 uppercase tracking-widest" id="label-your-rating">Tu Calificación</p>
-                                <div class="star-rating flex gap-3" id="star-input">
-                                    <span class="star" data-value="1">★</span>
-                                    <span class="star" data-value="2">★</span>
-                                    <span class="star" data-value="3">★</span>
-                                    <span class="star" data-value="4">★</span>
-                                    <span class="star" data-value="5">★</span>
-                                </div>
-                            </div>
+            <div class="mb-10 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-1.5 h-8 bg-cyan-400 rounded-full"></div>
+                    <h2 class="font-brand text-3xl text-white" id="counter-label"></h2>
+                </div>
+                <span id="game-total-count" class="bg-cyan-400/10 text-cyan-400 font-bold px-5 py-2 rounded-2xl border border-cyan-400/20 text-lg">0</span>
+            </div>
 
-                            <div>
-                                <label class="label-ep" id="lbl-review">Reseña:</label>
-                                <textarea id="review-text" class="w-full bg-black/40 border border-white/10 p-5 rounded-2xl text-white text-sm h-32 resize-none outline-none focus:border-cyan-400" placeholder="..."></textarea>
-                            </div>
-                            
-                            <button onclick="submitReview()" id="btn-submit-review" class="bg-cyan-400 text-black font-black px-12 py-4 rounded-2xl font-brand text-xl w-full">PUBLICAR</button>
+            <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8">
+                <div class="skeleton aspect-[2/3] w-full"></div>
+                <div class="skeleton aspect-[2/3] w-full"></div>
+                <div class="skeleton aspect-[2/3] w-full"></div>
+                <div class="skeleton aspect-[2/3] w-full"></div>
+                <div class="skeleton aspect-[2/3] w-full"></div>
+            </div>
+        </main>
+
+        <section id="detail-view" class="view-section px-6">
+            <div class="max-w-6xl mx-auto">
+                <button onclick="navigate('home')" id="btn-back" class="group mb-10 text-cyan-400 font-ui text-lg uppercase flex items-center gap-3 hover:text-white transition-colors">
+                    <span class="transition-transform group-hover:-translate-x-2 text-2xl">←</span> <span class="font-bold"></span>
+                </button>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 pb-24">
+                    <div class="lg:col-span-7">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-cyan-400/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <img id="detailImg" class="w-full rounded-[3rem] border border-white/5 aspect-video object-cover shadow-[0_40px_80px_rgba(0,0,0,0.6)] relative z-10">
                         </div>
                     </div>
-                    <div id="reviews-list" class="space-y-6 pb-24"></div>
+                    <div class="lg:col-span-5 flex flex-col justify-center">
+                        <div class="inline-flex items-center gap-3 text-xs text-cyan-400 font-bold uppercase mb-6 px-4 py-2 bg-cyan-400/10 rounded-xl border border-cyan-400/20 self-start" id="verified-label"></div>
+                        <h2 id="detailTitle" class="text-7xl font-brand mb-6 text-white leading-none"></h2>
+                        <p id="detailDesc" class="text-gray-400 text-lg leading-relaxed mb-10"></p>
+                        
+                        <div id="reqsContainer" class="mb-10"></div>
+                        <div id="downloadArea"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="request-view" class="view-section px-6 text-center">
-            <div class="max-w-2xl mx-auto py-10">
-                <h1 class="text-6xl font-brand mb-10 text-white" id="req-view-title">SOLICITAR</h1>
-                <div class="bg-[#0a0a0a] p-10 rounded-[3rem] border border-white/5 shadow-2xl">
-                    <input type="text" id="requestInput" class="w-full bg-black border border-white/10 p-5 rounded-2xl mb-6 text-white outline-none font-ui text-lg" placeholder="...">
-                    <button onclick="sendRequest()" class="bg-cyan-400 text-black font-black w-full py-5 rounded-2xl font-brand text-2xl" id="req-btn">ENVIAR</button>
+        <section id="request-view" class="view-section px-6">
+            <div class="max-w-3xl mx-auto py-20 text-center">
+                <h1 class="text-8xl font-brand mb-6 text-white" id="req-view-title" data-aos="fade-down"></h1>
+                <p class="text-gray-500 font-ui text-xl uppercase tracking-[10px] mb-16" data-aos="fade-up">Input Target Data</p>
+                
+                <div class="bg-white/[0.02] p-12 rounded-[4rem] border border-white/5 shadow-2xl backdrop-blur-xl relative" data-aos="zoom-in">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-cyan-400 text-black font-bold px-6 py-1 rounded-full text-xs uppercase tracking-tighter">Request Terminal</div>
+                    <input type="text" id="requestInput" class="w-full bg-black/40 border border-white/10 p-7 rounded-3xl mb-8 text-white outline-none font-ui text-2xl text-center focus:border-cyan-400 transition-all" placeholder="...">
+                    <button onclick="sendRequest()" class="download-btn text-3xl py-6" id="req-btn"></button>
                 </div>
             </div>
         </section>
@@ -334,19 +416,31 @@
         const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
 
         const i18n = {
-            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", post: "PUBLICAR", noAsk: "No volver a preguntar / Don't ask again", new: "NUEVO", reqsTitle: "REQUISITOS", reviewsTitle: "RESEÑAS", yourRating: "TU CALIFICACIÓN", opinionPlh: "Tu opinión...", loadingCom: "Cargando...", beFirst: "Sé el primero.", verifiedBy: "✓ Verificado", name: "Español", userLabel: "Usuario:", reviewLabel: "Reseña:" },
-            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", post: "POST", noAsk: "Don't ask again", new: "NEW", reqsTitle: "REQUIREMENTS", reviewsTitle: "REVIEWS", yourRating: "YOUR RATING", opinionPlh: "Your opinion...", loadingCom: "Loading...", beFirst: "Be the first.", verifiedBy: "✓ Verified", name: "English", userLabel: "User:", reviewLabel: "Review:" }
+            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", noAsk: "No volver a preguntar / Don't ask again", new: "NUEVO", reqsTitle: "REQUISITOS DEL SISTEMA", verifiedBy: "✓ ARCHIVO VERIFICADO", name: "Español" },
+            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", noAsk: "Don't ask again", new: "NEW", reqsTitle: "SYSTEM REQUIREMENTS", verifiedBy: "✓ VERIFIED FILE", name: "English" },
+            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", noAsk: "Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", verifiedBy: "✓ Verificado", name: "Português" },
+            fr: { search: "RECHERCHER...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 LANGUE", available: "JEUX DISPONIBLES", download: "TÉLÉCHARGER", back: "← RETOUR", send: "ENVOYER", placeholder: "NOM DU JEU...", noAsk: "Ne plus demander", new: "NOUVEAU", reqsTitle: "REQUIS", verifiedBy: "✓ Vérifié", name: "Français" },
+            de: { search: "SUCHEN...", catalog: "KATALOG", request: "ANFRAGE", changelang: "🌐 SPRACHE", available: "VERFÜGBARE SPIELE", download: "DOWNLOAD", back: "← ZURÜCK", send: "SENDEN", placeholder: "SPIELNAME...", noAsk: "Nicht más fragen", new: "NEU", reqsTitle: "ANFORDERUNGEN", verifiedBy: "✓ Verifiziert", name: "Deutsch" },
+            it: { search: "CERCA...", catalog: "CATALOGO", request: "RICHIESTA", changelang: "🌐 LINGUA", available: "GIOCHI DISPONIBILI", download: "SCARICA", back: "← INDIETRO", send: "INVIA", placeholder: "NOME DEL GIOCO...", noAsk: "Non chiedere più", new: "NUOVO", reqsTitle: "REQUISITI", verifiedBy: "✓ Verificato", name: "Italiano" },
+            ru: { search: "ПОИСК...", catalog: "КАТАЛОГ", request: "ЗАПРОС", changelang: "🌐 ЯЗЫК", available: "ДОСТУПНЫЕ ИГРЫ", download: "СКАЧАТЬ", back: "← НАЗАД", send: "ОТПРАВИТЬ", placeholder: "НАЗВАНИЕ ИГРЫ...", noAsk: "Не спрашивать снова", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", verifiedBy: "✓ Проверено", name: "Русский" },
+            zh: { search: "搜索游戏...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "可用游戏", download: "下载 APK", back: "← 返回", send: "发送请求", placeholder: "游戏名称...", noAsk: "不再询问", new: "新", reqsTitle: "要求", verifiedBy: "✓ 已验证", name: "中文" },
+            ja: { search: "検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語変更", available: "利用可能なゲーム", download: "ダウンロード", back: "← 戻る", send: "送信", placeholder: "ゲーム名...", noAsk: "再表示しない", new: "新規", reqsTitle: "要件", verifiedBy: "✓ 確認済み", name: "日本語" },
+            ko: { search: "검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "사용 가능한 게임", download: "다운로드", back: "← 뒤로", send: "보내기", placeholder: "게임 이름...", noAsk: "다시 묻지 않음", new: "새로운", reqsTitle: "요구 사항", verifiedBy: "✓ 확인됨", name: "한국어" },
+            ar: { search: "بحث...", catalog: "الكتالوج", request: "طلب", changelang: "🌐 تغيير اللغة", available: "الألعاب المتاحة", download: "تحميل APK", back: "← عودة", send: "إرسال", placeholder: "اسم اللعبة...", noAsk: "لا تسأل مرة أخرى", new: "جديد", reqsTitle: "المتطلبات", verifiedBy: "✓ موثق", name: "العربية" },
+            tr: { search: "ARA...", catalog: "KATALOG", request: "İSTEK", changelang: "🌐 DİL DEĞİŞTİR", available: "MEVCUT OYUNLAR", download: "İNDİR", back: "← GERİ", send: "GÖNDER", placeholder: "OYUN ADI...", noAsk: "Bir daha sorma", new: "YENİ", reqsTitle: "GEREKSİNİMLER", verifiedBy: "✓ Doğrulandı", name: "Türkçe" },
+            nl: { search: "ZOEKEN...", catalog: "CATALOGUS", request: "AANVRAAG", changelang: "🌐 TAAL", available: "BESCHIKBARE GAMES", download: "DOWNLOAD", back: "← TERUG", send: "VERSTUREN", placeholder: "GAMENAAM...", noAsk: "Niet más fragen", new: "NIEUW", reqsTitle: "VEREISTEN", verifiedBy: "✓ Geverifieerd", name: "Nederlands" },
+            pl: { search: "SZUKAJ...", catalog: "KATALOG", request: "PROŚBA", changelang: "🌐 JĘZYK", available: "DOSTĘPNE GRY", download: "POBIERZ", back: "← POWRÓT", send: "WYŚLIJ", placeholder: "NAZWA GRY...", noAsk: "Nie pytaj ponownie", new: "NOWE", reqsTitle: "WYMAGANIA", verifiedBy: "✓ Zweryfikowano", name: "Polski" },
+            vi: { search: "TÌM KIẾM...", catalog: "DANH MỤC", request: "YÊU CẦU", changelang: "🌐 ĐỔI NGÔN NGỮ", available: "TRÒ CHƠI CÓ SẴN", download: "TẢI VỀ", back: "← QUAY LẠI", send: "GỬI", placeholder: "TÊN TRÒ CHƠI...", noAsk: "Không hỏi lại", new: "MỚI", reqsTitle: "YÊU CẦU", verifiedBy: "✓ Đã xác minh", name: "Tiếng Việt" }
         };
 
-        const flags = { en: '🇺🇸', es: '🇪🇸' };
+        const flags = { es: '🇪🇸', en: '🇺🇸', pt: '🇧🇷', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹', ru: '🇷🇺', zh: '🇨🇳', ja: '🇯🇵', ko: '🇰🇷', ar: '🇸🇦', tr: '🇹🇷', nl: '🇳🇱', pl: '🇵🇱', vi: '🇻🇳' };
 
-        let selectedRating = 0;
         let currentGameId = null;
         let curLang = 'es';
-        
-        let localReviews = {};
+        let scrollPos = 0;
 
         const games = [
+            { id: 'gta3def', title: 'Grand Theft Auto III', poster: 'https://images.g2a.com/323x433/1x1x1/grand-theft-auto-iii-p10000007301/590df4f35bafe357036a1c7d', screen: 'https://img.apkvision.org/gta-iii-definitive/gta-iii-definitive-4.webp', link: 'https://apkvision.org/games/action/gta-iii-definitive-115254/download/v1.84.3-apk/', desc: { es: 'The Definitive Edition: El clásico que lo cambió todo, ahora optimizado para móviles.', en: 'The Definitive Edition: The classic that changed everything, now optimized for mobile.' }, reqs: ["4GB - 6GB", "Snapdragon 865", "1.68GB", "11.0+"], showNewBadge: true },
             { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'La épica historia del forajido John Marston en el salvaje oeste.', en: 'The epic story of outlaw John Marston in the wild west.' }, reqs: ["6GB - 8GB", "Octa-Core 2.8GHz", "10GB", "11.0+"], showNewBadge: true },
             { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/bz7qbwzvjuwgTzOdZT8hC3HXsCgawmEiH0XKkQQH8o85luobIkW8hjkVdU5Go8Tspvl8F96ywYj4nQlKcMGOPtmgFbFuUImjG7CPoNLlwvSs6dNKuukuEjXWgElIfgk6fYvgt2IIWi_rkPxo1p4-1VWT6Yd04d8tXMEeRgkdcJ9GC90/ygxlaj72vkll9oi/Hello+Neighbor+2+v0.1.3+-+espacioapk.com.apk', desc: { es: 'Descubre los secretos que esconde tu vecino.', en: 'Uncover the neighbor secrets.' }, reqs: ["4GB RAM", "Snapdragon 855", "3GB", "8.0+"], showNewBadge: true },
             { id: 're4beta', title: 'Resident evil 4 BETA', poster: 'https://m.media-amazon.com/images/M/MV5BZWY3ZjRiNTctYzU2My00NDIwLWI3NTAtNmUwZDBlZjlhYjI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://i.redd.it/resident-evil-4-mobile-hd-android-v0-r45d7j5wvhhc1.jpg?width=1001&format=pjpg&auto=webp&s=22ab2d8a664fb14eed998c9ec4e596d0671f152e', link: 'https://download2444.mediafire.com/ur8khq91qaogWIJ85ZTUbLTeIl0KrfSDzK8O0-jnwOyE0eWs-g411i4eRLlylZsNi_9ECtlaiiM7gYskQ4VFiz1L0hrkDfBzBdLtf-iU0T5R8goyzU36_TsOK8ElnM0vuzDwGBThgJrOe7iES0f6EJ-mdhTA2zvC7bv-Hiwyk2SMZoQ/resen04k0nveqp8/RESDT+EVIL+4+BETA_%E2%9C%85SIN+VIRUS.apk', desc: { es: 'Beta clásica de supervivencia y terror.', en: 'Classic survival horror Beta.' }, reqs: ["3GB RAM", "Octa-Core 2.0", "350MB", "8.0+"], showNewBadge: true },
@@ -364,7 +458,7 @@
             { id: 'silksong', title: 'Hollow Knight Silksong', poster: 'https://m.media-amazon.com/images/M/MV5BMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://download2447.mediafire.com/w84peg5sx8fgBc-7cVVmCeWeTHT7srV5XEq4NbfMtzlim6gxgE54Vr-cxARCyg2zmDRL5j6HiNz_i9PGgKqstW7i9WWZow41PaBe8omyaRLz7n8BeztpmXVbOQMB2-2soj3Z3mjB1Tu100nj-S6iMiqkIH5w3aDUGplF1Y7s_4zHS4I/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk', desc: { es: 'Hornet en reino nuevo.', en: 'Hornet in new kingdom.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
             { id: 'p3', title: 'Poppy Playtime 3', poster: 'https://http2.mlstatic.com/D_NQ_NP_615692-MLM96301603984_102025-O.webp', screen: 'https://unreal-play-studio.com/asset/poppy-playtime-3/o4ozI7.webp', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3', desc: { es: 'Orfanato Playcare.', en: 'Playcare orphanage.' }, reqs: ["SD 855", "4GB RAM", "3GB", "8.0+"] },
             { id: 'descenders', title: 'Descenders', poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', link: 'https://apks.trulhost.com/Descenders-v1.10.3-Mod.apk', desc: { es: 'MTB extremo.', en: 'Extreme MTB.' }, reqs: ["4GB RAM", "2.2GHz", "2.5GB", "9.0+"] },
-            { id: 'miles', title: 'Miles Morales', poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbd1fbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/doaqi0p34hbgSi7mQcuB9wuZxs99BBxGjSznCCWArLig-alMXAYJ1289MM8fTj8lmAEVy47CyBZ9eRoboCUtyVFqs1I1zTuqOmVsfsrH7m9XUO5lnXwPK9DewQOm_w8vSTLkVYz5KOCfPa83rTTI2s-Gg1QoF3o-4ziGQgpfMtKAJnw/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Miles Morales móvil.', en: 'Miles Morales mobile.' }, reqs: ["2GB RAM", "1.8GHz", "400MB", "8.0+"] },
+            { id: 'miles', title: 'Miles Morales', poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/doaqi0p34hbgSi7mQcuB9wuZxs99BBxGjSznCCWArLig-alMXAYJ1289MM8fTj8lmAEVy47CyBZ9eRoboCUtyVFqs1I1zTuqOmVsfsrH7m9XUO5lnXwPK9DewQOm_w8vSTLkVYz5KOCfPa83rTTI2s-Gg1QoF3o-4ziGQgpfMtKAJnw/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Miles Morales móvil.', en: 'Miles Morales mobile.' }, reqs: ["2GB RAM", "1.8GHz", "400MB", "8.0+"] },
             { id: 'fnaf', title: 'FNaF Spanish', poster: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', screen: 'https://imag.malavida.com/mvimgbig/download-fs/five-nights-at-freddys-14759-1.jpg', link: 'https://download2391.mediafire.com/4awsa1pfuqkg_ojkGcYFDme4_OXIyK-uykrHLpBkHiOAI8rIJOBB2iqmYFxLLMjIcEJYXvXELlHNavqV-7pg7Ey1fKuzwDK2_-VrYI2f3wbVKBc4JyLVNOPBgDKnmVTqgIuvVrgbv8in3yE9erjX7GMgZUOJD0CgDOOYlvCI7XjU6Ik/7nysoswlpi8cm9l/Five+Nights+at+Freddy%C2%B4s+%28Spanish%29+-+espacioapk.com.apk', desc: { es: 'Terror en español.', en: 'Horror in Spanish.' }, reqs: ["2GB RAM", "2.0GHz", "1GB", "8.0+"] },
             { id: 'cuphead', title: 'Cuphead + DLC', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', link: 'https://download2390.mediafire.com/2apu3aa59cqgUW8WOTsFRW_CNVJY0mQbikGsRMsccfTvqx0mCA1VsOVFXpWHxy6-rjpxC8_t-EuexMVwQ4sy4PBUTuqFcGRcAGx0ZYHszUXnQbCtGC7y0RrkB5KUQsVHYURU8LRC09zUrxTOjL-MeeOO3yfMWCKne3w9LjJY7G88g7A/vdlzhn68ru3nuo5/Cuphead+%2B+DLC+-+v1.0.3+-+VPR.apk', desc: { es: 'Acción DLC incluido.', en: 'Action DLC included.' }, reqs: ["3GB RAM", "2.0GHz", "2.5GB", "9.0+"] },
             { id: 'hollow', title: 'Hollow Knight', poster: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://download2447.mediafire.com/6pwcinoz923g4rm5JW4aO8IZ_LGG0dAEVgbihR-sUpiB4F0lE7n6fdMoQGQARq9I5bs_sN36Jsr-FWjFeTkRQnYOJi-_gJO5PjE4_Aj1kh58gzoMnZG-KRhbPw99mpzUDNmnVM41SPbQHK8g-cmdjWolJi0kUlk7W3g7vxgPdIEXYP8/bsqgq7dnvz6w187/HKVulkanV2.7z', desc: { es: 'Explora reino ruinas.', en: 'Explore ruined kingdom.' }, reqs: ["3GB RAM", "2.0GHz", "1.2GB", "9.0+"] },
@@ -381,121 +475,69 @@
                 curLang = savedLang;
                 document.getElementById('language-overlay').style.display = 'none';
                 applyTranslations();
-                setTimeout(() => { document.getElementById('mainBanner')?.classList.add('active-banner'); }, 100);
+                setTimeout(() => { document.getElementById('mainBanner')?.classList.add('active-banner'); }, 200);
             }
 
             const grid = document.getElementById('langGrid');
-            grid.innerHTML = Object.keys(flags).map(code => `
+            grid.innerHTML = Object.keys(i18n).map(code => `
                 <div onclick="setLang('${code}')" class="lang-card">
-                    <span class="text-4xl">${flags[code]}</span>
-                    <span class="font-ui text-[9px] text-white/40 uppercase tracking-widest">${i18n[code]?.name || code}</span>
+                    <span class="text-4xl filter drop-shadow-lg">${flags[code] || '🌐'}</span>
+                    <span class="font-ui text-[10px] text-white/50 uppercase font-bold tracking-[2px]">${i18n[code]?.name || code}</span>
                 </div>
             `).join('');
 
-            // Agregado el listener de estrellas dentro de init
-            setTimeout(() => {
-                document.querySelectorAll('#star-input .star').forEach(star => {
-                    star.onclick = (e) => {
-                        const val = parseInt(e.target.dataset.value);
-                        selectedRating = val;
-                        document.querySelectorAll('#star-input .star').forEach(s =>
-                            s.classList.toggle('active', parseInt(s.dataset.value) <= val)
-                        );
-                    };
-                });
-            }, 0);
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('main-header');
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
 
             render();
-            AOS.init({ duration: 1000, once: true });
+            
+            AOS.init({ 
+                duration: 1000, 
+                once: false,
+                easing: 'ease-out-cubic'
+            });
         };
 
         window.setLang = (code) => {
             curLang = code;
             if(document.getElementById('rememberLang').checked) localStorage.setItem('ep_lang', code);
-            document.getElementById('language-overlay').style.display = 'none';
-            applyTranslations();
-            document.getElementById('mainBanner')?.classList.add('active-banner');
+            document.getElementById('language-overlay').classList.add('opacity-0');
+            setTimeout(() => {
+                document.getElementById('language-overlay').style.display = 'none';
+                applyTranslations();
+                document.getElementById('mainBanner')?.classList.add('active-banner');
+            }, 500);
         };
 
         window.resetLanguage = () => {
             localStorage.removeItem('ep_lang');
             document.getElementById('language-overlay').style.display = 'flex';
+            document.getElementById('language-overlay').classList.remove('opacity-0');
             toggleMenu();
         };
 
         function applyTranslations() {
             const t = i18n[curLang] || i18n.en;
             document.getElementById('catalogSearch').placeholder = t.search;
+            document.getElementById('catalogSearchMobile').placeholder = t.search;
             document.getElementById('nav-catalog').innerText = t.catalog;
             document.getElementById('nav-request').innerText = t.request;
             document.getElementById('nav-changelang').innerText = t.changelang;
             document.getElementById('counter-label').innerText = t.available;
             document.getElementById('label-no-ask').innerText = t.noAsk;
-            document.getElementById('btn-back').innerHTML = `<span>←</span> <span>${t.back}</span>`;
-            document.getElementById('label-reviews-title').innerText = t.reviewsTitle;
-            document.getElementById('label-your-rating').innerText = t.yourRating;
-            document.getElementById('review-text').placeholder = t.opinionPlh;
-            document.getElementById('btn-submit-review').innerText = t.post;
+            document.getElementById('btn-back').querySelector('span:last-child').innerText = t.back;
             document.getElementById('verified-label').innerText = t.verifiedBy;
             document.getElementById('req-view-title').innerText = t.request;
             document.getElementById('requestInput').placeholder = t.placeholder;
             document.getElementById('req-btn').innerText = t.send;
-            document.getElementById('lbl-user').innerText = t.userLabel;
-            document.getElementById('lbl-review').innerText = t.reviewLabel;
             render();
         }
 
-        window.submitReview = async () => {
-            const name = document.getElementById('review-name').value;
-            const text = document.getElementById('review-text').value;
-
-            if(!name.trim() || selectedRating === 0 || !text.trim()) {
-                alert("Completa todos los campos.");
-                return;
-            }
-
-            const btn = document.getElementById('btn-submit-review');
-            btn.disabled = true; 
-            btn.innerText = "...";
-
-            if(!localReviews[currentGameId]) localReviews[currentGameId] = [];
-            
-            localReviews[currentGameId].unshift({
-                name: name,
-                rating: selectedRating,
-                text: text,
-                createdAt: new Date().toISOString()
-            });
-
-            setTimeout(() => {
-                document.getElementById('review-name').value = "";
-                document.getElementById('review-text').value = "";
-                selectedRating = 0;
-                document.querySelectorAll('#star-input .star').forEach(s => s.classList.remove('active'));
-                btn.disabled = false; 
-                applyTranslations();
-                renderReviews(currentGameId);
-            }, 500);
-        };
-
-        window.renderReviews = (gameId) => {
-            const list = document.getElementById('reviews-list');
-            const reviews = localReviews[gameId] || [];
-            
-            if(reviews.length === 0) {
-                list.innerHTML = `<p class="text-gray-600 text-xs text-center py-10 opacity-50">${i18n[curLang]?.beFirst || 'Be the first.'}</p>`;
-                return;
-            }
-            
-            list.innerHTML = reviews.map(r => `
-                <div class="review-card">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-xs font-bold text-white uppercase tracking-wider">${r.name}</span>
-                        <div class="flex gap-0.5">${'★'.repeat(r.rating).split('').map(() => `<span class="text-cyan-400 text-[10px]">★</span>`).join('')}</div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed bg-black/30 p-4 rounded-xl border border-white/5">${r.text}</p>
-                </div>
-            `).join('');
+        window.syncAndRender = (input) => {
+            document.getElementById('catalogSearch').value = input.value;
+            render();
         };
 
         window.render = () => {
@@ -503,67 +545,125 @@
             const grid = document.getElementById('gameGrid');
             const filtered = games.filter(g => g.title.toLowerCase().includes(val));
             document.getElementById('game-total-count').innerText = filtered.length;
+            
             grid.innerHTML = filtered.map((g, i) => `
-                <div class="game-card" data-aos="fade-up" onclick="openGame('${g.id}')">
+                <div class="game-card" data-aos="fade-up" data-aos-delay="${(i % 5) * 50}" onclick="openGame('${g.id}')" onmouseenter="preloadScreen('${g.screen}')">
                     ${g.showNewBadge ? `<div class="portada-updated-badge">${i18n[curLang]?.new || 'NEW'}</div>` : ''}
                     <img src="${g.poster}" class="char-img">
-                    <div class="game-title-badge"><span class="game-title-text">${g.title}</span></div>
+                    <div class="game-title-badge"><span class="game-title-text uppercase">${g.title}</span></div>
                 </div>
             `).join('');
         };
 
+        window.preloadScreen = (url) => {
+            const img = new Image();
+            img.src = url;
+        };
+
         window.openGame = (id) => {
+            scrollPos = window.scrollY;
             const g = games.find(x => x.id === id); if(!g) return;
             currentGameId = id;
-            document.getElementById('detailImg').src = g.screen;
+            
+            const detailImg = document.getElementById('detailImg');
+            detailImg.style.opacity = '0';
+            detailImg.src = g.screen;
+            
+            detailImg.onload = () => {
+                detailImg.style.opacity = '1';
+                detailImg.style.transition = 'opacity 0.3s ease';
+            };
+
             document.getElementById('detailTitle').innerText = g.title;
             document.getElementById('detailDesc').innerText = g.desc[curLang] || g.desc.en;
+            
             document.getElementById('reqsContainer').innerHTML = `
-                <div class="p-6 bg-[#0a0a0a] border-l-4 border-cyan-400 rounded-r-3xl">
-                    <p class="text-[10px] text-cyan-400 font-bold mb-4 uppercase tracking-widest">${i18n[curLang]?.reqsTitle || 'REQUISITOS'}</p>
-                    <div class="grid grid-cols-2 gap-4 text-xs text-gray-400 font-ui uppercase">
-                        <span>RAM: ${g.reqs[0]}</span> <span>CPU: ${g.reqs[1]}</span>
-                        <span>DISK: ${g.reqs[2]}</span> <span>ANDR: ${g.reqs[3]}</span>
+                <div class="p-8 bg-white/[0.03] border-l-4 border-cyan-400 rounded-r-[2rem] backdrop-blur-md">
+                    <p class="text-[10px] text-cyan-400 font-bold mb-6 uppercase tracking-[3px]">${i18n[curLang]?.reqsTitle || 'SYSTEM REQUIREMENTS'}</p>
+                    <div class="grid grid-cols-2 gap-y-6 gap-x-4 text-xs text-gray-300 font-ui font-bold uppercase">
+                        <div class="flex flex-col gap-1"><span class="text-[9px] text-gray-600">Memory</span> <span>RAM: ${g.reqs[0]}</span></div>
+                        <div class="flex flex-col gap-1"><span class="text-[9px] text-gray-600">Processor</span> <span>CPU: ${g.reqs[1]}</span></div>
+                        <div class="flex flex-col gap-1"><span class="text-[9px] text-gray-600">Storage</span> <span>DISK: ${g.reqs[2]}</span></div>
+                        <div class="flex flex-col gap-1"><span class="text-[9px] text-gray-600">Version</span> <span>ANDR: ${g.reqs[3]}</span></div>
                     </div>
                 </div>`;
-            document.getElementById('downloadArea').innerHTML = `<button onclick="handleDownload('${g.id}', '${g.link}')" class="download-btn"><span>${i18n[curLang]?.download || 'DESCARGAR'}</span></button>`;
+
+            document.getElementById('downloadArea').innerHTML = `
+                <button onclick="handleDownload('${g.id}', '${g.link}')" class="download-btn group">
+                    <span class="flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21l-8-9h6V3h4v9h6l-8 9z"/></svg>
+                        ${i18n[curLang]?.download || 'DOWNLOAD'}
+                    </span>
+                </button>`;
+            
             showView('detail'); 
-            renderReviews(id);
+            window.scrollTo({ top: 0, behavior: 'auto' });
         };
 
         window.handleDownload = async (id, link) => {
             const g = games.find(x => x.id === id); window.open(link, '_blank');
             try {
-                await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [{ title: "🚀 Descarga", color: 62207, fields: [{name:"🎮",value:g.title,inline:true}] }] }) });
+                await fetch(DISCORD_WEBHOOK, { 
+                    method: 'POST', 
+                    headers: {'Content-Type':'application/json'}, 
+                    body: JSON.stringify({ 
+                        embeds: [{ 
+                            title: "🚀 Descarga Iniciada", 
+                            color: 62207, 
+                            thumbnail: { url: g.poster },
+                            fields: [
+                                {name:"🎮 Juego", value: g.title, inline: true}, 
+                                {name:"🌐 Idioma", value: curLang, inline: true}
+                            ] 
+                        }] 
+                    }) 
+                });
             } catch (err) {}
         };
 
         window.showView = (v) => {
-            document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.view-section').forEach(s => {
+                s.classList.remove('active');
+                s.style.display = 'none';
+            });
             const active = document.getElementById(v + '-view'); 
-            active.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            active.style.display = 'block';
+            setTimeout(() => active.classList.add('active'), 10);
         };
 
-        window.navigate = (v) => { showView(v === 'home' ? 'home' : v); };
+        window.navigate = (v) => { 
+            showView(v === 'home' ? 'home' : v); 
+            if(v === 'home') {
+                setTimeout(() => { window.scrollTo({ top: scrollPos, behavior: 'auto' }); }, 10);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'auto' });
+            }
+        };
 
         window.toggleMenu = () => {
             const menu = document.getElementById('mobile-menu');
             const overlay = document.getElementById('mobile-menu-overlay');
             const isOpen = menu.style.right === '0px';
-            menu.style.right = isOpen ? '-100%' : '0';
+            menu.style.right = isOpen ? '-100%' : '0px';
             overlay.classList.toggle('hidden', isOpen);
             setTimeout(() => overlay.style.opacity = isOpen ? '0' : '1', 10);
         };
 
         window.sendRequest = async () => {
             const val = document.getElementById('requestInput').value; if(!val) return;
-            const btn = document.getElementById('req-btn'); btn.innerText = "...";
+            const btn = document.getElementById('req-btn'); 
+            const originalText = btn.innerText;
+            btn.innerText = "...";
             try {
-                await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [{ title: "📝 Petición", fields: [{ name: "🕹️", value: val }] }] }) });
-                document.getElementById('requestInput').value = ""; btn.innerText = "¡ENVIADO!";
-                setTimeout(() => applyTranslations(), 2000);
-            } catch(e) { btn.innerText = "ERR"; }
+                await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [{ title: "📝 Nueva Petición de Juego", color: 0x00f2ff, fields: [{ name: "🕹️ Título", value: val }, {name: "🌍 Idioma", value: curLang}] }] }) });
+                document.getElementById('requestInput').value = ""; 
+                btn.innerText = "RECEIVED";
+                btn.style.background = "#fff";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "var(--cyan)";
+                }, 3000);
+            } catch(e) { btn.innerText = "ERROR"; }
         };
 
         window.onload = init;
@@ -571,3 +671,4 @@
 </body>
 </html>
 
+```
