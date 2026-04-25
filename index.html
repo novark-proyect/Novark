@@ -139,12 +139,13 @@
             display: block;
         }
 
+        /* Eliminamos el Loader visualmente para entrada instantánea */
         #loading-screen { 
             position: fixed; 
             inset: 0; 
             z-index: 10000; 
             background: #000; 
-            display: none; 
+            display: none; /* Cambiado a none por defecto */
             flex-direction: column;
             align-items: center; 
             justify-content: center; 
@@ -216,7 +217,6 @@
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
 
-        /* Mejora Menu Idioma */
         .lang-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -252,7 +252,6 @@
     <!-- Overlay Idioma Mejorado -->
     <div id="language-overlay" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center p-4">
         <div class="bg-[#050505] p-6 sm:p-10 rounded-[3rem] border border-white/5 max-w-2xl w-full text-center shadow-[0_0_100px_rgba(0,0,0,1)] relative overflow-hidden" data-aos="zoom-in">
-            <!-- Glow background decor -->
             <div class="absolute -top-24 -left-24 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full"></div>
             <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full"></div>
             
@@ -407,7 +406,7 @@
             fr: { search: "CHERCHER UN JEU...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 CHANGER DE LANGUE", available: "JEUX DISPONIBLES", loginMsg: "Connectez-vous pour donner votre avis", download: "TÉLÉCHARGER APK", back: "← RETOUR", send: "ENVOYER LA DEMANDE", placeholder: "NOM DU JEU...", msgLogin: "Connexion avec Google...", post: "PUBLIER", noAsk: "Ne plus demander", new: "NOUVEAU", reqsTitle: "EXIGENCES", reviewsTitle: "AVIS", yourRating: "VOTRE NOTE", opinionPlh: "Votre avis...", loginNow: "SE CONNECTER", loadingCom: "Chargement...", beFirst: "Soyez le premier.", verifiedBy: "✓ Vérifié", verifiedUser: "UTILISATEUR VÉRIFIÉ", name: "Français" },
             hi: { search: "खेल खोजें...", catalog: "कैटलॉग", request: "अनुरोध", changelang: "🌐 भाषा बदलें", available: "उपलब्ध खेल", loginMsg: "समीक्षा लिखने के लिए लॉग in करें", download: "APK डाउनलोड", back: "← वापस", send: "अनुरोध भेजें", placeholder: "खेल का नाम...", msgLogin: "Google से लॉगिन करें...", post: "पोस्ट करें", noAsk: "फिर से न पूछें", new: "नया", reqsTitle: "आवश्यकताएं", reviewsTitle: "समीक्षाएं", yourRating: "आपकी रेटिंग", opinionPlh: "आपकी राय...", loginNow: "अभी लॉगिन करें", loadingCom: "लोड हो रहा है...", beFirst: "पहले बनें।", verifiedBy: "✓ सत्यापित", verifiedUser: "सत्यापित उपयोगकर्ता", name: "हिन्दी" },
             ru: { search: "ПОИСК ИГРЫ...", catalog: "КАТАЛОГ", request: "ЗАПРОСИТЬ", changelang: "🌐 СМЕНИТЬ ЯЗЫК", available: "ДОСТУПНЫЕ ИГРЫ", loginMsg: "Войдите, чтобы написать отзыв", download: "СКАЧАТЬ APK", back: "← НАЗАД", send: "ОТПРАВИТЬ ЗАПРОС", placeholder: "НАЗВАНИЕ ИГРЫ...", msgLogin: "Вход через Google...", post: "ОПУБЛИКОВАТЬ", noAsk: "Больше не спрашивать", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", reviewsTitle: "ОТЗЫВЫ", yourRating: "ВАША ОЦЕНКА", opinionPlh: "Ваше мнение...", loginNow: "ВОЙТИ СЕЙЧАС", loadingCom: "Загрузка...", beFirst: "Будьте первым.", verifiedBy: "✓ Проверено", verifiedUser: "ПРОВЕРЕННЫЙ ПОЛЬЗОВАТЕЛЬ", name: "Русский" },
-            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", loginMsg: "Faça login para escrever avaliações", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", msgLogin: "Login com Google...", post: "POSTAR", noAsk: "Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", reviewsTitle: "AVALIAÇÕES", yourRating: "SUA NOTA", opinionPlh: "Sua opinião...", loginNow: "ENTRAR AGORA", loadingCom: "Carregando...", beFirst: "Seja o primeiro.", verifiedBy: "✓ Verificado", verifiedUser: "USUÁRIO VERIFICADO", name: "Português" },
+            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", loginMsg: "Faça login para escribir avaliações", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", msgLogin: "Login com Google...", post: "POSTAR", noAsk: "Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", reviewsTitle: "AVALIAÇÕES", yourRating: "SUA NOTA", opinionPlh: "Sua opinião...", loginNow: "ENTRAR AGORA", loadingCom: "Carregando...", beFirst: "Seja o primeiro.", verifiedBy: "✓ Verificado", verifiedUser: "USUÁRIO VERIFICADO", name: "Português" },
             id: { search: "CARI GAME...", catalog: "KATALOG", request: "PERMINTAAN", changelang: "🌐 UBAH BAHASA", available: "GAME TERSEDIA", loginMsg: "Masuk untuk menulis ulasan", download: "UNDUH APK", back: "← KEMBALI", send: "KIRIM PERMINTAAN", placeholder: "NAMA GAME...", msgLogin: "Login Google...", post: "PUBLIKASIKAN", noAsk: "Jangan tanya lagi", new: "BARU", reqsTitle: "PERSYARATAN", reviewsTitle: "ULASAN", yourRating: "RATING ANDA", opinionPlh: "Pendapat Anda...", loginNow: "LOGIN SEKARANG", loadingCom: "Memuat...", beFirst: "Jadilah yang primera.", verifiedBy: "✓ Diverifikasi", verifiedUser: "PENGGUNA TERVERIFIKASI", name: "Bahasa" }
         };
 
@@ -456,7 +455,7 @@
                 setTimeout(() => {
                     const banner = document.getElementById('mainBanner');
                     if(banner) banner.classList.add('active-banner');
-                }, 500);
+                }, 100); // Reducido para mayor velocidad
             }
 
             const grid = document.getElementById('langGrid');
@@ -683,12 +682,9 @@
         };
 
         window.navigate = (v) => {
-            document.getElementById('loading-screen').style.display = 'flex';
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.display = 'none';
-                if(v === 'home') currentGameId = null;
-                showView(v);
-            }, 800);
+            // Animación suave entre vistas sin pantalla negra larga
+            showView(v);
+            if(v === 'home') currentGameId = null;
         };
 
         window.toggleMenu = () => {
