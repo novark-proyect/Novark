@@ -114,8 +114,8 @@
             position: relative;
             max-height: 0; 
             opacity: 0; 
-            transform: translateY(30px);
-            transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); 
+            transform: translateY(10px);
+            transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); 
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
         
@@ -231,6 +231,20 @@
             background: #fff;
         }
 
+        .report-btn {
+            background: transparent;
+            color: #666;
+            font-weight: bold;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .report-btn:hover { color: #ff4d4d; }
+
         .input-ep {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
@@ -272,6 +286,27 @@
         #detail-view::-webkit-scrollbar-track { background: transparent; }
         #detail-view::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
 
+        .lang-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 1rem;
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-card:hover {
+            background: rgba(0, 242, 255, 0.1);
+            border-color: var(--cyan);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
+        }
+
     </style>
 </head>
 <body>
@@ -279,22 +314,24 @@
     <div class="bg-mesh"></div>
 
     <div id="language-overlay" class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-4">
-        <div class="p-8 sm:p-12 rounded-[4rem] border border-white/5 max-w-5xl w-full text-center shadow-[0_0_150px_rgba(0,0,0,1)] relative overflow-y-auto max-h-[90vh]" data-aos="zoom-in">
+        <div class="p-8 sm:p-12 rounded-[3rem] border border-white/5 max-w-5xl w-full text-center shadow-[0_0_150px_rgba(0,0,0,1)] relative overflow-y-auto max-h-[90vh]" data-aos="zoom-in">
             <div class="relative inline-block mb-8">
                 <div class="absolute inset-0 bg-cyan-400 blur-2xl opacity-20 animate-pulse"></div>
                 <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-16 h-16 relative z-10">
             </div>
-            <h2 class="font-brand text-5xl mb-12 text-white">SELECT LANGUAGE</h2>
+            <h2 class="font-brand text-5xl mb-12 text-white uppercase">Select Language</h2>
             
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12" id="langGrid"></div>
             
-            <label class="flex items-center justify-center gap-3 cursor-pointer group">
-                <input type="checkbox" id="rememberLang" class="peer hidden">
-                <div class="w-6 h-6 border-2 border-white/10 rounded-lg peer-checked:bg-cyan-400 peer-checked:border-cyan-400 transition-all duration-300 flex items-center justify-center">
-                    <svg class="w-4 h-4 text-black opacity-0 peer-checked:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <span id="label-no-ask" class="text-gray-500 group-hover:text-gray-300 font-ui text-sm transition-colors uppercase tracking-widest"></span>
-            </label>
+            <div class="flex flex-col items-center gap-4">
+                <label class="flex items-center justify-center gap-3 cursor-pointer group p-4 bg-white/5 rounded-2xl border border-white/5">
+                    <input type="checkbox" id="rememberLang" class="peer hidden">
+                    <div class="w-6 h-6 border-2 border-white/10 rounded-lg peer-checked:bg-cyan-400 peer-checked:border-cyan-400 transition-all duration-300 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-black opacity-0 peer-checked:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span id="label-no-ask" class="text-gray-400 group-hover:text-gray-200 font-ui text-sm transition-colors uppercase tracking-widest"></span>
+                </label>
+            </div>
         </div>
     </div>
 
@@ -334,6 +371,7 @@
         <div class="flex flex-col gap-8">
             <button onclick="navigate('home'); toggleMenu();" class="text-6xl text-white font-brand text-left hover:text-cyan-400 hover:translate-x-4 transition-all duration-300" id="nav-catalog"></button>
             <button onclick="navigate('request'); toggleMenu();" class="text-6xl text-white font-brand text-left hover:text-cyan-400 hover:translate-x-4 transition-all duration-300" id="nav-request"></button>
+            <button onclick="showReportTerminalFromMenu(); toggleMenu();" class="text-2xl text-white font-brand text-left hover:text-red-400 transition-all duration-300 uppercase mt-4">Reportar error de página</button>
             <div class="h-px bg-white/10 my-4"></div>
             <button onclick="resetLanguage()" class="text-lg text-cyan-400/60 hover:text-cyan-400 font-ui font-bold text-left flex items-center gap-3 transition-colors" id="nav-changelang"></button>
         </div>
@@ -366,10 +404,6 @@
 
             <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8">
                 <div class="skeleton aspect-[2/3] w-full"></div>
-                <div class="skeleton aspect-[2/3] w-full"></div>
-                <div class="skeleton aspect-[2/3] w-full"></div>
-                <div class="skeleton aspect-[2/3] w-full"></div>
-                <div class="skeleton aspect-[2/3] w-full"></div>
             </div>
         </main>
 
@@ -393,6 +427,15 @@
                         
                         <div id="reqsContainer" class="mb-10"></div>
                         <div id="downloadArea"></div>
+
+                        <!-- Botón Reportar -->
+                        <div class="text-center">
+                            <button id="reportBtn" onclick="toggleReportTerminal()" class="report-btn">REPORTAR</button>
+                            <div id="reportTerminal" class="hidden mt-4 p-6 bg-black/60 border border-red-500/20 rounded-3xl animate-in slide-in-from-top-4 duration-300">
+                                <textarea id="reportMessage" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white outline-none focus:border-red-500 mb-3" rows="2" placeholder="Describa el problema..."></textarea>
+                                <button onclick="sendReport()" class="w-full py-2 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-colors text-xs uppercase tracking-widest">Enviar Reporte</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -413,24 +456,26 @@
     </div>
 
     <script>
-        const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
+        const WEBHOOK_REPORTS = "https://discord.com/api/webhooks/1498105804275060778/nVdgoLqeQDpnEGlR-ny3NrujHF_v79gobHO_9S357ONmtcixgKYec553mGfC72RUsSmJ";
+        const WEBHOOK_REQUESTS = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
+        const WEBHOOK_DOWNLOADS = "https://discord.com/api/webhooks/1498103534795755554/euR5SIeFJmzNvusuJ9es2t_WY7RvVU7DHdqdcAzH_vQREkSq2Ou80HZW8rsIjxTfIdbG";
 
         const i18n = {
-            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", noAsk: "No volver a preguntar / Don't ask again", new: "NUEVO", reqsTitle: "REQUISITOS DEL SISTEMA", verifiedBy: "✓ ARCHIVO VERIFICADO", name: "Español" },
-            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", noAsk: "Don't ask again", new: "NEW", reqsTitle: "SYSTEM REQUIREMENTS", verifiedBy: "✓ VERIFIED FILE", name: "English" },
-            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", noAsk: "Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", verifiedBy: "✓ Verificado", name: "Português" },
-            fr: { search: "RECHERCHER...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 LANGUE", available: "JEUX DISPONIBLES", download: "TÉLÉCHARGER", back: "← RETOUR", send: "ENVOYER", placeholder: "NOM DU JEU...", noAsk: "Ne plus demander", new: "NOUVEAU", reqsTitle: "REQUIS", verifiedBy: "✓ Vérifié", name: "Français" },
-            de: { search: "SUCHEN...", catalog: "KATALOG", request: "ANFRAGE", changelang: "🌐 SPRACHE", available: "VERFÜGBARE SPIELE", download: "DOWNLOAD", back: "← ZURÜCK", send: "SENDEN", placeholder: "SPIELNAME...", noAsk: "Nicht más fragen", new: "NEU", reqsTitle: "ANFORDERUNGEN", verifiedBy: "✓ Verifiziert", name: "Deutsch" },
-            it: { search: "CERCA...", catalog: "CATALOGO", request: "RICHIESTA", changelang: "🌐 LINGUA", available: "GIOCHI DISPONIBILI", download: "SCARICA", back: "← INDIETRO", send: "INVIA", placeholder: "NOME DEL GIOCO...", noAsk: "Non chiedere più", new: "NUOVO", reqsTitle: "REQUISITI", verifiedBy: "✓ Verificato", name: "Italiano" },
-            ru: { search: "ПОИСК...", catalog: "КАТАЛОГ", request: "ЗАПРОС", changelang: "🌐 ЯЗЫК", available: "ДОСТУПНЫЕ ИГРЫ", download: "СКАЧАТЬ", back: "← НАЗАД", send: "ОТПРАВИТЬ", placeholder: "НАЗВАНИЕ ИГРЫ...", noAsk: "Не спрашивать снова", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", verifiedBy: "✓ Проверено", name: "Русский" },
-            zh: { search: "搜索游戏...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "可用游戏", download: "下载 APK", back: "← 返回", send: "发送请求", placeholder: "游戏名称...", noAsk: "不再询问", new: "新", reqsTitle: "要求", verifiedBy: "✓ 已验证", name: "中文" },
-            ja: { search: "検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語変更", available: "利用可能なゲーム", download: "ダウンロード", back: "← 戻る", send: "送信", placeholder: "ゲーム名...", noAsk: "再表示しない", new: "新規", reqsTitle: "要件", verifiedBy: "✓ 確認済み", name: "日本語" },
-            ko: { search: "검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "사용 가능한 게임", download: "다운로드", back: "← 뒤로", send: "보내기", placeholder: "게임 이름...", noAsk: "다시 묻지 않음", new: "새로운", reqsTitle: "요구 사항", verifiedBy: "✓ 확인됨", name: "한국어" },
-            ar: { search: "بحث...", catalog: "الكتالوج", request: "طلب", changelang: "🌐 تغيير اللغة", available: "الألعاب المتاحة", download: "تحميل APK", back: "← عودة", send: "إرسال", placeholder: "اسم اللعبة...", noAsk: "لا تسأل مرة أخرى", new: "جديد", reqsTitle: "المتطلبات", verifiedBy: "✓ موثق", name: "العربية" },
-            tr: { search: "ARA...", catalog: "KATALOG", request: "İSTEK", changelang: "🌐 DİL DEĞİŞTİR", available: "MEVCUT OYUNLAR", download: "İNDİR", back: "← GERİ", send: "GÖNDER", placeholder: "OYUN ADI...", noAsk: "Bir daha sorma", new: "YENİ", reqsTitle: "GEREKSİNİMLER", verifiedBy: "✓ Doğrulandı", name: "Türkçe" },
-            nl: { search: "ZOEKEN...", catalog: "CATALOGUS", request: "AANVRAAG", changelang: "🌐 TAAL", available: "BESCHIKBARE GAMES", download: "DOWNLOAD", back: "← TERUG", send: "VERSTUREN", placeholder: "GAMENAAM...", noAsk: "Niet más fragen", new: "NIEUW", reqsTitle: "VEREISTEN", verifiedBy: "✓ Geverifieerd", name: "Nederlands" },
-            pl: { search: "SZUKAJ...", catalog: "KATALOG", request: "PROŚBA", changelang: "🌐 JĘZYK", available: "DOSTĘPNE GRY", download: "POBIERZ", back: "← POWRÓT", send: "WYŚLIJ", placeholder: "NAZWA GRY...", noAsk: "Nie pytaj ponownie", new: "NOWE", reqsTitle: "WYMAGANIA", verifiedBy: "✓ Zweryfikowano", name: "Polski" },
-            vi: { search: "TÌM KIẾM...", catalog: "DANH MỤC", request: "YÊU CẦU", changelang: "🌐 ĐỔI NGÔN NGỮ", available: "TRÒ CHƠI CÓ SẴN", download: "TẢI VỀ", back: "← QUAY LẠI", send: "GỬI", placeholder: "TÊN TRÒ CHƠI...", noAsk: "Không hỏi lại", new: "MỚI", reqsTitle: "YÊU CẦU", verifiedBy: "✓ Đã xác minh", name: "Tiếng Việt" }
+            es: { search: "BUSCAR JUEGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "JUEGOS DISPONIBLES", download: "DESCARGAR APK", back: "← VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", noAsk: "• No volver a preguntar / Don't ask again", new: "NUEVO", reqsTitle: "REQUISITOS DEL SISTEMA", verifiedBy: "✓ ARCHIVO VERIFICADO", name: "Español" },
+            en: { search: "SEARCH GAME...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "AVAILABLE GAMES", download: "DOWNLOAD APK", back: "← BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", noAsk: "• Don't ask again", new: "NEW", reqsTitle: "SYSTEM REQUIREMENTS", verifiedBy: "✓ VERIFIED FILE", name: "English" },
+            pt: { search: "BUSCAR JOGO...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 MUDAR IDIOMA", available: "JOGOS DISPONÍVEIS", download: "BAIXAR APK", back: "← VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", noAsk: "• Não perguntar novamente", new: "NOVO", reqsTitle: "REQUISITOS", verifiedBy: "✓ Verificado", name: "Português" },
+            fr: { search: "RECHERCHER...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 LANGUE", available: "JEUX DISPONIBLES", download: "TÉLÉCHARGER", back: "← RETOUR", send: "ENVOYER", placeholder: "NOM DU JEU...", noAsk: "• Ne plus demander", new: "NOUVEAU", reqsTitle: "REQUIS", verifiedBy: "✓ Vérifié", name: "Français" },
+            de: { search: "SUCHEN...", catalog: "KATALOG", request: "ANFRAGE", changelang: "🌐 SPRACHE", available: "VERFÜGBARE SPIELE", download: "DOWNLOAD", back: "← ZURÜCK", send: "SENDEN", placeholder: "SPIELNAME...", noAsk: "• Nicht más fragen", new: "NEU", reqsTitle: "ANFORDERUNGEN", verifiedBy: "✓ Verifiziert", name: "Deutsch" },
+            it: { search: "CERCA...", catalog: "CATALOGO", request: "RICHIESTA", changelang: "🌐 LINGUA", available: "GIOCHI DISPONIBILI", download: "SCARICA", back: "← INDIETRO", send: "INVIA", placeholder: "NOME DEL GIOCO...", noAsk: "• Non chiedere più", new: "NUOVO", reqsTitle: "REQUISITI", verifiedBy: "✓ Verificato", name: "Italiano" },
+            ru: { search: "ПОИСК...", catalog: "КАТАЛОГ", request: "ЗАПРОС", changelang: "🌐 ЯЗЫК", available: "ДОСТУПНЫЕ ИГРЫ", download: "СКАЧАТЬ", back: "← НАЗАД", send: "ОТПРАВИТЬ", placeholder: "НАЗВАНИЕ ИГРЫ...", noAsk: "• Не спрашивать снова", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", verifiedBy: "✓ Проверено", name: "Русский" },
+            zh: { search: "搜索游戏...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "可用游戏", download: "下载 APK", back: "← 返回", send: "发送请求", placeholder: "游戏名称...", noAsk: "• 不再询问", new: "新", reqsTitle: "要求", verifiedBy: "✓ 已验证", name: "中文" },
+            ja: { search: "検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語変更", available: "利用可能なゲーム", download: "ダウンロード", back: "← 戻る", send: "送信", placeholder: "ゲーム名...", noAsk: "• 再表示しない", new: "新規", reqsTitle: "要件", verifiedBy: "✓ 確認済み", name: "日本語" },
+            ko: { search: "검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "사용 가능한 게임", download: "다운로드", back: "← 뒤로", send: "보내기", placeholder: "게임 이름...", noAsk: "• 다시 묻지 않음", new: "새로운", reqsTitle: "요구 사항", verifiedBy: "✓ 확인됨", name: "한국어" },
+            ar: { search: "بحث...", catalog: "الكتالوج", request: "طلب", changelang: "🌐 تغيير اللغة", available: "الألعاب المتاحة", download: "تحميل APK", back: "← عودة", send: "إرسال", placeholder: "اسم اللعبة...", noAsk: "• لا تسأل مرة أخرى", new: "جديد", reqsTitle: "المتطلبات", verifiedBy: "✓ موثق", name: "العربية" },
+            tr: { search: "ARA...", catalog: "KATALOG", request: "İSTEK", changelang: "🌐 DİL DEĞİŞTİR", available: "MEVCUT OYUNLAR", download: "İNDİR", back: "← GERİ", send: "GÖNDER", placeholder: "OYUN ADI...", noAsk: "• Bir daha sorma", new: "YENİ", reqsTitle: "GEREKSİNİMLER", verifiedBy: "✓ Doğrulandı", name: "Türkçe" },
+            nl: { search: "ZOEKEN...", catalog: "CATALOGUS", request: "AANVRAAG", changelang: "🌐 TAAL", available: "BESCHIKBARE GAMES", download: "DOWNLOAD", back: "← TERUG", send: "VERSTUREN", placeholder: "GAMENAAM...", noAsk: "• Niet más fragen", new: "NIEUW", reqsTitle: "VEREISTEN", verifiedBy: "✓ Geverifieerd", name: "Nederlands" },
+            pl: { search: "SZUKAJ...", catalog: "KATALOG", request: "PROŚBA", changelang: "🌐 JĘZYK", available: "DOSTĘPNE GRY", download: "POBIERZ", back: "← POWRÓT", send: "WYŚLIJ", placeholder: "NAZWA GRY...", noAsk: "• Nie pytaj ponownie", new: "NOWE", reqsTitle: "WYMAGANIA", verifiedBy: "✓ Zweryfikowano", name: "Polski" },
+            vi: { search: "TÌM KIẾM...", catalog: "DANH MỤC", request: "YÊU CẦU", changelang: "🌐 ĐỔI NGÔN NGỮ", available: "TRÒ CHƠI CÓ SẴN", download: "TẢI VỀ", back: "← QUAY LẠI", send: "GỬI", placeholder: "TÊN TRÒ CHƠI...", noAsk: "• Không hỏi lại", new: "MỚI", reqsTitle: "YÊU CẦU", verifiedBy: "✓ Đã xác minh", name: "Tiếng Việt" }
         };
 
         const flags = { es: '🇪🇸', en: '🇺🇸', pt: '🇧🇷', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹', ru: '🇷🇺', zh: '🇨🇳', ja: '🇯🇵', ko: '🇰🇷', ar: '🇸🇦', tr: '🇹🇷', nl: '🇳🇱', pl: '🇵🇱', vi: '🇻🇳' };
@@ -440,25 +485,30 @@
         let scrollPos = 0;
 
         const games = [
-            { id: 'gta3def', title: 'Grand Theft Auto III', poster: 'https://images.g2a.com/323x433/1x1x1/grand-theft-auto-iii-p10000007301/590df4f35bafe357036a1c7d', screen: 'https://img.apkvision.org/gta-iii-definitive/gta-iii-definitive-4.webp', link: 'https://apkvision.org/games/action/gta-iii-definitive-115254/download/v1.84.3-apk/', desc: { es: 'The Definitive Edition: El clásico que lo cambió todo, ahora optimizado para móviles.', en: 'The Definitive Edition: The classic that changed everything, now optimized for mobile.' }, reqs: ["4GB - 6GB", "Snapdragon 865", "1.68GB", "11.0+"], showNewBadge: true },
-            { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'La épica historia del forajido John Marston en el salvaje oeste.', en: 'The epic story of outlaw John Marston in the wild west.' }, reqs: ["6GB - 8GB", "Octa-Core 2.8GHz", "10GB", "11.0+"], showNewBadge: true },
-            { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/bz7qbwzvjuwgTzOdZT8hC3HXsCgawmEiH0XKkQQH8o85luobIkW8hjkVdU5Go8Tspvl8F96ywYj4nQlKcMGOPtmgFbFuUImjG7CPoNLlwvSs6dNKuukuEjXWgElIfgk6fYvgt2IIWi_rkPxo1p4-1VWT6Yd04d8tXMEeRgkdcJ9GC90/ygxlaj72vkll9oi/Hello+Neighbor+2+v0.1.3+-+espacioapk.com.apk', desc: { es: 'Descubre los secretos que esconde tu vecino.', en: 'Uncover the neighbor secrets.' }, reqs: ["4GB RAM", "Snapdragon 855", "3GB", "8.0+"], showNewBadge: true },
-            { id: 're4beta', title: 'Resident evil 4 BETA', poster: 'https://m.media-amazon.com/images/M/MV5BZWY3ZjRiNTctYzU2My00NDIwLWI3NTAtNmUwZDBlZjlhYjI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://i.redd.it/resident-evil-4-mobile-hd-android-v0-r45d7j5wvhhc1.jpg?width=1001&format=pjpg&auto=webp&s=22ab2d8a664fb14eed998c9ec4e596d0671f152e', link: 'https://download2444.mediafire.com/ur8khq91qaogWIJ85ZTUbLTeIl0KrfSDzK8O0-jnwOyE0eWs-g411i4eRLlylZsNi_9ECtlaiiM7gYskQ4VFiz1L0hrkDfBzBdLtf-iU0T5R8goyzU36_TsOK8ElnM0vuzDwGBThgJrOe7iES0f6EJ-mdhTA2zvC7bv-Hiwyk2SMZoQ/resen04k0nveqp8/RESDT+EVIL+4+BETA_%E2%9C%85SIN+VIRUS.apk', desc: { es: 'Beta clásica de supervivencia y terror.', en: 'Classic survival horror Beta.' }, reqs: ["3GB RAM", "Octa-Core 2.0", "350MB", "8.0+"], showNewBadge: true },
-            { id: 'fnafsotm', title: 'FNaF Secret of the Mimic', poster: 'https://static.wikia.nocookie.net/triple-a-fazbear/images/c/cb/SecretoftheMimic_CoverKeyArt.jpg/revision/latest?cb=20250213034421', screen: 'https://img.apkvision.org/five-nights-at-freddys-secret-of-the-mimic/five-nights-at-freddys-secret-of-the-mimic-10.webp', link: 'https://download2389.mediafire.com/blz1demeye5gZAQRqphYEvnLNNVOXtfSksNDmRP8p0JJUNjt9jVxVycFot2-Xx-NSIxv5scmz0tRtHpM_dmj1gMtYuyivW_u48wTDjsyZz9pIovlHBetV6kHibY4MOKMSyaTpOJdpH_8_qNDPaSkARhHCSimVpOz7HISKdBt0WvTgV8/q73wqvyyjisxaqw/fnaf+sotm+mobile+v0.1.9+-+espacioapk.com.apk', desc: { es: 'Explora secretos del Mimic.', en: 'Explore Mimic secrets.' }, reqs: ["4GB RAM", "Octa-Core 2.4", "2.5GB", "10+"], showNewBadge: true },
+            { id: 'incredibox', title: 'Incredibox', poster: 'https://m.media-amazon.com/images/M/MV5BYTUzNGVmMDMtZDJjZS00NzQ1LTg1NjQtZTNkNjFmMjk5ODNiXkEyXkFqcGc@._V1_.jpg', screen: 'https://images.sftcdn.net/images/t_app-cover-s,f_auto/p/ff8f5102-802a-4360-94ec-0b3da3efaa01/2195587113/incredibox-2.png', link: 'https://files.an1.net/incrediboxs_1.0.0-an1.com.apk', desc: { es: 'Crea tu propia música con la ayuda de una alegre banda de beatboxers.', en: 'Create your own music with the help of a merry band of beatboxers.' }, reqs: ["2GB RAM", "Quad-Core 1.8GHz", "280MB", "6.0+"], showNewBadge: true },
+            { id: 'rfs', title: 'RFS Real Flight Simulator', poster: 'https://cdn-bgp.bluestacks.com/BGP/latam/gametiles_it.rortos.realflightsimulator.jpg', screen: 'https://play-lh.googleusercontent.com/Djv67X-iZFLX4XlZOhqlNBEPikYgcZuh68KxkKkRFamgUTqY6LjsB9myO3EfgKGgI8E=w526-h296-rw', link: 'https://download2389.mediafire.com/uffcmelytmmg3doulF1GPmYDmxjxmB7UxzNw0Q4NNB1D8QHRNJr7nSNqdo-mJDfvGSNR6N7WeBCVAO5VHga1PNguj_pGDZD9RglAMSCN9dZ7_mQFvtUyf56qujefbYULuSD0Cbz4jy6eiXEP_DsfuG6uLWydYlR2wiFZs4J7MVI0prs/736nkkeurfhfncx/real-flight-simulator_3.1.3+-+espacioapk.com.apk', desc: { es: 'Simulador de vuelo avanzado con gráficos realistas.', en: 'Advanced flight simulator with realistic graphics.' }, reqs: ["3GB RAM", "Octa-Core 2.2GHz", "500MB", "8.0+"], showNewBadge: true },
+            { id: 'longing', title: 'The Longing', poster: 'https://upload.wikimedia.org/wikipedia/en/5/53/TheLongingVideoGame_CoverArt.png', screen: 'https://img.apkvision.org/the-longing/the-longing-6.webp', link: 'https://dl.apkvision.org/the-longing/The-Longing-v1.25-full-apkvision.apk', desc: { es: 'Un juego inusual de espera y soledad. Juega como una sombra que debe esperar 400 días para despertar a su rey.', en: 'An unusual game of waiting and loneliness. Play as a shade who must wait 400 days to awaken its king.' }, reqs: ["3GB RAM", "Octa-Core 2.0GHz", "700MB", "7.0+"], showNewBadge: true },
+            { id: 'paranormal_inc', title: 'Paranormal Inc', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrco7MMtcruyYCL293dFW9pFPVXUerJyb07kpN5o8ax2cd8ICmI6MBuqp&s=10', screen: 'https://img.apkvision.org/paranormal-inc/paranormal-inc-4.webp', link: 'https://dl.apkvision.org/paranormal-inc/Paranormal-Inc-v7.1-full-apkvision.apk', desc: { es: 'Investiga fenómenos paranormales en esta experiencia inmersiva de terror.', en: 'Investigate paranormal phenomena in this immersive horror experience.' }, reqs: ["3GB RAM", "Octa-Core 2.0GHz", "230MB", "9.0+"], showNewBadge: true },
+            { id: 'the_run', title: 'The Run – interactive film', poster: 'https://m.media-amazon.com/images/M/MV5BNDg0MWZkYjAtZTY0ZS00YzVlLWEyMGEtZDUyMjc4NDBmYzRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN-PEUo2P7DH65F1z2A3bqjGoby5QlzqZsnYFhATmcGQRODpgvbPvyaBGe&s=10', link: 'https://dl.apkvision.org/the-run-interactive-film/The-Run-Interactive-Film-v1.0-full-apkvision.apk', desc: { es: 'Una experiencia cinematográfica interactiva donde cada decisión cuenta para tu supervivencia.', en: 'An interactive cinematic experience where every decision counts for your survival.' }, reqs: ["4GB RAM", "Octa-Core 2.2GHz", "300MB", "9.0+"], showNewBadge: true },
+            { id: 'gta3def', title: 'Grand Theft Auto III', poster: 'https://images.g2a.com/323x433/1x1x1/grand-theft-auto-iii-p10000007301/590df4f35bafe357036a1c7d', screen: 'https://img.apkvision.org/gta-iii-definitive/gta-iii-definitive-4.webp', link: 'https://apkvision.org/games/action/gta-iii-definitive-115254/download/v1.84.3-apk/', desc: { es: 'The Definitive Edition: El clásico que lo cambió todo, ahora optimizado para móviles.', en: 'The Definitive Edition: The classic that changed everything, now optimized for mobile.' }, reqs: ["4GB - 6GB", "Snapdragon 865", "1.68GB", "11.0+"] },
+            { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'La épica historia del forajido John Marston en el salvaje oeste.', en: 'The epic story of outlaw John Marston in the wild west.' }, reqs: ["6GB - 8GB", "Octa-Core 2.8GHz", "10GB", "11.0+"] },
+            { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/bz7qbwzvjuwgTzOdZT8hC3HXsCgawmEiH0XKkQQH8o85luobIkW8hjkVdU5Go8Tspvl8F96ywYj4nQlKcMGOPtmgFbFuUImjG7CPoNLlwvSs6dNKuukuEjXWgElIfgk6fYvgt2IIWi_rkPxo1p4-1VWT6Yd04d8tXMEeRgkdcJ9GC90/ygxlaj72vkll9oi/Hello+Neighbor+2+v0.1.3+-+espacioapk.com.apk', desc: { es: 'Descubre los secretos que esconde tu vecino.', en: 'Uncover the neighbor secrets.' }, reqs: ["4GB RAM", "Snapdragon 855", "3GB", "8.0+"] },
+            { id: 're4beta', title: 'Resident evil 4 BETA', poster: 'https://m.media-amazon.com/images/M/MV5BZWY3ZjRiNTctYzU2My00NDIwLWI3NTAtNmUwZDBlZjlhYjI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://i.redd.it/resident-evil-4-mobile-hd-android-v0-r45d7j5wvhhc1.jpg?width=1001&format=pjpg&auto=webp&s=22ab2d8a664fb14eed998c9ec4e596d0671f152e', link: 'https://download2444.mediafire.com/ur8khq91qaogWIJ85ZTUbLTeIl0KrfSDzK8O0-jnwOyE0eWs-g411i4eRLlylZsNi_9ECtlaiiM7gYskQ4VFiz1L0hrkDfBzBdLtf-iU0T5R8goyzU36_TsOK8ElnM0vuzDwGBThgJrOe7iES0f6EJ-mdhTA2zvC7bv-Hiwyk2SMZoQ/resen04k0nveqp8/RESDT+EVIL+4+BETA_%E2%9C%85SIN+VIRUS.apk', desc: { es: 'Beta clásica de supervivencia y terror.', en: 'Classic survival horror Beta.' }, reqs: ["3GB RAM", "Octa-Core 2.0", "350MB", "8.0+"] },
+            { id: 'fnafsotm', title: 'FNaF Secret of the Mimic', poster: 'https://static.wikia.nocookie.net/triple-a-fazbear/images/c/cb/SecretoftheMimic_CoverKeyArt.jpg/revision/latest?cb=20250213034421', screen: 'https://img.apkvision.org/five-nights-at-freddys-secret-of-the-mimic/five-nights-at-freddys-secret-of-the-mimic-10.webp', link: 'https://download2389.mediafire.com/blz1demeye5gZAQRqphYEvnLNNVOXtfSksNDmRP8p0JJUNjt9jVxVycFot2-Xx-NSIxv5scmz0tRtHpM_dmj1gMtYuyivW_u48wTDjsyZz9pIovlHBetV6kHibY4MOKMSyaTpOJdpH_8_qNDPaSkARhHCSimVpOz7HISKdBt0WvTgV8/q73wqvyyjisxaqw/fnaf+sotm+mobile+v0.1.9+-+espacioapk.com.apk', desc: { es: 'Explora secretos del Mimic.', en: 'Explore Mimic secrets.' }, reqs: ["4GB RAM", "Octa-Core 2.4", "2.5GB", "10+"] },
             { id: 'ln1', title: 'Little Nightmares', poster: 'https://image.api.playstation.com/vulcan/ap/rnd/202505/2806/bf55ecf7705258517e66f19128536c4835ec475a25ec1cf8.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ25onFavqxqCa9TzWTPI6AHrWvU3s3-uiJKDgzevnywPviKusX2fs7X4Lu&s=10', link: 'https://download2436.mediafire.com/06npzj2kkyogijmvX5Z3GlkhrR4d-zRP31vdhVT2OncmDk7UZ3l4i73JWUp6tuEP_kQ8fi4GD2QyvbF2n9DTPT5fi0yH7GiOqn6PdlIYEGmfAABh2J5ZAyBL89vGdc1sEHEDE4-gLyjgjeUdyNguN3q_2mMj3Q1X3WH3mO3zXYBvkuU/y7hznysx5ube1sy/Litle+Naightmares_%E2%9C%85SIN+VIRUS.apk', desc: { es: 'Ayuda a Seis a escapar.', en: 'Help Six escape.' }, reqs: ["4GB RAM", "Octa-Core 2.0", "1.5GB", "9.0+"] },
             { id: 'hff', title: 'Human Fall Flat', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLgujSbYHhalK_BA7ViEBzgbyTsdjquFxBPGz4AQROeG6t8fs_8Xo5-kmN&s=10', screen: 'https://img.apkvision.org/human-fall-flat/human-fall-flat-5.webp', link: 'https://download2393.mediafire.com/juxht3ku9fog1zmPAw5vWZv1ANuUbywxhMUOn8tVXhQbGVNaAKrVy5XnxrN19GRqXKYYHeA9-xgNIMOQNND3EQUsaT7yeLE_7Whbp4b81vL2BZDcUjnX7dZ9Kv6WnuE4flns3Lb-jXJmj-WPVRNP2f2KnW4fBoWJna93huuxUYtU5ME/6gyc9xlhng29hps/Human-Fall-Flat-v2.5.1-full-apkvision.apk', desc: { es: 'Física y plataformas.', en: 'Physics and platforms.' }, reqs: ["3GB RAM", "1.8GHz", "800MB", "9.0+"] },
             { id: 'gtav', title: 'Grand Theft Auto V', poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png', screen: 'https://root-nation.com/wp-content/uploads/2021/08/GTA5-Mobile-APK-02.jpg', link: 'https://download2389.mediafire.com/u6d6yje090tgoxg5iijecH20XypblqLzfwYFryiMeozS6bD76PnGqyUzIiwS2NzQUmmTid5W16mKLjAZx86uoDY7UcG4WV0ZyQ9QmTR2reFn17mILLv_b6tu8eGIyHkOPE55nq_36iqv2ZGodDn5EPtZ-ux8xJ5rFDUI-3KroBbnGoc/hjoahu9to2lyal0/Grand+Theft+Auto+V+-+espacioapk.com.apk', desc: { es: 'Mundo abierto Rockstar.', en: 'Rockstar open world.' }, reqs: ["2GB RAM", "1.5GHz", "500MB", "8.0+"] },
             { id: 'fnafsb', title: 'FNaF Security Breach', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlLcK2U0rmkMIKo7BDuYMM8vpJFmzJ68dJd7IuoRMO4ZLzi7qqlauQ7icKX7Y4gyKMKxi3a6WYA4QS5gEVPHvD7hIPuQh_ctq6LJZndg&s=10', screen: 'https://unreal-play-studio.com/asset/fnaf-security-breach-mobile/7xm6jD.webp', link: 'https://download2438.mediafire.com/c41li4v2ttpgq7IP0SzVJl8i78LJ0Lll2Vvc_fqUmP4yknc2FtxatDge2OHDSvVbjXfm9uG2nnEo79Gzx_PDh4M5_6v3V1gNGyAx8K6EkILfgB7VVhryzyyrbfIaVtJXL6XMnMprDgnthlaEJ8DJeY9DClUw3KGSql_7fcv1oFxDZn0/8tnjgy3i2u4ho60/fnaf+security+breach+v1.7.0.1+-+espacioapk.com.apk', desc: { es: 'Pizzaplex terror.', en: 'Pizzaplex horror.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
-            { id: 'pvzfusion', title: 'Plants vs Zombies Fusion', poster: 'https://thepvzfusion.pro/wp-content/uploads/2026/02/images-12-1.webp', screen: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/pvz-fusion-3-media.webp', link: 'https://file.pvzfusionapk.mx/pvz-fusion-v3.4.2-pvzfusionapk.mx.apk', desc: { es: 'Fusión definitiva con nuevas mecánicas.', en: 'Ultimate fusion with new mechanics.' }, reqs: ["2GB RAM", "Octa-Core 1.8", "600MB", "7.0+"], showNewBadge: false },
-            { id: 'gtasa', title: 'Grand Theft Auto San Andreas', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HDsIEYbbjaj7Ga-y6R7ubG_XRz4wC2DI9g&s', screen: 'https://play-lh.googleusercontent.com/XJIXWvMtYKOfdE8k_353XZwKEHE63JigwjZnsSyhUH6VzOeUHhxouqGHpy7f1nQGyQ=h650', link: 'https://download2434.mediafire.com/itlmicpzebgMBogY-jCfIBRmWkh1HWyrEkejDMdlycF5xTkWgt16TmW3AOguA3D69OoA3zcNo8ICitq91-wYS30LmhPbj4ga0CSGa8T7nnorUImnXplp8e2VONcjRYtAMpZL_kDNgTCHAqvS8OACJGry3BRqjVprYrBfh4WldFlvQE/5brnv5qxhtng8no/gta+san+andreas+v2.11.277+-+espacioapk.com.apk', desc: { es: 'CJ regresa a Los Santos.', en: 'CJ returns to Los Santos.' }, reqs: ["3GB RAM", "Quad-Core 1.8", "3GB", "9.0+"], showNewBadge: false },
-            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjg3NTAzMS5wbmc=/original/6YkwSP.png', link: 'https://download1587.mediafire.com/x90ixzasf6ygfhvAEodBgFnHkAJewsVEd2_79NTzQm5DrwYZZvRFduSdFE615obipXfhTg8WuMNVRRDa1S9-6KO7QCUvK1cIud79bbutwoPVniN4RbiIS717bfEWFurTY74Uga6UxA38xmZNApOvwoEGsad-tGKb9oIPA0AGuJK-ZxA/ouo5nqc2upq6w24/PoppyPlaytime5+%283%29.apk', desc: { es: 'V1.6: Nuevos mapas y mecánicas.', en: 'V1.6: New maps and mechanics.' }, reqs: ["6GB RAM", "Octa-Core 2.6", "2.5GB", "10+"], showNewBadge: false },
+            { id: 'pvzfusion', title: 'Plants vs Zombies Fusion', poster: 'https://thepvzfusion.pro/wp-content/uploads/2026/02/images-12-1.webp', screen: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/pvz-fusion-3-media.webp', link: 'https://file.pvzfusionapk.mx/pvz-fusion-v3.4.2-pvzfusionapk.mx.apk', desc: { es: 'Fusión definitiva con nuevas mecánicas.', en: 'Ultimate fusion with new mechanics.' }, reqs: ["2GB RAM", "Octa-Core 1.8", "600MB", "7.0+"] },
+            { id: 'gtasa', title: 'Grand Theft Auto San Andreas', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HDsIEYbbjaj7Ga-y6R7ubG_XRz4wC2DI9g&s', screen: 'https://play-lh.googleusercontent.com/XJIXWvMtYKOfdE8k_353XZwKEHE63JigwjZnsSyhUH6VzOeUHhxouqGHpy7f1nQGyQ=h650', link: 'https://download2434.mediafire.com/itlmicpzebgMBogY-jCfIBRmWkh1HWyrEkejDMdlycF5xTkWgt16TmW3AOguA3D69OoA3zcNo8ICitq91-wYS30LmhPbj4ga0CSGa8T7nnorUImnXplp8e2VONcjRYtAMpZL_kDNgTCHAqvS8OACJGry3BRqjVprYrBfh4WldFlvQE/5brnv5qxhtng8no/gta+san+andreas+v2.11.277+-+espacioapk.com.apk', desc: { es: 'CJ regresa a Los Santos.', en: 'CJ returns to Los Santos.' }, reqs: ["3GB RAM", "Quad-Core 1.8", "3GB", "9.0+"] },
+            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjg3NTAzMS5wbmc=/original/6YkwSP.png', link: 'https://download1587.mediafire.com/x90ixzasf6ygfhvAEodBgFnHkAJewsVEd2_79NTzQm5DrwYZZvRFduSdFE615obipXfhTg8WuMNVRRDa1S9-6KO7QCUvK1cIud79bbutwoPVniN4RbiIS717bfEWFurTY74Uga6UxA38xmZNApOvwoEGsad-tGKb9oIPA0AGuJK-ZxA/ouo5nqc2upq6w24/PoppyPlaytime5+%283%29.apk', desc: { es: 'V1.6: Nuevos mapas y mecánicas.', en: 'V1.6: New maps and mechanics.' }, reqs: ["6GB RAM", "Octa-Core 2.6", "2.5GB", "10+"] },
             { id: 'gtavc', title: 'Grand Theft Auto: Vice City', poster: 'https://static.wikia.nocookie.net/esgta/images/0/0f/Grand_Theft_Auto_Vice_City.JPG/revision/latest/scale-to-width-down/1200?cb=20161127222945', screen: 'https://img.apkvision.org/grand-theft-auto-vice-city/grand-theft-auto-vice-city-1.webp', link: 'https://dl.apkvision.org/grand-theft-auto-vice-city/GTA-VC-v1.12.259-full-apkvision.apk', desc: { es: 'Los 80 en Vice City.', en: 'The 80s in Vice City.' }, reqs: ["2GB RAM", "1.5GHz", "1.5GB", "8.0+"] },
             { id: 'subn_bz', title: 'Subnautica: Below Zero', poster: 'https://store-images.s-microsoft.com/image/apps.25913.13546341381523259.8f30b71b-aac8-4816-a999-212ef85f8876.1b6b3f4d-3d78-409e-acc2-57b4950505b7', screen: 'https://img.apkvision.org/subnautica-below-zero/subnautica-below-zero-1.webp', link: 'https://dl.apkvision.org/subnautica-below-zero/Subnautica-Below-Zero-v1.22.55044-full-apkvision.apk', desc: { es: 'Gélida supervivencia.', en: 'Frozen survival.' }, reqs: ["4GB RAM", "2.4GHz", "3GB", "9.0+"] },
             { id: 'p4', title: 'Poppy Playtime 4', poster: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', screen: 'https://img.itch.zone/aW1hZ2UvMzQxOTQ2MC8yMDQxODI1NC5wbmc=/original/hVzrVs.png', link: 'https://piro775.itch.io/toy-factory-chapter-4', desc: { es: 'Playtime historia.', en: 'Playtime story.' }, reqs: ["6GB RAM", "2.8GHz", "2GB", "10+"] },
             { id: 'silksong', title: 'Hollow Knight Silksong', poster: 'https://m.media-amazon.com/images/M/MV5BMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://download2447.mediafire.com/w84peg5sx8fgBc-7cVVmCeWeTHT7srV5XEq4NbfMtzlim6gxgE54Vr-cxARCyg2zmDRL5j6HiNz_i9PGgKqstW7i9WWZow41PaBe8omyaRLz7n8BeztpmXVbOQMB2-2soj3Z3mjB1Tu100nj-S6iMiqkIH5w3aDUGplF1Y7s_4zHS4I/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk', desc: { es: 'Hornet en reino nuevo.', en: 'Hornet in new kingdom.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+"] },
             { id: 'p3', title: 'Poppy Playtime 3', poster: 'https://http2.mlstatic.com/D_NQ_NP_615692-MLM96301603984_102025-O.webp', screen: 'https://unreal-play-studio.com/asset/poppy-playtime-3/o4ozI7.webp', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3', desc: { es: 'Orfanato Playcare.', en: 'Playcare orphanage.' }, reqs: ["SD 855", "4GB RAM", "3GB", "8.0+"] },
             { id: 'descenders', title: 'Descenders', poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', link: 'https://apks.trulhost.com/Descenders-v1.10.3-Mod.apk', desc: { es: 'MTB extremo.', en: 'Extreme MTB.' }, reqs: ["4GB RAM", "2.2GHz", "2.5GB", "9.0+"] },
-            { id: 'miles', title: 'Miles Morales', poster: 'https://img.asmedia.epimg.net/resizer/v2/TBMDCLMAVRJ3LDXEPJECOUMMU4.jpg?auth=29ec0e8c2defd3ecfbb026e2529a134ac7a9c7a8fec750aedb5dc8ceb19f&width=1472&height=1104&smart=true', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/doaqi0p34hbgSi7mQcuB9wuZxs99BBxGjSznCCWArLig-alMXAYJ1289MM8fTj8lmAEVy47CyBZ9eRoboCUtyVFqs1I1zTuqOmVsfsrH7m9XUO5lnXwPK9DewQOm_w8vSTLkVYz5KOCfPa83rTTI2s-Gg1QoF3o-4ziGQgpfMtKAJnw/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Miles Morales móvil.', en: 'Miles Morales mobile.' }, reqs: ["2GB RAM", "1.8GHz", "400MB", "8.0+"] },
+            { id: 'miles', title: 'Miles Morales', poster: 'https://static.wikia.nocookie.net/ficcion-sin-limites/images/7/73/Miles_Morales.jpg/revision/latest?cb=20220320020218&path-prefix=es', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/doaqi0p34hbgSi7mQcuB9wuZxs99BBxGjSznCCWArLig-alMXAYJ1289MM8fTj8lmAEVy47CyBZ9eRoboCUtyVFqs1I1zTuqOmVsfsrH7m9XUO5lnXwPK9DewQOm_w8vSTLkVYz5KOCfPa83rTTI2s-Gg1QoF3o-4ziGQgpfMtKAJnw/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Miles Morales móvil.', en: 'Miles Morales mobile.' }, reqs: ["2GB RAM", "1.8GHz", "400MB", "8.0+"] },
             { id: 'fnaf', title: 'FNaF Spanish', poster: 'https://images.genius.com/b49240eb5e510bb0b56d5abd7b45270d.512x512x1.png', screen: 'https://imag.malavida.com/mvimgbig/download-fs/five-nights-at-freddys-14759-1.jpg', link: 'https://download2391.mediafire.com/4awsa1pfuqkg_ojkGcYFDme4_OXIyK-uykrHLpBkHiOAI8rIJOBB2iqmYFxLLMjIcEJYXvXELlHNavqV-7pg7Ey1fKuzwDK2_-VrYI2f3wbVKBc4JyLVNOPBgDKnmVTqgIuvVrgbv8in3yE9erjX7GMgZUOJD0CgDOOYlvCI7XjU6Ik/7nysoswlpi8cm9l/Five+Nights+at+Freddy%C2%B4s+%28Spanish%29+-+espacioapk.com.apk', desc: { es: 'Terror en español.', en: 'Horror in Spanish.' }, reqs: ["2GB RAM", "2.0GHz", "1GB", "8.0+"] },
             { id: 'cuphead', title: 'Cuphead + DLC', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSToa5X0umhuLw7OvUtiq8Wu_XVqSPOhfHDYlgq1Be7kg&s=10', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyD7O9v9JpZqpkl9s6b0_h88E83M5HZeB_aUwaWcVmg&s', link: 'https://download2390.mediafire.com/2apu3aa59cqgUW8WOTsFRW_CNVJY0mQbikGsRMsccfTvqx0mCA1VsOVFXpWHxy6-rjpxC8_t-EuexMVwQ4sy4PBUTuqFcGRcAGx0ZYHszUXnQbCtGC7y0RrkB5KUQsVHYURU8LRC09zUrxTOjL-MeeOO3yfMWCKne3w9LjJY7G88g7A/vdlzhn68ru3nuo5/Cuphead+%2B+DLC+-+v1.0.3+-+VPR.apk', desc: { es: 'Acción DLC incluido.', en: 'Action DLC included.' }, reqs: ["3GB RAM", "2.0GHz", "2.5GB", "9.0+"] },
             { id: 'hollow', title: 'Hollow Knight', poster: 'https://store-images.s-microsoft.com/image/apps.58959.13847644057609868.8865d2a2-5e11-4424-85ce-1db30a161bd9.41ca3834-331c-4d34-b2c9-7dfe318fd168', screen: 'https://i.ytimg.com/vi/KHsAue9ufQY/maxresdefault.jpg', link: 'https://download2447.mediafire.com/6pwcinoz923g4rm5JW4aO8IZ_LGG0dAEVgbihR-sUpiB4F0lE7n6fdMoQGQARq9I5bs_sN36Jsr-FWjFeTkRQnYOJi-_gJO5PjE4_Aj1kh58gzoMnZG-KRhbPw99mpzUDNmnVM41SPbQHK8g-cmdjWolJi0kUlk7W3g7vxgPdIEXYP8/bsqgq7dnvz6w187/HKVulkanV2.7z', desc: { es: 'Explora reino ruinas.', en: 'Explore ruined kingdom.' }, reqs: ["3GB RAM", "2.0GHz", "1.2GB", "9.0+"] },
@@ -475,14 +525,14 @@
                 curLang = savedLang;
                 document.getElementById('language-overlay').style.display = 'none';
                 applyTranslations();
-                setTimeout(() => { document.getElementById('mainBanner')?.classList.add('active-banner'); }, 200);
+                document.getElementById('mainBanner')?.classList.add('active-banner');
             }
 
             const grid = document.getElementById('langGrid');
             grid.innerHTML = Object.keys(i18n).map(code => `
                 <div onclick="setLang('${code}')" class="lang-card">
-                    <span class="text-4xl filter drop-shadow-lg">${flags[code] || '🌐'}</span>
-                    <span class="font-ui text-[10px] text-white/50 uppercase font-bold tracking-[2px]">${i18n[code]?.name || code}</span>
+                    <span class="text-4xl filter drop-shadow-md group-hover:scale-110 transition-transform">${flags[code] || '🌐'}</span>
+                    <span class="font-ui text-[10px] text-white/40 uppercase font-bold tracking-[2px]">${i18n[code]?.name || code}</span>
                 </div>
             `).join('');
 
@@ -503,12 +553,13 @@
         window.setLang = (code) => {
             curLang = code;
             if(document.getElementById('rememberLang').checked) localStorage.setItem('ep_lang', code);
+            applyTranslations(); 
             document.getElementById('language-overlay').classList.add('opacity-0');
             setTimeout(() => {
                 document.getElementById('language-overlay').style.display = 'none';
-                applyTranslations();
-                document.getElementById('mainBanner')?.classList.add('active-banner');
-            }, 500);
+                const banner = document.getElementById('mainBanner');
+                if (banner) banner.classList.add('active-banner');
+            }, 300);
         };
 
         window.resetLanguage = () => {
@@ -547,7 +598,7 @@
             document.getElementById('game-total-count').innerText = filtered.length;
             
             grid.innerHTML = filtered.map((g, i) => `
-                <div class="game-card" data-aos="fade-up" data-aos-delay="${(i % 5) * 50}" onclick="openGame('${g.id}')" onmouseenter="preloadScreen('${g.screen}')">
+                <div class="game-card" data-aos="fade-up" data-aos-delay="${(i % 5) * 50}" onclick="openGame('${g.id}')">
                     ${g.showNewBadge ? `<div class="portada-updated-badge">${i18n[curLang]?.new || 'NEW'}</div>` : ''}
                     <img src="${g.poster}" class="char-img">
                     <div class="game-title-badge"><span class="game-title-text uppercase">${g.title}</span></div>
@@ -555,20 +606,17 @@
             `).join('');
         };
 
-        window.preloadScreen = (url) => {
-            const img = new Image();
-            img.src = url;
-        };
-
         window.openGame = (id) => {
             scrollPos = window.scrollY;
             const g = games.find(x => x.id === id); if(!g) return;
             currentGameId = id;
             
+            document.getElementById('reportTerminal').classList.add('hidden');
+            document.getElementById('reportMessage').value = "";
+
             const detailImg = document.getElementById('detailImg');
             detailImg.style.opacity = '0';
             detailImg.src = g.screen;
-            
             detailImg.onload = () => {
                 detailImg.style.opacity = '1';
                 detailImg.style.transition = 'opacity 0.3s ease';
@@ -603,7 +651,7 @@
         window.handleDownload = async (id, link) => {
             const g = games.find(x => x.id === id); window.open(link, '_blank');
             try {
-                await fetch(DISCORD_WEBHOOK, { 
+                await fetch(WEBHOOK_DOWNLOADS, { 
                     method: 'POST', 
                     headers: {'Content-Type':'application/json'}, 
                     body: JSON.stringify({ 
@@ -619,6 +667,52 @@
                     }) 
                 });
             } catch (err) {}
+        };
+
+        window.toggleReportTerminal = () => {
+            document.getElementById('reportTerminal').classList.toggle('hidden');
+        };
+
+        window.showReportTerminalFromMenu = () => {
+            currentGameId = "ERROR_PAGINA_WEB";
+            const detailImg = document.getElementById('detailImg');
+            detailImg.src = "https://i.ibb.co/G4Z5gvHw/icon.png";
+            document.getElementById('detailTitle').innerText = "REPORTAR ERROR DE PÁGINA";
+            document.getElementById('detailDesc').innerText = "Utiliza el terminal de abajo para informar sobre un fallo general en la interfaz o funcionamiento del sitio.";
+            document.getElementById('reqsContainer').innerHTML = "";
+            document.getElementById('downloadArea').innerHTML = "";
+            
+            showView('detail');
+            document.getElementById('reportTerminal').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.sendReport = async () => {
+            const isPageError = currentGameId === "ERROR_PAGINA_WEB";
+            const g = isPageError ? { title: "Error General de Página", poster: "https://i.ibb.co/G4Z5gvHw/icon.png" } : games.find(x => x.id === currentGameId);
+            const msg = document.getElementById('reportMessage').value;
+            if(!msg) return;
+
+            try {
+                await fetch(WEBHOOK_REPORTS, {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({
+                        embeds: [{
+                            title: isPageError ? "🔧 REPORTE DE PÁGINA" : "⚠️ REPORTE DE JUEGO",
+                            color: 16711680,
+                            thumbnail: { url: g.poster },
+                            fields: [
+                                { name: "🎮 Contexto", value: g.title, inline: true },
+                                { name: "📝 Comentario", value: msg }
+                            ]
+                        }]
+                    })
+                });
+                document.getElementById('reportMessage').value = "";
+                document.getElementById('reportTerminal').innerHTML = "<p class='text-red-500 font-bold text-center'>REPORTE ENVIADO</p>";
+                setTimeout(() => toggleReportTerminal(), 2000);
+            } catch(e) {}
         };
 
         window.showView = (v) => {
@@ -655,7 +749,7 @@
             const originalText = btn.innerText;
             btn.innerText = "...";
             try {
-                await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [{ title: "📝 Nueva Petición de Juego", color: 0x00f2ff, fields: [{ name: "🕹️ Título", value: val }, {name: "🌍 Idioma", value: curLang}] }] }) });
+                await fetch(WEBHOOK_REQUESTS, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ embeds: [{ title: "📝 Nueva Petición de Juego", color: 0x00f2ff, fields: [{ name: "🕹️ Título", value: val }, {name: "🌍 Idioma", value: curLang}] }] }) });
                 document.getElementById('requestInput').value = ""; 
                 btn.innerText = "RECEIVED";
                 btn.style.background = "#fff";
