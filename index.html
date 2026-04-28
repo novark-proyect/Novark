@@ -127,7 +127,7 @@
         
         .game-card:hover .char-img { transform: scale(1.1); filter: brightness(1.1); }
 
-        .badge-new, .badge-hot { 
+        .badge-new, .badge-hot, .badge-update { 
             position: absolute; top: 12px; padding: 4px 10px; 
             font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 10px; 
             border-radius: 6px; z-index: 10; letter-spacing: 1px;
@@ -135,6 +135,7 @@
         }
         .badge-new { right: 12px; background: var(--cyan); color: black; }
         .badge-hot { left: 12px; background: var(--hot); color: white; animation: pulse 1.5s infinite; }
+        .badge-update { left: 60px; background: rgba(255, 255, 255, 0.15); color: white; backdrop-filter: blur(5px); font-size: 8px; border: 1px solid rgba(255,255,255,0.2); }
 
         @keyframes pulse {
             0% { opacity: 0.8; } 50% { opacity: 1; transform: scale(1.05); } 100% { opacity: 0.8; }
@@ -190,6 +191,12 @@
             height: 350px;
         }
 
+        #langGrid {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
         @media (max-width: 768px) {
             #home-banner { height: 200px; }
             .search-container { margin: 0 10px; }
@@ -207,8 +214,8 @@
         <div class="p-10 rounded-[35px] border border-white/5 max-w-4xl w-full text-center bg-white/[0.01] backdrop-blur-3xl" data-aos="zoom-in">
             <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-20 h-20 mx-auto mb-8 drop-shadow-[0_0_15px_rgba(0,242,255,0.5)]">
             <h2 class="font-brand text-6xl mb-2 text-white uppercase tracking-tight">EP TEAM</h2>
-            <p class="font-ui text-cyan-400 tracking-[0.3em] mb-12 text-xs opacity-70">ENCRYPTED ACCESS</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10" id="langGrid"></div>
+            <p class="font-ui text-cyan-400 tracking-[0.3em] mb-8 text-xs opacity-70">SELECT INTERFACE LANGUAGE</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-10" id="langGrid"></div>
             <label class="flex items-center justify-center gap-3 cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
                 <input type="checkbox" id="rememberLang" class="hidden peer">
                 <div class="w-4 h-4 border border-white/20 rounded peer-checked:bg-cyan-400 peer-checked:border-cyan-400 transition-all"></div>
@@ -262,14 +269,14 @@
             <div id="home-banner" data-aos="fade-down">
                 <img src="https://i.ibb.co/Hfb046TK/fa4b7a137758b4d05d00c033090e576f.jpg" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent flex flex-col justify-end p-8 md:p-12">
-                    <p class="text-cyan-400 font-ui font-bold tracking-[0.4em] text-[10px] mb-2 uppercase" id="banner-tag">Highlight of the Week</p>
-                    <h1 class="text-4xl md:text-7xl font-brand text-white leading-none" id="banner-title">THE NEW ERA OF<br>FREE GAMING</h1>
+                    <p class="text-cyan-400 font-ui font-bold tracking-[0.4em] text-[10px] mb-2 uppercase" id="banner-tag"></p>
+                    <h1 class="text-4xl md:text-7xl font-brand text-white leading-none" id="banner-title"></h1>
                 </div>
             </div>
 
             <div class="flex items-center gap-4 mb-10 overflow-x-auto no-scrollbar">
-                <div id="tab-games" class="category-tab active" onclick="switchCategory('games')">JUEGOS</div>
-                <div id="tab-movies" class="category-tab" onclick="switchCategory('movies')">PELÍCULAS</div>
+                <div id="tab-games" class="category-tab active" onclick="switchCategory('games')"></div>
+                <div id="tab-movies" class="category-tab" onclick="switchCategory('movies')"></div>
             </div>
 
             <div class="mb-8 flex items-center justify-between opacity-60">
@@ -316,7 +323,7 @@
         <section id="request-view" class="view-section hidden px-6 max-w-2xl mx-auto py-10">
             <div class="text-center mb-12">
                 <h1 class="text-6xl font-brand text-white" id="req-view-title"></h1>
-                <p class="text-cyan-400 font-ui tracking-[0.3em] text-[10px] uppercase" id="req-view-tag">Direct connection to EP Team</p>
+                <p class="text-cyan-400 font-ui tracking-[0.3em] text-[10px] uppercase" id="req-view-tag"></p>
             </div>
             <div class="glass-panel p-10 text-center">
                 <input type="text" id="requestInput" class="w-full bg-transparent border-b border-white/10 p-4 mb-8 text-white text-xl text-center outline-none focus:border-cyan-400 transition-all">
@@ -330,46 +337,29 @@
         const WEBHOOK_REQUESTS = "https://discord.com/api/webhooks/1493029753462984724/W92Go_ww0kgsfZYXh-JBoo9MSJpVIXaoZTnqf61n5kRKGhnLGtTPOEtca9iVA8mzy44k";
         const WEBHOOK_DOWNLOADS = "https://discord.com/api/webhooks/1498103534795755554/euR5SIeFJmzNvusuJ9es2t_WY7RvVU7DHdqdcAzH_vQREkSq2Ou80HZW8rsIjxTfIdbG";
 
+        // CONFIGURACIÓN DE IDIOMAS EXPANDIDA A 18
         const i18n = {
-            es: { 
-                search: "BUSCAR...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", 
-                available: "UNIDADES VERIFICADAS", download: "DESCARGAR APK", downloadMovie: "VER PELÍCULA", 
-                back: "VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", 
-                noAsk: "Recordar identidad", new: "NUEVO", reqsTitle: "REQUISITOS", 
-                verifiedBy: "✓ ARCHIVO SEGURO", name: "Español", wanted: "HOT", 
-                report: "REPORTAR ERROR", reportPage: "ERROR DE SISTEMA", reportSend: "ENVIAR INFORME", 
-                reportPlace: "DESCRIBA LA FALLA...", bannerTag: "LO MEJOR DE LA SEMANA",
-                bannerTitle: "LA NUEVA ERA DEL<br>JUEGO GRATIS", reqTag: "CONEXIÓN DIRECTA CON EP TEAM",
-                gamesTab: "JUEGOS", moviesTab: "PELÍCULAS", ram: "RAM", cpu: "CPU", storage: "ESPACIO", 
-                version: "VERSIÓN", res: "RESOLUCIÓN", lang: "IDIOMA", source: "FUENTE", year: "AÑO"
-            },
-            en: { 
-                search: "SEARCH...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", 
-                available: "VERIFIED UNITS", download: "DOWNLOAD APK", downloadMovie: "WATCH MOVIE", 
-                back: "BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", 
-                noAsk: "Remember identity", new: "NEW", reqsTitle: "REQUISITOS", 
-                verifiedBy: "✓ SECURE FILE", name: "English", wanted: "HOT", 
-                report: "REPORT ERROR", reportPage: "SYSTEM ERROR", reportSend: "SEND REPORT", 
-                reportPlace: "DESCRIBE FAILURE...", bannerTag: "HIGHLIGHT OF THE WEEK",
-                bannerTitle: "THE NEW ERA OF<br>FREE GAMING", reqTag: "DIRECT CONNECTION TO EP TEAM",
-                gamesTab: "GAMES", moviesTab: "MOVIES", ram: "RAM", cpu: "CPU", storage: "STORAGE", 
-                version: "VERSION", res: "RESOLUTION", lang: "LANGUAGE", source: "SOURCE", year: "YEAR"
-            },
-            pt: { 
-                search: "BUSCAR...", catalog: "CATÁLOGO", request: "PEDIR", changelang: "🌐 MUDAR IDIOMA", 
-                available: "UNIDADES VERIFICADAS", download: "BAIXAR APK", downloadMovie: "VER FILME", 
-                back: "VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", 
-                noAsk: "Lembrar identidad", new: "NOVO", reqsTitle: "REQUISITOS", 
-                verifiedBy: "✓ ARQUIVO SEGURO", name: "Português", wanted: "HOT", 
-                report: "REPORTAR ERRO", reportPage: "ERRO DE SISTEMA", reportSend: "ENVIAR INFORME", 
-                reportPlace: "DESCREVA A FALHA...", bannerTag: "DESTAQUE DA SEMANA",
-                bannerTitle: "A NOVA ERA DO<br>JOGO GRÁTIS", reqTag: "CONEXÃO DIRETA CON A EQUIPE EP",
-                gamesTab: "JOGOS", moviesTab: "FILMES", ram: "RAM", cpu: "CPU", storage: "ESPAÇO", 
-                version: "VERSIÓN", res: "RESOLUÇÃO", lang: "IDIOMA", source: "FONTE", year: "ANO"
-            }
+            es: { name: "Español", search: "BUSCAR...", catalog: "CATÁLOGO", request: "SOLICITAR", changelang: "🌐 CAMBIAR IDIOMA", available: "UNIDADES VERIFICADAS", download: "DESCARGAR APK", downloadMovie: "VER PELÍCULA", back: "VOLVER", send: "ENVIAR PETICIÓN", placeholder: "NOMBRE DEL JUEGO...", noAsk: "Recordar identidad", new: "NUEVO", reqsTitle: "REQUISITOS", verifiedBy: "✓ ARCHIVO SEGURO", wanted: "HOT", report: "REPORTAR ERROR", reportPage: "ERROR DE SISTEMA", reportSend: "ENVIAR INFORME", reportPlace: "DESCRIBA LA FALLA...", bannerTag: "LO MEJOR DE LA SEMANA", bannerTitle: "LA NUEVA ERA DEL<br>JUEGO GRATIS", reqTag: "CONEXIÓN DIRECTA CON EP TEAM", gamesTab: "JUEGOS", moviesTab: "PELÍCULAS", ram: "RAM", cpu: "CPU", storage: "ESPACIO", version: "VERSIÓN", res: "RESOLUCIÓN", lang: "IDIOMA", source: "FUENTE", year: "AÑO", updateAlways: "Actualización constante" },
+            en: { name: "English", search: "SEARCH...", catalog: "CATALOG", request: "REQUEST", changelang: "🌐 CHANGE LANGUAGE", available: "VERIFIED UNITS", download: "DOWNLOAD APK", downloadMovie: "WATCH MOVIE", back: "BACK", send: "SEND REQUEST", placeholder: "GAME NAME...", noAsk: "Remember identity", new: "NEW", reqsTitle: "REQUIREMENTS", verifiedBy: "✓ SECURE FILE", wanted: "HOT", report: "REPORT ERROR", reportPage: "SYSTEM ERROR", reportSend: "SEND REPORT", reportPlace: "DESCRIBE FAILURE...", bannerTag: "HIGHLIGHT OF THE WEEK", bannerTitle: "THE NEW ERA OF<br>FREE GAMING", reqTag: "DIRECT CONNECTION TO EP TEAM", gamesTab: "GAMES", moviesTab: "MOVIES", ram: "RAM", cpu: "CPU", storage: "STORAGE", version: "VERSION", res: "RESOLUTION", lang: "LANGUAGE", source: "SOURCE", year: "YEAR", updateAlways: "Constant Updates" },
+            pt: { name: "Português", search: "BUSCAR...", catalog: "CATÁLOGO", request: "PEDIR", changelang: "🌐 MUDAR IDIOMA", available: "UNIDADES VERIFICADAS", download: "BAIXAR APK", downloadMovie: "VER FILME", back: "VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", noAsk: "Lembrar identidade", new: "NOVO", reqsTitle: "REQUISITOS", verifiedBy: "✓ ARQUIVO SEGURO", wanted: "HOT", report: "REPORTAR ERRO", reportPage: "ERRO DE SISTEMA", reportSend: "ENVIAR INFORME", reportPlace: "DESCREVA A FALHA...", bannerTag: "DESTAQUE DA SEMANA", bannerTitle: "A NOVA ERA DO<br>JOGO GRÁTIS", reqTag: "CONEXÃO DIRETA COM A EQUIPE EP", gamesTab: "JOGOS", moviesTab: "FILMES", ram: "RAM", cpu: "CPU", storage: "ESPAÇO", version: "VERSÃO", res: "RESOLUÇÃO", lang: "IDIOMA", source: "FONTE", year: "ANO", updateAlways: "Atualização constante" },
+            fr: { name: "Français", search: "RECHERCHER...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 CHANGER DE LANGUE", available: "UNITÉS VÉRIFIÉES", download: "TÉLÉCHARGER APK", downloadMovie: "VOIR FILM", back: "RETOUR", send: "ENVOYER LA DEMANDE", placeholder: "NOM DU JEU...", noAsk: "Se souvenir de moi", new: "NOUVEAU", reqsTitle: "EXIGENCES", verifiedBy: "✓ FICHIER SÉCURISÉ", wanted: "HOT", report: "SIGNALER ERREUR", reportPage: "ERREUR SYSTÈME", reportSend: "ENVOYER RAPPORT", reportPlace: "DÉCRIRE LE PROBLÈME...", bannerTag: "HIGHLIGHT DE LA SEMAINE", bannerTitle: "LA NOUVELLE ÈRE DU<br>JEU GRATUIT", reqTag: "CONNEXION DIRECTE AVEC EP TEAM", gamesTab: "JEUX", moviesTab: "FILMS", ram: "RAM", cpu: "CPU", storage: "ESPACE", version: "VERSION", res: "RÉSOLUTION", lang: "LANGUE", source: "SOURCE", year: "ANNÉE", updateAlways: "Mise à jour constante" },
+            de: { name: "Deutsch", search: "SUCHEN...", catalog: "KATALOG", request: "ANFRAGEN", changelang: "🌐 SPRACHE ÄNDERN", available: "VERIFIZIERTE EINHEITEN", download: "APK HERUNTERLADEN", downloadMovie: "FILM ANSEHEN", back: "ZURÜCK", send: "ANFRAGE SENDEN", placeholder: "SPIELENAME...", noAsk: "Identität merken", new: "NEU", reqsTitle: "ANFORDERUNGEN", verifiedBy: "✓ SICHERE DATEI", wanted: "HOT", report: "FEHLER MELDEN", reportPage: "SYSTEMFEHLER", reportSend: "BERICHT SENDEN", reportPlace: "FEHLER BESCHREIBEN...", bannerTag: "HIGHLIGHT DER WOCHE", bannerTitle: "DIE NEUE ÄRA DES<br>GRATIS-GAMINGS", reqTag: "DIREKTE VERBINDUNG ZUM EP TEAM", gamesTab: "SPIELE", moviesTab: "FILME", ram: "RAM", cpu: "CPU", storage: "SPEICHER", version: "VERSION", res: "AUFLÖSUNG", lang: "SPRACHE", source: "QUELLE", year: "JAHR", updateAlways: "Ständige Updates" },
+            it: { name: "Italiano", search: "CERCA...", catalog: "CATALOGO", request: "RICHIESTA", changelang: "🌐 CAMBIA LINGUA", available: "UNITÀ VERIFICATE", download: "SCARICA APK", downloadMovie: "GUARDA FILM", back: "INDIETRO", send: "INVIA RICHIESTA", placeholder: "NOME DEL GIOCO...", noAsk: "Ricorda identità", new: "NUOVO", reqsTitle: "REQUISITI", verifiedBy: "✓ FILE SICURO", wanted: "HOT", report: "SEGNALA ERRORE", reportPage: "ERRORE DI SISTEMA", reportSend: "INVIA RAPPORTO", reportPlace: "DESCRIVI IL GUASTO...", bannerTag: "IL MEGLIO DELLA SETTIMANA", bannerTitle: "LA NUOVA ERA DEL<br>GIOCO GRATUITO", reqTag: "CONNESSIONE DIRETTA CON EP TEAM", gamesTab: "GIOCHI", moviesTab: "FILM", ram: "RAM", cpu: "CPU", storage: "SPAZIO", version: "VERSIONE", res: "RISOLUZIONE", lang: "LINGUA", source: "FONTE", year: "ANNO", updateAlways: "Aggiornamento costante" },
+            ru: { name: "Русский", search: "ПОИСК...", catalog: "КАТАЛОГ", request: "ЗАПРОС", changelang: "🌐 СМЕНИТЬ ЯЗЫК", available: "ПРОВЕРЕНО", download: "СКАЧАТЬ APK", downloadMovie: "СМОТРЕТЬ", back: "НАЗАД", send: "ОТПРАВИТЬ", placeholder: "НАЗВАНИЕ...", noAsk: "Запомнить", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", verifiedBy: "✓ БЕЗОПАСНО", wanted: "HOT", report: "ОШИБКА", reportPage: "СИСТЕМНАЯ ОШИБКА", reportSend: "ОТПРАВИТЬ", reportPlace: "ОПИШИТЕ...", bannerTag: "ЛУЧШЕЕ ЗА НЕДЕЛЮ", bannerTitle: "НОВАЯ ЭРА<br>БЕСПЛАТНЫХ ИГР", reqTag: "ПРЯМАЯ СВЯЗЬ С EP TEAM", gamesTab: "ИГРЫ", moviesTab: "КИНО", ram: "ОЗУ", cpu: "ЦП", storage: "ПАМЯТЬ", version: "ВЕРСИЯ", res: "РАЗРЕШЕНИЕ", lang: "ЯЗЫК", source: "ИСТОЧНИК", year: "ГОД", updateAlways: "Постоянно обновляется" },
+            ja: { name: "日本語", search: "検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語変更", available: "検証済み", download: "APKダウンロード", downloadMovie: "映画を見る", back: "戻る", send: "送信", placeholder: "ゲーム名...", noAsk: "設定を保存", new: "新規", reqsTitle: "要件", verifiedBy: "✓ 安全なファイル", wanted: "HOT", report: "エラー報告", reportPage: "システムエラー", reportSend: "送信", reportPlace: "詳細...", bannerTag: "今週のハイライト", bannerTitle: "無料ゲームの<br>新時代", reqTag: "EP TEAMへのダイレクト接続", gamesTab: "ゲーム", moviesTab: "映画", ram: "RAM", cpu: "CPU", storage: "容量", version: "バージョン", res: "解像度", lang: "言語", source: "ソース", year: "年", updateAlways: "常に更新" },
+            ko: { name: "한국어", search: "검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "확인됨", download: "APK 다운로드", downloadMovie: "영화 보기", back: "뒤로", send: "요청 보내기", placeholder: "게임 이름...", noAsk: "기억하기", new: "신규", reqsTitle: "요구 사항", verifiedBy: "✓ 안전한 파일", wanted: "HOT", report: "오류 신고", reportPage: "시스템 오류", reportSend: "보고서 전송", reportPlace: "내용...", bannerTag: "이번 주의 하이라이트", bannerTitle: "무료 게임의<br>새로운 시대", reqTag: "EP TEAM 직접 연결", gamesTab: "게임", moviesTab: "영화", ram: "RAM", cpu: "CPU", storage: "공간", version: "버전", res: "해상도", lang: "언어", source: "출처", year: "연도", updateAlways: "지속적인 업데이트" },
+            zh: { name: "中文", search: "搜索...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "验证单位", download: "下载 APK", downloadMovie: "观看电影", back: "返回", send: "发送请求", placeholder: "游戏名称...", noAsk: "记住我", new: "新品", reqsTitle: "系统要求", verifiedBy: "✓ 安全文件", wanted: "热门", report: "报告错误", reportPage: "系统错误", reportSend: "发送报告", reportPlace: "描述故障...", bannerTag: "本周精选", bannerTitle: "免费游戏的<br>新时代", reqTag: "与 EP 团队直接联系", gamesTab: "游戏", moviesTab: "电影", ram: "内存", cpu: "处理器", storage: "存储", version: "版本", res: "分辨率", lang: "语言", source: "来源", year: "年份", updateAlways: "持续更新" },
+            ar: { name: "العربية", search: "بحث...", catalog: "كتالوج", request: "طلب", changelang: "🌐 تغيير اللغة", available: "وحدات مؤكدة", download: "تحميل APK", downloadMovie: "مشاهدة فيلم", back: "رجوع", send: "إرسال الطلب", placeholder: "اسم اللعبة...", noAsk: "تذكر الهوية", new: "جديد", reqsTitle: "المتطلبات", verifiedBy: "✓ ملف آمن", wanted: "ساخن", report: "إبلاغ عن خطأ", reportPage: "خطأ نظام", reportSend: "إرسال التقرير", reportPlace: "وصف العطل...", bannerTag: "أفضل ما في الأسبوع", bannerTitle: "العصر الجديد لـ<br>الألعاب المجانية", reqTag: "اتصال مباشر مع فريق EP", gamesTab: "ألعاب", moviesTab: "أفلام", ram: "رام", cpu: "المعالج", storage: "مساحة", version: "إصدار", res: "دقة", lang: "لغة", source: "مصدر", year: "سنة", updateAlways: "تحديث مستمر" },
+            hi: { name: "हिन्दी", search: "खोजें...", catalog: "कैटलॉग", request: "अनुरोध", changelang: "🌐 भाषा बदलें", available: "सत्यापित इकाइयाँ", download: "APK डाउनलोड करें", downloadMovie: "फिल्म देखें", back: "वापस", send: "अनुरोध भेजें", placeholder: "खेल का नाम...", noAsk: "याद रखें", new: "नया", reqsTitle: "आवश्यकताएँ", verifiedBy: "✓ सुरक्षित फ़ाइल", wanted: "HOT", report: "त्रुटि रिपोर्ट", reportPage: "सिस्टम त्रुटि", reportSend: "रिपोर्ट भेजें", reportPlace: "विवरण...", bannerTag: "सप्ताह का मुख्य आकर्षण", bannerTitle: "मुफ्त गेमिंग का<br>नया युग", reqTag: "EP टीम के साथ सीधा संबंध", gamesTab: "खेल", moviesTab: "फ़िल्में", ram: "RAM", cpu: "CPU", storage: "स्टोरेज", version: "संस्करण", res: "रिजॉल्यूशन", lang: "भाषा", source: "स्रोत", year: "वर्ष", updateAlways: "लगातार अपडेट" },
+            tr: { name: "Türkçe", search: "ARA...", catalog: "KATALOG", request: "İSTEK", changelang: "🌐 DİL DEĞİŞTİR", available: "DOĞRULANMIŞ BİRİMLER", download: "APK İNDİR", downloadMovie: "FİLM İZLE", back: "GERİ", send: "İSTEK GÖNDER", placeholder: "OYUN ADI...", noAsk: "Beni hatırla", new: "YENİ", reqsTitle: "GEREKSİNİMLER", verifiedBy: "✓ GÜVENLİ DOSYA", wanted: "SICAK", report: "HATA BİLDİR", reportPage: "SİSTEM HATASI", reportSend: "RAPOR GÖNDER", reportPlace: "ARIZAYI AÇIKLA...", bannerTag: "HAFTANIN ÖNE ÇIKANLARI", bannerTitle: "ÜCRETSİZ OYUNLARIN<br>YENİ ÇAĞI", reqTag: "EP TEAM İLE DOĞRUDAN BAĞLANTI", gamesTab: "OYUNLAR", moviesTab: "FİLMLER", ram: "RAM", cpu: "CPU", storage: "ALAN", version: "VERSİYON", res: "ÇÖZÜNÜRLÜK", lang: "DİL", source: "KAYNAK", year: "YIL", updateAlways: "Sürekli Güncelleme" },
+            nl: { name: "Nederlands", search: "ZOEKEN...", catalog: "CATALOGUS", request: "AANVRAAG", changelang: "🌐 TAAL WIJZIGEN", available: "GEVERIFIEERDE UNITS", download: "APK DOWNLOADEN", downloadMovie: "FILM KIJKEN", back: "TERUG", send: "AANVRAAG VERZENDEN", placeholder: "NAAM SPEL...", noAsk: "Identiteit onthouden", new: "NIEUW", reqsTitle: "VEREISTEN", verifiedBy: "✓ VEILIG BESTAND", wanted: "HOT", report: "FOUT MELDEN", reportPage: "SYSTEEMFOUT", reportSend: "RAPPORT VERZENDEN", reportPlace: "BESCHRIJF DE FOUT...", bannerTag: "HOOGTEPUNT VAN DE WEEK", bannerTitle: "HET NIEUWE TIJDPERK VAN<br>GRATIS GAMING", reqTag: "DIRECTE VERBINDING MET EP TEAM", gamesTab: "SPELLEN", moviesTab: "FILMS", ram: "RAM", cpu: "CPU", storage: "OPSLAG", version: "VERSIE", res: "RESOLUTIE", lang: "TAAL", source: "BRON", year: "JAAR", updateAlways: "Constante updates" },
+            pl: { name: "Polski", search: "SZUKAJ...", catalog: "KATALOG", request: "ZAMÓW", changelang: "🌐 ZMIEŃ JĘZYK", available: "ZWERYFIKOWANE JEDNOSTKI", download: "POBIERZ APK", downloadMovie: "OGLĄDAJ FILM", back: "WRÓĆ", send: "WYŚLIJ PROŚBĘ", placeholder: "NAZWA GRY...", noAsk: "Zapamiętaj", new: "NOWOŚĆ", reqsTitle: "WYMAGANIA", verifiedBy: "✓ BEZPIECZNY PLIK", wanted: "GORĄCE", report: "ZGŁOŚ BŁĄD", reportPage: "BŁĄD SYSTEMU", reportSend: "WYŚLIJ RAPORT", reportPlace: "OPISZ USTERKĘ...", bannerTag: "HIT TYGODNIA", bannerTitle: "NOWA ERA<br>DARMOWEGO GRANIA", reqTag: "BEZPOŚREDNIE POŁĄCZENIE Z EP TEAM", gamesTab: "GRY", moviesTab: "FILMY", ram: "RAM", cpu: "CPU", storage: "MIEJSCE", version: "WERSJA", res: "ROZDZIELCZOŚĆ", lang: "JĘZYK", source: "ŹRÓDŁO", year: "ROK", updateAlways: "Stała aktualizacja" },
+            sv: { name: "Svenska", search: "SÖK...", catalog: "KATALOG", request: "BEGÄRAN", changelang: "🌐 ÄNDRA SPRÅK", available: "VERIFIERADE ENHETER", download: "LADDA NER APK", downloadMovie: "SE FILM", back: "TILLBAKA", send: "SKICKA BEGÄRAN", placeholder: "SPELNAMN...", noAsk: "Kom ihåg mig", new: "NYTT", reqsTitle: "KRAV", verifiedBy: "✓ SÄKER FIL", wanted: "HOT", report: "RAPPORTERA FEL", reportPage: "SYSTEMFEL", reportSend: "SKICKA RAPPORT", reportPlace: "BESKRIV FELET...", bannerTag: "VECKANS HÖJDPUNKT", bannerTitle: "DEN NYA ERAN AV<br>GRATIS SPEL", reqTag: "DIREKTANSLUTNING TILL EP TEAM", gamesTab: "SPEL", moviesTab: "FILMER", ram: "RAM", cpu: "CPU", storage: "UTRYMME", version: "VERSION", res: "UPPLÖSNING", lang: "SPRÅK", source: "KÄLLA", year: "ÅR", updateAlways: "Konstant uppdatering" },
+            da: { name: "Dansk", search: "SØG...", catalog: "KATALOG", request: "ANMODNING", changelang: "🌐 SKIFT SPROG", available: "VERIFICEREDE ENHEDER", download: "HENT APK", downloadMovie: "SE FILM", back: "TILBAGE", send: "SEND ANMODNING", placeholder: "SPILNAVN...", noAsk: "Husk identitet", new: "NY", reqsTitle: "KRAV", verifiedBy: "✓ SIKKER FIL", wanted: "HOT", report: "RAPPORTER FEJL", reportPage: "SYSTEMFEJL", reportSend: "SEND RAPPORT", reportPlace: "BESKRIV FEJL...", bannerTag: "UGENS HIGHLIGHT", bannerTitle: "DEN NYE ÆRA FOR<br>GRATIS GAMING", reqTag: "DIREKTE FORBINDELSE TIL EP TEAM", gamesTab: "SPIL", moviesTab: "FILM", ram: "RAM", cpu: "CPU", storage: "PLADS", version: "VERSION", res: "OPLØSNING", lang: "SPROG", source: "KILDE", year: "ÅR", updateAlways: "Løbende opdatering" },
+            no: { name: "Norsk", search: "SØK...", catalog: "KATALOG", request: "FORESPØRSEL", changelang: "🌐 BYTT SPRÅK", available: "VERIFISERTE ENHETER", download: "LAST NED APK", downloadMovie: "SE FILM", back: "TILBAKE", send: "SEND FORESPØRSEL", placeholder: "SPILLNAVN...", noAsk: "Husk meg", new: "NY", reqsTitle: "KRAV", verifiedBy: "✓ SIKKER FIL", wanted: "HOT", report: "RAPPORTER FEIL", reportPage: "SYSTEMFEIL", reportSend: "SEND RAPPORT", reportPlace: "BESKRIV FEIL...", bannerTag: "UKENS HØYDEPUNKT", bannerTitle: "DEN NYE ÆRAEN FOR<br>GRATIS SPILL", reqTag: "DIREKTEKOBLING TIL EP TEAM", gamesTab: "SPILL", moviesTab: "FILMER", ram: "RAM", cpu: "CPU", storage: "PLASS", version: "VERSJON", res: "OPPLØSNING", lang: "SPRÅK", source: "KILDE", year: "ÅR", updateAlways: "Stadig oppdatert" }
         };
 
-        const flags = { es: '🇪🇸', en: '🇺🇸', pt: '🇧🇷' };
+        const flags = { es: '🇪🇸', en: '🇺🇸', pt: '🇧🇷', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹', ru: '🇷🇺', ja: '🇯🇵', ko: '🇰🇷', zh: '🇨🇳', ar: '🇸🇦', hi: '🇮🇳', tr: '🇹🇷', nl: '🇳🇱', pl: '🇵elements', sv: '🇸🇪', da: '🇩🇰', no: '🇳🇴' };
         let currentGameId = null, curLang = 'es', scrollPos = 0, currentCategory = 'games';
 
         const movies = [
@@ -430,7 +420,7 @@
                 desc: { 
                     es: 'Miles Morales se lanza a través del Multiverso, donde se encuentra con un equipo de Spider-Gente encargado de proteger su existencia.', 
                     en: 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.', 
-                    pt: 'Miles Morales é catapultado através do Multiverso, onde ele encontra uma equipe de Pessoas-Aranha encarregada de proteger sua existência.' 
+                    pt: 'Miles Morales é catapultado através do Multiverso, onde ele encuentra uma equipe de Pessoas-Aranha encarregada de proteger sua existência.' 
                 }, 
                 reqs: ["1080p", "Latino", "Cuevana", "2023"], 
                 showNewBadge: true, 
@@ -446,7 +436,7 @@
                 desc: { 
                     es: 'Una niñera es contratada para cuidar a un muñeco de porcelana que los padres tratan como a un hijo real.', 
                     en: 'A nanny is hired to care for a porcelain doll that the parents treat like a real son.', 
-                    pt: 'Uma babá é contratada para cuidar de um boneco de porcelana que os pais tratam como um filho real.' 
+                    pt: 'Uma babá é contratada para cuidar de um boneco de porcelana que los pais tratam como um filho real.' 
                 }, 
                 reqs: ["1080p", "Latino", "123Films", "2016"], 
                 showNewBadge: false, 
@@ -474,13 +464,14 @@
         ];
 
         const games = [
-            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjg3NTAzMS5wbmc=/original/6YkwSP.png', link: 'https://download1587.mediafire.com/x90ixzasf6ygfhvAEodBgFnHkAJewsVEd2_79NTzQm5DrwYZZvRFduSdFE615obipXfhTg8WuMNVRRDa1S9-6KO7QCUvK1cIud79bbutwoPVniN4RbiIS717bfEWFurTY74Uga6UxA38xmZNApOvwoEGsad-tGKb9oIPA0AGuJK-ZxA/ouo5nqc2upq6w24/PoppyPlaytime5+%283%29.apk', desc: { es: 'V1.6: Capítulo más aterrador.', en: 'V1.6: Scariest chapter.', pt: 'V1.6: Capítulo assustador.' }, reqs: ["6GB RAM", "Octa-Core 2.6", "2.5GB", "10+"], showNewBadge: false, isMostWanted: false, type: 'game' },
+            { id: 'minecraft', title: 'Minecraft', poster: 'https://store-images.s-microsoft.com/image/apps.17382.13510798885735219.9735d495-578c-4a4c-b892-3eb3a780b3a0.d3792486-cf98-40c0-a2c1-d6443f0e2b70', screen: 'https://apktodo.io/uploads/2026/4/minecraft-pe-1263021-thumbnail.jpg', link: 'https://dl.minecrfapkmod.com/minecraft-mod-menu-1.26.30.21-.apk', desc: { es: 'V1.26.30: Explora mundos infinitos y construye cualquier cosa, desde la más sencilla de las casas hasta el más grandioso de los castillos.', en: 'V1.26.30: Explore infinite worlds and build everything from the simplest of homes to the grandest of castles.', pt: 'V1.26.30: Explore mundos infinitos e construa de tudo.' }, reqs: ["4GB RAM", "Octa-Core 2.0GHz", "1GB", "8.0+"], showNewBadge: true, isMostWanted: false, type: 'game' },
+            { id: 'p5', title: 'Poppy Playtime 5', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6NCirZXspnRehiwpdhsRa4wQ_ecXusChoiDMJ2oVLablQGCWjCBLlfG1Z&s=10', screen: 'https://img.itch.zone/aW1hZ2UvNDM5NDI0NS8yNjg3NTAzMS5wbmc=/original/6YkwSP.png', link: 'https://download1587.mediafire.com/x90ixzasf6ygfhvAEodBgFnHkAJewsVEd2_79NTzQm5DrwYZZvRFduSdFE615obipXfhTg8WuMNVRRDa1S9-6KO7QCUvK1cIud79bbutwoPVniN4RbiIS717bfEWFurTY74Uga6UxA38xmZNApOvwoEGsad-tGKb9oIPA0AGuJK-ZxA/ouo5nqc2upq6w24/PoppyPlaytime5+%283%29.apk', desc: { es: 'V1.6: Capítulo más aterrador.', en: 'V1.6: Scariest chapter.', pt: 'V1.6: Capítulo assustador.' }, reqs: ["6GB RAM", "Octa-Core 2.6", "2.5GB", "10+"], showNewBadge: false, isMostWanted: true, type: 'game' },
             { id: 'bendy', title: 'Bendy and the Ink Machine', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp-5QUDSuNnhIBjdpZvrsbhNCFcat16zPc3_lA3D1yGgSV1YTDSmFuAx78&s=10', screen: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2022/12/2.-Bendy-and-The-Ink-Machine-APK.jpg', link: 'https://cdn600.onehost.io/2023/Bendy_1.0.909_1765602812_latestmodapks.com.apk', desc: { es: 'Terror en primera persona años 30.', en: 'Horror game 1930s style.', pt: 'Terror aos 30.' }, reqs: ["3GB RAM", "Octa-Core 2.0GHz", "1.5GB", "8.0+"], showNewBadge: false, type: 'game' },
-            { id: 'incredibox', title: 'Incredibox', poster: 'https://m.media-amazon.com/images/M/MVBYTUzNGVmMDMtZDJjZS00NzQ1LTg1NjQtZTNkNjFmMjk5ODNiXkEyXkFqcGc@._V1_.jpg', screen: 'https://images.sftcdn.net/images/t_app-cover-s,f_auto/p/ff8f5102-802a-4360-94ec-0b3da3efaa01/2195587113/incredibox-2.png', link: 'https://files.an1.net/incrediboxs_1.0.0-an1.com.apk', desc: { es: 'Crea música con beatboxers.', en: 'Create music with beatboxers.', pt: 'Crie música.' }, reqs: ["2GB RAM", "Quad-Core 1.8GHz", "280MB", "6.0+"], type: 'game' },
+            { id: 'incredibox', title: 'Incredibox', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSEIcLZM8hsrMdgXb9z4mKfRAVYIz4A6-0ZrhVgwTzMB5O5NDgWSM5Emj&s=10', screen: 'https://images.sftcdn.net/images/t_app-cover-s,f_auto/p/ff8f5102-802a-4360-94ec-0b3da3efaa01/2195587113/incredibox-2.png', link: 'https://files.an1.net/incrediboxs_1.0.0-an1.com.apk', desc: { es: 'Crea música con beatboxers.', en: 'Create music with beatboxers.', pt: 'Crie música.' }, reqs: ["2GB RAM", "Quad-Core 1.8GHz", "280MB", "6.0+"], type: 'game' },
             { id: 'rfs', title: 'RFS Real Flight Simulator', poster: 'https://cdn-bgp.bluestacks.com/BGP/latam/gametiles_it.rortos.realflightsimulator.jpg', screen: 'https://play-lh.googleusercontent.com/Djv67X-iZFLX4XlZOhqlNBEPikYgcZuh68KxkKkRFamgUTqY6LjsB9myO3EfgKGgI8E=w526-h296-rw', link: 'https://download2389.mediafire.com/uffcmelytmmg3doulF1GPmYDmxjxmB7UxzNw0Q4NNB1D8QHRNJr7nSNqdo-mJDfvGSNR6N7WeBCVAO5VHga1PNguj_pGDZD9RglAMSCN9dZ7_mQFvtUyf56qujefbYULuSD0Cbz4jy6eiXEP_DsfuG6uLWydYlR2wiFZs4J7MVI0prs/736nkkeurfhfncx/real-flight-simulator_3.1.3+-+espacioapk.com.apk', desc: { es: 'Simulador de vuelo.', en: 'Flight simulator.', pt: 'Simulador de voo.' }, reqs: ["3GB RAM", "Octa-Core 2.2GHz", "500MB", "8.0+"], type: 'game' },
             { id: 'longing', title: 'The Longing', poster: 'https://upload.wikimedia.org/wikipedia/en/5/53/TheLongingVideoGame_CoverArt.png', screen: 'https://img.apkvision.org/the-longing/the-longing-6.webp', link: 'https://dl.apkvision.org/the-longing/The-Longing-v1.25-full-apkvision.apk', desc: { es: 'Espera 400 días.', en: 'Wait 400 days.', pt: 'Espere 400 dias.' }, reqs: ["3GB RAM", "Octa-Core 2.0GHz", "700MB", "7.0+"], type: 'game' },
             { id: 'paranormal_inc', title: 'Paranormal Inc', poster: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrco7MMtcruyYCL293dFW9pFPVXUerJyb07kpN5o8ax2cd8ICmI6MBuqp&s=10', screen: 'https://img.apkvision.org/paranormal-inc/paranormal-inc-4.webp', link: 'https://dl.apkvision.org/paranormal-inc/Paranormal-Inc-v7.1-full-apkvision.apk', desc: { es: 'Investiga fenómenos.', en: 'Investigate events.', pt: 'Investigue eventos.' }, reqs: ["3GB RAM", "Octa-Core 2.0GHz", "230MB", "9.0+"], type: 'game' },
-            { id: 'the_run', title: 'The Run', poster: 'https://m.media-amazon.com/images/M/MV5BNDg0MWZkYjAtZTY0ZS00YzVlLWEyMGEtZDUyMjc4NDBmYzRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN-PEUo2P7DH65F1z2A3bqjGoby5QlzqZsnYFhATmcGQRODpgvbPvyaBGe&s=10', link: 'https://dl.apkvision.org/the-run-interactive-film/The-Run-Interactive-Film-v1.0-full-apkvision.apk', desc: { es: 'Película interactiva.', en: 'Interactive film.', pt: 'Filme interativo.' }, reqs: ["4GB RAM", "Octa-Core 2.2GHz", "300MB", "9.0+"], type: 'game' },
+            { id: 'the_run', title: 'The Run', poster: 'https://m.media-amazon.com/images/M/MV5BNDg0MWZkYjAtZTY0ZS00YzVlLWEyMGEtZDUyMjc4NDBmYzRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN-PEUo2P7DH65F1z2A3bqjGoby5QlzqZsnYFhATmcGQRODpgvbPvyaBGe&s=10', link: 'https://dl.apkvision.org/the-run-interactive-film/The-Run-Interactive-Film-v1.0-full-apkvision.apk', desc: { es: 'Película interactiva.', en: 'Interactive film.', pt: 'Segredos do Mimic.' }, reqs: ["4GB RAM", "Octa-Core 2.2GHz", "300MB", "9.0+"], type: 'game' },
             { id: 'gta3def', title: 'GTA III', poster: 'https://images.g2a.com/323x433/1x1x1/grand-theft-auto-iii-p10000007301/590df4f35bafe357036a1c7d', screen: 'https://img.apkvision.org/gta-iii-definitive/gta-iii-definitive-4.webp', link: 'https://apkvision.org/games/action/gta-iii-definitive-115254/download/v1.84.3-apk/', desc: { es: 'Definitive Edition.', en: 'Definitive Edition.', pt: 'Definitive Edition.' }, reqs: ["4GB RAM", "Snapdragon 865", "1.68GB", "11.0+"], type: 'game' },
             { id: 'rdr', title: 'Red Dead Redemption', poster: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Red_Dead_Redemption.jpg', screen: 'https://img.apkvision.org/red-dead-redemption/red-dead-redemption-2.webp', link: 'https://dl.apkvision.org/red-dead-redemption/RDR-ROCKSTAR-v1.58.63226194-vanilla-full-apkvision.apks', desc: { es: 'Épica historia oeste.', en: 'Epic wild west.', pt: 'História do oeste.' }, reqs: ["6GB RAM", "Octa-Core 2.8GHz", "10GB", "11.0+"], type: 'game' },
             { id: 'hn2', title: 'Hello Neighbor 2', poster: 'https://i.gadgets360cdn.com/products/large/MV5BOThhODY3OTYtYjRiZC00M2IxLWEwNDQtMDg0ZDk1YzJlODU1XkEyXkFqcGdeQXVyMTUxOTc4ODEz.-V1-FMjpg-UX1000-1000x1500-1669702109.jpg', screen: 'https://unreal-play-studio.com/asset/hello-neighbor-2/AMt_+0.webp', link: 'https://download2393.mediafire.com/bz7qbwzvjuwgTzOdZT8hC3HXsCgawmEiH0XKkQQH8o85luobIkW8hjkVdU5Go8Tspvl8F96ywYj4nQlKcMGOPtmgFbFuUImjG7CPoNLlwvSs6dNKuukuEjXWgElIfgk6fYvgt2IIWi_rkPxo1p4-1VWT6Yd04d8tXMEeRgkdcJ9GC90/ygxlaj72vkll9oi/Hello+Neighbor+2+v0.1.3+-+espacioapk.com.apk', desc: { es: 'Secretos del vecino.', en: 'Neighbor secrets.', pt: 'Segredos do vizinho.' }, reqs: ["4GB RAM", "Snapdragon 855", "3GB", "8.0+"], type: 'game' },
@@ -495,7 +486,7 @@
             { id: 'gtavc', title: 'GTA: Vice City', poster: 'https://static.wikia.nocookie.net/esgta/images/0/0f/Grand_Theft_Auto_Vice_City.JPG/revision/latest/scale-to-width-down/1200?cb=20161127222945', screen: 'https://img.apkvision.org/grand-theft-auto-vice-city/grand-theft-auto-vice-city-1.webp', link: 'https://dl.apkvision.org/grand-theft-auto-vice-city/GTA-VC-v1.12.259-full-apkvision.apk', desc: { es: 'Vice City 80s.', en: 'Vice City 80s.', pt: 'Vice City 80s.' }, reqs: ["2GB RAM", "1.5GHz", "1.5GB", "8.0+"], type: 'game' },
             { id: 'subn_bz', title: 'Subnautica: BZ', poster: 'https://store-images.s-microsoft.com/image/apps.25913.13546341381523259.8f30b71b-aac8-4816-a999-212ef85f8876.1b6b3f4d-3d78-409e-acc2-57b4950505b7', screen: 'https://img.apkvision.org/subnautica-below-zero/subnautica-below-zero-1.webp', link: 'https://dl.apkvision.org/subnautica-below-zero/Subnautica-Below-Zero-v1.22.55044-full-apkvision.apk', desc: { es: 'Gélida supervivencia.', en: 'Frozen survival.', pt: 'Sobrevivência gelada.' }, reqs: ["4GB RAM", "2.4GHz", "3GB", "9.0+"], type: 'game' },
             { id: 'p4', title: 'Poppy Playtime 4', poster: 'https://assetsio.gnwcdn.com/Poppy-Playtime-Chapter-4-promo-image-showing-a-toy-character-extending-its-hand-towards-the-camera.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp', screen: 'https://img.itch.zone/aW1hZ2UvMzQxOTQ2MC8yMDQxODI1NC5wbmc=/original/hVzrVs.png', link: 'https://piro775.itch.io/toy-factory-chapter-4', desc: { es: 'Fábrica Playtime.', en: 'Playtime factory.', pt: 'Fábrica Playtime.' }, reqs: ["6GB RAM", "2.8GHz", "2GB", "10+"], type: 'game' },
-            { id: 'silksong', title: 'HK Silksong', poster: 'https://m.media-amazon.com/images/M/MVBMjA4NWE1YWMtNjQ4ZC00Y2Q3LWFjMGEtNGVhM2FmYzJjMzM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://download2447.mediafire.com/w84peg5sx8fgBc-7cVVmCeWeTHT7srV5XEq4NbfMtzlim6gxgE54Vr-cxARCyg2zmDRL5j6HiNz_i9PGgKqstW7i9WWZow41PaBe8omyaRLz7n8BeztpmXVbOQMB2-2soj3Z3mjB1Tu100nj-S6iMiqkIH5w3aDUGplF1Y7s_4zHS4I/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk', desc: { es: 'Hornet aventura.', en: 'Hornet adventure.', pt: 'Hornet aventura.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+authorized"], type: 'game' },
+            { id: 'silksong', title: 'HK Silksong', poster: 'https://westshoreroar.com/wp-content/uploads/2025/10/silksong.jpg', screen: 'https://img.apkvision.org/hollow-knight-silksong/hollow-knight-silksong-2.webp', link: 'https://download2447.mediafire.com/w84peg5sx8fgBc-7cVVmCeWeTHT7srV5XEq4NbfMtzlim6gxgE54Vr-cxARCyg2zmDRL5j6HiNz_i9PGgKqstW7i9WWZow41PaBe8omyaRLz7n8BeztpmXVbOQMB2-2soj3Z3mjB1Tu100nj-S6iMiqkIH5w3aDUGplF1Y7s_4zHS4I/h18frmho5yk6liy/HW+Silksing+v1.20+-+espacioapk.com.apk', desc: { es: 'Hornet aventura.', en: 'Hornet adventure.', pt: 'Hornet aventura.' }, reqs: ["4GB RAM", "2.0GHz", "2GB", "9.0+authorized"], type: 'game' },
             { id: 'p3', title: 'Poppy Playtime 3', poster: 'https://http2.mlstatic.com/D_NQ_NP_615692-MLM96301603984_102025-O.webp', screen: 'https://unreal-play-studio.com/asset/poppy-playtime-3/o4ozI7.webp', link: 'https://unreal-play-studio.com/games/poppy-playtime-chapter-3', desc: { es: 'Orfanato Playcare.', en: 'Playcare orphanage.', pt: 'Orfanato Playcare.' }, reqs: ["SD 855", "4GB RAM", "3GB", "8.0+"], type: 'game' },
             { id: 'descenders', title: 'Descenders', poster: 'https://upload.wikimedia.org/wikipedia/en/8/8a/Descenders_cover.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlSbLwRzT8Cn947R3Ri4_XsF3XIxA9m7RRxKyTX_Ncp0b_ywc0ng6X7hbK&s=10', link: 'https://apks.trulhost.com/Descenders-v1.10.3-Mod.apk', desc: { es: 'MTB extremo.', en: 'Extreme MTB.', pt: 'MTB extremo.' }, reqs: ["4GB RAM", "2.2GHz", "2.5GB", "9.0+"], type: 'game' },
             { id: 'miles', title: 'Miles Morales', poster: 'https://static.wikia.nocookie.net/ficcion-sin-limites/images/7/73/Miles_Morales.jpg/revision/latest?cb=20220320020218&path-prefix=es', screen: 'https://img.itch.zone/aW1hZ2UvMzA4ODY5MS8xODQ3MDY1OC5qcGc=/original/EOiKUx.jpg', link: 'https://download2448.mediafire.com/doaqi0p34hbgSi7mQcuB9wuZxs99BBxGjSznCCWArLig-alMXAYJ1289MM8fTj8lmAEVy47CyBZ9eRoboCUtyVFqs1I1zTuqOmVsfsrH7m9XUO5lnXwPK9DewQOm_w8vSTLkVYz5KOCfPa83rTTI2s-Gg1QoF3o-4ziGQgpfMtKAJnw/kqarkaqmh0nhrtx/Spiderman_Miles_Morales_v1_%5Bwww.AndroSU.com%5D.apk', desc: { es: 'Spiderman Mobile.', en: 'Spiderman Mobile.', pt: 'Spiderman Mobile.' }, reqs: ["2GB RAM", "1.8GHz", "400MB", "8.0+"], type: 'game' },
@@ -509,7 +500,7 @@
 
         window.init = () => {
             const savedLang = localStorage.getItem('ep_lang');
-            if(savedLang) {
+            if(savedLang && i18n[savedLang]) {
                 curLang = savedLang;
                 document.getElementById('language-overlay').classList.add('opacity-0', 'pointer-events-none');
                 document.body.classList.remove('lock-scroll');
@@ -518,9 +509,9 @@
 
             const grid = document.getElementById('langGrid');
             grid.innerHTML = Object.keys(i18n).map(code => `
-                <div onclick="setLang('${code}')" class="group p-6 glass-panel cursor-pointer hover:border-cyan-400/50 hover:bg-cyan-400/5 transition-all">
-                    <span class="text-4xl block mb-2">${flags[code]}</span>
-                    <span class="font-ui text-[9px] text-white/30 uppercase tracking-[0.2em] group-hover:text-cyan-400">${i18n[code].name}</span>
+                <div onclick="setLang('${code}')" class="group p-5 glass-panel cursor-pointer hover:border-cyan-400/50 hover:bg-cyan-400/5 transition-all text-center">
+                    <span class="text-3xl block mb-2">${flags[code] || '🌐'}</span>
+                    <span class="font-ui text-[10px] text-white/50 uppercase tracking-[0.2em] group-hover:text-cyan-400">${i18n[code].name}</span>
                 </div>
             `).join('');
 
@@ -541,7 +532,7 @@
         };
 
         function applyTranslations() {
-            const t = i18n[curLang];
+            const t = i18n[curLang] || i18n.en;
             // Header & Menu
             document.getElementById('catalogSearch').placeholder = t.search;
             document.getElementById('nav-catalog').innerText = t.catalog;
@@ -556,7 +547,7 @@
             document.getElementById('tab-movies').innerText = t.moviesTab;
             document.getElementById('counter-label').innerText = t.available;
             
-            // Detail View static components
+            // Detail View
             document.getElementById('btn-back-text').innerText = t.back;
             document.getElementById('verified-label').innerText = t.verifiedBy;
             document.getElementById('reportBtn').innerText = t.report;
@@ -574,7 +565,6 @@
 
             render();
             
-            // Si estamos en la vista de detalle, refrescar etiquetas de requisitos
             if(currentGameId && !document.getElementById('detail-view').classList.contains('hidden')) {
                 updateDetailLabels();
             }
@@ -592,12 +582,15 @@
             const grid = document.getElementById('gameGrid');
             const pool = currentCategory === 'games' ? games : movies;
             const filtered = pool.filter(g => g.title.toLowerCase().includes(val));
+            const t = i18n[curLang] || i18n.en;
+            
             document.getElementById('game-total-count').innerText = filtered.length;
             
             grid.innerHTML = filtered.map((g, i) => `
                 <div class="game-card" data-aos="fade-up" data-aos-delay="${i * 20}" onclick="openItem('${g.id}')">
-                    ${g.isMostWanted ? `<div class="badge-hot">${i18n[curLang].wanted}</div>` : ''}
-                    ${g.showNewBadge && !g.isMostWanted ? `<div class="badge-new">${i18n[curLang].new}</div>` : ''}
+                    ${g.isMostWanted ? `<div class="badge-hot">${t.wanted}</div>` : ''}
+                    ${g.id === 'p5' ? `<div class="badge-update">${t.updateAlways}</div>` : ''}
+                    ${g.showNewBadge && !g.isMostWanted ? `<div class="badge-new">${t.new}</div>` : ''}
                     <img src="${g.poster}" class="char-img" loading="lazy">
                     <div class="card-info">
                         <p class="text-[10px] font-bold uppercase tracking-wider text-white truncate">${g.title}</p>
@@ -611,9 +604,9 @@
             if(!g) return;
 
             const isMovie = g.type === 'movie';
-            const t = i18n[curLang];
+            const t = i18n[curLang] || i18n.en;
             
-            document.getElementById('detailDesc').innerText = g.desc[curLang];
+            document.getElementById('detailDesc').innerText = g.desc[curLang] || g.desc.en || g.desc.es;
             document.getElementById('reqsContainer').innerHTML = `
                 <div class="grid grid-cols-2 gap-4 p-4 glass-panel">
                     <div><p class="text-[8px] opacity-30 font-bold tracking-widest uppercase mb-1">${isMovie ? t.res : t.ram}</p><p class="text-[10px] font-bold">${g.reqs[0]}</p></div>
