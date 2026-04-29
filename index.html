@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -209,7 +208,6 @@
 
     <div class="bg-mesh"></div>
 
-    <!-- PANTALLA DE SELECCIÓN DE IDIOMA -->
     <div id="language-overlay" class="fixed inset-0 z-[10000] bg-[#020202] flex items-center justify-center p-6 transition-all duration-700">
         <div class="p-10 rounded-[35px] border border-white/5 max-w-4xl w-full text-center bg-white/[0.01] backdrop-blur-3xl" data-aos="zoom-in">
             <img src="https://i.ibb.co/G4Z5gvHw/icon.png" class="w-20 h-20 mx-auto mb-8 drop-shadow-[0_0_15px_rgba(0,242,255,0.5)]">
@@ -224,7 +222,6 @@
         </div>
     </div>
 
-    <!-- HEADER -->
     <header id="main-header">
         <div class="flex items-center justify-between w-full max-w-[1500px] mx-auto">
             <div class="flex items-center gap-3 cursor-pointer group" onclick="navigate('home')">
@@ -247,7 +244,6 @@
         </div>
     </header>
 
-    <!-- MENÚ LATERAL -->
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1999] hidden opacity-0 transition-opacity" onclick="toggleMenu()"></div>
     <nav id="mobile-menu" class="fixed top-0 right-[-100%] w-[85%] max-w-[350px] h-screen bg-[#050505] z-[2000] flex flex-col p-10 border-l border-white/5 transition-all duration-500 ease-out">
         <div class="mb-16">
@@ -263,7 +259,6 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
     <div class="pt-28 pb-20">
         <main id="home-view" class="view-section active px-6 max-w-[1500px] mx-auto">
             <div id="home-banner" data-aos="fade-down">
@@ -290,7 +285,6 @@
             <div id="gameGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5"></div>
         </main>
 
-        <!-- DETALLE -->
         <section id="detail-view" class="view-section hidden px-6 max-w-6xl mx-auto">
             <button id="btn-back-trigger" onclick="navigate('home')" class="mb-10 flex items-center gap-3 text-white/30 hover:text-cyan-400 transition-all font-ui font-bold tracking-widest text-[10px] uppercase">
                 <span class="text-lg">←</span> <span id="btn-back-text"></span>
@@ -319,7 +313,6 @@
             </div>
         </section>
 
-        <!-- SOLICITUDES -->
         <section id="request-view" class="view-section hidden px-6 max-w-2xl mx-auto py-10">
             <div class="text-center mb-12">
                 <h1 class="text-6xl font-brand text-white" id="req-view-title"></h1>
@@ -344,18 +337,18 @@
             pt: { name: "Português", search: "BUSCAR...", catalog: "CATÁLOGO", request: "PEDIR", changelang: "🌐 MUDAR IDIOMA", available: "UNIDADES VERIFICADAS", download: "BAIXAR APK", downloadMovie: "VER FILME", back: "VOLTAR", send: "ENVIAR PEDIDO", placeholder: "NOME DO JOGO...", noAsk: "Lembrar identidade", new: "NOVO", reqsTitle: "REQUISITOS", verifiedBy: "✓ ARQUIVO SEGURO", wanted: "HOT", report: "REPORTAR ERRO", reportPage: "ERRO DE SISTEMA", reportSend: "ENVIAR INFORME", reportPlace: "DESCREVA A FALHA...", bannerTag: "DESTAQUE DA SEMANA", bannerTitle: "A NOVA ERA DO<br>JOGO GRÁTIS", reqTag: "CONEXÃO DIRETA COM A EQUIPE EP", gamesTab: "JOGOS", moviesTab: "FILMES", ram: "RAM", cpu: "CPU", storage: "ESPAÇO", version: "VERSÃO", res: "RESOLUÇÃO", lang: "IDIOMA", source: "FONTE", year: "ANO", updateAlways: "Atualização constante" },
             fr: { name: "Français", search: "RECHERCHER...", catalog: "CATALOGUE", request: "DEMANDER", changelang: "🌐 CHANGER DE LANGUE", available: "UNITÉS VÉRIFIÉES", download: "TÉLÉCHARGER APK", downloadMovie: "VOIR FILM", back: "RETOUR", send: "ENVOYER LA DEMANDE", placeholder: "NOM DU JEU...", noAsk: "Se souvenir de moi", new: "NOUVEAU", reqsTitle: "EXIGENCES", verifiedBy: "✓ FICHIER SÉCURISÉ", wanted: "HOT", report: "SIGNALER ERREUR", reportPage: "ERREUR SYSTÈME", reportSend: "ENVOYER RAPPORT", reportPlace: "DÉCRIRE LE PROBLÈME...", bannerTag: "HIGHLIGHT DE LA SEMAINE", bannerTitle: "LA NOUVELLE ÈRE DU<br>JEU GRATUIT", reqTag: "CONNEXION DIRECTE AVEC EP TEAM", gamesTab: "JEUX", moviesTab: "FILMS", ram: "RAM", cpu: "CPU", storage: "ESPACE", version: "VERSION", res: "RÉSOLUTION", lang: "LANGUE", source: "SOURCE", year: "ANNÉE", updateAlways: "Mise à jour constante" },
             de: { name: "Deutsch", search: "SUCHEN...", catalog: "KATALOG", request: "ANFRAGEN", changelang: "🌐 SPRACHE ÄNDERN", available: "VERIFIZIERTE EINHEITEN", download: "APK HERUNTERLADEN", downloadMovie: "FILM ANSEHEN", back: "ZURÜCK", send: "ANFRAGE SENDEN", placeholder: "SPIELENAME...", noAsk: "Identität merken", new: "NEU", reqsTitle: "ANFORDERUNGEN", verifiedBy: "✓ SICHERE DATEI", wanted: "HOT", report: "FEHLER MELDEN", reportPage: "SYSTEMFEHLER", reportSend: "BERICHT SENDEN", reportPlace: "FEHLER BESCHREIBEN...", bannerTag: "HIGHLIGHT DER WOCHE", bannerTitle: "DIE NEUE ÄRA DES<br>GRATIS-GAMINGS", reqTag: "DIREKTE VERBINDUNG ZUM EP TEAM", gamesTab: "SPIELE", moviesTab: "FILME", ram: "RAM", cpu: "CPU", storage: "SPEICHER", version: "VERSION", res: "AUFLÖSUNG", lang: "SPRACHE", source: "QUELLE", year: "JAHR", updateAlways: "Ständige Updates" },
-            it: { name: "Italiano", search: "CERCA...", catalog: "CATALOGO", request: "RICHIESTA", changelang: "🌐 CAMBIA LINGUA", available: "UNITÀ VERIFICATE", download: "SCARICA APK", downloadMovie: "GUARDA FILM", back: "INDIETRO", send: "INVIA RICHIESTA", placeholder: "NOME DEL GIOCO...", noAsk: "Ricorda identità", new: "NUOVO", reqsTitle: "REQUISITI", verifiedBy: "✓ FILE SICURO", wanted: "HOT", report: "SEGNALA ERRORE", reportPage: "ERRORE DI SISTEMA", reportSend: "INVIA RAPPORTO", reportPlace: "DESCRIVI IL GUASTO...", bannerTag: "IL MEGLIO DELLA SETTIMANA", bannerTitle: "LA NUOVA ERA DEL<br>GIOCO GRATUITO", reqTag: "CONNESSIONE DIRETTA CON EP TEAM", gamesTab: "GIOCHI", moviesTab: "FILM", ram: "RAM", cpu: "CPU", storage: "SPAZIO", version: "VERSIONE", res: "RISOLUZIONE", lang: "LINGUA", source: "FONTE", year: "ANNO", updateAlways: "Aggiornamento costante" },
+            it: { name: "Italiano", search: "CERCA...", catalog: "CATALOGO", request: "RICHIESTA", changelang: "🌐 CAMBIA LINGUA", available: "UNITÀ VERIFICATE", download: "SCARICA APK", downloadMovie: "GUARDA FILM", back: "INDIETRO", send: "INVIA RICHIESTA", placeholder: "NOME DEL GIOCO...", noAsk: "Ricorda identità", new: "NUOVO", reqsTitle: "REQUISITI", verifiedBy: "✓ FILE SICURO", wanted: "HOT", report: "SEGNALA ERRORE", reportPage: "ERRORE DI SISTEMA", reportSend: "INVIA RAPPORTO", reportPlace: "DESCRIVI IL GUASTO...", bannerTag: "IL MEGLIO DELLA SETTIMANA", bannerTitle: "LA NUOVA ERA DEL<br>GIOCO GRATUITO", reqTag: "CONNESSIONE DIRETTA CON EP TEAM", gamesTab: "GIOCHI", moviesTab: "FILM", ram: "RAM", cpu: "CPU", storage: "SPAZIO", version: "VERSIONE", res: "RISOLUZIONE", lang: "LINGUA", source: "FONTE", year: "ANNO", updateAlways: "Aggiornamento constante" },
             ru: { name: "Русский", search: "ПОИСК...", catalog: "КАТАЛОГ", request: "ЗАПРОС", changelang: "🌐 СМЕНИТЬ ЯЗЫК", available: "ПРОВЕРЕНО", download: "СКАЧАТЬ APK", downloadMovie: "СМОТРЕТЬ", back: "НАЗАД", send: "ОТПРАВИТЬ", placeholder: "НАЗВАНИЕ...", noAsk: "Запомнить", new: "НОВОЕ", reqsTitle: "ТРЕБОВАНИЯ", verifiedBy: "✓ БЕЗОПАСНО", wanted: "HOT", report: "ОШИБКА", reportPage: "СИСТЕМНАЯ ОШИБКА", reportSend: "ОТПРАВИТЬ", reportPlace: "ОПИШИТЕ...", bannerTag: "ЛУЧШЕЕ ЗА НЕДЕЛЮ", bannerTitle: "НОВАЯ ЭРА<br>БЕСПЛАТНЫХ ИГР", reqTag: "ПРЯМАЯ СВЯЗЬ С EP TEAM", gamesTab: "ИГРЫ", moviesTab: "КИНО", ram: "ОЗУ", cpu: "ЦП", storage: "ПАМЯТЬ", version: "ВЕРСИЯ", res: "РАЗРЕШЕНИЕ", lang: "ЯЗЫК", source: "ИСТОЧНИК", year: "ГОД", updateAlways: "Постоянно обновляется" },
             ja: { name: "日本語", search: "検索...", catalog: "カタログ", request: "リクエスト", changelang: "🌐 言語変更", available: "検証済み", download: "APKダウンロード", downloadMovie: "映画を見る", back: "戻る", send: "送信", placeholder: "ゲーム名...", noAsk: "設定を保存", new: "新規", reqsTitle: "要件", verifiedBy: "✓ 安全なファイル", wanted: "HOT", report: "エラー報告", reportPage: "システムエラー", reportSend: "送信", reportPlace: "詳細...", bannerTag: "今週のハイライト", bannerTitle: "無料ゲームの<br>新時代", reqTag: "EP TEAMへのダイレクト接続", gamesTab: "ゲーム", moviesTab: "映画", ram: "RAM", cpu: "CPU", storage: "容量", version: "バージョン", res: "解像度", lang: "言語", source: "ソース", year: "年", updateAlways: "常に更新" },
             ko: { name: "한국어", search: "검색...", catalog: "카탈로그", request: "요청", changelang: "🌐 언어 변경", available: "확인됨", download: "APK 다운로드", downloadMovie: "영화 보기", back: "뒤로", send: "요청 보내기", placeholder: "게임 이름...", noAsk: "기억하기", new: "신규", reqsTitle: "요구 사항", verifiedBy: "✓ 안전한 파일", wanted: "HOT", report: "오류 신고", reportPage: "시스템 오류", reportSend: "보고서 전송", reportPlace: "내용...", bannerTag: "이번 주의 하이라이트", bannerTitle: "무료 게임의<br>새로운 시대", reqTag: "EP TEAM 직접 연결", gamesTab: "게임", moviesTab: "영화", ram: "RAM", cpu: "CPU", storage: "공간", version: "버전", res: "해상도", lang: "언어", source: "출처", year: "연도", updateAlways: "지속적인 업데이트" },
             zh: { name: "中文", search: "搜索...", catalog: "目录", request: "请求", changelang: "🌐 更改语言", available: "验证单位", download: "下载 APK", downloadMovie: "观看电影", back: "返回", send: "发送请求", placeholder: "游戏名称...", noAsk: "记住我", new: "新品", reqsTitle: "系统要求", verifiedBy: "✓ 安全文件", wanted: "热门", report: "报告错误", reportPage: "系统错误", reportSend: "发送报告", reportPlace: "描述故障...", bannerTag: "本周精选", bannerTitle: "免费游戏的<br>新时代", reqTag: "与 EP 团队直接联系", gamesTab: "游戏", moviesTab: "电影", ram: "内存", cpu: "处理器", storage: "存储", version: "版本", res: "分辨率", lang: "语言", source: "来源", year: "年份", updateAlways: "持续更新" },
             ar: { name: "العربية", search: "بحث...", catalog: "كتالوج", request: "طلب", changelang: "🌐 تغيير اللغة", available: "وحدات مؤكدة", download: "تحميل APK", downloadMovie: "مشاهدة فيلم", back: "رجوع", send: "إرسال الطلب", placeholder: "اسم اللعبة...", noAsk: "تذكر الهوية", new: "جديد", reqsTitle: "المتطلبات", verifiedBy: "✓ ملف آمن", wanted: "ساخن", report: "إبلاغ عن خطأ", reportPage: "خطأ نظام", reportSend: "إرسال التقرير", reportPlace: "وصف العطل...", bannerTag: "أفضل ما في الأسبوع", bannerTitle: "العصر الجديد لـ<br>الألعاب المجانية", reqTag: "اتصال مباشر مع فريق EP", gamesTab: "ألعاب", moviesTab: "أفلام", ram: "رام", cpu: "المعالج", storage: "مساحة", version: "إصدار", res: "دقة", lang: "لغة", source: "مصدر", year: "سنة", updateAlways: "تحديث مستمر" },
-            hi: { name: "हिन्दी", search: "खोजें...", catalog: "कैटलॉग", request: "अनुरोध", changelang: "🌐 भाषा बदलें", available: "सत्यापित इकाइयाँ", download: "APK डाउनलोड करें", downloadMovie: "फिल्म देखें", back: "वापस", send: "अनुरोध भेजें", placeholder: "खेल का नाम...", noAsk: "याद रखें", new: "नया", reqsTitle: "आवश्यकताएँ", verifiedBy: "✓ सुरक्षित फ़ाइल", wanted: "HOT", report: "त्रुटि रिपोर्ट", reportPage: "सिस्टम त्रुटि", reportSend: "रिपोर्ट भेजें", reportPlace: "विवरण...", bannerTag: "सप्ताह का मुख्य आकर्षण", bannerTitle: "मुफ्त गेमिंग का<br>नया युग", reqTag: "EP टीम के साथ सीधा संबंध", gamesTab: "खेल", moviesTab: "फ़िल्में", ram: "RAM", cpu: "CPU", storage: "स्टोरेज", version: "संस्करण", res: "रिजॉल्यूशन", lang: "भाषा", source: "स्रोत", year: "वर्ष", updateAlways: "लगातार अपडेट" },
+            hi: { name: "हिन्दी", search: "खोजें...", catalog: "कैटलॉग", request: "अनुरोध", changelang: "🌐 भाषा बदलें", available: "सत्यापित इकाइयाँ", download: "APK डाउनलोड करें", downloadMovie: "फिल्म देखें", back: "वापस", send: "अनुरोध भेजें", placeholder: "खेल का नाम...", noAsk: "याद रखें", new: "नया", reqsTitle: "आवश्यकताएँ", verifiedBy: "✓ सुरक्षित फ़ाइल", wanted: "HOT", report: "त्रुटि रिपोर्ट", reportPage: "सिस्टम त्रुटि", reportSend: "रिपोर्ट भेजें", reportPlace: "विवरण...", bannerTag: "सप्ताह का मुख्य आकर्षण", bannerTitle: "मुफ्त गेमिंग का<br>नया युग", reqTag: "EP टीम के साथ सीधा संबंध", gamesTab: "खेल", moviesTab: "फ़िल्में", ram: "RAM", cpu: "CPU", storage: "स्टोरेज", version: "संस्करण", res: "रिजॉल्यूशन", lang: "भाषा", source: "स्रोत", year: "वर्ष", updateAlways: "लगाatar अपडेट" },
             tr: { name: "Türkçe", search: "ARA...", catalog: "KATALOG", request: "İSTEK", changelang: "🌐 DİL DEĞİŞTİR", available: "DOĞRULANMIŞ BİRİMLER", download: "APK İNDİR", downloadMovie: "FİLM İZLE", back: "GERİ", send: "İSTEK GÖNDER", placeholder: "OYUN ADI...", noAsk: "Beni hatırla", new: "YENİ", reqsTitle: "GEREKSİNİMLER", verifiedBy: "✓ GÜVENLİ DOSYA", wanted: "SICAK", report: "HATA BİLDİR", reportPage: "SİSTEM HATASI", reportSend: "RAPOR GÖNDER", reportPlace: "ARIZAYI AÇIKLA...", bannerTag: "HAFTANIN ÖNE ÇIKANLARI", bannerTitle: "ÜCRETSİZ OYUNLARIN<br>YENİ ÇAĞI", reqTag: "EP TEAM İLE DOĞRUDAN BAĞLANTI", gamesTab: "OYUNLAR", moviesTab: "FİLMLER", ram: "RAM", cpu: "CPU", storage: "ALAN", version: "VERSİYON", res: "ÇÖZÜNÜRLÜK", lang: "DİL", source: "KAYNAK", year: "YIL", updateAlways: "Sürekli Güncelleme" },
             nl: { name: "Nederlands", search: "ZOEKEN...", catalog: "CATALOGUS", request: "AANVRAAG", changelang: "🌐 TAAL WIJZIGEN", available: "GEVERIFIEERDE UNITS", download: "APK DOWNLOADEN", downloadMovie: "FILM KIJKEN", back: "TERUG", send: "AANVRAAG VERZENDEN", placeholder: "NAAM SPEL...", noAsk: "Identiteit onthouden", new: "NIEUW", reqsTitle: "VEREISTEN", verifiedBy: "✓ VEILIG BESTAND", wanted: "HOT", report: "FOUT MELDEN", reportPage: "SYSTEEMFOUT", reportSend: "RAPPORT VERZENDEN", reportPlace: "BESCHRIJF DE FOUT...", bannerTag: "HOOGTEPUNT VAN DE WEEK", bannerTitle: "HET NIEUWE TIJDPERK VAN<br>GRATIS GAMING", reqTag: "DIRECTE VERBINDING MET EP TEAM", gamesTab: "SPELLEN", moviesTab: "FILMS", ram: "RAM", cpu: "CPU", storage: "OPSLAG", version: "VERSIE", res: "RESOLUTIE", lang: "TAAL", source: "BRON", year: "JAAR", updateAlways: "Constante updates" },
             pl: { name: "Polski", search: "SZUKAJ...", catalog: "KATALOG", request: "ZAMÓW", changelang: "🌐 ZMIEŃ JĘZYK", available: "ZWERYFIKOWANE JEDNOSTKI", download: "POBIERZ APK", downloadMovie: "OGLĄDAJ FILM", back: "WRÓĆ", send: "WYŚLIJ PROŚBĘ", placeholder: "NAZWA GRY...", noAsk: "Zapamiętaj", new: "NOWOŚĆ", reqsTitle: "WYMAGANIA", verifiedBy: "✓ BEZPIECZNY PLIK", wanted: "GORĄCE", report: "ZGŁOŚ BŁĄD", reportPage: "BŁĄD SYSTEMU", reportSend: "WYŚLIJ RAPORT", reportPlace: "OPISZ USTERKĘ...", bannerTag: "HIT TYGODNIA", bannerTitle: "NOWA ERA<br>DARMOWEGO GRANIA", reqTag: "BEZPOŚREDNIE POŁĄCZENIE Z EP TEAM", gamesTab: "GRY", moviesTab: "FILMY", ram: "RAM", cpu: "CPU", storage: "MIEJSCE", version: "WERSJA", res: "ROZDZIELCZOŚĆ", lang: "JĘZYK", source: "ŹRÓDŁO", year: "ROK", updateAlways: "Stała aktualizacja" },
             sv: { name: "Svenska", search: "SÖK...", catalog: "KATALOG", request: "BEGÄRAN", changelang: "🌐 ÄNDRA SPRÅK", available: "VERIFIERADE ENHETER", download: "LADDA NER APK", downloadMovie: "SE FILM", back: "TILLBAKA", send: "SKICKA BEGÄRAN", placeholder: "SPELNAMN...", noAsk: "Kom ihåg mig", new: "NYTT", reqsTitle: "KRAV", verifiedBy: "✓ SÄKER FIL", wanted: "HOT", report: "RAPPORTERA FEL", reportPage: "SYSTEMFEL", reportSend: "SKICKA RAPPORT", reportPlace: "BESKRIV FELET...", bannerTag: "VECKANS HÖJDPUNKT", bannerTitle: "DEN NYA ERAN AV<br>GRATIS SPEL", reqTag: "DIREKTANSLUTNING TILL EP TEAM", gamesTab: "SPEL", moviesTab: "FILMER", ram: "RAM", cpu: "CPU", storage: "UTRYMME", version: "VERSION", res: "UPPLÖSNING", lang: "SPRÅK", source: "KÄLLA", year: "ÅR", updateAlways: "Konstant uppdatering" },
-            da: { name: "Dansk", search: "SØG...", catalog: "KATALOG", request: "ANMODNING", changelang: "🌐 SKIFT SPROG", available: "VERIFICEREDE ENHEDER", download: "HENT APK", downloadMovie: "SE FILM", back: "TILBAGE", send: "SEND ANMODNING", placeholder: "SPILNAVN...", noAsk: "Husk identitet", new: "NY", reqsTitle: "KRAV", verifiedBy: "✓ SIKKER FIL", wanted: "HOT", report: "RAPPORTER FEJL", reportPage: "SYSTEMFEJL", reportSend: "SEND RAPPORT", reportPlace: "BESKRIV FEJL...", bannerTag: "UGENS HIGHLIGHT", bannerTitle: "DEN NYE ÆRA FOR<br>GRATIS GAMING", reqTag: "DIREKTE FORBINDELSE TIL EP TEAM", gamesTab: "SPIL", moviesTab: "FILM", ram: "RAM", cpu: "CPU", storage: "PLADS", version: "VERSION", res: "OPLØSNING", lang: "SPROG", source: "KILDE", year: "ÅR", updateAlways: "Løbende opdatering" },
+            da: { name: "Dansk", search: "SØG...", catalog: "KATALOG", request: "ANMODNING", changelang: "🌐 SKIFT SPROG", available: "VERIFICEREDE ENHEDER", download: "HENT APK", downloadMovie: "SE FILM", back: "TILBAGE", send: "SEND ANMODNING", placeholder: "SPILNAVN...", noAsk: "Husk identitet", new: "NY", reqsTitle: "KRAV", verifiedBy: "✓ SIKKER FIL", wanted: "HOT", report: "RAPPORTER FEJL", reportPage: "SYSTEMFEJL", reportSend: "SEND ANMODNING", reportPlace: "BESKRIV FEJL...", bannerTag: "UGENS HIGHLIGHT", bannerTitle: "DEN NYE ÆRA FOR<br>GRATIS GAMING", reqTag: "DIREKTE FORBINDELSE TIL EP TEAM", gamesTab: "SPIL", moviesTab: "FILM", ram: "RAM", cpu: "CPU", storage: "PLADS", version: "VERSION", res: "OPLØSNING", lang: "SPROG", source: "KILDE", year: "ÅR", updateAlways: "Løbende opdatering" },
             no: { name: "Norsk", search: "SØK...", catalog: "KATALOG", request: "FORESPØRSEL", changelang: "🌐 BYTT SPRÅK", available: "VERIFISERTE ENHETER", download: "LAST NED APK", downloadMovie: "SE FILM", back: "TILBAKE", send: "SEND FORESPØRSEL", placeholder: "SPILLNAVN...", noAsk: "Husk meg", new: "NY", reqsTitle: "KRAV", verifiedBy: "✓ SIKKER FIL", wanted: "HOT", report: "RAPPORTER FEIL", reportPage: "SYSTEMFEIL", reportSend: "SEND RAPPORT", reportPlace: "BESKRIV FEIL...", bannerTag: "UKENS HØYDEPUNKT", bannerTitle: "DEN NYE ÆRAEN FOR<br>GRATIS SPILL", reqTag: "DIREKTEKOBLING TIL EP TEAM", gamesTab: "SPILL", moviesTab: "FILMER", ram: "RAM", cpu: "CPU", storage: "PLASS", version: "VERSJON", res: "OPPLØSNING", lang: "SPRÅK", source: "KILDE", year: "ÅR", updateAlways: "Stadig oppdatert" }
         };
 
@@ -363,6 +356,26 @@
         let currentGameId = null, curLang = 'es', scrollPos = 0, currentCategory = 'games';
 
         const movies = [
+            { 
+                id: 'fnaf_movie', 
+                title: 'Five Nights at Freddy\'s (2023)', 
+                poster: 'https://sm.ign.com/ign_latam/movie/f/five-night/five-nights-at-freddys-theater_j7c6.jpg', 
+                screen: 'https://www.billboard.com/wp-content/uploads/2023/10/five-nights-at-freddys-2023-billboard-1548.jpg?w=942&h=628&crop=1', 
+                links: {
+                    mex: 'https://play.cuevana.life/es/detail/movie/UYbywBL7C14A5zAr5AzcS-Five-Nights-At-Freddys',
+                    usa: 'https://latino.solo-latino.com/es/detail/movie/O7syQYn4QhsdCbYVAHo8T-Five-Nights-At-Freddys'
+                },
+                desc: { 
+                    es: 'FNaF 1: La película. Un guardia de seguridad comienza a trabajar en Freddy Fazbear\'s Pizza. Mientras pasa su primera noche en el trabajo, se da cuenta de que el turno de noche en Freddy\'s no será tan fácil de superar.', 
+                    en: 'FNaF 1: The movie. A troubled security guard begins working at Freddy Fazbear\'s Pizza. During his first night on the job, he realizes that the night shift won\'t be so easy to get through.', 
+                    pt: 'FNaF 1: O filme. Um guarda de segurança começa a trabalhar na Freddy Fazbear\'s Pizza.' 
+                }, 
+                reqs: ["1080p", "Lat/Eng", "Multi", "2023"], 
+                showNewBadge: true, 
+                isMostWanted: true,
+                type: 'movie',
+                multiVersion: true 
+            },
             { 
                 id: 'kungfupanda', 
                 title: 'Kung Fu Panda (2008)', 
@@ -454,7 +467,7 @@
                     mex: 'https://ww20.321moviesfree.com/es/detail/movie/bTfmR7SjycdIeayEJPdeq-Interstellar',
                     usa: 'https://ww1.123flmsfree.com/es/detail/movie/Yi62KrQCdeBosqZi2kMuG-Interstellar'
                 },
-                desc: { es: 'Un equipo de exploradores viaja más allá de esta galaxia para descubrir si la humanidad tiene un futuro entre las estrellas.', en: 'A team of explorers travel beyond this galaxy to discover whether mankind has a future among the stars.', pt: 'Uma equipe de exploradores viaja além desta galáxia para descubrir se a humanidade tem um futuro entre las estrelas.' }, 
+                desc: { es: 'Un equipo de exploradores viaja más allá de esta galaxia para descubrir si la humanidad tiene un futuro entre las estrellas.', en: 'A team of explorers travel beyond this galaxy to discover whether mankind has a future among the stars.', pt: 'Uma equipe de exploradores viaja además desta galáxia para descubrir se a humanidade tem um futuro entre las estrelas.' }, 
                 reqs: ["4K HDR", "Lat/Eng", "321Movies", "2014"], 
                 showNewBadge: false, 
                 isMostWanted: false,
@@ -742,5 +755,3 @@
     </script>
 </body>
 </html>
-
-```
