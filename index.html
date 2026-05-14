@@ -153,7 +153,7 @@
 
             <div id="gameGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mt-6"></div>
             <div id="loadMoreContainer" class="flex justify-center w-full">
-                <div id="loadMoreBtn" class="load-more-btn hidden">LOADING</div>
+                <div id="loadMoreBtn" class="load-more-btn hidden">✨ CARGAR MÁS ✨</div>
             </div>
         </section>
 
@@ -245,10 +245,10 @@
         async function handleAIClick() { await logAI(); window.open('https://novark-nova-core.base44.app', '_blank'); }
 
         const i18n = {
-            es: { search: "Buscar...", request: "Peticiones", download: "Descargar APK", play: "Reproducir ahora", back: "Atrás", send: "Enviar", noAsk: "Recordar región", new: "Nuevo", hot: "Top", flag: "🇪🇸", kdrama_empty: "No hay nada disponible actualmente" },
-            en: { search: "Search...", request: "Requests", download: "Download APK", play: "Watch Now", back: "Back", send: "Send", noAsk: "Remember choice", new: "New", hot: "Hot", flag: "🇺🇸", kdrama_empty: "Nothing available at the moment" },
-            pt: { search: "Buscar...", request: "Pedidos", download: "Instalar APK", play: "Assistir", back: "Voltar", send: "Enviar", noAsk: "Lembrar", new: "Novo", hot: "Popular", flag: "🇧🇷", kdrama_empty: "Nada disponível no momento" },
-            fr: { search: "Chercher...", request: "Requêtes", download: "Installer APK", play: "Regarder", back: "Retour", send: "Envoyer", noAsk: "Retenir", new: "Nouveau", hot: "Top", flag: "🇫🇷", kdrama_empty: "Rien de disponible pour le moment" }
+            es: { search: "Buscar...", request: "Peticiones", download: "Descargar APK", play: "Reproducir ahora", back: "Atrás", send: "Enviar", noAsk: "Recordar región", new: "Nuevo", hot: "Top", all: "TODO", games: "JUEGOS", movies: "CINE", kdrama: "KDRAMAS", req: "PETICIONES", ai: "AI", kdrama_empty: "No hay nada disponible actualmente", flag: "🇪🇸" },
+            en: { search: "Search...", request: "Requests", download: "Download APK", play: "Watch Now", back: "Back", send: "Send", noAsk: "Remember choice", new: "New", hot: "Hot", all: "ALL", games: "GAMES", movies: "MOVIES", kdrama: "KDRAMAS", req: "REQUESTS", ai: "AI", kdrama_empty: "Nothing available at the moment", flag: "🇺🇸" },
+            pt: { search: "Buscar...", request: "Pedidos", download: "Instalar APK", play: "Assistir", back: "Voltar", send: "Enviar", noAsk: "Lembrar", new: "Novo", hot: "Popular", all: "TUDO", games: "JOGOS", movies: "CINEMA", kdrama: "KDRAMAS", req: "PEDIDOS", ai: "IA", kdrama_empty: "Nada disponível no momento", flag: "🇧🇷" },
+            fr: { search: "Chercher...", request: "Requêtes", download: "Installer APK", play: "Regarder", back: "Retour", send: "Envoyer", noAsk: "Retenir", new: "Nouveau", hot: "Top", all: "TOUT", games: "JEUX", movies: "FILMS", kdrama: "KDRAMAS", req: "REQUÊTES", ai: "IA", kdrama_empty: "Rien de disponible pour le moment", flag: "🇫🇷" }
         };
 
         const languages = [
@@ -272,7 +272,6 @@
         ];
 
         const movies = [
-            // PELÍCULAS EXISTENTES (TODAS)
             { id: 'fnaf_movie', title: { es: 'Five Nights at Freddy\'s (2023)', en: 'Five Nights at Freddy\'s (2023)', pt: 'Five Nights at Freddy\'s (2023)', fr: 'Five Nights at Freddy\'s (2023)' }, poster: 'https://sm.ign.com/ign_latam/movie/f/five-night/five-nights-at-freddys-theater_j7c6.jpg', screen: 'https://www.billboard.com/wp-content/uploads/2023/10/five-nights-at-freddys-2023-billboard-1548.jpg', links: { mex: 'https://play.cuevana.life/es/detail/movie/UYbywBL7C14A5zAr5AzcS-Five-Nights-At-Freddys', usa: 'https://latino.solo-latino.com/es/detail/movie/O7syQYn4QhsdCbYVAHo8T-Five-Nights-At-Freddys' }, desc: { es: 'Un guardia de seguridad comienza a trabajar en Freddy Fazbear\'s Pizza.', en: 'A troubled security guard begins working at Freddy Fazbear\'s Pizza.' }, reqs: ["1080p", "Lat/Eng", "Multi", "2023"], showNewBadge: false, type: 'movie', multiVersion: true },
             { id: 'fnaf2_movie', title: { es: 'Five Nights at Freddy\'s 2', en: 'Five Nights at Freddy\'s 2', pt: 'Five Nights at Freddy\'s 2', fr: 'Five Nights at Freddy\'s 2' }, poster: 'https://upload.wikimedia.org/wikipedia/en/1/11/Five_Nights_At_Freddy%27s_2_Movie_Poster.png', screen: 'https://m.media-amazon.com/images/M/MV5BM2E0NjViODYtZjk3ZS00MzI5LTk1NTctNWQ3MDZjNWNiY2E3XkEyXkFqcGc@._V1_.jpg', links: { mex: 'https://latino.solo-latino.com/es/detail/movie/QyFLAM7pTw8mzvuli420k-Five-Nights-At-Freddys-2', usa: 'https://ver.123pelicula.com/es/detail/movie/1TqlJllmAswrwSmrzHacI-Five-Nights-at-Freddys-2' }, desc: { es: 'Secuela del terrorífico éxito de 2023.', en: 'Sequel to the terrifying 2023 hit.' }, reqs: ["1080p", "Lat/Eng", "2025"], showNewBadge: false, type: 'movie', multiVersion: true },
             { id: 'cassandra', title: { es: 'Cassandra', en: 'Cassandra', pt: 'Cassandra', fr: 'Cassandra' }, poster: 'https://m.media-amazon.com/images/M/MV5BNmNlNTFiM2MtYjJhYy00NjBlLThhODEtOTNiZDJkNDBlMmRkXkEyXkFqcGc@._V1_.jpg', screen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSahsX4IO4XxyxwqI6h0bQKaticeRCyhXXPQ1oGN6NmnucvBwemtVEkNRkI&s=10', links: { mex: 'https://video.playspelis.com/es/detail/drama/FBYOgc18fne4QiM6P9rxx-Cassandra', usa: 'https://play.cuevana.life/es/detail/drama/kg7xnH7QDaZjrsjJZD2XP-Cassandra' }, desc: { es: 'Drama y misterio.', en: 'Drama and mystery.' }, reqs: ["1080p", "Lat/Eng", "2024"], showNewBadge: false, type: 'movie', multiVersion: true },
@@ -369,12 +368,12 @@
             const gamesCount = games.length;
             const moviesCount = movies.length;
             const allCount = gamesCount + moviesCount;
-            document.getElementById('lbl-all').innerHTML = `TODO <span class="counter-badge">${allCount}</span>`;
-            document.getElementById('lbl-games').innerHTML = `JUEGOS <span class="counter-badge">${gamesCount}</span>`;
-            document.getElementById('lbl-movies').innerHTML = `CINE <span class="counter-badge">${moviesCount}</span>`;
-            document.getElementById('lbl-kdrama').innerHTML = `KDRAMAS`;
-            document.getElementById('lbl-req').innerHTML = `PETICIONES`;
-            document.getElementById('lbl-ai').innerHTML = `AI`;
+            document.getElementById('lbl-all').innerHTML = `${t.all} <span class="counter-badge">${allCount}</span>`;
+            document.getElementById('lbl-games').innerHTML = `${t.games} <span class="counter-badge">${gamesCount}</span>`;
+            document.getElementById('lbl-movies').innerHTML = `${t.movies} <span class="counter-badge">${moviesCount}</span>`;
+            document.getElementById('lbl-kdrama').innerHTML = t.kdrama;
+            document.getElementById('lbl-req').innerHTML = t.req;
+            document.getElementById('lbl-ai').innerHTML = t.ai;
             document.getElementById('kdrama-empty-text').innerText = t.kdrama_empty || "No hay nada disponible actualmente";
         }
 
@@ -426,13 +425,17 @@
 
         function render() {
             const val = document.getElementById('catalogSearch').value.toLowerCase();
-            let pool = currentCategory === 'all' ? [...games, ...movies] : (currentCategory === 'games' ? games : movies);
-            if (currentCategory === 'kdrama') {
+            let pool = [];
+            if (currentCategory === 'all') pool = [...games, ...movies];
+            else if (currentCategory === 'games') pool = games;
+            else if (currentCategory === 'movies') pool = movies;
+            else if (currentCategory === 'kdrama') {
                 document.getElementById('gameGrid').innerHTML = '';
                 document.getElementById('loadMoreContainer').classList.add('hidden');
                 updateActiveCategory();
                 return;
             }
+            
             filteredItems = pool.filter(g => g.title[curLang].toLowerCase().includes(val));
             const sorted = sortItems(filteredItems);
             currentDisplayCount = 30;
@@ -563,19 +566,16 @@
             document.querySelectorAll('.view-section').forEach(s => s.classList.add('hidden'));
             document.getElementById(v + '-view').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (v === 'home') {
-                currentCategory = 'all';
-                render();
-            }
         }
 
         function switchCategory(c) {
             currentCategory = c;
             if (c === 'kdrama') {
                 navigate('kdrama');
-            } else {
-                navigate('home');
+                updateActiveCategory();
+                return;
             }
+            navigate('home');
             render();
         }
 
@@ -604,4 +604,4 @@
         window.onload = init;
     </script>
 </body>
-    </html>
+                    </html>
